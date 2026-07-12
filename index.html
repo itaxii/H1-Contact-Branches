@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Branches Performance - H1 2026</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero" id="top">
+      <div class="hero__content">
+        <div class="hero__title-block">
+          <img class="brand-logo" src="assets/contact-logo.png" alt="Contact Insurance Brokerage" />
+          <p class="eyebrow">H1 2026 Executive Report</p>
+          <h1>Contact Branches Performance</h1>
+          <p class="meta-line">
+            <span id="reportingPeriod">January-June 2026</span>
+            <span id="lastUpdated"></span>
+            <span id="sourceName"></span>
+          </p>
+        </div>
+        <div class="hero__actions">
+          <button class="btn btn--light" id="printBtn" type="button">Print / Save as PDF</button>
+          <button class="btn btn--outline" id="resetBtn" type="button">Reset Filters</button>
+        </div>
+      </div>
+      <div class="hero__summary">
+        <div>
+          <span>Approved Gross Premium</span>
+          <strong id="heroPremium">-</strong>
+        </div>
+        <div>
+          <span>YoY Change</span>
+          <strong id="heroYoy">-</strong>
+        </div>
+        <div>
+          <span>Target Achievement</span>
+          <strong id="heroTarget">-</strong>
+        </div>
+      </div>
+      <p class="hero__headline" id="heroHeadline"></p>
+    </header>
+
+    <nav class="section-nav" aria-label="Dashboard sections">
+      <a href="#overview">Executive Overview</a>
+      <a href="#monthly">Monthly Performance</a>
+      <a href="#branches">Branches</a>
+      <a href="#sellers">Sellers</a>
+      <a href="#insurers">Insurance Companies</a>
+      <a href="#lob">Line of Business</a>
+      <a href="#renewals">Renewals</a>
+      <a href="#pipeline">Pending Pipeline</a>
+      <a href="#actions">Management Actions</a>
+    </nav>
+
+    <main>
+      <section class="section" id="overview">
+        <div class="section__header">
+          <p class="eyebrow">Section 1</p>
+          <h2>Executive KPI Overview</h2>
+        </div>
+        <div class="kpi-grid" id="kpiGrid"></div>
+      </section>
+
+      <section class="section">
+        <div class="section__header">
+          <p class="eyebrow">Section 2</p>
+          <h2>Executive Summary</h2>
+        </div>
+        <div class="insight-grid" id="insightGrid"></div>
+      </section>
+
+      <section class="section" id="monthly">
+        <div class="section__header">
+          <p class="eyebrow">Section 3</p>
+          <h2>Monthly Performance</h2>
+        </div>
+        <div class="chart-grid">
+          <article class="panel panel--wide">
+            <h3>Monthly Actuals, Target, and Achievement</h3>
+            <canvas id="monthlyCombo"></canvas>
+            <p class="source-note">Source: overview monthly block. Achievement uses 2026 actual divided by 2026 target.</p>
+          </article>
+          <article class="panel">
+            <h3>Monthly Premium Composition</h3>
+            <canvas id="monthlyMix"></canvas>
+          </article>
+        </div>
+        <div class="table-card">
+          <div class="table-toolbar">
+            <h3>Monthly Performance Table</h3>
+            <button class="btn btn--small" data-export="monthlyTable" type="button">Download CSV</button>
+          </div>
+          <div class="table-wrap">
+            <table id="monthlyTable"></table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="mix">
+        <div class="section__header">
+          <p class="eyebrow">Section 4</p>
+          <h2>Premium Mix</h2>
+        </div>
+        <div class="chart-grid chart-grid--three">
+          <article class="panel">
+            <h3>New vs Renewal</h3>
+            <canvas id="newRenewalDonut"></canvas>
+          </article>
+          <article class="panel">
+            <h3>Motor vs Non-Motor</h3>
+            <canvas id="motorDonut"></canvas>
+          </article>
+          <article class="panel">
+            <h3>Retail vs Corporate</h3>
+            <canvas id="retailDonut"></canvas>
+          </article>
+        </div>
+        <article class="panel">
+          <h3>Status Mix by Year</h3>
+          <canvas id="statusStacked"></canvas>
+          <p class="callout" id="mixInterpretation"></p>
+        </article>
+      </section>
+
+      <section class="section" id="branches">
+        <div class="section__header">
+          <p class="eyebrow">Section 5</p>
+          <h2>Branch Performance</h2>
+        </div>
+        <div class="filters">
+          <input id="branchSearch" type="search" placeholder="Search branches" />
+          <select id="branchFilter">
+            <option value="all">All branches</option>
+            <option value="positive">Positive growth</option>
+            <option value="negative">Negative growth</option>
+            <option value="aboveAverage">Above average premium</option>
+            <option value="belowAverage">Below average premium</option>
+            <option value="highPending">High pending value</option>
+          </select>
+          <button class="btn btn--small" data-export="branchTable" type="button">Download CSV</button>
+        </div>
+        <div class="chart-grid">
+          <article class="panel"><h3>Top 10 Branches by 2026 Premium</h3><canvas id="branchTop"></canvas></article>
+          <article class="panel"><h3>Bottom Branches by YoY Change</h3><canvas id="branchBottom"></canvas></article>
+          <article class="panel"><h3>Branch Contribution %</h3><canvas id="branchContribution"></canvas></article>
+          <article class="panel"><h3>Branch Pending Exposure</h3><canvas id="branchPending"></canvas></article>
+          <article class="panel panel--wide"><h3>Branch Performance Quadrant</h3><canvas id="branchScatter"></canvas></article>
+        </div>
+        <div class="table-card"><div class="table-wrap"><table id="branchTable"></table></div></div>
+      </section>
+
+      <section class="section" id="sellers">
+        <div class="section__header">
+          <p class="eyebrow">Section 6</p>
+          <h2>Seller Performance</h2>
+        </div>
+        <div class="filters">
+          <input id="sellerSearch" type="search" placeholder="Search sellers" />
+          <button class="btn btn--small" data-export="sellerTable" type="button">Download CSV</button>
+        </div>
+        <div class="chart-grid">
+          <article class="panel"><h3>Top 10 Sellers</h3><canvas id="sellerTop"></canvas></article>
+          <article class="panel"><h3>Seller Growth</h3><canvas id="sellerGrowth"></canvas></article>
+          <article class="panel panel--wide"><h3>Seller Premium Mix</h3><canvas id="sellerMix"></canvas></article>
+        </div>
+        <div class="table-card"><div class="table-wrap"><table id="sellerTable"></table></div></div>
+      </section>
+
+      <section class="section" id="insurers">
+        <div class="section__header">
+          <p class="eyebrow">Section 7</p>
+          <h2>Insurance Company Performance</h2>
+        </div>
+        <div class="summary-strip" id="insurerStrip"></div>
+        <div class="chart-grid">
+          <article class="panel"><h3>Top 10 Insurers</h3><canvas id="insurerTop"></canvas></article>
+          <article class="panel"><h3>Insurer YoY Growth</h3><canvas id="insurerGrowth"></canvas></article>
+        </div>
+        <div class="table-card"><div class="table-wrap"><table id="insurerTable"></table></div></div>
+      </section>
+
+      <section class="section" id="lob">
+        <div class="section__header">
+          <p class="eyebrow">Section 8</p>
+          <h2>Line of Business Analysis</h2>
+        </div>
+        <div class="chart-grid">
+          <article class="panel"><h3>Top Lines of Business</h3><canvas id="lobTop"></canvas></article>
+          <article class="panel"><h3>YoY Growth by Line</h3><canvas id="lobGrowth"></canvas></article>
+          <article class="panel panel--wide"><h3>Monthly Line of Business Heatmap</h3><div id="lobHeatmap" class="heatmap"></div></article>
+          <article class="panel panel--wide"><h3>New vs Renewal by Line</h3><canvas id="lobMix"></canvas></article>
+        </div>
+        <div class="table-card"><div class="table-wrap"><table id="lobTable"></table></div></div>
+      </section>
+
+      <section class="section" id="renewals">
+        <div class="section__header">
+          <p class="eyebrow">Section 9</p>
+          <h2>Renewal Performance</h2>
+        </div>
+        <div class="summary-strip" id="renewalStrip"></div>
+        <div class="chart-grid">
+          <article class="panel"><h3>Monthly Motor Renewal Rate</h3><canvas id="renewalLine"></canvas></article>
+          <article class="panel"><h3>Renewal Funnel</h3><canvas id="renewalFunnel"></canvas></article>
+        </div>
+      </section>
+
+      <section class="section" id="pipeline">
+        <div class="section__header">
+          <p class="eyebrow">Section 10</p>
+          <h2>Pending Pipeline</h2>
+        </div>
+        <div class="summary-strip" id="pendingStrip"></div>
+        <div class="chart-grid">
+          <article class="panel"><h3>Pending Value by Branch</h3><canvas id="pendingBranch"></canvas></article>
+          <article class="panel"><h3>Pending Category Mix</h3><canvas id="pendingMix"></canvas></article>
+        </div>
+        <p class="callout" id="pendingNote"></p>
+      </section>
+
+      <section class="section">
+        <div class="section__header">
+          <p class="eyebrow">Section 11</p>
+          <h2>Main Performance Drivers</h2>
+        </div>
+        <div class="driver-grid" id="driverGrid"></div>
+      </section>
+
+      <section class="section" id="actions">
+        <div class="section__header">
+          <p class="eyebrow">Section 12</p>
+          <h2>Management Recommendations</h2>
+        </div>
+        <div class="table-card"><div class="table-wrap"><table id="actionsTable"></table></div></div>
+      </section>
+
+      <section class="section">
+        <details class="quality" open>
+          <summary>Section 13: Data Quality Notes</summary>
+          <ul id="qualityNotes"></ul>
+          <div class="table-card table-card--compact">
+            <div class="table-wrap"><table id="reconciliationTable"></table></div>
+          </div>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <a href="#top">Back to top</a>
+      <span>Prepared from workbook snapshot only.</span>
+    </footer>
+
+    <script src="vendor/chart.umd.js"></script>
+    <script src="data/report-data.js"></script>
+    <script src="app.js?v=20260712-pdf-fit"></script>
+  </body>
+</html>

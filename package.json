@@ -1,0 +1,16 @@
+{
+  "name": "contact-branches-report",
+  "version": "1.0.0",
+  "description": "Single-page interactive executive dashboard generated from `H1 Contact Branches v2.xlsx`.",
+  "main": "app.js",
+  "scripts": {
+    "pdf": "node generate-pdf.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "playwright-core": "^1.61.1"
+  }
+}
