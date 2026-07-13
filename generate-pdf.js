@@ -37,6 +37,9 @@ async function findBrowser() {
     viewport: { width: 1600, height: 1100 },
     deviceScaleFactor: 1,
   });
+  await page.addInitScript(() => {
+    sessionStorage.setItem("contactReportAuthed", "true");
+  });
 
   await page.goto(`file://${path.join(root, "index.html").replace(/\\/g, "/")}?pdf=1`, {
     waitUntil: "load",

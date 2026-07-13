@@ -53,12 +53,17 @@ def parse_number(value):
 
 
 def parse_percent(value):
-    num = parse_number(value)
+    if value is None or pd.isna(value):
+        return None
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        if isinstance(value, float) and math.isnan(value):
+            return None
+        return float(value)
+    text = str(value).strip()
+    num = parse_number(text)
     if num is None:
         return None
-    if abs(num) > 1:
-        return num / 100
-    return num
+    return num / 100 if "%" in text else num
 
 
 def safe_div(numerator, denominator):

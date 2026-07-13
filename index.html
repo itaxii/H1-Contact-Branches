@@ -6,7 +6,20 @@
     <title>Contact Branches Performance - H1 2026</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="auth-locked">
+    <section class="login-page" id="loginPage" aria-label="Report login">
+      <form class="login-card" id="loginForm">
+        <img class="login-logo" src="assets/contact-logo.png" alt="Contact Insurance Brokerage" />
+        <h1>Contact Branches Performance</h1>
+        <label for="loginUsername">User name</label>
+        <input id="loginUsername" name="username" type="text" autocomplete="username" />
+        <label for="loginPassword">Password</label>
+        <input id="loginPassword" name="password" type="password" autocomplete="current-password" />
+        <p class="login-error" id="loginError" role="alert"></p>
+        <button class="btn btn--light" type="submit">Login</button>
+      </form>
+    </section>
+
     <header class="hero" id="top">
       <div class="hero__content">
         <div class="hero__title-block">
@@ -50,7 +63,6 @@
       <a href="#lob">Line of Business</a>
       <a href="#renewals">Renewals</a>
       <a href="#pipeline">Pending Pipeline</a>
-      <a href="#actions">Management Actions</a>
     </nav>
 
     <main>
@@ -146,6 +158,12 @@
           <article class="panel"><h3>Branch Contribution %</h3><canvas id="branchContribution"></canvas></article>
           <article class="panel"><h3>Branch Pending Exposure</h3><canvas id="branchPending"></canvas></article>
           <article class="panel panel--wide"><h3>Branch Performance Quadrant</h3><canvas id="branchScatter"></canvas></article>
+          <article class="panel panel--wide"><h3>Branch / 2026 Premiums</h3><canvas id="branchPremiumAll"></canvas></article>
+          <article class="panel panel--wide">
+            <h3>Distribution of Branches by 2026 Premium</h3>
+            <canvas id="branchPremiumHistogram"></canvas>
+            <p class="source-note">Shows the number of branches within each premium range.</p>
+          </article>
         </div>
         <div class="table-card"><div class="table-wrap"><table id="branchTable"></table></div></div>
       </section>
@@ -227,23 +245,6 @@
         <div class="driver-grid" id="driverGrid"></div>
       </section>
 
-      <section class="section" id="actions">
-        <div class="section__header">
-          <p class="eyebrow">Section 12</p>
-          <h2>Management Recommendations</h2>
-        </div>
-        <div class="table-card"><div class="table-wrap"><table id="actionsTable"></table></div></div>
-      </section>
-
-      <section class="section">
-        <details class="quality" open>
-          <summary>Section 13: Data Quality Notes</summary>
-          <ul id="qualityNotes"></ul>
-          <div class="table-card table-card--compact">
-            <div class="table-wrap"><table id="reconciliationTable"></table></div>
-          </div>
-        </details>
-      </section>
     </main>
 
     <footer>
@@ -253,6 +254,6 @@
 
     <script src="vendor/chart.umd.js"></script>
     <script src="data/report-data.js"></script>
-    <script src="app.js?v=20260712-pdf-fit"></script>
+    <script src="app.js?v=20260714-custom-bins"></script>
   </body>
 </html>

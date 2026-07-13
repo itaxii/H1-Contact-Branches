@@ -51,6 +51,15 @@ function shortLabel(label, max = 24) {
   return label.length > max ? `${label.slice(0, max - 1)}...` : label;
 }
 
+function formatPremiumRange(start, end) {
+  const compact = (amount) => {
+    if (amount === 0) return "0";
+    if (amount >= 1_000_000) return `${(amount / 1_000_000).toFixed(1).replace(".0", "")}M`;
+    return `${Math.round(amount / 1_000)}K`;
+  };
+  return `EGP ${compact(start)}–${compact(end)}`;
+}
+
 function byDesc(key) {
   return (a, b) => value(b[key]) - value(a[key]);
 }
@@ -93,6 +102,7 @@ const staticValueLabels = {
       if (meta.hidden) return;
       const isPercent = String(dataset.label || "").includes("%") || String(dataset.label || "").includes("Contribution");
       const isPolicy = String(dataset.label || "").includes("Policies");
+      const isCount = pluginOptions.valueType === "number" || String(dataset.label || "").includes("Branches");
       const isDoughnut = chart.config.type === "doughnut";
       const isHorizontal = chart.options.indexAxis === "y";
       const visiblePoints = meta.data.length;
@@ -100,8 +110,8 @@ const staticValueLabels = {
       meta.data.forEach((element, index) => {
         const raw = Array.isArray(dataset.data) ? dataset.data[index] : null;
         if (raw === null || raw === undefined || Number.isNaN(Number(raw))) return;
-        if (Math.abs(Number(raw)) < 0.0001) return;
-        const label = isPercent ? fmtPct(raw) : isPolicy ? fmtNumber(raw) : fmtMoney(raw);
+        if (Math.abs(Number(raw)) < 0.0001 && !pluginOptions.showZero) return;
+        const label = isPercent ? fmtPct(raw) : isPolicy || isCount ? fmtNumber(raw) : fmtMoney(raw);
         const props = element.tooltipPosition();
 
         ctx.fillStyle = "#111827";
@@ -427,6 +437,83 @@ function renderBranches() {
       plugins: { tooltip: { callbacks: { label: (ctx) => `${ctx.raw.label}: ${fmtPct(ctx.raw.x)}, ${fmtMoney(ctx.raw.y)}` } } },
     },
   });
+  const branchPremiumRows = rows.slice().sort(byDesc("premium_2026"));
+  makeChart("branchPremiumAll", {
+    type: "bar",
+    data: {
+      labels: branchPremiumRows.map((r) => shortLabel(r.branch, 26)),
+      datasets: [{ label: "2026 Premium", data: branchPremiumRows.map((r) => r.premium_2026), backgroundColor: COLORS.blue }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: { ticks: { autoSkip: false, maxRotation: 70, minRotation: 70, font: { size: 9 } } },
+        y: { beginAtZero: true, ticks: { callback: (v) => fmtMoney(v) } },
+      },
+    },
+  });
+  const branchPremiumTotals = Array.from(
+    rows.reduce((map, row) => {
+      const branch = row.branch;
+      map.set(branch, (map.get(branch) || 0) + value(row.premium_2026));
+      return map;
+    }, new Map()).values()
+  );
+  const bins = [
+    { label: "EGP 0–50K", min: 0, max: 50_000 },
+    { label: "EGP 50K–100K", min: 50_000, max: 100_000 },
+    { label: "EGP 100K–150K", min: 100_000, max: 150_000 },
+    { label: "EGP 150K–200K", min: 150_000, max: 200_000 },
+    { label: "EGP 200K–300K", min: 200_000, max: 300_000 },
+    { label: "EGP 300K–600K", min: 300_000, max: 600_000 },
+    { label: "EGP 600K–900K", min: 600_000, max: 900_000 },
+    { label: "EGP 900K–1.2M", min: 900_000, max: 1_200_000 },
+    { label: "EGP 1.2M–1.5M", min: 1_200_000, max: 1_500_000 },
+    { label: "EGP 1.5M–1.8M", min: 1_500_000, max: 1_800_000 },
+    { label: "EGP 1.8M–2.1M", min: 1_800_000, max: 2_100_000 },
+    { label: "EGP 2.1M–2.4M", min: 2_100_000, max: 2_400_000 },
+    { label: "EGP 2.4M–2.7M", min: 2_400_000, max: 2_700_000 },
+    { label: "EGP 2.7M–3.0M", min: 2_700_000, max: 3_000_000, includeMax: true },
+    { label: "More than EGP 3.0M", min: 3_000_000, max: Infinity, overflow: true },
+  ].map((bin) => ({
+    ...bin,
+    count: branchPremiumTotals.filter((premium) =>
+      bin.overflow
+        ? premium > bin.min
+        : premium >= bin.min && (bin.includeMax ? premium <= bin.max : premium < bin.max)
+    ).length,
+  }));
+  makeChart("branchPremiumHistogram", {
+    type: "bar",
+    data: {
+      labels: bins.map((bin) => bin.label),
+      datasets: [{ label: "Number of Branches", data: bins.map((bin) => bin.count), backgroundColor: COLORS.green, borderWidth: 0 }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: { padding: { top: 18, right: 8, bottom: 4, left: 8 } },
+      scales: {
+        x: {
+          title: { display: true, text: "2026 Premium Range", color: COLORS.navy, font: { weight: "700" } },
+          grid: { display: false },
+          ticks: { maxRotation: 35, minRotation: 25, autoSkip: false, font: { size: 10 } },
+        },
+        y: {
+          beginAtZero: true,
+          title: { display: true, text: "Number of Branches", color: COLORS.navy, font: { weight: "700" } },
+          ticks: { precision: 0 },
+          grid: { color: "#E5E7EB" },
+        },
+      },
+      plugins: {
+        legend: { display: false },
+        staticValueLabels: { display: true, showZero: true, valueType: "number", fontSize: 11 },
+        tooltip: { callbacks: { label: (ctx) => `${ctx.raw} branches` } },
+      },
+    },
+  });
   const avg = data.totals.approved_gross_premium / rows.length;
   const highPending = rows.map((r) => value(r.pending_total)).sort((a, b) => a - b)[Math.floor(rows.length * 0.75)];
   renderTable("branchTable", entityColumns("branch"), rows);
@@ -599,7 +686,7 @@ function renderPending() {
     `${top.branch} has the largest pending exposure at ${fmtMoney(top.pending_total)}. Pending amounts are treated as pipeline or risk exposure and are not included in approved gross premium unless explicitly shown as approved in the workbook.`;
 }
 
-function renderDriversActionsQuality() {
+function renderDrivers() {
   const positiveDrivers = [
     ["Top branch", fmtMoney(data.branches.slice().sort(byDesc("premium_2026"))[0].premium_2026), `${data.branches.slice().sort(byDesc("premium_2026"))[0].branch} led branch production.`, "Protect capacity and replicate its branch practices."],
     ["Best month", fmtMoney(data.monthly.slice().sort(byDesc("actual_2026"))[0].actual_2026), `${data.monthly.slice().sort(byDesc("actual_2026"))[0].month} had the highest 2026 premium.`, "Use as monthly run-rate benchmark."],
@@ -611,23 +698,37 @@ function renderDriversActionsQuality() {
     ["Motor concentration", fmtPct(data.totals.motor_premium / data.totals.approved_gross_premium), "Approved premium is heavily motor-led.", "Grow non-motor cross-sell and insurer breadth."],
   ];
   document.getElementById("driverGrid").innerHTML = [driverPanel("Positive Drivers", positiveDrivers), driverPanel("Negative Drivers", negativeDrivers)].join("");
-  renderTable("actionsTable", [
-    { key: "priority", label: "Priority" },
-    { key: "action", label: "Recommended Action" },
-    { key: "evidence", label: "Supporting Evidence" },
-    { key: "kpi", label: "KPI to Monitor" },
-  ], data.management_actions);
-  document.getElementById("qualityNotes").innerHTML = data.data_quality_notes.map((n) => `<li>${n}</li>`).join("");
-  renderTable("reconciliationTable", [
-    { key: "check", label: "Check" },
-    { key: "value", label: "Value", raw: (r) => r.raw, format: (r) => fmtMoney(r.raw, false) },
-  ], Object.entries(data.reconciliation).map(([check, raw]) => ({ check, raw })));
 }
 
 function driverPanel(title, rows) {
   return `<article class="driver-panel"><h3>${title}</h3><div class="driver-row"><b>Driver</b><b>Impact</b><b>Evidence</b><b>Implication</b></div>${rows
     .map((r) => `<div class="driver-row"><b>${r[0]}</b><span>${r[1]}</span><span>${r[2]}</span><span>${r[3]}</span></div>`)
     .join("")}</article>`;
+}
+
+function initAuth() {
+  const form = document.getElementById("loginForm");
+  const error = document.getElementById("loginError");
+  const unlock = () => document.body.classList.remove("auth-locked");
+  if (sessionStorage.getItem("contactReportAuthed") === "true") {
+    unlock();
+  }
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const username = document.getElementById("loginUsername").value.trim().toLowerCase();
+    const password = document.getElementById("loginPassword").value;
+    if (username === "external user" && password === "1234") {
+      sessionStorage.setItem("contactReportAuthed", "true");
+      error.textContent = "";
+      unlock();
+      charts.forEach((chart) => {
+        chart.resize();
+        chart.update("none");
+      });
+      return;
+    }
+    error.textContent = "Invalid username or password.";
+  });
 }
 
 function registerActions() {
@@ -650,7 +751,10 @@ function prepareForPrint() {
   document.body.classList.add("pdf-mode");
   charts.forEach((chart) => {
     chart.options.animation = false;
-    chart.options.plugins.staticValueLabels = { display: true, fontSize: 9 };
+    chart.options.plugins.staticValueLabels =
+      chart.canvas.id === "branchPremiumHistogram"
+        ? { display: true, showZero: true, valueType: "number", fontSize: 11 }
+        : { display: true, fontSize: 9 };
     chart.resize();
     chart.update("none");
   });
@@ -659,7 +763,10 @@ function prepareForPrint() {
 function restoreAfterPrint() {
   document.body.classList.remove("pdf-mode");
   charts.forEach((chart) => {
-    chart.options.plugins.staticValueLabels = { display: false };
+    chart.options.plugins.staticValueLabels =
+      chart.canvas.id === "branchPremiumHistogram"
+        ? { display: true, showZero: true, valueType: "number", fontSize: 11 }
+        : { display: false };
     chart.resize();
     chart.update("none");
   });
@@ -669,6 +776,7 @@ window.prepareDashboardForPrint = prepareForPrint;
 window.restoreDashboardAfterPrint = restoreAfterPrint;
 
 function init() {
+  initAuth();
   chartDefaults();
   renderMeta();
   renderKpis();
@@ -681,7 +789,7 @@ function init() {
   renderLob();
   renderRenewals();
   renderPending();
-  renderDriversActionsQuality();
+  renderDrivers();
   registerActions();
 }
 

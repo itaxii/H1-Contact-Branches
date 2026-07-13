@@ -32,6 +32,78 @@ a {
   color: inherit;
 }
 
+.login-page {
+  display: none;
+}
+
+body.auth-locked {
+  background: var(--navy);
+}
+
+body.auth-locked .login-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+}
+
+body.auth-locked .hero,
+body.auth-locked .section-nav,
+body.auth-locked main,
+body.auth-locked footer {
+  display: none;
+}
+
+.login-card {
+  width: min(420px, 100%);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.login-logo {
+  display: block;
+  width: min(250px, 70vw);
+  height: auto;
+  margin: 0 0 22px;
+  background: var(--navy);
+  border-radius: 6px;
+  padding: 14px;
+}
+
+.login-card h1 {
+  margin: 0 0 20px;
+  color: var(--navy);
+  font-size: 28px;
+  line-height: 1.15;
+}
+
+.login-card label {
+  display: block;
+  margin: 14px 0 6px;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.login-card input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 12px;
+  font: inherit;
+}
+
+.login-error {
+  min-height: 20px;
+  margin: 10px 0;
+  color: #b91c1c;
+  font-weight: 800;
+}
+
 .hero {
   background: var(--navy);
   color: #fff;
@@ -295,6 +367,16 @@ canvas {
   width: 100% !important;
   min-height: 310px;
   max-height: 430px;
+}
+
+#branchPremiumAll {
+  min-height: 430px;
+  max-height: 520px;
+}
+
+#branchPremiumHistogram {
+  min-height: 430px;
+  max-height: 520px;
 }
 
 .source-note,
@@ -567,6 +649,7 @@ footer {
   }
 
   .section-nav,
+  .login-page,
   .hero__actions,
   .filters,
   .table-toolbar .btn,
@@ -691,6 +774,14 @@ footer {
 
   #branchScatter {
     height: 540px !important;
+  }
+
+  #branchPremiumAll {
+    height: 360px !important;
+  }
+
+  #branchPremiumHistogram {
+    height: 360px !important;
   }
 
   #insurerTop,
