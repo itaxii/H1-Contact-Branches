@@ -1,0 +1,167 @@
+{
+  "status": "fail",
+  "checks": [
+    {
+      "name": "Monthly totals = overall total",
+      "status": "pass",
+      "expected": 16014419.0,
+      "actual": 16014419.0,
+      "difference": 0.0,
+      "tolerance": 1
+    },
+    {
+      "name": "Branch totals = overall total",
+      "status": "error",
+      "expected": 16014419.0,
+      "actual": 16014421.0,
+      "difference": 2.0,
+      "tolerance": 1
+    },
+    {
+      "name": "Line-of-business totals = overall total",
+      "status": "pass",
+      "expected": 16014419.0,
+      "actual": 16014419.0,
+      "difference": 0.0,
+      "tolerance": 1
+    },
+    {
+      "name": "Insurer totals = overall total",
+      "status": "error",
+      "expected": 16014419.0,
+      "actual": 16014422.0,
+      "difference": 3.0,
+      "tolerance": 1
+    },
+    {
+      "name": "Pending category totals = total pending",
+      "status": "pass",
+      "expected": 658458.0,
+      "actual": 658458.0,
+      "difference": 0.0,
+      "tolerance": 1
+    },
+    {
+      "name": "Policy-type premium totals = approved gross premium",
+      "status": "pass",
+      "expected": 16014419.0,
+      "actual": 16014419.0,
+      "difference": 0.0,
+      "tolerance": 1
+    },
+    {
+      "name": "Premium distribution branch counts = unique branches",
+      "status": "pass",
+      "expected": 61,
+      "actual": 61,
+      "difference": 0.0,
+      "tolerance": 0
+    },
+    {
+      "name": "Renewal counts reconcile - January",
+      "status": "pass",
+      "expected": 211.0,
+      "actual": 211.0,
+      "difference": 0.0,
+      "tolerance": 0
+    },
+    {
+      "name": "Renewal counts reconcile - February",
+      "status": "pass",
+      "expected": 169.0,
+      "actual": 169.0,
+      "difference": 0.0,
+      "tolerance": 0
+    },
+    {
+      "name": "Renewal counts reconcile - March",
+      "status": "pass",
+      "expected": 180.0,
+      "actual": 180.0,
+      "difference": 0.0,
+      "tolerance": 0
+    },
+    {
+      "name": "Renewal counts reconcile - April",
+      "status": "pass",
+      "expected": 144.0,
+      "actual": 144.0,
+      "difference": 0.0,
+      "tolerance": 0
+    },
+    {
+      "name": "Renewal counts reconcile - May",
+      "status": "pass",
+      "expected": 181.0,
+      "actual": 181.0,
+      "difference": 0.0,
+      "tolerance": 0
+    },
+    {
+      "name": "Renewal counts reconcile - June",
+      "status": "pass",
+      "expected": 163.0,
+      "actual": 163.0,
+      "difference": 0.0,
+      "tolerance": 0
+    },
+    {
+      "name": "Renewal counts reconcile - July",
+      "status": "pass",
+      "expected": 169.0,
+      "actual": 169.0,
+      "difference": 0.0,
+      "tolerance": 0
+    },
+    {
+      "name": "Renewal counts reconcile - Grand Total",
+      "status": "pass",
+      "expected": 1217.0,
+      "actual": 1217.0,
+      "difference": 0.0,
+      "tolerance": 0
+    },
+    {
+      "name": "Branch contribution shares total 100%",
+      "status": "pass",
+      "expected": 1,
+      "actual": 1.000000124887453,
+      "difference": 1.2488745304573e-07,
+      "tolerance": 0.0001
+    },
+    {
+      "name": "LOB shares total 100%",
+      "status": "pass",
+      "expected": 1,
+      "actual": 1.0,
+      "difference": 0.0,
+      "tolerance": 0.0001
+    },
+    {
+      "name": "Insurer shares total 100%",
+      "status": "pass",
+      "expected": 1,
+      "actual": 1.0000001873311795,
+      "difference": 1.8733117945757272e-07,
+      "tolerance": 0.0001
+    }
+  ],
+  "issues": [
+    {
+      "name": "Branch totals = overall total",
+      "status": "error",
+      "expected": 16014419.0,
+      "actual": 16014421.0,
+      "difference": 2.0,
+      "tolerance": 1
+    },
+    {
+      "name": "Insurer totals = overall total",
+      "status": "error",
+      "expected": 16014419.0,
+      "actual": 16014422.0,
+      "difference": 3.0,
+      "tolerance": 1
+    }
+  ]
+}

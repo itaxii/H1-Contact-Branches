@@ -8,12 +8,25 @@ import pandas as pd
 
 
 BASE_DIR = Path(__file__).resolve().parent
-WORKBOOK = BASE_DIR.parent / "H1 Contact Branches v2.xlsx"
+WORKBOOK = BASE_DIR.parent / "Branch Report.xlsx"
 DATA_DIR = BASE_DIR / "data"
 DATA_DIR.mkdir(exist_ok=True)
 
 
-MONTH_ORDER = ["January", "February", "March", "April", "May", "June"]
+MONTH_ORDER = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+]
 TOTAL_LABELS = {"grand total", "total", "2025 total", "2026 total"}
 
 
@@ -76,6 +89,46 @@ def money(value):
     return 0 if value is None else float(value)
 
 
+def nearly_equal(actual, expected, tolerance=1):
+    return abs(money(actual) - money(expected)) <= tolerance
+
+
+def classify_yoy(previous, current):
+    previous_value = money(previous)
+    current_value = money(current)
+    if previous_value == 0 and current_value > 0:
+        return "New Base"
+    if previous_value > 0 and current_value == 0:
+        return "No Current Production"
+    if previous_value == 0 and current_value == 0:
+        return "No Production"
+    if current_value > previous_value:
+        return "Positive Growth"
+    if current_value < previous_value:
+        return "Negative Growth"
+    return "Flat"
+
+
+def month_sort_key(month):
+    return MONTH_ORDER.index(month) if month in MONTH_ORDER else len(MONTH_ORDER)
+
+
+def month_range_label(months, year=2026):
+    available = [m for m in MONTH_ORDER if m in months]
+    if not available:
+        return f"YTD {year}"
+    return f"{available[0]}-{available[-1]} {year}"
+
+
+def find_row(df, text, start=0, col=None):
+    target = text.lower()
+    for ridx in range(start, len(df)):
+        values = [df.iat[ridx, col]] if col is not None else df.iloc[ridx].tolist()
+        if any(target == clean_name(value).lower() for value in values):
+            return ridx
+    return None
+
+
 def row_to_record(row, cols, name_key):
     record = {name_key: clean_name(row.iloc[cols[0]])}
     record.update(
@@ -105,6 +158,7 @@ def row_to_record(row, cols, name_key):
     record["renewal_mix_pct"] = safe_div(record["renewal_premium"], record["premium_2026"])
     record["motor_mix_pct"] = safe_div(record["motor_premium"], record["premium_2026"])
     record["pending_total"] = sum(money(record[k]) for k in ["pending_operation_paid", "pending_finance", "pending_payment"])
+    record["growth_class"] = classify_yoy(record["premium_2025"], record["premium_2026"])
     return record
 
 
@@ -128,6 +182,88 @@ def extract_entity_table(df, start_row, end_row, name_key):
     return records, total
 
 
+def extract_sellers(df):
+    title_row = find_row(df, "TOP 20 Sellers", col=2)
+    if title_row is None:
+        return [], None
+    header_row = find_row(df, "Branch", start=title_row + 1, col=2)
+    if header_row is None:
+        return [], None
+    cols = list(range(2, 21))
+    records = []
+    total = None
+    for ridx in range(header_row + 1, len(df)):
+        row = df.iloc[ridx]
+        name = clean_name(row.iloc[2])
+        if not name:
+            if records:
+                break
+            continue
+        rec = row_to_record(row, cols, "seller")
+        if name.lower() == "grand total":
+            total = rec
+            break
+        if not is_total_label(name):
+            records.append(rec)
+    total_2026 = total["premium_2026"] if total else sum(money(r["premium_2026"]) for r in records)
+    for rec in records:
+        rec["contribution_pct"] = safe_div(rec["premium_2026"], total_2026)
+    return records, total
+
+
+def extract_branch_breakdown(df):
+    cols = list(range(2, 21))
+    records = []
+    monthly = []
+    grand_total = None
+    current_branch = None
+    header_row = find_row(df, "Branch", col=2) or 17
+    sellers_row = find_row(df, "TOP 20 Sellers", start=header_row + 1, col=2) or len(df)
+    for ridx in range(header_row + 1, sellers_row):
+        row = df.iloc[ridx]
+        label = clean_name(row.iloc[2])
+        if not label:
+            continue
+        if label in MONTH_ORDER and current_branch:
+            rec = row_to_record(row, cols, "month")
+            rec["branch"] = current_branch
+            monthly.append(rec)
+            continue
+        if label == "Grand Total":
+            grand_total = row_to_record(row, cols, "branch")
+            break
+        if label.endswith(" Total"):
+            branch_name = label[:-6]
+            rec = row_to_record(row, cols, "branch")
+            rec["branch"] = branch_name
+            records.append(rec)
+            current_branch = None
+            continue
+        current_branch = label
+    total_2026 = grand_total["premium_2026"] if grand_total else sum(money(r["premium_2026"]) for r in records)
+    for rec in records:
+        rec["contribution_pct"] = safe_div(rec["premium_2026"], total_2026)
+    return records, grand_total, monthly
+
+
+def extract_branches_per_month(df):
+    header_row = find_row(df, "Branch", start=560, col=2)
+    if header_row is None:
+        return []
+    month_cols = [(clean_name(df.iat[header_row, c]), c) for c in range(3, min(df.shape[1], 11))]
+    month_cols = [(m, c) for m, c in month_cols if m in MONTH_ORDER]
+    records = []
+    for ridx in range(header_row + 1, len(df)):
+        branch = clean_name(df.iat[ridx, 2])
+        if not branch:
+            continue
+        if branch == "Grand Total":
+            break
+        for month, col in month_cols:
+            records.append({"branch": branch, "month": month, "premium_2026": parse_number(df.iat[ridx, col])})
+    return records
+
+
 def extract_kpis(df):
     kpis = {}
     for ridx in range(12, 20):
@@ -146,19 +282,20 @@ def extract_kpis(df):
 
 def extract_renewals(df):
     records = []
-    for ridx in range(13, 20):
+    for ridx in range(13, 21):
         month = clean_name(df.iat[ridx, 9])
         if month not in MONTH_ORDER and month != "Grand Total":
             continue
         renewed = parse_number(df.iat[ridx, 10])
         up_for_renewal = parse_number(df.iat[ridx, 11])
-        rate = parse_percent(df.iat[ridx, 12])
+        not_renewed = None if renewed is None or up_for_renewal is None else up_for_renewal - renewed
+        rate = safe_div(renewed, up_for_renewal)
         records.append(
             {
                 "month": month,
                 "renewed_policies": renewed,
                 "policies_up_for_renewal": up_for_renewal,
-                "not_renewed_policies": None if renewed is None or up_for_renewal is None else up_for_renewal - renewed,
+                "not_renewed_policies": not_renewed,
                 "renewal_rate": rate,
             }
         )
@@ -168,8 +305,14 @@ def extract_renewals(df):
 def extract_monthly(df):
     records = []
     total = None
-    for ridx in range(68, 75):
+    section_row = find_row(df, "2025 vs 2026 By Summary", col=2)
+    header_row = find_row(df, "Month", start=section_row or 60, col=2) or 67
+    for ridx in range(header_row + 1, len(df)):
         month = clean_name(df.iat[ridx, 2])
+        if month not in MONTH_ORDER and month != "Grand Total":
+            if records:
+                break
+            continue
         rec = {
             "month": month,
             "actual_2025": parse_number(df.iat[ridx, 3]),
@@ -187,6 +330,7 @@ def extract_monthly(df):
         rec["yoy_pct"] = safe_div(rec["actual_2026"] - rec["actual_2025"], rec["actual_2025"]) if rec["actual_2025"] else None
         if month == "Grand Total":
             total = rec
+            break
         else:
             records.append(rec)
     return records, total
@@ -195,7 +339,8 @@ def extract_monthly(df):
 def extract_status_mix(df):
     status = {"2025": [], "2026": []}
     current_year = None
-    for ridx in range(38, 54):
+    start = find_row(df, "2025", col=2) or 38
+    for ridx in range(start, min(len(df), start + 30)):
         label = clean_name(df.iat[ridx, 2])
         if label in {"2025", "2026"}:
             current_year = label
@@ -217,9 +362,12 @@ def extract_status_mix(df):
 def extract_insurers(df):
     records = []
     total = None
-    for ridx in range(38, 53):
+    header_row = find_row(df, "Insurance Company", col=9) or 37
+    for ridx in range(header_row + 1, len(df)):
         name = clean_name(df.iat[ridx, 9])
         if not name:
+            if records:
+                break
             continue
         rec = {
             "insurance_company": name,
@@ -230,21 +378,29 @@ def extract_insurers(df):
         }
         if name.lower() == "grand total":
             total = rec
+            break
         elif not is_total_label(name):
             records.append(rec)
     total_2026 = total["premium_2026"] if total else sum(money(r["premium_2026"]) for r in records)
     for rec in records:
         rec["share_2026_pct"] = safe_div(rec["premium_2026"], total_2026)
         rec["new_2026_base"] = (rec["premium_2025"] in (None, 0)) and money(rec["premium_2026"]) != 0
+        rec["growth_class"] = classify_yoy(rec["premium_2025"], rec["premium_2026"])
     return records, total
 
 
 def extract_lob_totals(df):
     records = []
     total = None
-    for ridx in range(231, 259):
+    start = find_row(df, "H1 YOY by Line of Business", col=2)
+    if start is None:
+        start = 260
+    header_row = find_row(df, "Month", start=start, col=2) or start
+    for ridx in range(header_row + 1, len(df)):
         lob = clean_name(df.iat[ridx, 2])
         if not lob:
+            if records:
+                break
             continue
         rec = {
             "line_of_business": lob,
@@ -268,11 +424,13 @@ def extract_lob_totals(df):
         rec["new_2026_base"] = (rec["premium_2025"] in (None, 0)) and money(rec["premium_2026"]) != 0
         if lob.lower() == "grand total":
             total = rec
+            break
         elif not is_total_label(lob):
             records.append(rec)
     total_2026 = total["premium_2026"] if total else sum(money(r["premium_2026"]) for r in records)
     for rec in records:
         rec["share_2026_pct"] = safe_div(rec["premium_2026"], total_2026)
+        rec["growth_class"] = classify_yoy(rec["premium_2025"], rec["premium_2026"])
     return records, total
 
 
@@ -280,16 +438,24 @@ def extract_lob_monthly(df):
     records = []
     month_index = 0
     month = MONTH_ORDER[month_index]
-    for ridx in range(86, 218):
+    start = find_row(df, "Monthly Breakdown By Line of Business", col=2)
+    header_row = find_row(df, "Month", start=start or 80, col=2) or 85
+    for ridx in range(header_row + 1, len(df)):
         label = clean_name(df.iat[ridx, 2])
         if not label:
+            if records and month_index >= len([m for m in MONTH_ORDER if any(r["month"] == m for r in records)]) - 1:
+                continue
             continue
         if label.endswith("Total"):
             expected = f"{month} Total" if month else ""
             if label == expected and month_index < len(MONTH_ORDER) - 1:
                 month_index += 1
                 month = MONTH_ORDER[month_index]
+            elif label == "Grand Total":
+                break
             continue
+        if label == "H1 YOY by Line of Business":
+            break
         if month:
             value_2026 = parse_number(df.iat[ridx, 5])
             if value_2026 is not None:
@@ -323,7 +489,7 @@ def build_insights(data):
     top_insurers = sorted(insurers, key=lambda r: money(r["premium_2026"]), reverse=True)[:3]
     top3_share = sum(money(r["premium_2026"]) for r in top_insurers) / money(total["approved_gross_premium"])
     top_lob = max(lobs, key=lambda r: money(r["premium_2026"]))
-    positive_branches = [r for r in branches if money(r["yoy_change"]) > 0]
+    positive_branches = [r for r in branches if r.get("growth_class") == "Positive Growth"]
     highest_pending = max(branches, key=lambda r: money(r["pending_total"]))
     renewal_total = next((r for r in data["renewals"] if r["month"] == "Grand Total"), None)
 
@@ -334,15 +500,15 @@ def build_insights(data):
             f"{len(positive_branches)} branches grew year over year, led by {max(positive_branches, key=lambda r: money(r['yoy_change']))['branch']} in absolute growth." if positive_branches else "No branch recorded positive year-over-year premium growth.",
         ],
         "key_concerns": [
-            f"Approved gross premium declined {k['Approved Gross Premiums']['change_pct']:.1%} versus H1 2025, a decrease of EGP {abs(k['Approved Gross Premiums']['change'])/1_000_000:.1f}M.",
-            f"Target achievement reached {total['target_achievement_pct']:.1%}, leaving EGP {total['target_gap']/1_000_000:.1f}M below the H1 2026 target.",
+            f"Approved gross premium declined {k['Approved Gross Premiums']['change_pct']:.1%} versus YTD 2025, a decrease of EGP {abs(k['Approved Gross Premiums']['change'])/1_000_000:.1f}M.",
+            f"Target achievement reached {total['target_achievement_pct']:.1%}, leaving EGP {total['target_gap']/1_000_000:.1f}M below the YTD 2026 target.",
             f"{weakest_month['month']} was the weakest month at EGP {weakest_month['actual_2026']/1_000_000:.1f}M and only {weakest_month['target_achievement_pct']:.1%} of target.",
-            f"The top three insurers represented {top3_share:.1%} of H1 2026 approved premium, creating concentration exposure.",
+            f"The top three insurers represented {top3_share:.1%} of YTD 2026 approved premium, creating concentration exposure.",
         ],
         "opportunities": [
             f"Pending pipeline totals EGP {total['pending_total']/1_000_000:.1f}M, equal to {total['pending_as_pct_approved']:.1%} of approved premium.",
             f"{top_lob['line_of_business']} remains the largest line at EGP {top_lob['premium_2026']/1_000_000:.1f}M; improving its conversion has the highest near-term impact.",
-            f"Motor renewal rate was {renewal_total['renewal_rate']:.1%} across H1, leaving {renewal_total['not_renewed_policies']:.0f} not-renewed policies as a recovery pool." if renewal_total else "Renewal-rate opportunity could not be calculated from the available workbook data.",
+            f"Motor renewal rate was {renewal_total['renewal_rate']:.1%} across YTD, leaving {renewal_total['not_renewed_policies']:.0f} not-renewed policies as a recovery pool." if renewal_total else "Renewal-rate opportunity could not be calculated from the available workbook data.",
             f"{top_seller['seller']} led seller production at EGP {top_seller['premium_2026']/1_000_000:.1f}M; top-seller practices should be replicated across declining sellers." if top_seller else "Seller-level opportunities are limited because only the workbook's top-seller section is available.",
         ],
     }
@@ -367,8 +533,8 @@ def build_recommendations(data):
     rows = [
         {
             "priority": "P1",
-            "action": "Close the H1 target gap with branch-level recovery plans.",
-            "evidence": f"H1 achievement is {total['target_achievement_pct']:.1%}, leaving EGP {total['target_gap']/1_000_000:.1f}M below target.",
+            "action": "Close the YTD target gap with branch-level recovery plans.",
+            "evidence": f"YTD achievement is {total['target_achievement_pct']:.1%}, leaving EGP {total['target_gap']/1_000_000:.1f}M below target.",
             "kpi": "Target achievement %, approved premium gap",
         },
         {
@@ -386,7 +552,7 @@ def build_recommendations(data):
         {
             "priority": "P2",
             "action": "Improve motor renewal conversion and follow up not-renewed policies.",
-            "evidence": f"H1 renewal rate is {renewal_total['renewal_rate']:.1%} with {renewal_total['not_renewed_policies']:.0f} not-renewed policies." if renewal_total else "Renewal policy totals are available only in aggregate.",
+            "evidence": f"YTD renewal rate is {renewal_total['renewal_rate']:.1%} with {renewal_total['not_renewed_policies']:.0f} not-renewed policies." if renewal_total else "Renewal policy totals are available only in aggregate.",
             "kpi": "Renewal rate, not-renewed policies",
         },
         {
@@ -436,6 +602,120 @@ def reconciliation(data):
     }
 
 
+def build_policy_type_mix(totals):
+    other = money(totals["approved_gross_premium"]) - money(totals["new_premium"]) - money(totals["renewal_premium"])
+    totals["other_policy_types_premium"] = other
+    return [
+        {"category": "New Premium", "premium": totals["new_premium"]},
+        {"category": "Renewal Premium", "premium": totals["renewal_premium"]},
+        {"category": "Other Policy Types", "premium": other},
+    ]
+
+
+def build_pending_categories(totals):
+    return [
+        {"category": "Operation Paid", "premium": totals["pending_operation_paid"]},
+        {"category": "Pending Finance", "premium": totals["pending_finance"]},
+        {"category": "Pending Payment", "premium": totals["pending_payment"]},
+    ]
+
+
+PREMIUM_BINS = [
+    {"label": "No Production", "min": None, "max": 0, "kind": "no-production"},
+    {"label": "EGP 0-50K", "min": 0, "max": 50_000},
+    {"label": "EGP 50K-100K", "min": 50_000, "max": 100_000},
+    {"label": "EGP 100K-150K", "min": 100_000, "max": 150_000},
+    {"label": "EGP 150K-200K", "min": 150_000, "max": 200_000},
+    {"label": "EGP 200K-300K", "min": 200_000, "max": 300_000},
+    {"label": "EGP 300K-600K", "min": 300_000, "max": 600_000},
+    {"label": "EGP 600K-900K", "min": 600_000, "max": 900_000},
+    {"label": "EGP 900K-1.2M", "min": 900_000, "max": 1_200_000},
+    {"label": "EGP 1.2M-1.5M", "min": 1_200_000, "max": 1_500_000},
+    {"label": "EGP 1.5M-1.8M", "min": 1_500_000, "max": 1_800_000},
+    {"label": "EGP 1.8M-2.1M", "min": 1_800_000, "max": 2_100_000},
+    {"label": "EGP 2.1M-2.4M", "min": 2_100_000, "max": 2_400_000},
+    {"label": "EGP 2.4M-2.7M", "min": 2_400_000, "max": 2_700_000},
+    {"label": "EGP 2.7M-3.0M", "min": 2_700_000, "max": 3_000_000, "include_max": True},
+    {"label": "More than EGP 3.0M", "min": 3_000_000, "max": None, "kind": "overflow"},
+]
+
+
+def build_premium_distribution(branches):
+    bins = [{**b, "count": 0} for b in PREMIUM_BINS]
+    for branch in branches:
+        premium = branch.get("premium_2026")
+        assigned = False
+        for bin_item in bins:
+            if bin_item.get("kind") == "no-production":
+                if premium is None or money(premium) <= 0:
+                    bin_item["count"] += 1
+                    assigned = True
+                    break
+                continue
+            if bin_item.get("kind") == "overflow":
+                if money(premium) > bin_item["min"]:
+                    bin_item["count"] += 1
+                    assigned = True
+                    break
+                continue
+            lower_ok = money(premium) > 0 if bin_item["min"] == 0 else money(premium) >= bin_item["min"]
+            if premium is not None and lower_ok and (
+                money(premium) <= bin_item["max"] if bin_item.get("include_max") else money(premium) < bin_item["max"]
+            ):
+                bin_item["count"] += 1
+                assigned = True
+                break
+        if not assigned:
+            bins[0]["count"] += 1
+    return bins
+
+
+def make_check(name, expected, actual, tolerance=1, severity="error"):
+    difference = money(actual) - money(expected)
+    status = "pass" if abs(difference) <= tolerance else severity
+    return {
+        "name": name,
+        "status": status,
+        "expected": expected,
+        "actual": actual,
+        "difference": difference,
+        "tolerance": tolerance,
+    }
+
+
+def validate_report(data):
+    totals = data["totals"]
+    approved = totals["approved_gross_premium"]
+    checks = [
+        make_check("Monthly totals = overall total", approved, sum(money(r["actual_2026"]) for r in data["monthly"])),
+        make_check("Branch totals = overall total", approved, sum(money(r["premium_2026"]) for r in data["branches"])),
+        make_check("Line-of-business totals = overall total", approved, sum(money(r["premium_2026"]) for r in data["lines_of_business"])),
+        make_check("Insurer totals = overall total", approved, sum(money(r["premium_2026"]) for r in data["insurers"])),
+        make_check("Pending category totals = total pending", totals["pending_total"], sum(money(r["premium"]) for r in data["pending_categories"])),
+        make_check("Policy-type premium totals = approved gross premium", approved, sum(money(r["premium"]) for r in data["policy_type_mix"])),
+        make_check("Premium distribution branch counts = unique branches", len(data["branches"]), sum(int(r["count"]) for r in data["premium_distribution_bins"]), tolerance=0),
+    ]
+    for renewal in data["renewals"]:
+        checks.append(
+            make_check(
+                f"Renewal counts reconcile - {renewal['month']}",
+                renewal["policies_up_for_renewal"],
+                money(renewal["renewed_policies"]) + money(renewal["not_renewed_policies"]),
+                tolerance=0,
+            )
+        )
+    checks.append(make_check("Branch contribution shares total 100%", 1, sum(money(r["contribution_pct"]) for r in data["branches"]), tolerance=0.0001))
+    checks.append(make_check("LOB shares total 100%", 1, sum(money(r["share_2026_pct"]) for r in data["lines_of_business"]), tolerance=0.0001))
+    checks.append(make_check("Insurer shares total 100%", 1, sum(money(r["share_2026_pct"]) for r in data["insurers"]), tolerance=0.0001))
+
+    issues = [c for c in checks if c["status"] != "pass"]
+    return {
+        "status": "pass" if not issues else "fail",
+        "checks": checks,
+        "issues": issues,
+    }
+
+
 def main():
     if not WORKBOOK.exists():
         raise FileNotFoundError(WORKBOOK)
@@ -450,8 +730,9 @@ def main():
     insurers, insurer_total = extract_insurers(overview)
     lobs, lob_total = extract_lob_totals(overview)
     lob_monthly = extract_lob_monthly(overview)
-    branches, branch_total = extract_entity_table(branches_sheet, 17, 78, "branch")
-    sellers, seller_total = extract_entity_table(branches_sheet, 87, 107, "seller")
+    branches, branch_total, branch_monthly = extract_branch_breakdown(branches_sheet)
+    sellers, seller_total = extract_sellers(branches_sheet)
+    branches_per_month = extract_branches_per_month(branches_sheet)
 
     approved = kpis["Approved Gross Premiums"]["value_2026"]
     target = monthly_total["target_2026"]
@@ -480,12 +761,19 @@ def main():
         "pending_total": pending_total,
         "pending_as_pct_approved": safe_div(pending_total, approved),
     }
+    policy_type_mix = build_policy_type_mix(totals)
+    pending_categories = build_pending_categories(totals)
+    premium_distribution_bins = build_premium_distribution(branches)
+    reporting_months = [r["month"] for r in monthly if r["month"] in MONTH_ORDER and money(r["actual_2026"]) != 0]
+    reporting_period = month_range_label(reporting_months)
 
     data = {
         "meta": {
             "title": "Contact Branches Performance",
-            "subtitle": "H1 2026 Executive Report",
-            "reporting_period": "January-June 2026",
+            "subtitle": "YTD 2026 Executive Report",
+            "reporting_period": reporting_period,
+            "reporting_months": reporting_months,
+            "latest_reporting_month": reporting_months[-1] if reporting_months else None,
             "last_updated": date.today().isoformat(),
             "source": WORKBOOK.name,
             "generated_by": "analysis.py",
@@ -495,11 +783,16 @@ def main():
         "monthly": monthly,
         "status_mix": status_mix,
         "branches": branches,
+        "branch_monthly": branch_monthly,
+        "branches_per_month": branches_per_month,
         "sellers": sellers,
         "insurers": insurers,
         "lines_of_business": lobs,
         "line_of_business_monthly": lob_monthly,
         "renewals": renewals,
+        "policy_type_mix": policy_type_mix,
+        "pending_categories": pending_categories,
+        "premium_distribution_bins": premium_distribution_bins,
         "management_actions": [],
         "insights": {},
         "data_quality_notes": [
@@ -516,12 +809,15 @@ def main():
     data["insights"] = build_insights(data)
     data["management_actions"] = build_recommendations(data)
     data["reconciliation"] = reconciliation(data)
+    data["validation"] = validate_report(data)
 
     json_text = json.dumps(data, ensure_ascii=False, indent=2)
     (DATA_DIR / "report-data.json").write_text(json_text, encoding="utf-8")
     (DATA_DIR / "report-data.js").write_text("window.REPORT_DATA = " + json_text + ";\n", encoding="utf-8")
+    (DATA_DIR / "validation-summary.json").write_text(json.dumps(data["validation"], ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Wrote {DATA_DIR / 'report-data.json'}")
     print(json.dumps(data["reconciliation"], indent=2))
+    print(json.dumps(data["validation"], indent=2))
 
 
 if __name__ == "__main__":

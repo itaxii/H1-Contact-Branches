@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contact Branches Performance - H1 2026</title>
+    <title>Contact Branches Performance - YTD 2026</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="auth-locked">
@@ -24,10 +24,10 @@
       <div class="hero__content">
         <div class="hero__title-block">
           <img class="brand-logo" src="assets/contact-logo.png" alt="Contact Insurance Brokerage" />
-          <p class="eyebrow">H1 2026 Executive Report</p>
+          <p class="eyebrow">YTD 2026 Executive Report</p>
           <h1>Contact Branches Performance</h1>
           <p class="meta-line">
-            <span id="reportingPeriod">January-June 2026</span>
+            <span id="reportingPeriod">January-July 2026</span>
             <span id="lastUpdated"></span>
             <span id="sourceName"></span>
           </p>
@@ -91,9 +91,9 @@
           <article class="panel panel--wide">
             <h3>Monthly Actuals, Target, and Achievement</h3>
             <canvas id="monthlyCombo"></canvas>
-            <p class="source-note">Source: overview monthly block. Achievement uses 2026 actual divided by 2026 target.</p>
+            <p class="source-note">Compares monthly actual premium with target and achievement rate, so weak months and target gaps are easy to spot.</p>
           </article>
-          <article class="panel">
+          <article class="panel panel--wide">
             <h3>Monthly Premium Composition</h3>
             <canvas id="monthlyMix"></canvas>
           </article>
@@ -116,7 +116,7 @@
         </div>
         <div class="chart-grid chart-grid--three">
           <article class="panel">
-            <h3>New vs Renewal</h3>
+            <h3>Policy Type Mix</h3>
             <canvas id="newRenewalDonut"></canvas>
           </article>
           <article class="panel">
@@ -159,6 +159,10 @@
           <article class="panel"><h3>Branch Pending Exposure</h3><canvas id="branchPending"></canvas></article>
           <article class="panel panel--wide"><h3>Branch Performance Quadrant</h3><canvas id="branchScatter"></canvas></article>
           <article class="panel panel--wide"><h3>Branch / 2026 Premiums</h3><canvas id="branchPremiumAll"></canvas></article>
+          <article class="panel panel--wide">
+            <h3>Branches Per Month Heatmap</h3>
+            <div id="branchesPerMonthHeatmap" class="heatmap heatmap--wide"></div>
+          </article>
           <article class="panel panel--wide">
             <h3>Distribution of Branches by 2026 Premium</h3>
             <canvas id="branchPremiumHistogram"></canvas>
@@ -253,7 +257,7 @@
     </footer>
 
     <script src="vendor/chart.umd.js"></script>
-    <script src="data/report-data.js"></script>
-    <script src="app.js?v=20260714-custom-bins"></script>
+    <script src="data/report-data.js?v=20260726-v2-dynamic"></script>
+    <script src="app.js?v=20260726-v2-dynamic"></script>
   </body>
 </html>

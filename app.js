@@ -13,6 +13,35 @@ const COLORS = {
 
 const tables = {};
 const charts = [];
+const expandedRows = new Set();
+const MONTHS = data.meta.reporting_months || ["January", "February", "March", "April", "May", "June", "July"];
+const CHART_DESCRIPTIONS = {
+  monthlyCombo: "Compares YTD monthly actual premium against target and target achievement, highlighting where production is ahead or behind plan.",
+  monthlyMix: "Breaks monthly premium into new, renewal, motor, and non-motor production to show what is driving each month.",
+  newRenewalDonut: "Shows approved premium by policy type, including any other policy types needed to reconcile back to approved gross premium.",
+  motorDonut: "Shows motor versus non-motor concentration, important for understanding product dependency and diversification risk.",
+  retailDonut: "Shows retail versus corporate approved gross premium, clarifying the customer segment mix behind total production.",
+  statusStacked: "Compares policy status mix by year to show whether the channel is relying more on new, renewal, endorsement, or collection activity.",
+  branchTop: "Ranks the highest-producing branches by 2026 approved premium to identify the main contributors to YTD production.",
+  branchBottom: "Ranks the largest negative branch movements by YoY premium change to focus recovery attention.",
+  branchContribution: "Shows each top branch's share of total 2026 approved premium, highlighting concentration by branch.",
+  branchPending: "Shows branches with the largest pending exposure, useful for follow-up and conversion risk management.",
+  branchScatter: "Plots branch growth against premium volume to separate large declining branches from smaller growth pockets.",
+  branchPremiumAll: "Shows 2026 premium by branch so production scale can be compared across the full network.",
+  branchPremiumHistogram: "Shows how many branches fall into each 2026 premium range, helping reveal concentration versus long-tail performance.",
+  sellerTop: "Ranks top sellers by 2026 premium to show who is driving production.",
+  sellerGrowth: "Shows seller YoY movement to identify strong recoveries and sellers needing support.",
+  sellerMix: "Shows each top seller's new versus renewal premium mix, which helps explain seller production quality.",
+  insurerTop: "Ranks insurers by 2026 premium to show carrier concentration.",
+  insurerGrowth: "Shows insurer YoY movement to identify where carrier production is growing or shrinking.",
+  lobTop: "Ranks lines of business by 2026 premium to show the strongest product categories.",
+  lobGrowth: "Shows YoY movement by line of business to identify product categories losing or gaining momentum.",
+  lobMix: "Shows new versus renewal production by line of business to explain the business mix behind each product category.",
+  renewalLine: "Tracks monthly motor renewal rate, important for monitoring retention and renewal follow-up effectiveness.",
+  renewalFunnel: "Compares policies up for renewal, renewed, and not renewed to size the recovery opportunity.",
+  pendingBranch: "Shows pending value by branch so teams can prioritize conversion follow-up.",
+  pendingMix: "Splits pending exposure by category to clarify whether the issue is operation-paid, finance, or not-paid-yet.",
+};
 
 function value(n) {
   return Number.isFinite(Number(n)) ? Number(n) : 0;
@@ -155,6 +184,8 @@ function makeChart(id, config) {
 }
 
 function renderMeta() {
+  document.title = `${data.meta.title} - ${data.meta.reporting_period}`;
+  document.querySelector(".hero .eyebrow").textContent = data.meta.subtitle;
   document.getElementById("reportingPeriod").textContent = data.meta.reporting_period;
   document.getElementById("lastUpdated").textContent = `Last updated ${data.meta.last_updated}`;
   document.getElementById("sourceName").textContent = data.meta.source;
@@ -162,7 +193,26 @@ function renderMeta() {
   document.getElementById("heroYoy").textContent = fmtPct(data.kpis["Approved Gross Premiums"].change_pct);
   document.getElementById("heroTarget").textContent = fmtPct(data.totals.target_achievement_pct);
   document.getElementById("heroHeadline").textContent =
-    `Approved gross premium reached ${fmtMoney(data.totals.approved_gross_premium)} in H1 2026, down ${fmtPct(Math.abs(data.kpis["Approved Gross Premiums"].change_pct))} versus H1 2025 and at ${fmtPct(data.totals.target_achievement_pct)} of target.`;
+    `Approved gross premium reached ${fmtMoney(data.totals.approved_gross_premium)} in ${data.meta.reporting_period}, down ${fmtPct(Math.abs(data.kpis["Approved Gross Premiums"].change_pct))} versus the prior-year period and at ${fmtPct(data.totals.target_achievement_pct)} of target.`;
+}
+
+function renderValidationWarnings() {
+  const el = document.getElementById("validationWarnings");
+  if (!el) return;
+  const issues = data.validation?.issues || [];
+  if (!issues.length) {
+    el.innerHTML = "";
+    el.hidden = true;
+    return;
+  }
+  el.hidden = false;
+  el.innerHTML = `<article class="validation-card">
+    <h2>Data Validation Warnings</h2>
+    <p>The report was generated from the workbook, but these reconciliation checks need review.</p>
+    <ul>${issues
+      .map((issue) => `<li><strong>${issue.name}</strong>: expected ${fmtNumber(issue.expected)}, actual ${fmtNumber(issue.actual)}, difference ${fmtNumber(issue.difference)}.</li>`)
+      .join("")}</ul>
+  </article>`;
 }
 
 function kpiCard(label, current, comparison, delta, context, options = {}) {
@@ -181,15 +231,15 @@ function renderKpis() {
   const t = data.totals;
   const renewalTotal = data.renewals.find((r) => r.month === "Grand Total");
   const cards = [
-    kpiCard("Approved Gross Premiums", fmtMoney(t.approved_gross_premium), "vs H1 2025", k["Approved Gross Premiums"].change_pct, "Below target", { status: "negative" }),
+    kpiCard("Approved Gross Premiums", fmtMoney(t.approved_gross_premium), "vs YTD 2025", k["Approved Gross Premiums"].change_pct, "Below target", { status: "negative" }),
     kpiCard("Target Achievement", fmtPct(t.target_achievement_pct), "of 2026 target", t.target_achievement_pct - 1, `${fmtMoney(t.target_gap)} target gap`, { status: "warning" }),
     kpiCard("YoY Growth %", fmtPct(k["Approved Gross Premiums"].change_pct), "premium change", k["Approved Gross Premiums"].change_pct, `${fmtMoney(k["Approved Gross Premiums"].change)} absolute movement`, { status: "negative" }),
-    kpiCard("Total Policies", fmtNumber(t.total_policies), "vs H1 2025", k["Total Policies"].change_pct, "Total issued policies", { status: "negative" }),
-    kpiCard("Approved Policies", fmtNumber(t.approved_policies), "vs H1 2025", k["Total Approved Policies"].change_pct, "Approved-policy base", { status: "negative" }),
-    kpiCard("Average Premium per Policy", fmtMoney(t.avg_premium_per_policy), "vs H1 2025", k["Avg Premium per policy"].change_pct, "Higher ticket size offset lower volume"),
+    kpiCard("Total Policies", fmtNumber(t.total_policies), "vs YTD 2025", k["Total Policies"].change_pct, "Total issued policies", { status: "negative" }),
+    kpiCard("Approved Policies", fmtNumber(t.approved_policies), "vs YTD 2025", k["Total Approved Policies"].change_pct, "Approved-policy base", { status: "negative" }),
+    kpiCard("Average Premium per Policy", fmtMoney(t.avg_premium_per_policy), "vs YTD 2025", k["Avg Premium per policy"].change_pct, "Higher ticket size offset lower volume"),
     kpiCard("New Premiums", fmtMoney(t.new_premium), "share of approved", t.new_premium / t.approved_gross_premium, "New production mix", { status: "positive" }),
     kpiCard("Renewal Premiums", fmtMoney(t.renewal_premium), "share of approved", t.renewal_premium / t.approved_gross_premium, "Renewal production mix", { status: "positive" }),
-    kpiCard("Motor Renewal Rate", fmtPct(renewalTotal.renewal_rate), "H1 aggregate", renewalTotal.renewal_rate - 0.5, `${fmtNumber(renewalTotal.not_renewed_policies)} not renewed`, { status: renewalTotal.renewal_rate >= 0.5 ? "positive" : "warning" }),
+    kpiCard("Motor Renewal Rate", fmtPct(renewalTotal.renewal_rate), "YTD aggregate", renewalTotal.renewal_rate - 0.5, `${fmtNumber(renewalTotal.not_renewed_policies)} not renewed`, { status: renewalTotal.renewal_rate >= 0.5 ? "positive" : "warning" }),
     kpiCard("Pending Pipeline", fmtMoney(t.pending_total), "of approved premium", t.pending_as_pct_approved, "Separate from approved premium", { status: "warning" }),
   ];
   document.getElementById("kpiGrid").innerHTML = cards.join("");
@@ -228,7 +278,20 @@ function drawTable(id) {
   const body = `<tbody>${rows
     .map((row) => {
       const rowClass = state.options.rowClass ? state.options.rowClass(row) : "";
-      return `<tr class="${rowClass}">${state.columns.map((c) => `<td>${c.format ? c.format(row) : row[c.key] ?? ""}</td>`).join("")}</tr>`;
+      const key = state.options.rowKey ? state.options.rowKey(row) : null;
+      const cells = state.columns
+        .map((c, index) => {
+          const content = c.format ? c.format(row) : row[c.key] ?? "";
+          if (index === 0 && state.options.childrenFor) {
+            const expanded = expandedRows.has(`${id}:${key}`);
+            return `<td><button class="row-toggle" data-table="${id}" data-key="${key}" type="button" aria-expanded="${expanded}">${expanded ? "−" : "+"}</button>${content}</td>`;
+          }
+          return `<td>${content}</td>`;
+        })
+        .join("");
+      const parent = `<tr class="${rowClass}">${cells}</tr>`;
+      if (!state.options.childrenFor || !expandedRows.has(`${id}:${key}`)) return parent;
+      return parent + `<tr class="child-row"><td colspan="${state.columns.length}">${state.options.childrenFor(row)}</td></tr>`;
     })
     .join("")}</tbody>`;
   document.getElementById(id).innerHTML = header + body;
@@ -238,6 +301,14 @@ function drawTable(id) {
       state.sortDir = state.sortKey === key ? state.sortDir * -1 : 1;
       state.sortKey = key;
       drawTable(id);
+    });
+  });
+  document.querySelectorAll(`#${id} .row-toggle`).forEach((button) => {
+    button.addEventListener("click", () => {
+      const key = `${button.dataset.table}:${button.dataset.key}`;
+      if (expandedRows.has(key)) expandedRows.delete(key);
+      else expandedRows.add(key);
+      drawTable(button.dataset.table);
     });
   });
 }
@@ -283,8 +354,8 @@ function renderMonthly() {
     data: {
       labels: m.map((r) => r.month),
       datasets: [
-        { type: "bar", label: "H1 2025 Actual", data: m.map((r) => r.actual_2025), backgroundColor: COLORS.lightBlue, yAxisID: "y" },
-        { type: "bar", label: "H1 2026 Actual", data: m.map((r) => r.actual_2026), backgroundColor: COLORS.blue, yAxisID: "y" },
+        { type: "bar", label: "YTD 2025 Actual", data: m.map((r) => r.actual_2025), backgroundColor: COLORS.lightBlue, yAxisID: "y" },
+        { type: "bar", label: "YTD 2026 Actual", data: m.map((r) => r.actual_2026), backgroundColor: COLORS.blue, yAxisID: "y" },
         { type: "line", label: "2026 Target", data: m.map((r) => r.target_2026), borderColor: COLORS.orange, backgroundColor: COLORS.orange, tension: 0.25, yAxisID: "y" },
         { type: "line", label: "Target Achievement %", data: m.map((r) => r.target_achievement_pct), borderColor: COLORS.green, backgroundColor: COLORS.green, tension: 0.25, yAxisID: "pct" },
       ],
@@ -331,7 +402,11 @@ function renderMonthly() {
 }
 
 function renderMix() {
-  donut("newRenewalDonut", ["New", "Renewal"], [data.totals.new_premium, data.totals.renewal_premium], [COLORS.blue, COLORS.green]);
+  const policyMix = data.policy_type_mix || [
+    { category: "New Premium", premium: data.totals.new_premium },
+    { category: "Renewal Premium", premium: data.totals.renewal_premium },
+  ];
+  donut("newRenewalDonut", policyMix.map((r) => r.category), policyMix.map((r) => r.premium), [COLORS.blue, COLORS.green, COLORS.orange]);
   donut("motorDonut", ["Motor", "Non-Motor"], [data.totals.motor_premium, data.totals.non_motor_premium], [COLORS.orange, COLORS.blue]);
   const retail = data.kpis["Retail Approved Gross"].value_2026;
   const corporate = data.kpis["Corporate Approved Gross"].value_2026;
@@ -433,7 +508,7 @@ function renderBranches() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      scales: { x: { ticks: { callback: (v) => fmtPct(v) }, title: { display: true, text: "YoY Growth %" } }, y: { ticks: { callback: (v) => fmtMoney(v) }, title: { display: true, text: "H1 2026 Premium" } } },
+      scales: { x: { ticks: { callback: (v) => fmtPct(v) }, title: { display: true, text: "YoY Growth %" } }, y: { ticks: { callback: (v) => fmtMoney(v) }, title: { display: true, text: "YTD 2026 Premium" } } },
       plugins: { tooltip: { callbacks: { label: (ctx) => `${ctx.raw.label}: ${fmtPct(ctx.raw.x)}, ${fmtMoney(ctx.raw.y)}` } } },
     },
   });
@@ -453,14 +528,14 @@ function renderBranches() {
       },
     },
   });
-  const branchPremiumTotals = Array.from(
+  const legacyBranchPremiumTotals = Array.from(
     rows.reduce((map, row) => {
       const branch = row.branch;
       map.set(branch, (map.get(branch) || 0) + value(row.premium_2026));
       return map;
     }, new Map()).values()
   );
-  const bins = [
+  const bins = data.premium_distribution_bins || [
     { label: "EGP 0–50K", min: 0, max: 50_000 },
     { label: "EGP 50K–100K", min: 50_000, max: 100_000 },
     { label: "EGP 100K–150K", min: 100_000, max: 150_000 },
@@ -478,7 +553,7 @@ function renderBranches() {
     { label: "More than EGP 3.0M", min: 3_000_000, max: Infinity, overflow: true },
   ].map((bin) => ({
     ...bin,
-    count: branchPremiumTotals.filter((premium) =>
+    count: legacyBranchPremiumTotals.filter((premium) =>
       bin.overflow
         ? premium > bin.min
         : premium >= bin.min && (bin.includeMax ? premium <= bin.max : premium < bin.max)
@@ -514,9 +589,13 @@ function renderBranches() {
       },
     },
   });
+  renderBranchesPerMonthHeatmap();
   const avg = data.totals.approved_gross_premium / rows.length;
   const highPending = rows.map((r) => value(r.pending_total)).sort((a, b) => a - b)[Math.floor(rows.length * 0.75)];
-  renderTable("branchTable", entityColumns("branch"), rows);
+  renderTable("branchTable", entityColumns("branch"), rows, {
+    rowKey: (r) => r.branch,
+    childrenFor: (r) => branchMonthlyTable(r.branch),
+  });
   document.getElementById("branchSearch").addEventListener("input", applyBranchFilter);
   document.getElementById("branchFilter").addEventListener("change", applyBranchFilter);
   function applyBranchFilter() {
@@ -526,14 +605,48 @@ function renderBranches() {
       const match = r.branch.toLowerCase().includes(q);
       const filter =
         f === "all" ||
-        (f === "positive" && value(r.yoy_change) > 0) ||
-        (f === "negative" && value(r.yoy_change) < 0) ||
+        (f === "positive" && r.growth_class === "Positive Growth") ||
+        (f === "negative" && r.growth_class === "Negative Growth") ||
         (f === "aboveAverage" && value(r.premium_2026) >= avg) ||
         (f === "belowAverage" && value(r.premium_2026) < avg) ||
         (f === "highPending" && value(r.pending_total) >= highPending);
       return match && filter;
     });
   }
+}
+
+function branchMonthlyTable(branch) {
+  const rows = data.branch_monthly.filter((r) => r.branch === branch);
+  if (!rows.length) return `<p class="source-note">No monthly branch detail is available for ${branch}.</p>`;
+  return `<div class="nested-table-wrap"><table class="nested-table">
+    <thead><tr><th>Month</th><th>2025 Premium</th><th>2026 Premium</th><th>YoY Change</th><th>YoY %</th><th>New</th><th>Renewal</th><th>Approved Policies</th></tr></thead>
+    <tbody>${rows
+      .map(
+        (r) => `<tr><td>${r.month}</td><td>${fmtMoney(r.premium_2025, false)}</td><td>${fmtMoney(r.premium_2026, false)}</td><td>${fmtMoney(r.yoy_change, false)}</td><td>${fmtPct(r.yoy_change_pct)}</td><td>${fmtMoney(r.new_premium, false)}</td><td>${fmtMoney(r.renewal_premium, false)}</td><td>${fmtNumber(r.approved_policies)}</td></tr>`
+      )
+      .join("")}</tbody>
+  </table></div>`;
+}
+
+function renderBranchesPerMonthHeatmap() {
+  const el = document.getElementById("branchesPerMonthHeatmap");
+  if (!el) return;
+  const topBranches = data.branches_per_month
+    .reduce((map, row) => map.set(row.branch, (map.get(row.branch) || 0) + value(row.premium_2026)), new Map());
+  const branches = [...topBranches.entries()].sort((a, b) => b[1] - a[1]).slice(0, 25).map(([branch]) => branch);
+  const values = data.branches_per_month.filter((r) => branches.includes(r.branch));
+  const max = Math.max(...values.map((r) => value(r.premium_2026)), 1);
+  let html = `<div class="heatmap-grid heatmap-grid--months"><div class="heatmap-cell heatmap-head">Branch</div>${MONTHS.map((m) => `<div class="heatmap-cell heatmap-head">${m}</div>`).join("")}`;
+  branches.forEach((branch) => {
+    html += `<div class="heatmap-cell heatmap-head">${shortLabel(branch, 34)}</div>`;
+    MONTHS.forEach((month) => {
+      const rec = values.find((r) => r.branch === branch && r.month === month);
+      const intensity = rec ? Math.max(0, value(rec.premium_2026)) / max : 0;
+      html += `<div class="heatmap-cell" style="background: rgba(37,99,235,${0.08 + intensity * 0.72}); color:${intensity > 0.5 ? "#fff" : "var(--text)"}">${rec ? fmtMoney(rec.premium_2026) : "N/A"}</div>`;
+    });
+  });
+  html += "</div><p class=\"source-note\">Shows monthly 2026 premium by branch. Darker cells identify where monthly branch production is concentrated.</p>";
+  el.innerHTML = html;
 }
 
 function entityColumns(nameKey) {
@@ -581,12 +694,13 @@ function renderSellers() {
 function renderInsurers() {
   const rows = data.insurers;
   const top3 = rows.slice().sort(byDesc("premium_2026")).slice(0, 3);
-  const positive = rows.filter((r) => value(r.yoy_change) > 0).length;
-  const noBase = rows.filter((r) => r.new_2026_base).length;
+  const positive = rows.filter((r) => r.growth_class === "Positive Growth").length;
+  const noBase = rows.filter((r) => r.growth_class === "New Base").length;
+  const negative = rows.filter((r) => r.growth_class === "Negative Growth").length;
   document.getElementById("insurerStrip").innerHTML = [
     ["Top 3 Share", fmtPct(top3.reduce((s, r) => s + value(r.premium_2026), 0) / data.totals.approved_gross_premium)],
     ["Positive Growth", fmtNumber(positive)],
-    ["Negative Growth", fmtNumber(rows.length - positive - noBase)],
+    ["Negative Growth", fmtNumber(negative)],
     ["New 2026 Base", fmtNumber(noBase)],
   ].map(([a, b]) => `<div class="summary-item"><span>${a}</span><strong>${b}</strong></div>`).join("");
   bar("insurerTop", rows.slice().sort(byDesc("premium_2026")).slice(0, 10), "insurance_company", "premium_2026", COLORS.blue);
@@ -598,7 +712,7 @@ function renderInsurers() {
     { key: "yoy_change", label: "YoY Change", ...moneyCol("yoy_change") },
     { key: "yoy_change_pct", label: "YoY Change %", ...pctCol("yoy_change_pct") },
     { key: "share_2026_pct", label: "2026 Share %", ...pctCol("share_2026_pct") },
-    { key: "new_2026_base", label: "No Prior-Year Base", raw: (r) => r.new_2026_base, format: (r) => r.new_2026_base ? "Yes" : "No" },
+    { key: "growth_class", label: "Growth Classification" },
   ], rows);
 }
 
@@ -635,16 +749,16 @@ function renderHeatmap() {
   const topLines = data.lines_of_business.slice().sort(byDesc("premium_2026")).slice(0, 10).map((r) => r.line_of_business);
   const vals = data.line_of_business_monthly.filter((r) => topLines.includes(r.line_of_business));
   const max = Math.max(...vals.map((r) => value(r.premium_2026)));
-  let html = `<div class="heatmap-grid"><div class="heatmap-cell heatmap-head">Line of Business</div>${["January", "February", "March", "April", "May", "June"].map((m) => `<div class="heatmap-cell heatmap-head">${m}</div>`).join("")}`;
+  let html = `<div class="heatmap-grid heatmap-grid--months"><div class="heatmap-cell heatmap-head">Line of Business</div>${MONTHS.map((m) => `<div class="heatmap-cell heatmap-head">${m}</div>`).join("")}`;
   topLines.forEach((line) => {
     html += `<div class="heatmap-cell heatmap-head">${shortLabel(line, 34)}</div>`;
-    ["January", "February", "March", "April", "May", "June"].forEach((month) => {
+    MONTHS.forEach((month) => {
       const rec = vals.find((r) => r.month === month && r.line_of_business === line);
       const intensity = rec ? value(rec.premium_2026) / max : 0;
       html += `<div class="heatmap-cell" style="background: rgba(37,99,235,${0.08 + intensity * 0.72}); color:${intensity > 0.5 ? "#fff" : "var(--text)"}">${rec ? fmtMoney(rec.premium_2026) : "N/A"}</div>`;
     });
   });
-  html += "</div>";
+  html += "</div><p class=\"source-note\">Shows monthly 2026 premium by line of business. Darker cells identify which products are carrying monthly production.</p>";
   document.getElementById("lobHeatmap").innerHTML = html;
 }
 
@@ -657,7 +771,7 @@ function renderRenewals() {
     ["Policies Up for Renewal", fmtNumber(total.policies_up_for_renewal)],
     ["Renewed Policies", fmtNumber(total.renewed_policies)],
     ["Not Renewed Policies", fmtNumber(total.not_renewed_policies)],
-    ["Overall H1 Renewal Rate", fmtPct(total.renewal_rate)],
+    ["Overall YTD Renewal Rate", fmtPct(total.renewal_rate)],
   ].map(([a, b]) => `<div class="summary-item"><span>${a}</span><strong>${b}</strong></div>`).join("");
   makeChart("renewalLine", {
     type: "line",
@@ -673,6 +787,11 @@ function renderRenewals() {
 
 function renderPending() {
   const t = data.totals;
+  const pendingCategories = data.pending_categories || [
+    { category: "Operation Paid", premium: t.pending_operation_paid },
+    { category: "Pending Finance", premium: t.pending_finance },
+    { category: "Pending Payment", premium: t.pending_payment },
+  ];
   document.getElementById("pendingStrip").innerHTML = [
     ["Total Pending Value", fmtMoney(t.pending_total)],
     ["Pending Finance", fmtMoney(t.pending_finance)],
@@ -680,7 +799,7 @@ function renderPending() {
     ["Pending as % of Approved", fmtPct(t.pending_as_pct_approved)],
   ].map(([a, b]) => `<div class="summary-item"><span>${a}</span><strong>${b}</strong></div>`).join("");
   bar("pendingBranch", data.branches.slice().sort(byDesc("pending_total")).slice(0, 12), "branch", "pending_total", COLORS.orange);
-  donut("pendingMix", ["Operation Paid", "Finance", "Not Paid Yet"], [t.pending_operation_paid, t.pending_finance, t.pending_payment], [COLORS.blue, COLORS.green, COLORS.orange]);
+  donut("pendingMix", pendingCategories.map((r) => r.category), pendingCategories.map((r) => r.premium), [COLORS.blue, COLORS.green, COLORS.orange]);
   const top = data.branches.slice().sort(byDesc("pending_total"))[0];
   document.getElementById("pendingNote").textContent =
     `${top.branch} has the largest pending exposure at ${fmtMoney(top.pending_total)}. Pending amounts are treated as pipeline or risk exposure and are not included in approved gross premium unless explicitly shown as approved in the workbook.`;
@@ -690,14 +809,26 @@ function renderDrivers() {
   const positiveDrivers = [
     ["Top branch", fmtMoney(data.branches.slice().sort(byDesc("premium_2026"))[0].premium_2026), `${data.branches.slice().sort(byDesc("premium_2026"))[0].branch} led branch production.`, "Protect capacity and replicate its branch practices."],
     ["Best month", fmtMoney(data.monthly.slice().sort(byDesc("actual_2026"))[0].actual_2026), `${data.monthly.slice().sort(byDesc("actual_2026"))[0].month} had the highest 2026 premium.`, "Use as monthly run-rate benchmark."],
-    ["Growth pockets", fmtNumber(data.branches.filter((r) => value(r.yoy_change) > 0).length), "Several smaller branches grew despite the aggregate decline.", "Study high-growth branches without overstating tiny bases."],
+    ["Growth pockets", fmtNumber(data.branches.filter((r) => r.growth_class === "Positive Growth").length), "Several branches grew with a valid prior-year base.", "Study high-growth branches without overstating new-base records."],
   ];
   const negativeDrivers = [
-    ["Premium decline", fmtMoney(data.kpis["Approved Gross Premiums"].change), "Approved gross premium fell materially vs H1 2025.", "Launch recovery actions against target gap."],
+    ["Premium decline", fmtMoney(data.kpis["Approved Gross Premiums"].change), "Approved gross premium fell materially vs YTD 2025.", "Launch recovery actions against target gap."],
     ["Target gap", fmtMoney(data.totals.target_gap), `Achievement is ${fmtPct(data.totals.target_achievement_pct)}.`, "Monitor weekly production against branch targets."],
     ["Motor concentration", fmtPct(data.totals.motor_premium / data.totals.approved_gross_premium), "Approved premium is heavily motor-led.", "Grow non-motor cross-sell and insurer breadth."],
   ];
   document.getElementById("driverGrid").innerHTML = [driverPanel("Positive Drivers", positiveDrivers), driverPanel("Negative Drivers", negativeDrivers)].join("");
+}
+
+function addChartDescriptions() {
+  Object.entries(CHART_DESCRIPTIONS).forEach(([id, text]) => {
+    const el = document.getElementById(id);
+    const panel = el?.closest(".panel");
+    if (!panel || panel.querySelector(".source-note, .callout")) return;
+    const note = document.createElement("p");
+    note.className = "source-note";
+    note.textContent = text;
+    panel.appendChild(note);
+  });
 }
 
 function driverPanel(title, rows) {
@@ -790,6 +921,7 @@ function init() {
   renderRenewals();
   renderPending();
   renderDrivers();
+  addChartDescriptions();
   registerActions();
 }
 
