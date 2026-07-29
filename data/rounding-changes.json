@@ -1,0 +1,1379 @@
+[
+  {
+    "metric_id": "branch.el-gouna.yoy",
+    "report_area": "branch",
+    "label": "El Gouna YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch.helwan.yoy",
+    "report_area": "branch",
+    "label": "Helwan YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "161404"
+  },
+  {
+    "metric_id": "branch.mit-ghamr.yoy",
+    "report_area": "branch",
+    "label": "Mit Ghamr YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "4352"
+  },
+  {
+    "metric_id": "branch.nasr-city-low-income.yoy",
+    "report_area": "branch",
+    "label": "Nasr City - Low Income YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "8750"
+  },
+  {
+    "metric_id": "branch.tahta.yoy",
+    "report_area": "branch",
+    "label": "Tahta YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch.wadi-degla-sales.yoy",
+    "report_area": "branch",
+    "label": "Wadi Degla Sales YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "11900"
+  },
+  {
+    "metric_id": "branch-monthly.6-october-low-income-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "6 October - Low Income February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "66750"
+  },
+  {
+    "metric_id": "branch-monthly.al-minufya-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Al Minufya July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "70502"
+  },
+  {
+    "metric_id": "branch-monthly.alex-el-agamy-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "Alex-El-Agamy February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.alex-el-agamy-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Alex-El-Agamy July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.alex-el-agamy-june.yoy",
+    "report_area": "branch-monthly",
+    "label": "Alex-El-Agamy June YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "300"
+  },
+  {
+    "metric_id": "branch-monthly.alex-el-agamy-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "Alex-El-Agamy March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "15300"
+  },
+  {
+    "metric_id": "branch-monthly.alexandria-ring-road-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Alexandria - Ring Road July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "31238"
+  },
+  {
+    "metric_id": "branch-monthly.alexandria-corniche-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Alexandria Corniche July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "107996"
+  },
+  {
+    "metric_id": "branch-monthly.alexandria-roshdy-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Alexandria Roshdy July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "44536"
+  },
+  {
+    "metric_id": "branch-monthly.aswan-june.yoy",
+    "report_area": "branch-monthly",
+    "label": "Aswan June YoY",
+    "previous_display": "-15.9%",
+    "corrected_display": "-15.8%",
+    "numerator": "-8225",
+    "denominator": "51895"
+  },
+  {
+    "metric_id": "branch-monthly.benha-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "Benha January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "26264"
+  },
+  {
+    "metric_id": "branch-monthly.benha-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "Benha March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "1000"
+  },
+  {
+    "metric_id": "branch-monthly.beni-suef-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Beni Suef July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "148367"
+  },
+  {
+    "metric_id": "branch-monthly.beni-suef-june.yoy",
+    "report_area": "branch-monthly",
+    "label": "Beni Suef June YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "82810"
+  },
+  {
+    "metric_id": "branch-monthly.beni-suef-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "Beni Suef March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "59863"
+  },
+  {
+    "metric_id": "branch-monthly.city-stars-mall-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "City Stars Mall January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.city-stars-mall-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "City Stars Mall July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "27112"
+  },
+  {
+    "metric_id": "branch-monthly.city-stars-mall-june.yoy",
+    "report_area": "branch-monthly",
+    "label": "City Stars Mall June YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "35352"
+  },
+  {
+    "metric_id": "branch-monthly.city-stars-mall-may.yoy",
+    "report_area": "branch-monthly",
+    "label": "City Stars Mall May YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "19575"
+  },
+  {
+    "metric_id": "branch-monthly.damanhur-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Damanhur July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "60790"
+  },
+  {
+    "metric_id": "branch-monthly.damietta-april.yoy",
+    "report_area": "branch-monthly",
+    "label": "Damietta April YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "28714"
+  },
+  {
+    "metric_id": "branch-monthly.damietta-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "Damietta January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "24031"
+  },
+  {
+    "metric_id": "branch-monthly.damietta-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Damietta July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "55022"
+  },
+  {
+    "metric_id": "branch-monthly.damietta-may.yoy",
+    "report_area": "branch-monthly",
+    "label": "Damietta May YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "8572"
+  },
+  {
+    "metric_id": "branch-monthly.dokki-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Dokki July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "237287"
+  },
+  {
+    "metric_id": "branch-monthly.dubai-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "Dubai February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "57275"
+  },
+  {
+    "metric_id": "branch-monthly.dubai-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "Dubai January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "24625"
+  },
+  {
+    "metric_id": "branch-monthly.el-gouna-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "El Gouna March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.el-mokattam-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "El Mokattam July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "752"
+  },
+  {
+    "metric_id": "branch-monthly.el-abaseya-april.yoy",
+    "report_area": "branch-monthly",
+    "label": "El-Abaseya April YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "2650"
+  },
+  {
+    "metric_id": "branch-monthly.el-abaseya-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "El-Abaseya July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "62600"
+  },
+  {
+    "metric_id": "branch-monthly.el-abaseya-june.yoy",
+    "report_area": "branch-monthly",
+    "label": "El-Abaseya June YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.el-bahr-el-aazam-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "El-Bahr El-Aazam February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "17302"
+  },
+  {
+    "metric_id": "branch-monthly.el-bahr-el-aazam-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "El-Bahr El-Aazam July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.el-bahr-el-aazam-june.yoy",
+    "report_area": "branch-monthly",
+    "label": "El-Bahr El-Aazam June YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "7250"
+  },
+  {
+    "metric_id": "branch-monthly.el-bahr-el-aazam-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "El-Bahr El-Aazam March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "10650"
+  },
+  {
+    "metric_id": "branch-monthly.el-bahr-el-aazam-may.yoy",
+    "report_area": "branch-monthly",
+    "label": "El-Bahr El-Aazam May YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "102152"
+  },
+  {
+    "metric_id": "branch-monthly.el-mahalla-el-kubra-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "El-Mahalla El-Kubra February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "80804"
+  },
+  {
+    "metric_id": "branch-monthly.el-mahalla-el-kubra-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "El-Mahalla El-Kubra January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.el-zaytoun-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "El-Zaytoun January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "2100"
+  },
+  {
+    "metric_id": "branch-monthly.el-zaytoun-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "El-Zaytoun July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "13900"
+  },
+  {
+    "metric_id": "branch-monthly.el-zaytoun-june.yoy",
+    "report_area": "branch-monthly",
+    "label": "El-Zaytoun June YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "5300"
+  },
+  {
+    "metric_id": "branch-monthly.el-zaytoun-may.yoy",
+    "report_area": "branch-monthly",
+    "label": "El-Zaytoun May YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "13050"
+  },
+  {
+    "metric_id": "branch-monthly.faiyum-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "Faiyum February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "12218"
+  },
+  {
+    "metric_id": "branch-monthly.faiyum-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "Faiyum January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "55120"
+  },
+  {
+    "metric_id": "branch-monthly.faiyum-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Faiyum July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "35299"
+  },
+  {
+    "metric_id": "branch-monthly.faiyum-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "Faiyum March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "5100"
+  },
+  {
+    "metric_id": "branch-monthly.faiyum-may.yoy",
+    "report_area": "branch-monthly",
+    "label": "Faiyum May YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "23767"
+  },
+  {
+    "metric_id": "branch-monthly.haram-april.yoy",
+    "report_area": "branch-monthly",
+    "label": "Haram April YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "21750"
+  },
+  {
+    "metric_id": "branch-monthly.haram-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "Haram February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "32302"
+  },
+  {
+    "metric_id": "branch-monthly.haram-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "Haram March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "752"
+  },
+  {
+    "metric_id": "branch-monthly.heliopolis-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Heliopolis July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "237928"
+  },
+  {
+    "metric_id": "branch-monthly.helwan-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "Helwan February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.helwan-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "Helwan January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "752"
+  },
+  {
+    "metric_id": "branch-monthly.helwan-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Helwan July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "61279"
+  },
+  {
+    "metric_id": "branch-monthly.helwan-june.yoy",
+    "report_area": "branch-monthly",
+    "label": "Helwan June YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "752"
+  },
+  {
+    "metric_id": "branch-monthly.helwan-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "Helwan March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "97169"
+  },
+  {
+    "metric_id": "branch-monthly.helwan-may.yoy",
+    "report_area": "branch-monthly",
+    "label": "Helwan May YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "752"
+  },
+  {
+    "metric_id": "branch-monthly.hurghada-april.yoy",
+    "report_area": "branch-monthly",
+    "label": "Hurghada April YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "135582"
+  },
+  {
+    "metric_id": "branch-monthly.imbabah-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "Imbabah January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "56100"
+  },
+  {
+    "metric_id": "branch-monthly.ismailia-may.yoy",
+    "report_area": "branch-monthly",
+    "label": "Ismailia May YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "18975"
+  },
+  {
+    "metric_id": "branch-monthly.kafr-el-sheikh-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Kafr el Sheikh July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "127842"
+  },
+  {
+    "metric_id": "branch-monthly.luxor-june.yoy",
+    "report_area": "branch-monthly",
+    "label": "Luxor June YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "20926"
+  },
+  {
+    "metric_id": "branch-monthly.madinaty-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "Madinaty March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.mansoura-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "Mansoura February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "80891"
+  },
+  {
+    "metric_id": "branch-monthly.mansoura-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "Mansoura March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "143155"
+  },
+  {
+    "metric_id": "branch-monthly.minya-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Minya July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "33760"
+  },
+  {
+    "metric_id": "branch-monthly.minya-may.yoy",
+    "report_area": "branch-monthly",
+    "label": "Minya May YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "50043"
+  },
+  {
+    "metric_id": "branch-monthly.mit-ghamr-april.yoy",
+    "report_area": "branch-monthly",
+    "label": "Mit Ghamr April YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "452"
+  },
+  {
+    "metric_id": "branch-monthly.mit-ghamr-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "Mit Ghamr February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.mit-ghamr-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "Mit Ghamr January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "1800"
+  },
+  {
+    "metric_id": "branch-monthly.mit-ghamr-june.yoy",
+    "report_area": "branch-monthly",
+    "label": "Mit Ghamr June YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.mit-ghamr-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "Mit Ghamr March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.nasr-city-low-income-april.yoy",
+    "report_area": "branch-monthly",
+    "label": "Nasr City - Low Income April YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.nasr-city-low-income-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "Nasr City - Low Income February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "2100"
+  },
+  {
+    "metric_id": "branch-monthly.nasr-city-low-income-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "Nasr City - Low Income January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "3850"
+  },
+  {
+    "metric_id": "branch-monthly.nasr-city-low-income-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Nasr City - Low Income July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.nasr-city-low-income-june.yoy",
+    "report_area": "branch-monthly",
+    "label": "Nasr City - Low Income June YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.nasr-city-low-income-may.yoy",
+    "report_area": "branch-monthly",
+    "label": "Nasr City - Low Income May YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.new-damietta-april.yoy",
+    "report_area": "branch-monthly",
+    "label": "New Damietta April YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "9400"
+  },
+  {
+    "metric_id": "branch-monthly.new-damietta-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "New Damietta July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "52650"
+  },
+  {
+    "metric_id": "branch-monthly.new-damietta-june.yoy",
+    "report_area": "branch-monthly",
+    "label": "New Damietta June YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "4250"
+  },
+  {
+    "metric_id": "branch-monthly.new-damietta-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "New Damietta March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "2250"
+  },
+  {
+    "metric_id": "branch-monthly.obour-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "Obour February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "67584"
+  },
+  {
+    "metric_id": "branch-monthly.obour-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Obour July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "144872"
+  },
+  {
+    "metric_id": "branch-monthly.october-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "October February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "173310"
+  },
+  {
+    "metric_id": "branch-monthly.october-may.yoy",
+    "report_area": "branch-monthly",
+    "label": "October May YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "40259"
+  },
+  {
+    "metric_id": "branch-monthly.qena-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Qena July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "23492"
+  },
+  {
+    "metric_id": "branch-monthly.rehab-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "Rehab January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "1250"
+  },
+  {
+    "metric_id": "branch-monthly.rehab-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "Rehab March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.rehab-may.yoy",
+    "report_area": "branch-monthly",
+    "label": "Rehab May YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "40990"
+  },
+  {
+    "metric_id": "branch-monthly.sadat-city-may.yoy",
+    "report_area": "branch-monthly",
+    "label": "Sadat City May YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.sharm-el-sheikh-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "Sharm El Sheikh February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "7400"
+  },
+  {
+    "metric_id": "branch-monthly.sharm-el-sheikh-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "Sharm El Sheikh January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "4550"
+  },
+  {
+    "metric_id": "branch-monthly.sharm-el-sheikh-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Sharm El Sheikh July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "750"
+  },
+  {
+    "metric_id": "branch-monthly.sharm-el-sheikh-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "Sharm El Sheikh March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "2100"
+  },
+  {
+    "metric_id": "branch-monthly.shubra-al-khaymah-april.yoy",
+    "report_area": "branch-monthly",
+    "label": "Shubra Al-Khaymah April YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "14850"
+  },
+  {
+    "metric_id": "branch-monthly.shubra-al-khaymah-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "Shubra Al-Khaymah February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "115454"
+  },
+  {
+    "metric_id": "branch-monthly.shubra-al-khaymah-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "Shubra Al-Khaymah January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "12044"
+  },
+  {
+    "metric_id": "branch-monthly.shubra-al-khaymah-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Shubra Al-Khaymah July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "36485"
+  },
+  {
+    "metric_id": "branch-monthly.shubra-al-khaymah-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "Shubra Al-Khaymah March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "64766"
+  },
+  {
+    "metric_id": "branch-monthly.shubra-april.yoy",
+    "report_area": "branch-monthly",
+    "label": "Shubra April YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "81003"
+  },
+  {
+    "metric_id": "branch-monthly.shubra-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "Shubra January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.shubra-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Shubra July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "113152"
+  },
+  {
+    "metric_id": "branch-monthly.shubra-june.yoy",
+    "report_area": "branch-monthly",
+    "label": "Shubra June YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "5175"
+  },
+  {
+    "metric_id": "branch-monthly.tahta-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "Tahta January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.talaat-harb-april.yoy",
+    "report_area": "branch-monthly",
+    "label": "Talaat Harb April YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "4260"
+  },
+  {
+    "metric_id": "branch-monthly.talaat-harb-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "Talaat Harb January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "64865"
+  },
+  {
+    "metric_id": "branch-monthly.talaat-harb-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Talaat Harb July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "9908"
+  },
+  {
+    "metric_id": "branch-monthly.tanta-july.yoy",
+    "report_area": "branch-monthly",
+    "label": "Tanta July YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "246995"
+  },
+  {
+    "metric_id": "branch-monthly.wadi-degla-sales-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "Wadi Degla Sales February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "700"
+  },
+  {
+    "metric_id": "branch-monthly.wadi-degla-sales-january.yoy",
+    "report_area": "branch-monthly",
+    "label": "Wadi Degla Sales January YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "7700"
+  },
+  {
+    "metric_id": "branch-monthly.wadi-degla-sales-march.yoy",
+    "report_area": "branch-monthly",
+    "label": "Wadi Degla Sales March YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "1400"
+  },
+  {
+    "metric_id": "branch-monthly.wadi-degla-sales-may.yoy",
+    "report_area": "branch-monthly",
+    "label": "Wadi Degla Sales May YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "2100"
+  },
+  {
+    "metric_id": "branch-monthly.zagazig-february.yoy",
+    "report_area": "branch-monthly",
+    "label": "Zagazig February YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "65547"
+  },
+  {
+    "metric_id": "branch-monthly.zagazig-june.yoy",
+    "report_area": "branch-monthly",
+    "label": "Zagazig June YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "50532"
+  },
+  {
+    "metric_id": "insurer.egyptian-takaful.yoy",
+    "report_area": "insurer",
+    "label": "Egyptian Takaful YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "102015"
+  },
+  {
+    "metric_id": "insurer.libano-suisse-takaful-egypt.yoy",
+    "report_area": "insurer",
+    "label": "Libano Suisse Takaful Egypt YoY",
+    "previous_display": "-100.0%",
+    "corrected_display": "N/A",
+    "numerator": null,
+    "denominator": "7095"
+  },
+  {
+    "metric_id": "kpi.approved-gross-premiums.yoy",
+    "report_area": "kpi",
+    "label": "Approved Gross Premiums YoY",
+    "previous_display": "-54.0%",
+    "corrected_display": "-54.5%",
+    "numerator": "-19224332",
+    "denominator": "35297539"
+  },
+  {
+    "metric_id": "kpi.avg-premium-per-policy.yoy",
+    "report_area": "kpi",
+    "label": "Avg Premium per policy YoY",
+    "previous_display": "161.0%",
+    "corrected_display": "160.7%",
+    "numerator": "4425",
+    "denominator": "2754"
+  },
+  {
+    "metric_id": "kpi.corporate-approved-gross.yoy",
+    "report_area": "kpi",
+    "label": "Corporate Approved Gross YoY",
+    "previous_display": "-49.0%",
+    "corrected_display": "-49.5%",
+    "numerator": "-594058",
+    "denominator": "1200989"
+  },
+  {
+    "metric_id": "kpi.new-policies.yoy",
+    "report_area": "kpi",
+    "label": "New Policies YoY",
+    "previous_display": "-82.0%",
+    "corrected_display": "-82.5%",
+    "numerator": "-8336",
+    "denominator": "10109"
+  },
+  {
+    "metric_id": "kpi.renewal-policies.yoy",
+    "report_area": "kpi",
+    "label": "Renewal Policies YoY",
+    "previous_display": "-80.0%",
+    "corrected_display": "-80.3%",
+    "numerator": "-2030",
+    "denominator": "2527"
+  },
+  {
+    "metric_id": "kpi.retail-approved-gross.yoy",
+    "report_area": "kpi",
+    "label": "Retail Approved Gross YoY",
+    "previous_display": "-55.0%",
+    "corrected_display": "-54.6%",
+    "numerator": "-18630274",
+    "denominator": "34096550"
+  },
+  {
+    "metric_id": "kpi.total-approved-policies.yoy",
+    "report_area": "kpi",
+    "label": "Total Approved Policies YoY",
+    "previous_display": "-83.0%",
+    "corrected_display": "-82.5%",
+    "numerator": "-10577",
+    "denominator": "12816"
+  },
+  {
+    "metric_id": "kpi.total-policies.yoy",
+    "report_area": "kpi",
+    "label": "Total Policies YoY",
+    "previous_display": "-82.0%",
+    "corrected_display": "-81.7%",
+    "numerator": "-10473",
+    "denominator": "12816"
+  },
+  {
+    "metric_id": "lob.appliances-breakadge-ew.target_achievement",
+    "report_area": "lob",
+    "label": "Appliances Breakadge & EW Target Achievement",
+    "previous_display": "1.0%",
+    "corrected_display": "1.1%",
+    "numerator": "550",
+    "denominator": "51563"
+  },
+  {
+    "metric_id": "lob.auto-mobility-vehicle-private-company-comprehensive.target_achievement",
+    "report_area": "lob",
+    "label": "Auto Mobility Vehicle Private Company Comprehensive Target Achievement",
+    "previous_display": "43.0%",
+    "corrected_display": "42.9%",
+    "numerator": "87419",
+    "denominator": "203963"
+  },
+  {
+    "metric_id": "lob.contact-home-plus.target_achievement",
+    "report_area": "lob",
+    "label": "Contact - Home Plus Target Achievement",
+    "previous_display": "0.0%",
+    "corrected_display": "0.2%",
+    "numerator": "904",
+    "denominator": "495505"
+  },
+  {
+    "metric_id": "lob.contact-replacement-key.target_achievement",
+    "report_area": "lob",
+    "label": "Contact – Replacement Key Target Achievement",
+    "previous_display": "0.0%",
+    "corrected_display": "0.1%",
+    "numerator": "600",
+    "denominator": "406500"
+  },
+  {
+    "metric_id": "lob.global-auto-vehicle-private-company-comprehensive.target_achievement",
+    "report_area": "lob",
+    "label": "Global Auto Vehicle Private Company Comprehensive Target Achievement",
+    "previous_display": "39.0%",
+    "corrected_display": "39.1%",
+    "numerator": "784712",
+    "denominator": "2005624"
+  },
+  {
+    "metric_id": "lob.home-plus.target_achievement",
+    "report_area": "lob",
+    "label": "Home Plus Target Achievement",
+    "previous_display": "30.0%",
+    "corrected_display": "30.3%",
+    "numerator": "18400",
+    "denominator": "60813"
+  },
+  {
+    "metric_id": "lob.insurance-bundle-w-finance.target_achievement",
+    "report_area": "lob",
+    "label": "Insurance Bundle W/Finance Target Achievement",
+    "previous_display": "14.0%",
+    "corrected_display": "14.2%",
+    "numerator": "112700",
+    "denominator": "793625"
+  },
+  {
+    "metric_id": "lob.life-retail.target_achievement",
+    "report_area": "lob",
+    "label": "Life - Retail Target Achievement",
+    "previous_display": "222.0%",
+    "corrected_display": "222.5%",
+    "numerator": "61304",
+    "denominator": "27553"
+  },
+  {
+    "metric_id": "lob.medical-retail.target_achievement",
+    "report_area": "lob",
+    "label": "Medical - Retail Target Achievement",
+    "previous_display": "11.0%",
+    "corrected_display": "10.6%",
+    "numerator": "15620",
+    "denominator": "147230"
+  },
+  {
+    "metric_id": "lob.motor-vehicle-commercial-comprehensive.target_achievement",
+    "report_area": "lob",
+    "label": "Motor Vehicle Commercial Comprehensive Target Achievement",
+    "previous_display": "24.0%",
+    "corrected_display": "23.5%",
+    "numerator": "30000",
+    "denominator": "127519"
+  },
+  {
+    "metric_id": "lob.motor-vehicle-external-total-loss.target_achievement",
+    "report_area": "lob",
+    "label": "Motor Vehicle EXTERNAL - TOTAL LOSS Target Achievement",
+    "previous_display": "17.0%",
+    "corrected_display": "17.4%",
+    "numerator": "18896",
+    "denominator": "108403"
+  },
+  {
+    "metric_id": "lob.motor-vehicle-private-company-comprehensive.target_achievement",
+    "report_area": "lob",
+    "label": "Motor Vehicle Private Company Comprehensive Target Achievement",
+    "previous_display": "41.0%",
+    "corrected_display": "41.2%",
+    "numerator": "13338465",
+    "denominator": "32411271"
+  },
+  {
+    "metric_id": "lob.motor-vehicle-trucks-commercial-comprehensive.target_achievement",
+    "report_area": "lob",
+    "label": "Motor Vehicle Trucks Commercial Comprehensive Target Achievement",
+    "previous_display": "6.0%",
+    "corrected_display": "5.6%",
+    "numerator": "20550",
+    "denominator": "369880"
+  },
+  {
+    "metric_id": "lob.p-a-family-support.target_achievement",
+    "report_area": "lob",
+    "label": "P.A - Family Support Target Achievement",
+    "previous_display": "16.0%",
+    "corrected_display": "16.3%",
+    "numerator": "85250",
+    "denominator": "521438"
+  },
+  {
+    "metric_id": "lob.p-a-fawatery.target_achievement",
+    "report_area": "lob",
+    "label": "P.A- Fawatery Target Achievement",
+    "previous_display": "14.0%",
+    "corrected_display": "14.2%",
+    "numerator": "57850",
+    "denominator": "408813"
+  },
+  {
+    "metric_id": "lob.personal-accident.target_achievement",
+    "report_area": "lob",
+    "label": "Personal Accident Target Achievement",
+    "previous_display": "16.0%",
+    "corrected_display": "16.2%",
+    "numerator": "438500",
+    "denominator": "2700613"
+  },
+  {
+    "metric_id": "lob.road-assist.target_achievement",
+    "report_area": "lob",
+    "label": "Road Assist Target Achievement",
+    "previous_display": "20.0%",
+    "corrected_display": "20.3%",
+    "numerator": "95400",
+    "denominator": "470125"
+  },
+  {
+    "metric_id": "lob.sarwa-hayah-unit-link.target_achievement",
+    "report_area": "lob",
+    "label": "Sarwa Hayah Unit link Target Achievement",
+    "previous_display": "0.0%",
+    "corrected_display": "0.2%",
+    "numerator": "2800",
+    "denominator": "1322250"
+  },
+  {
+    "metric_id": "lob.small-medium-business-projects.target_achievement",
+    "report_area": "lob",
+    "label": "Small & Medium Business Projects Target Achievement",
+    "previous_display": "29.0%",
+    "corrected_display": "29.4%",
+    "numerator": "1800",
+    "denominator": "6125"
+  },
+  {
+    "metric_id": "lob.term-yrt.target_achievement",
+    "report_area": "lob",
+    "label": "Term (YRT) Target Achievement",
+    "previous_display": "194.0%",
+    "corrected_display": "194.4%",
+    "numerator": "324556",
+    "denominator": "166965"
+  },
+  {
+    "metric_id": "monthly.July.target_achievement",
+    "report_area": "monthly",
+    "label": "July Target Achievement",
+    "previous_display": "10.0%",
+    "corrected_display": "9.7%",
+    "numerator": "660189",
+    "denominator": "6810580.603"
+  }
+]

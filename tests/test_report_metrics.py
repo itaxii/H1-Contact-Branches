@@ -10,7 +10,31 @@ from report_metrics import (
     ratio,
     yoy_rate,
 )
-from analysis import DATA_DIR, main
+from analysis import DATA_DIR, main, validate_report
+
+
+def build_valid_validation_data():
+    return {
+        "totals": {"approved_gross_premium": 100, "pending_total": 30},
+        "monthly": [{"actual_2026": 100}],
+        "monthly_total": {"actual_2026": 100},
+        "monthly_count_summary": [{"total_policies_2026": 10}],
+        "monthly_count_total": {"total_policies_2026": 10},
+        "branches": [{"premium_2026": 100, "contribution_pct": 1}],
+        "lines_of_business": [{"premium_2026": 100, "share_2026_pct": 1}],
+        "insurers": [{"premium_2026": 100, "share_2026_pct": 1}],
+        "pending_categories": [{"premium": 10}, {"premium": 10}, {"premium": 10}],
+        "policy_type_mix": [{"premium": 40}, {"premium": 50}, {"premium": 10}],
+        "premium_distribution_bins": [{"count": 1}],
+        "renewals": [
+            {
+                "month": "Grand Total",
+                "renewed_policies": 6,
+                "not_renewed_policies": 4,
+                "policies_up_for_renewal": 10,
+            }
+        ],
+    }
 
 
 class DecimalMetricTests(unittest.TestCase):
@@ -98,6 +122,37 @@ class GeneratedMetricCatalogTests(unittest.TestCase):
         metric = self.data["calculated_metrics"]["monthly-count.January.motor_average_rate_2026"]
 
         self.assertEqual(metric["decimals"], 2)
+
+
+class ReportValidationTests(unittest.TestCase):
+    def test_percentage_mismatch_is_blocking(self):
+        registry = MetricRegistry()
+        registry.register("renewal.total.rate", "Overall Renewal Rate", 64, 163)
+        registry._metrics["renewal.total.rate"]["display"] = "39.5%"
+
+        result = validate_report(build_valid_validation_data(), registry)
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertEqual(result["blocking_failures"][0]["metric_id"], "renewal.total.rate")
+
+    def test_small_source_reconciliation_difference_is_warning(self):
+        data = build_valid_validation_data()
+        data["insurers"][0]["premium_2026"] += 2
+
+        result = validate_report(data, MetricRegistry())
+
+        self.assertEqual(result["status"], "warning")
+        warning = next(item for item in result["warnings"] if item["name"] == "Insurer totals = overall total")
+        self.assertEqual(warning["difference"], 2)
+
+    def test_internal_renewal_mismatch_is_blocking(self):
+        data = build_valid_validation_data()
+        data["renewals"][0]["not_renewed_policies"] = 3
+
+        result = validate_report(data, MetricRegistry())
+
+        self.assertEqual(result["status"], "blocked")
+        self.assertTrue(any("Renewal counts reconcile" in item["name"] for item in result["blocking_failures"]))
 
 
 if __name__ == "__main__":

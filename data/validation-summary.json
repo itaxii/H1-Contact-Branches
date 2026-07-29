@@ -1,5 +1,5 @@
 {
-  "status": "fail",
+  "status": "warning",
   "checks": [
     {
       "name": "Monthly totals = overall total",
@@ -7,7 +7,9 @@
       "expected": 16073207.0,
       "actual": 16073206.0,
       "difference": -1.0,
-      "tolerance": 1
+      "tolerance": 1,
+      "severity": "warning",
+      "source": "workbook"
     },
     {
       "name": "Monthly amount rows = workbook grand total",
@@ -15,7 +17,9 @@
       "expected": 16073207.0,
       "actual": 16073206.0,
       "difference": -1.0,
-      "tolerance": 1
+      "tolerance": 1,
+      "severity": "warning",
+      "source": "workbook"
     },
     {
       "name": "Monthly count rows = workbook grand total",
@@ -23,7 +27,9 @@
       "expected": 2239.0,
       "actual": 2239.0,
       "difference": 0.0,
-      "tolerance": 0
+      "tolerance": 0,
+      "severity": "warning",
+      "source": "workbook"
     },
     {
       "name": "Branch totals = overall total",
@@ -31,7 +37,9 @@
       "expected": 16073207.0,
       "actual": 16073208.0,
       "difference": 1.0,
-      "tolerance": 1
+      "tolerance": 1,
+      "severity": "warning",
+      "source": "workbook"
     },
     {
       "name": "Line-of-business totals = overall total",
@@ -39,15 +47,19 @@
       "expected": 16073207.0,
       "actual": 16073207.0,
       "difference": 0.0,
-      "tolerance": 1
+      "tolerance": 1,
+      "severity": "warning",
+      "source": "workbook"
     },
     {
       "name": "Insurer totals = overall total",
-      "status": "error",
+      "status": "warning",
       "expected": 16073207.0,
       "actual": 16073209.0,
       "difference": 2.0,
-      "tolerance": 1
+      "tolerance": 1,
+      "severity": "warning",
+      "source": "workbook"
     },
     {
       "name": "Pending category totals = total pending",
@@ -55,7 +67,9 @@
       "expected": 717769.0,
       "actual": 717769.0,
       "difference": 0.0,
-      "tolerance": 1
+      "tolerance": 1,
+      "severity": "error",
+      "source": "report"
     },
     {
       "name": "Policy-type premium totals = approved gross premium",
@@ -63,7 +77,9 @@
       "expected": 16073207.0,
       "actual": 16073207.0,
       "difference": 0.0,
-      "tolerance": 1
+      "tolerance": 1,
+      "severity": "error",
+      "source": "report"
     },
     {
       "name": "Premium distribution branch counts = unique branches",
@@ -71,7 +87,9 @@
       "expected": 61,
       "actual": 61,
       "difference": 0.0,
-      "tolerance": 0
+      "tolerance": 0,
+      "severity": "error",
+      "source": "report"
     },
     {
       "name": "Renewal counts reconcile - January",
@@ -79,7 +97,9 @@
       "expected": 211.0,
       "actual": 211.0,
       "difference": 0.0,
-      "tolerance": 0
+      "tolerance": 0,
+      "severity": "error",
+      "source": "report"
     },
     {
       "name": "Renewal counts reconcile - February",
@@ -87,7 +107,9 @@
       "expected": 169.0,
       "actual": 169.0,
       "difference": 0.0,
-      "tolerance": 0
+      "tolerance": 0,
+      "severity": "error",
+      "source": "report"
     },
     {
       "name": "Renewal counts reconcile - March",
@@ -95,7 +117,9 @@
       "expected": 180.0,
       "actual": 180.0,
       "difference": 0.0,
-      "tolerance": 0
+      "tolerance": 0,
+      "severity": "error",
+      "source": "report"
     },
     {
       "name": "Renewal counts reconcile - April",
@@ -103,7 +127,9 @@
       "expected": 144.0,
       "actual": 144.0,
       "difference": 0.0,
-      "tolerance": 0
+      "tolerance": 0,
+      "severity": "error",
+      "source": "report"
     },
     {
       "name": "Renewal counts reconcile - May",
@@ -111,7 +137,9 @@
       "expected": 181.0,
       "actual": 181.0,
       "difference": 0.0,
-      "tolerance": 0
+      "tolerance": 0,
+      "severity": "error",
+      "source": "report"
     },
     {
       "name": "Renewal counts reconcile - June",
@@ -119,7 +147,9 @@
       "expected": 163.0,
       "actual": 163.0,
       "difference": 0.0,
-      "tolerance": 0
+      "tolerance": 0,
+      "severity": "error",
+      "source": "report"
     },
     {
       "name": "Renewal counts reconcile - July",
@@ -127,7 +157,9 @@
       "expected": 169.0,
       "actual": 169.0,
       "difference": 0.0,
-      "tolerance": 0
+      "tolerance": 0,
+      "severity": "error",
+      "source": "report"
     },
     {
       "name": "Renewal counts reconcile - Grand Total",
@@ -135,7 +167,9 @@
       "expected": 1217.0,
       "actual": 1217.0,
       "difference": 0.0,
-      "tolerance": 0
+      "tolerance": 0,
+      "severity": "error",
+      "source": "report"
     },
     {
       "name": "Branch contribution shares total 100%",
@@ -143,7 +177,9 @@
       "expected": 1,
       "actual": 1.0000000622153375,
       "difference": 6.221533754846575e-08,
-      "tolerance": 0.0001
+      "tolerance": 0.0001,
+      "severity": "error",
+      "source": "report"
     },
     {
       "name": "LOB shares total 100%",
@@ -151,25 +187,48 @@
       "expected": 1,
       "actual": 1.0,
       "difference": 0.0,
-      "tolerance": 0.0001
+      "tolerance": 0.0001,
+      "severity": "error",
+      "source": "report"
     },
     {
       "name": "Insurer shares total 100%",
       "status": "pass",
       "expected": 1,
-      "actual": 1.000000124430675,
-      "difference": 1.244306750969315e-07,
-      "tolerance": 0.0001
+      "actual": 1.0,
+      "difference": 0.0,
+      "tolerance": 0.0001,
+      "severity": "error",
+      "source": "report"
+    }
+  ],
+  "percentage_checks": {
+    "checked": 1642,
+    "failures": []
+  },
+  "blocking_failures": [],
+  "warnings": [
+    {
+      "name": "Insurer totals = overall total",
+      "status": "warning",
+      "expected": 16073207.0,
+      "actual": 16073209.0,
+      "difference": 2.0,
+      "tolerance": 1,
+      "severity": "warning",
+      "source": "workbook"
     }
   ],
   "issues": [
     {
       "name": "Insurer totals = overall total",
-      "status": "error",
+      "status": "warning",
       "expected": 16073207.0,
       "actual": 16073209.0,
       "difference": 2.0,
-      "tolerance": 1
+      "tolerance": 1,
+      "severity": "warning",
+      "source": "workbook"
     }
   ]
 }

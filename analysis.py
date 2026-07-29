@@ -1043,7 +1043,7 @@ def build_metric_catalog(data):
     return registry
 
 
-def make_check(name, expected, actual, tolerance=1, severity="error"):
+def make_check(name, expected, actual, tolerance=1, severity="error", source="report"):
     difference = money(actual) - money(expected)
     status = "pass" if abs(difference) <= tolerance else severity
     return {
@@ -1053,28 +1053,35 @@ def make_check(name, expected, actual, tolerance=1, severity="error"):
         "actual": actual,
         "difference": difference,
         "tolerance": tolerance,
+        "severity": severity,
+        "source": source,
     }
 
 
-def validate_report(data):
+def validate_report(data, registry=None):
+    registry = registry or MetricRegistry()
     totals = data["totals"]
     approved = totals["approved_gross_premium"]
     checks = [
-        make_check("Monthly totals = overall total", approved, sum(money(r["actual_2026"]) for r in data["monthly"])),
+        make_check("Monthly totals = overall total", approved, sum(money(r["actual_2026"]) for r in data["monthly"]), severity="warning", source="workbook"),
         make_check(
             "Monthly amount rows = workbook grand total",
             data["monthly_total"]["actual_2026"],
             sum(money(r["actual_2026"]) for r in data["monthly"]),
+            severity="warning",
+            source="workbook",
         ),
         make_check(
             "Monthly count rows = workbook grand total",
             data["monthly_count_total"]["total_policies_2026"],
             sum(money(r["total_policies_2026"]) for r in data["monthly_count_summary"]),
             tolerance=0,
+            severity="warning",
+            source="workbook",
         ),
-        make_check("Branch totals = overall total", approved, sum(money(r["premium_2026"]) for r in data["branches"])),
-        make_check("Line-of-business totals = overall total", approved, sum(money(r["premium_2026"]) for r in data["lines_of_business"])),
-        make_check("Insurer totals = overall total", approved, sum(money(r["premium_2026"]) for r in data["insurers"])),
+        make_check("Branch totals = overall total", approved, sum(money(r["premium_2026"]) for r in data["branches"]), severity="warning", source="workbook"),
+        make_check("Line-of-business totals = overall total", approved, sum(money(r["premium_2026"]) for r in data["lines_of_business"]), severity="warning", source="workbook"),
+        make_check("Insurer totals = overall total", approved, sum(money(r["premium_2026"]) for r in data["insurers"]), severity="warning", source="workbook"),
         make_check("Pending category totals = total pending", totals["pending_total"], sum(money(r["premium"]) for r in data["pending_categories"])),
         make_check("Policy-type premium totals = approved gross premium", approved, sum(money(r["premium"]) for r in data["policy_type_mix"])),
         make_check("Premium distribution branch counts = unique branches", len(data["branches"]), sum(int(r["count"]) for r in data["premium_distribution_bins"]), tolerance=0),
@@ -1092,11 +1099,26 @@ def validate_report(data):
     checks.append(make_check("LOB shares total 100%", 1, sum(money(r["share_2026_pct"]) for r in data["lines_of_business"]), tolerance=0.0001))
     checks.append(make_check("Insurer shares total 100%", 1, sum(money(r["share_2026_pct"]) for r in data["insurers"]), tolerance=0.0001))
 
-    issues = [c for c in checks if c["status"] != "pass"]
+    percentage_failures = registry.validate()
+    for failure in percentage_failures:
+        failure["name"] = failure["label"]
+        failure["status"] = "error"
+        failure["severity"] = "error"
+        failure["source"] = "calculated_metric"
+
+    blocking_failures = [c for c in checks if c["status"] == "error"] + percentage_failures
+    warnings = [c for c in checks if c["status"] == "warning"]
+    status = "blocked" if blocking_failures else "warning" if warnings else "pass"
     return {
-        "status": "pass" if not issues else "fail",
+        "status": status,
         "checks": checks,
-        "issues": issues,
+        "percentage_checks": {
+            "checked": len(registry.to_json()),
+            "failures": percentage_failures,
+        },
+        "blocking_failures": blocking_failures,
+        "warnings": warnings,
+        "issues": warnings + blocking_failures,
     }
 
 
@@ -1199,12 +1221,22 @@ def main():
     data["insights"] = build_insights(data)
     data["management_actions"] = build_recommendations(data)
     data["reconciliation"] = reconciliation(data)
-    data["validation"] = validate_report(data)
+    data["validation"] = validate_report(data, registry)
+
+    validation_text = json.dumps(data["validation"], ensure_ascii=False, indent=2)
+    rounding_changes = registry.rounding_changes()
+    (DATA_DIR / "validation-summary.json").write_text(validation_text, encoding="utf-8")
+    (DATA_DIR / "rounding-changes.json").write_text(
+        json.dumps(rounding_changes, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    if data["validation"]["status"] == "blocked":
+        print(validation_text)
+        raise RuntimeError("Report generation blocked by calculation validation failures.")
 
     json_text = json.dumps(data, ensure_ascii=False, indent=2)
     (DATA_DIR / "report-data.json").write_text(json_text, encoding="utf-8")
     (DATA_DIR / "report-data.js").write_text("window.REPORT_DATA = " + json_text + ";\n", encoding="utf-8")
-    (DATA_DIR / "validation-summary.json").write_text(json.dumps(data["validation"], ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Wrote {DATA_DIR / 'report-data.json'}")
     print(json.dumps(data["reconciliation"], indent=2))
     print(json.dumps(data["validation"], indent=2))
