@@ -805,7 +805,7 @@ function renderBranchesPerMonthHeatmap() {
     rowKey: "branch",
     valueKey: "premium_2026",
     months: MONTHS,
-    note: "Shows monthly 2026 premium by branch. Darker cells identify where monthly branch production is concentrated.",
+    note: "Shows monthly 2026 premium for the displayed Top 25 branches. Heatmap and Grand Total values cover only these displayed branches.",
   });
 }
 
@@ -914,7 +914,7 @@ function renderHeatmap() {
     rowKey: "line_of_business",
     valueKey: "premium_2026",
     months: MONTHS,
-    note: "Shows monthly 2026 premium by line of business. Darker cells identify which products are carrying monthly production.",
+    note: "Shows monthly 2026 premium for the displayed Top 10 lines of business. Heatmap and Grand Total values cover only these displayed lines of business.",
   });
 }
 

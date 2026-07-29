@@ -82,6 +82,17 @@ async function main() {
     const exportedRows = await page.evaluate(() => window.dashboardTables.rowsForExport("monthlyTable"));
     assert.equal(exportedRows.at(-1).month, "Grand Total");
 
+    assert.equal(
+      await page.locator("#branches h3").filter({ hasText: "Top 25 Branches Monthly Premium Heatmap" }).count(),
+      1
+    );
+    assert.equal(
+      await page.locator("#lob h3").filter({ hasText: "Top 10 Lines of Business Monthly Premium Heatmap" }).count(),
+      1
+    );
+    assert.match(await page.locator("#branchesPerMonthHeatmap .source-note").innerText(), /displayed Top 25 branches/);
+    assert.match(await page.locator("#lobHeatmap .source-note").innerText(), /displayed Top 10 lines of business/);
+
     for (const id of ["branchesPerMonthHeatmap", "lobHeatmap"]) {
       const heatmap = page.locator(`#${id}`);
       assert.equal(await heatmap.getByText("Grand Total", { exact: true }).count(), 2);
