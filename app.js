@@ -348,6 +348,10 @@ function pctCol(key) {
   return { raw: (r) => r[key], format: (r) => fmtPct(r[key]), export: (r) => r[key] };
 }
 
+function countCol(key) {
+  return { raw: (r) => r[key], format: (r) => fmtNumber(r[key]), export: (r) => Math.round(value(r[key])) };
+}
+
 function renderMonthly() {
   const m = data.monthly;
   makeChart("monthlyCombo", {
@@ -384,20 +388,58 @@ function renderMonthly() {
   });
   const best = Math.max(...m.map((r) => value(r.actual_2026)));
   const weakest = Math.min(...m.map((r) => value(r.target_achievement_pct)));
+  const amountRows = [...m, { ...data.monthly_total, isTotal: true }];
   renderTable(
     "monthlyTable",
     [
       { key: "month", label: "Month" },
-      { key: "actual_2025", label: "2025 Actual", ...moneyCol("actual_2025") },
-      { key: "actual_2026", label: "2026 Actual", ...moneyCol("actual_2026") },
+      { key: "new_premium_2025", label: "New Premiums 2025", ...moneyCol("new_premium_2025") },
+      { key: "renewal_premium_2025", label: "Renewal Premiums 2025", ...moneyCol("renewal_premium_2025") },
+      { key: "other_premium_2025", label: "Other Policies 2025", ...moneyCol("other_premium_2025") },
+      { key: "new_premium", label: "New Premiums 2026", ...moneyCol("new_premium") },
+      { key: "renewal_premium", label: "Renewal Premiums 2026", ...moneyCol("renewal_premium") },
+      { key: "endorsement_premium", label: "Other Policies 2026", ...moneyCol("endorsement_premium") },
+      { key: "actual_2025", label: "2025 Total", ...moneyCol("actual_2025") },
+      { key: "actual_2026", label: "2026 Total", ...moneyCol("actual_2026") },
       { key: "target_2026", label: "Target", ...moneyCol("target_2026") },
       { key: "target_achievement_pct", label: "Achievement %", ...pctCol("target_achievement_pct") },
-      { key: "yoy_pct", label: "YoY %", ...pctCol("yoy_pct") },
-      { key: "new_premium", label: "New", ...moneyCol("new_premium") },
-      { key: "renewal_premium", label: "Renewal", ...moneyCol("renewal_premium") },
+      { key: "yoy_change", label: "2025 vs 2026 YoY", ...moneyCol("yoy_change") },
+      { key: "motor_premium", label: "Motor Premiums 2026", ...moneyCol("motor_premium") },
+      { key: "non_motor_premium", label: "Non-Motor Premiums 2026", ...moneyCol("non_motor_premium") },
+      { key: "motor_premium_2025", label: "Motor Premiums 2025", ...moneyCol("motor_premium_2025") },
+      { key: "non_motor_premium_2025", label: "Non-Motor Premiums 2025", ...moneyCol("non_motor_premium_2025") },
+      { key: "pending_finance", label: "Pending Finance", ...moneyCol("pending_finance") },
     ],
-    m,
-    { rowClass: (r) => (value(r.actual_2026) === best ? "highlight-best" : value(r.target_achievement_pct) === weakest ? "highlight-risk" : "") }
+    amountRows,
+    {
+      rowClass: (r) =>
+        r.isTotal ? "summary-total" : value(r.actual_2026) === best ? "highlight-best" : value(r.target_achievement_pct) === weakest ? "highlight-risk" : "",
+    }
+  );
+
+  const countRows = [...data.monthly_count_summary, { ...data.monthly_count_total, isTotal: true }];
+  renderTable(
+    "monthlyCountTable",
+    [
+      { key: "month", label: "Month" },
+      { key: "new_policies_2025", label: "New Policies 2025", ...countCol("new_policies_2025") },
+      { key: "renewal_policies_2025", label: "Renewal Policies 2025", ...countCol("renewal_policies_2025") },
+      { key: "other_policies_2025", label: "Other Policies 2025", ...countCol("other_policies_2025") },
+      { key: "new_policies_2026", label: "New Policies 2026", ...countCol("new_policies_2026") },
+      { key: "renewal_policies_2026", label: "Renewal Policies 2026", ...countCol("renewal_policies_2026") },
+      { key: "other_policies_2026", label: "Other Policies 2026", ...countCol("other_policies_2026") },
+      { key: "total_policies_2025", label: "2025 Total", ...countCol("total_policies_2025") },
+      { key: "total_policies_2026", label: "2026 Total", ...countCol("total_policies_2026") },
+      { key: "yoy_change", label: "YoY Count Difference", ...countCol("yoy_change") },
+      { key: "motor_policies_2026", label: "Motor Policies 2026", ...countCol("motor_policies_2026") },
+      { key: "non_motor_policies_2026", label: "Non-Motor Policies 2026", ...countCol("non_motor_policies_2026") },
+      { key: "motor_policies_2025", label: "Motor Policies 2025", ...countCol("motor_policies_2025") },
+      { key: "non_motor_policies_2025", label: "Non-Motor Policies 2025", ...countCol("non_motor_policies_2025") },
+      { key: "motor_average_rate_2026", label: "Motor Average Rate 2026", ...pctCol("motor_average_rate_2026") },
+      { key: "motor_average_rate_2025", label: "Motor Average Rate 2025", ...pctCol("motor_average_rate_2025") },
+    ],
+    countRows,
+    { rowClass: (r) => (r.isTotal ? "summary-total" : "") }
   );
 }
 

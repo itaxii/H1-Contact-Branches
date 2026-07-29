@@ -483,6 +483,12 @@ tr.highlight-best td {
   background: #ecfdf5;
 }
 
+tr.summary-total td {
+  background: #edf4fc;
+  color: var(--navy);
+  font-weight: 700;
+}
+
 tr.highlight-risk td {
   background: #fff7ed;
 }

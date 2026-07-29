@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Contact Branches Performance - YTD 2026</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260729-v3-monthly" />
   </head>
   <body class="auth-locked">
     <section class="login-page" id="loginPage" aria-label="Report login">
@@ -105,6 +105,15 @@
           </div>
           <div class="table-wrap">
             <table id="monthlyTable"></table>
+          </div>
+        </div>
+        <div class="table-card">
+          <div class="table-toolbar">
+            <h3>Monthly Policy Count Performance Table</h3>
+            <button class="btn btn--small" data-export="monthlyCountTable" type="button">Download CSV</button>
+          </div>
+          <div class="table-wrap">
+            <table id="monthlyCountTable"></table>
           </div>
         </div>
       </section>
@@ -257,7 +266,7 @@
     </footer>
 
     <script src="vendor/chart.umd.js"></script>
-    <script src="data/report-data.js?v=20260726-v2-dynamic"></script>
-    <script src="app.js?v=20260726-v2-dynamic"></script>
+    <script src="data/report-data.js?v=20260729-v3-monthly"></script>
+    <script src="app.js?v=20260729-v3-monthly"></script>
   </body>
 </html>
