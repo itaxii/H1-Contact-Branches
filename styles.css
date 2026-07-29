@@ -550,8 +550,8 @@ tr.highlight-risk td {
 }
 
 .heatmap-grid--months {
-  grid-template-columns: 220px repeat(7, minmax(88px, 1fr));
-  min-width: 960px;
+  grid-template-columns: 220px repeat(var(--heatmap-columns, 7), minmax(88px, 1fr));
+  min-width: 1048px;
 }
 
 .heatmap-cell {
@@ -560,6 +560,19 @@ tr.highlight-risk td {
   background: #eef2f7;
   font-size: 12px;
   min-height: 38px;
+}
+
+.heatmap-total {
+  background: #edf4fc;
+  color: var(--navy);
+  font-weight: 700;
+  border: 1px solid #c9d8ea;
+}
+
+.heatmap-total-label {
+  background: #edf4fc;
+  color: var(--navy);
+  font-weight: 700;
 }
 
 .heatmap-head {
@@ -936,7 +949,7 @@ footer {
 
   .heatmap-grid {
     min-width: 0;
-    grid-template-columns: 1.35fr repeat(7, minmax(0, 1fr));
+    grid-template-columns: 1.35fr repeat(var(--heatmap-columns, 7), minmax(0, 1fr));
     gap: 3px;
   }
 

@@ -761,6 +761,37 @@ function branchMonthlyTable(branch) {
   </table></div>`;
 }
 
+function buildHeatmapHtml({ rows, rowNames, rowKey, valueKey, months, note }) {
+  const maxDetail = Math.max(...rows.map((row) => value(row[valueKey])), 1);
+  const columnTotals = new Map(months.map((month) => [month, 0]));
+  const rowTotals = new Map();
+  let html = `<div class="heatmap-grid heatmap-grid--months" style="--heatmap-columns:${months.length + 1}"><div class="heatmap-cell heatmap-head">${rowKey === "branch" ? "Branch" : "Line of Business"}</div>${months.map((month) => `<div class="heatmap-cell heatmap-head">${month}</div>`).join("")}<div class="heatmap-cell heatmap-head heatmap-total-label">Grand Total</div>`;
+
+  rowNames.forEach((name) => {
+    let rowTotal = 0;
+    html += `<div class="heatmap-cell heatmap-head">${shortLabel(name, 34)}</div>`;
+    months.forEach((month) => {
+      const record = rows.find((row) => row[rowKey] === name && row.month === month);
+      const rawValue = record ? value(record[valueKey]) : 0;
+      rowTotal += rawValue;
+      columnTotals.set(month, columnTotals.get(month) + rawValue);
+      const intensity = Math.max(0, rawValue) / maxDetail;
+      html += `<div class="heatmap-cell" style="background: rgba(37,99,235,${0.08 + intensity * 0.72}); color:${intensity > 0.5 ? "#fff" : "var(--text)"}">${record ? fmtMoney(rawValue) : "N/A"}</div>`;
+    });
+    rowTotals.set(name, rowTotal);
+    html += `<div class="heatmap-cell heatmap-total heatmap-total--row" data-raw-value="${rowTotal}">${fmtMoney(rowTotal)}</div>`;
+  });
+
+  const overall = [...rowTotals.values()].reduce((sum, item) => sum + item, 0);
+  html += `<div class="heatmap-cell heatmap-total heatmap-total-label">Grand Total</div>`;
+  months.forEach((month) => {
+    const monthTotal = columnTotals.get(month);
+    html += `<div class="heatmap-cell heatmap-total heatmap-total--column" data-raw-value="${monthTotal}">${fmtMoney(monthTotal)}</div>`;
+  });
+  html += `<div class="heatmap-cell heatmap-total heatmap-total--overall" data-raw-value="${overall}">${fmtMoney(overall)}</div></div><p class="source-note">${note}</p>`;
+  return html;
+}
+
 function renderBranchesPerMonthHeatmap() {
   const el = document.getElementById("branchesPerMonthHeatmap");
   if (!el) return;
@@ -768,18 +799,14 @@ function renderBranchesPerMonthHeatmap() {
     .reduce((map, row) => map.set(row.branch, (map.get(row.branch) || 0) + value(row.premium_2026)), new Map());
   const branches = [...topBranches.entries()].sort((a, b) => b[1] - a[1]).slice(0, 25).map(([branch]) => branch);
   const values = data.branches_per_month.filter((r) => branches.includes(r.branch));
-  const max = Math.max(...values.map((r) => value(r.premium_2026)), 1);
-  let html = `<div class="heatmap-grid heatmap-grid--months"><div class="heatmap-cell heatmap-head">Branch</div>${MONTHS.map((m) => `<div class="heatmap-cell heatmap-head">${m}</div>`).join("")}`;
-  branches.forEach((branch) => {
-    html += `<div class="heatmap-cell heatmap-head">${shortLabel(branch, 34)}</div>`;
-    MONTHS.forEach((month) => {
-      const rec = values.find((r) => r.branch === branch && r.month === month);
-      const intensity = rec ? Math.max(0, value(rec.premium_2026)) / max : 0;
-      html += `<div class="heatmap-cell" style="background: rgba(37,99,235,${0.08 + intensity * 0.72}); color:${intensity > 0.5 ? "#fff" : "var(--text)"}">${rec ? fmtMoney(rec.premium_2026) : "N/A"}</div>`;
-    });
+  el.innerHTML = buildHeatmapHtml({
+    rows: values,
+    rowNames: branches,
+    rowKey: "branch",
+    valueKey: "premium_2026",
+    months: MONTHS,
+    note: "Shows monthly 2026 premium by branch. Darker cells identify where monthly branch production is concentrated.",
   });
-  html += "</div><p class=\"source-note\">Shows monthly 2026 premium by branch. Darker cells identify where monthly branch production is concentrated.</p>";
-  el.innerHTML = html;
 }
 
 function entityColumns(nameKey) {
@@ -881,18 +908,14 @@ function renderLob() {
 function renderHeatmap() {
   const topLines = data.lines_of_business.slice().sort(byDesc("premium_2026")).slice(0, 10).map((r) => r.line_of_business);
   const vals = data.line_of_business_monthly.filter((r) => topLines.includes(r.line_of_business));
-  const max = Math.max(...vals.map((r) => value(r.premium_2026)));
-  let html = `<div class="heatmap-grid heatmap-grid--months"><div class="heatmap-cell heatmap-head">Line of Business</div>${MONTHS.map((m) => `<div class="heatmap-cell heatmap-head">${m}</div>`).join("")}`;
-  topLines.forEach((line) => {
-    html += `<div class="heatmap-cell heatmap-head">${shortLabel(line, 34)}</div>`;
-    MONTHS.forEach((month) => {
-      const rec = vals.find((r) => r.month === month && r.line_of_business === line);
-      const intensity = rec ? value(rec.premium_2026) / max : 0;
-      html += `<div class="heatmap-cell" style="background: rgba(37,99,235,${0.08 + intensity * 0.72}); color:${intensity > 0.5 ? "#fff" : "var(--text)"}">${rec ? fmtMoney(rec.premium_2026) : "N/A"}</div>`;
-    });
+  document.getElementById("lobHeatmap").innerHTML = buildHeatmapHtml({
+    rows: vals,
+    rowNames: topLines,
+    rowKey: "line_of_business",
+    valueKey: "premium_2026",
+    months: MONTHS,
+    note: "Shows monthly 2026 premium by line of business. Darker cells identify which products are carrying monthly production.",
   });
-  html += "</div><p class=\"source-note\">Shows monthly 2026 premium by line of business. Darker cells identify which products are carrying monthly production.</p>";
-  document.getElementById("lobHeatmap").innerHTML = html;
 }
 
 function renderRenewals() {

@@ -81,6 +81,17 @@ async function main() {
 
     const exportedRows = await page.evaluate(() => window.dashboardTables.rowsForExport("monthlyTable"));
     assert.equal(exportedRows.at(-1).month, "Grand Total");
+
+    for (const id of ["branchesPerMonthHeatmap", "lobHeatmap"]) {
+      const heatmap = page.locator(`#${id}`);
+      assert.equal(await heatmap.getByText("Grand Total", { exact: true }).count(), 2);
+      assert.ok(await heatmap.locator(".heatmap-total").count() > 2);
+      const overall = Number(await heatmap.locator(".heatmap-total--overall").getAttribute("data-raw-value"));
+      const rowTotals = await heatmap.locator(".heatmap-total--row").evaluateAll((cells) =>
+        cells.map((cell) => Number(cell.dataset.rawValue))
+      );
+      assert.equal(overall, rowTotals.reduce((sum, item) => sum + item, 0));
+    }
   } finally {
     await browser.close();
   }
