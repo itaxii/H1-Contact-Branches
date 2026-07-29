@@ -1,14 +1,17 @@
+import json
 import unittest
 
 import pandas as pd
 
 from analysis import (
+    DATA_DIR,
     WORKBOOK,
     extract_kpis,
     extract_lob_totals,
     extract_monthly,
     extract_monthly_counts,
     row_to_record,
+    main,
 )
 
 
@@ -178,6 +181,35 @@ class MonthlySummaryWorkbookTests(unittest.TestCase):
             abs(sum((r["premium_2026"] or 0) for r in rows) - total["premium_2026"]),
             1,
         )
+
+
+class DashboardTableTotalTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        main()
+        cls.data = json.loads((DATA_DIR / "report-data.json").read_text(encoding="utf-8"))
+
+    def test_every_entity_table_has_a_serialized_total(self):
+        totals = self.data["table_totals"]
+
+        self.assertEqual(set(totals), {"branches", "sellers", "insurers", "lines_of_business"})
+        self.assertEqual(totals["branches"]["branch"], "Grand Total")
+        self.assertEqual(totals["sellers"]["seller"], "Grand Total")
+        self.assertEqual(totals["insurers"]["insurance_company"], "Grand Total")
+        self.assertEqual(totals["lines_of_business"]["line_of_business"], "Grand Total")
+
+    def test_entity_total_amounts_reconcile_to_displayed_rows(self):
+        cases = (
+            ("branches", "branches"),
+            ("sellers", "sellers"),
+            ("insurers", "insurers"),
+            ("lines_of_business", "lines_of_business"),
+        )
+        for total_key, rows_key in cases:
+            with self.subTest(total_key=total_key):
+                detail_sum = sum((row.get("premium_2026") or 0) for row in self.data[rows_key])
+                total = self.data["table_totals"][total_key]["premium_2026"]
+                self.assertLessEqual(abs(total - detail_sum), 2)
 
 if __name__ == "__main__":
     unittest.main()

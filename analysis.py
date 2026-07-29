@@ -416,6 +416,42 @@ def extract_monthly(df):
     return records, total
 
 
+def aggregate_entity_total(records, name_key):
+    total = {name_key: "Grand Total"}
+    numeric_keys = {
+        key
+        for record in records
+        for key, value in record.items()
+        if key != name_key
+        and isinstance(value, (int, float))
+        and not key.endswith("_pct")
+        and not key.startswith("source_")
+    }
+    for key in numeric_keys:
+        total[key] = sum(money(record.get(key)) for record in records)
+    total["yoy_change"] = (
+        total["premium_2026"] - total["premium_2025"]
+        if total.get("premium_2026") is not None and total.get("premium_2025") is not None
+        else None
+    )
+    total["yoy_change_pct"] = safe_yoy(total.get("premium_2026"), total.get("premium_2025"))
+    total["contribution_pct"] = 1 if records else None
+    total["share_2026_pct"] = 1 if records else None
+    total["avg_premium_per_policy"] = safe_div(total.get("premium_2026"), total.get("approved_policies"))
+    total["renewal_mix_pct"] = safe_div(total.get("renewal_premium"), total.get("premium_2026"))
+    total["motor_mix_pct"] = safe_div(total.get("motor_premium"), total.get("premium_2026"))
+    total["target_achievement_pct"] = safe_div(total.get("premium_2026"), total.get("target_2026"))
+    total["growth_class"] = "Grand Total"
+    return total
+
+
+def normalize_entity_total(total, records, name_key):
+    normalized = dict(total) if total else aggregate_entity_total(records, name_key)
+    normalized[name_key] = "Grand Total"
+    normalized["growth_class"] = "Grand Total"
+    return normalized
+
+
 def extract_monthly_counts(df):
     fields = {
         "month": ["Month"],
@@ -941,6 +977,65 @@ def build_metric_catalog(data):
             lob_total,
         )
 
+    for area, total in data["table_totals"].items():
+        prefix = f"table-total.{metric_slug(area)}"
+        total["yoy_change"] = (
+            total["premium_2026"] - total["premium_2025"]
+            if total.get("premium_2026") is not None and total.get("premium_2025") is not None
+            else None
+        )
+        total["yoy_change_pct"] = register_rate(
+            registry,
+            f"{prefix}.yoy",
+            f"{area.replace('_', ' ').title()} Grand Total YoY",
+            total.get("yoy_change"),
+            total.get("premium_2025"),
+            source_rate=total.get("source_yoy_change_pct"),
+        )
+        total["avg_premium_per_policy"] = safe_div(total.get("premium_2026"), total.get("approved_policies"))
+        if area in {"branches", "sellers"}:
+            total["contribution_pct"] = register_rate(
+                registry,
+                f"{prefix}.contribution",
+                f"{area.title()} Grand Total Contribution",
+                total.get("premium_2026"),
+                total.get("premium_2026"),
+            )
+        if area in {"insurers", "lines_of_business"}:
+            total["share_2026_pct"] = register_rate(
+                registry,
+                f"{prefix}.share",
+                f"{area.replace('_', ' ').title()} Grand Total Share",
+                total.get("premium_2026"),
+                total.get("premium_2026"),
+            )
+        if "renewal_premium" in total:
+            total["renewal_mix_pct"] = register_rate(
+                registry,
+                f"{prefix}.renewal_mix",
+                f"{area.title()} Grand Total Renewal Mix",
+                total.get("renewal_premium"),
+                total.get("premium_2026"),
+            )
+        if "motor_premium" in total:
+            total["motor_mix_pct"] = register_rate(
+                registry,
+                f"{prefix}.motor_mix",
+                f"{area.title()} Grand Total Motor Mix",
+                total.get("motor_premium"),
+                total.get("premium_2026"),
+            )
+        if "target_2026" in total:
+            total["target_achievement_pct"] = register_rate(
+                registry,
+                f"{prefix}.target_achievement",
+                f"{area.replace('_', ' ').title()} Grand Total Target Achievement",
+                total.get("premium_2026"),
+                total.get("target_2026"),
+                source_rate=total.get("source_target_achievement_pct"),
+            )
+        total["growth_class"] = "Grand Total"
+
     for record in data["renewals"]:
         record["renewal_rate"] = register_rate(
             registry,
@@ -1173,6 +1268,12 @@ def main():
     premium_distribution_bins = build_premium_distribution(branches)
     reporting_months = [r["month"] for r in monthly if r["month"] in MONTH_ORDER and money(r["actual_2026"]) != 0]
     reporting_period = month_range_label(reporting_months)
+    table_totals = {
+        "branches": normalize_entity_total(branch_total, branches, "branch"),
+        "sellers": normalize_entity_total(seller_total, sellers, "seller"),
+        "insurers": normalize_entity_total(insurer_total, insurers, "insurance_company"),
+        "lines_of_business": normalize_entity_total(lob_total, lobs, "line_of_business"),
+    }
 
     data = {
         "meta": {
@@ -1203,6 +1304,7 @@ def main():
         "policy_type_mix": policy_type_mix,
         "pending_categories": pending_categories,
         "premium_distribution_bins": premium_distribution_bins,
+        "table_totals": table_totals,
         "management_actions": [],
         "insights": {},
         "data_quality_notes": [
