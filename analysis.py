@@ -468,10 +468,14 @@ def extract_insurers(df):
 def extract_lob_totals(df):
     records = []
     total = None
-    start = find_row(df, "H1 YOY by Line of Business", col=2)
+    start = find_row(df, "Line of Business", col=2)
+    if start is None:
+        start = find_row(df, "H1 YOY by Line of Business", col=2)
     if start is None:
         start = 260
-    header_row = find_row(df, "Month", start=start, col=2) or start
+    header_row = find_row(df, "Month", start=start, col=2)
+    if header_row is None:
+        header_row = start
     for ridx in range(header_row + 1, len(df)):
         lob = clean_name(df.iat[ridx, 2])
         if not lob:
@@ -764,6 +768,17 @@ def validate_report(data):
     approved = totals["approved_gross_premium"]
     checks = [
         make_check("Monthly totals = overall total", approved, sum(money(r["actual_2026"]) for r in data["monthly"])),
+        make_check(
+            "Monthly amount rows = workbook grand total",
+            data["monthly_total"]["actual_2026"],
+            sum(money(r["actual_2026"]) for r in data["monthly"]),
+        ),
+        make_check(
+            "Monthly count rows = workbook grand total",
+            data["monthly_count_total"]["total_policies_2026"],
+            sum(money(r["total_policies_2026"]) for r in data["monthly_count_summary"]),
+            tolerance=0,
+        ),
         make_check("Branch totals = overall total", approved, sum(money(r["premium_2026"]) for r in data["branches"])),
         make_check("Line-of-business totals = overall total", approved, sum(money(r["premium_2026"]) for r in data["lines_of_business"])),
         make_check("Insurer totals = overall total", approved, sum(money(r["premium_2026"]) for r in data["insurers"])),
@@ -802,6 +817,7 @@ def main():
     kpis = extract_kpis(overview)
     renewals = extract_renewals(overview)
     monthly, monthly_total = extract_monthly(overview)
+    monthly_counts, monthly_count_total = extract_monthly_counts(overview)
     status_mix = extract_status_mix(overview)
     insurers, insurer_total = extract_insurers(overview)
     lobs, lob_total = extract_lob_totals(overview)
@@ -857,6 +873,9 @@ def main():
         "kpis": kpis,
         "totals": totals,
         "monthly": monthly,
+        "monthly_total": monthly_total,
+        "monthly_count_summary": monthly_counts,
+        "monthly_count_total": monthly_count_total,
         "status_mix": status_mix,
         "branches": branches,
         "branch_monthly": branch_monthly,

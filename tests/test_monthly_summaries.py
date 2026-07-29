@@ -2,7 +2,7 @@ import unittest
 
 import pandas as pd
 
-from analysis import extract_monthly, extract_monthly_counts
+from analysis import WORKBOOK, extract_lob_totals, extract_monthly, extract_monthly_counts
 
 
 def build_summary_fixture(title, headers, january, total):
@@ -105,6 +105,36 @@ class MonthlySummaryExtractionTests(unittest.TestCase):
         self.assertAlmostEqual(rows[0]["motor_average_rate_2026"], 0.019)
         self.assertEqual(total["month"], "Grand Total")
 
+
+class MonthlySummaryWorkbookTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.overview = pd.read_excel(WORKBOOK, sheet_name="overview", header=None, engine="openpyxl")
+
+    def test_updated_workbook_contains_july_and_reconciled_totals(self):
+        amount_rows, amount_total = extract_monthly(self.overview)
+        count_rows, count_total = extract_monthly_counts(self.overview)
+
+        self.assertEqual(amount_rows[-1]["month"], "July")
+        self.assertEqual(count_rows[-1]["month"], "July")
+        self.assertLessEqual(
+            abs(sum(r["actual_2026"] for r in amount_rows) - amount_total["actual_2026"]),
+            1,
+        )
+        self.assertEqual(
+            sum(r["total_policies_2026"] for r in count_rows),
+            count_total["total_policies_2026"],
+        )
+
+    def test_line_of_business_extraction_starts_after_real_header(self):
+        rows, total = extract_lob_totals(self.overview)
+
+        self.assertNotIn("Line of Business", [r["line_of_business"] for r in rows])
+        self.assertNotIn("Month", [r["line_of_business"] for r in rows])
+        self.assertLessEqual(
+            abs(sum((r["premium_2026"] or 0) for r in rows) - total["premium_2026"]),
+            1,
+        )
 
 if __name__ == "__main__":
     unittest.main()

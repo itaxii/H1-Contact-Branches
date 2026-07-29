@@ -4,48 +4,64 @@
     {
       "name": "Monthly totals = overall total",
       "status": "pass",
-      "expected": 16014419.0,
-      "actual": 16014419.0,
-      "difference": 0.0,
+      "expected": 16073207.0,
+      "actual": 16073206.0,
+      "difference": -1.0,
       "tolerance": 1
     },
     {
+      "name": "Monthly amount rows = workbook grand total",
+      "status": "pass",
+      "expected": 16073207.0,
+      "actual": 16073206.0,
+      "difference": -1.0,
+      "tolerance": 1
+    },
+    {
+      "name": "Monthly count rows = workbook grand total",
+      "status": "pass",
+      "expected": 2239.0,
+      "actual": 2239.0,
+      "difference": 0.0,
+      "tolerance": 0
+    },
+    {
       "name": "Branch totals = overall total",
-      "status": "error",
-      "expected": 16014419.0,
-      "actual": 16014421.0,
-      "difference": 2.0,
+      "status": "pass",
+      "expected": 16073207.0,
+      "actual": 16073208.0,
+      "difference": 1.0,
       "tolerance": 1
     },
     {
       "name": "Line-of-business totals = overall total",
       "status": "pass",
-      "expected": 16014419.0,
-      "actual": 16014419.0,
+      "expected": 16073207.0,
+      "actual": 16073207.0,
       "difference": 0.0,
       "tolerance": 1
     },
     {
       "name": "Insurer totals = overall total",
       "status": "error",
-      "expected": 16014419.0,
-      "actual": 16014422.0,
-      "difference": 3.0,
+      "expected": 16073207.0,
+      "actual": 16073209.0,
+      "difference": 2.0,
       "tolerance": 1
     },
     {
       "name": "Pending category totals = total pending",
       "status": "pass",
-      "expected": 658458.0,
-      "actual": 658458.0,
+      "expected": 717769.0,
+      "actual": 717769.0,
       "difference": 0.0,
       "tolerance": 1
     },
     {
       "name": "Policy-type premium totals = approved gross premium",
       "status": "pass",
-      "expected": 16014419.0,
-      "actual": 16014419.0,
+      "expected": 16073207.0,
+      "actual": 16073207.0,
       "difference": 0.0,
       "tolerance": 1
     },
@@ -125,8 +141,8 @@
       "name": "Branch contribution shares total 100%",
       "status": "pass",
       "expected": 1,
-      "actual": 1.000000124887453,
-      "difference": 1.2488745304573e-07,
+      "actual": 1.0000000622153375,
+      "difference": 6.221533754846575e-08,
       "tolerance": 0.0001
     },
     {
@@ -141,26 +157,18 @@
       "name": "Insurer shares total 100%",
       "status": "pass",
       "expected": 1,
-      "actual": 1.0000001873311795,
-      "difference": 1.8733117945757272e-07,
+      "actual": 1.000000124430675,
+      "difference": 1.244306750969315e-07,
       "tolerance": 0.0001
     }
   ],
   "issues": [
     {
-      "name": "Branch totals = overall total",
-      "status": "error",
-      "expected": 16014419.0,
-      "actual": 16014421.0,
-      "difference": 2.0,
-      "tolerance": 1
-    },
-    {
       "name": "Insurer totals = overall total",
       "status": "error",
-      "expected": 16014419.0,
-      "actual": 16014422.0,
-      "difference": 3.0,
+      "expected": 16073207.0,
+      "actual": 16073209.0,
+      "difference": 2.0,
       "tolerance": 1
     }
   ]
