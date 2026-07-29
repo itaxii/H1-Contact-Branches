@@ -1,4 +1,4 @@
-# Contact Branches Performance - H1 2026
+# Contact Branches Performance - YTD 2026
 
 Single-page interactive executive dashboard generated from `H1 Contact Branches v2.xlsx`.
 
@@ -29,15 +29,15 @@ The JavaScript dashboard uses `report-data.js` so it can work when `index.html` 
 
 ## Reconciliation
 
-Current generated checks:
+Review `data/validation-summary.json` for current totals, blocking failures, and source reconciliation warnings. Source differences are retained as warnings and are never hidden or adjusted to force agreement.
 
-- Overall approved gross premium: EGP 15,290,947
-- Monthly 2026 sum difference: EGP 0
-- Line of business 2026 sum difference: EGP 0
-- Branch 2026 sum difference: EGP 2
-- Insurer 2026 sum difference: EGP 3
+## Validated Report Generation
 
-The small branch and insurer differences are retained as reconciliation notes.
+Run `npm test` to validate extraction, formulas, display rounding, and browser rendering.
+
+Run `npm run pdf` to regenerate data, enforce all blocking checks, wait for chart rendering, and replace the PDF only after the temporary artifact passes completeness checks.
+
+Review `data/rounding-changes.json` for every corrected displayed percentage after each workbook update.
 
 ## Data Quality Notes
 
