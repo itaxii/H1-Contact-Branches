@@ -315,9 +315,30 @@ function renderInsights() {
 }
 
 function renderTable(id, columns, rows, options = {}) {
-  const table = document.getElementById(id);
-  tables[id] = { columns, rows, filteredRows: rows.slice(), sortKey: null, sortDir: 1, options };
+  tables[id] = {
+    columns,
+    rows,
+    filteredRows: rows.slice(),
+    sortKey: null,
+    sortDir: 1,
+    options,
+    totalRow: options.totalRow || null,
+  };
   drawTable(id);
+}
+
+function renderTableCells(id, row, state, allowChildren) {
+  const key = state.options.rowKey ? state.options.rowKey(row) : null;
+  return state.columns
+    .map((column, index) => {
+      const content = column.format ? column.format(row) : row[column.key] ?? "";
+      if (allowChildren && index === 0 && state.options.childrenFor) {
+        const expanded = expandedRows.has(`${id}:${key}`);
+        return `<td><button class="row-toggle" data-table="${id}" data-key="${key}" type="button" aria-expanded="${expanded}">${expanded ? "−" : "+"}</button>${content}</td>`;
+      }
+      return `<td>${content}</td>`;
+    })
+    .join("");
 }
 
 function drawTable(id) {
@@ -352,7 +373,10 @@ function drawTable(id) {
       return parent + `<tr class="child-row"><td colspan="${state.columns.length}">${state.options.childrenFor(row)}</td></tr>`;
     })
     .join("")}</tbody>`;
-  document.getElementById(id).innerHTML = header + body;
+  const footer = state.totalRow
+    ? `<tfoot><tr class="summary-total">${renderTableCells(id, state.totalRow, state, false)}</tr></tfoot>`
+    : "";
+  document.getElementById(id).innerHTML = header + body + footer;
   document.querySelectorAll(`#${id} th`).forEach((th) => {
     th.addEventListener("click", () => {
       const key = th.dataset.key;
@@ -378,7 +402,7 @@ function filterTable(id, predicate) {
 
 function exportTable(id) {
   const state = tables[id];
-  const rows = state.filteredRows;
+  const rows = tableRowsForExport(state);
   const csv = [
     state.columns.map((c) => `"${c.label.replaceAll('"', '""')}"`).join(","),
     ...rows.map((row) =>
@@ -397,6 +421,14 @@ function exportTable(id) {
   link.click();
   URL.revokeObjectURL(link.href);
 }
+
+function tableRowsForExport(state) {
+  return state.totalRow ? [...state.filteredRows, state.totalRow] : state.filteredRows.slice();
+}
+
+window.dashboardTables = {
+  rowsForExport: (id) => tableRowsForExport(tables[id]),
+};
 
 function moneyCol(key) {
   return { raw: (r) => r[key], format: (r) => fmtMoney(r[key], false), export: (r) => integerHalfUp(value(r[key])) };
@@ -446,58 +478,57 @@ function renderMonthly() {
   });
   const best = Math.max(...m.map((r) => value(r.actual_2026)));
   const weakest = Math.min(...m.map((r) => value(r.target_achievement_pct)));
-  const amountRows = [...m, { ...data.monthly_total, isTotal: true }];
   renderTable(
     "monthlyTable",
     [
       { key: "month", label: "Month" },
-      { key: "new_premium_2025", label: "New Premiums 2025", ...moneyCol("new_premium_2025") },
-      { key: "renewal_premium_2025", label: "Renewal Premiums 2025", ...moneyCol("renewal_premium_2025") },
-      { key: "other_premium_2025", label: "Other Policies 2025", ...moneyCol("other_premium_2025") },
-      { key: "new_premium", label: "New Premiums 2026", ...moneyCol("new_premium") },
-      { key: "renewal_premium", label: "Renewal Premiums 2026", ...moneyCol("renewal_premium") },
-      { key: "endorsement_premium", label: "Other Policies 2026", ...moneyCol("endorsement_premium") },
-      { key: "actual_2025", label: "2025 Total", ...moneyCol("actual_2025") },
       { key: "actual_2026", label: "2026 Total", ...moneyCol("actual_2026") },
       { key: "target_2026", label: "Target", ...moneyCol("target_2026") },
       { key: "target_achievement_pct", label: "Achievement %", ...pctCol("target_achievement_pct") },
+      { key: "actual_2025", label: "2025 Total", ...moneyCol("actual_2025") },
       { key: "yoy_change", label: "2025 vs 2026 YoY", ...moneyCol("yoy_change") },
+      { key: "new_premium", label: "New Premiums 2026", ...moneyCol("new_premium") },
+      { key: "renewal_premium", label: "Renewal Premiums 2026", ...moneyCol("renewal_premium") },
+      { key: "endorsement_premium", label: "Other Policies 2026", ...moneyCol("endorsement_premium") },
       { key: "motor_premium", label: "Motor Premiums 2026", ...moneyCol("motor_premium") },
       { key: "non_motor_premium", label: "Non-Motor Premiums 2026", ...moneyCol("non_motor_premium") },
+      { key: "pending_finance", label: "Pending Finance", ...moneyCol("pending_finance") },
+      { key: "new_premium_2025", label: "New Premiums 2025", ...moneyCol("new_premium_2025") },
+      { key: "renewal_premium_2025", label: "Renewal Premiums 2025", ...moneyCol("renewal_premium_2025") },
+      { key: "other_premium_2025", label: "Other Policies 2025", ...moneyCol("other_premium_2025") },
       { key: "motor_premium_2025", label: "Motor Premiums 2025", ...moneyCol("motor_premium_2025") },
       { key: "non_motor_premium_2025", label: "Non-Motor Premiums 2025", ...moneyCol("non_motor_premium_2025") },
-      { key: "pending_finance", label: "Pending Finance", ...moneyCol("pending_finance") },
     ],
-    amountRows,
+    m,
     {
       rowClass: (r) =>
         r.isTotal ? "summary-total" : value(r.actual_2026) === best ? "highlight-best" : value(r.target_achievement_pct) === weakest ? "highlight-risk" : "",
+      totalRow: data.monthly_total,
     }
   );
 
-  const countRows = [...data.monthly_count_summary, { ...data.monthly_count_total, isTotal: true }];
   renderTable(
     "monthlyCountTable",
     [
       { key: "month", label: "Month" },
-      { key: "new_policies_2025", label: "New Policies 2025", ...countCol("new_policies_2025") },
-      { key: "renewal_policies_2025", label: "Renewal Policies 2025", ...countCol("renewal_policies_2025") },
-      { key: "other_policies_2025", label: "Other Policies 2025", ...countCol("other_policies_2025") },
+      { key: "total_policies_2026", label: "2026 Total", ...countCol("total_policies_2026") },
+      { key: "yoy_change", label: "YoY Count Difference", ...countCol("yoy_change") },
+      { key: "total_policies_2025", label: "2025 Total", ...countCol("total_policies_2025") },
       { key: "new_policies_2026", label: "New Policies 2026", ...countCol("new_policies_2026") },
       { key: "renewal_policies_2026", label: "Renewal Policies 2026", ...countCol("renewal_policies_2026") },
       { key: "other_policies_2026", label: "Other Policies 2026", ...countCol("other_policies_2026") },
-      { key: "total_policies_2025", label: "2025 Total", ...countCol("total_policies_2025") },
-      { key: "total_policies_2026", label: "2026 Total", ...countCol("total_policies_2026") },
-      { key: "yoy_change", label: "YoY Count Difference", ...countCol("yoy_change") },
       { key: "motor_policies_2026", label: "Motor Policies 2026", ...countCol("motor_policies_2026") },
       { key: "non_motor_policies_2026", label: "Non-Motor Policies 2026", ...countCol("non_motor_policies_2026") },
+      { key: "motor_average_rate_2026", label: "Motor Average Rate 2026", ...pctCol("motor_average_rate_2026", 2) },
+      { key: "new_policies_2025", label: "New Policies 2025", ...countCol("new_policies_2025") },
+      { key: "renewal_policies_2025", label: "Renewal Policies 2025", ...countCol("renewal_policies_2025") },
+      { key: "other_policies_2025", label: "Other Policies 2025", ...countCol("other_policies_2025") },
       { key: "motor_policies_2025", label: "Motor Policies 2025", ...countCol("motor_policies_2025") },
       { key: "non_motor_policies_2025", label: "Non-Motor Policies 2025", ...countCol("non_motor_policies_2025") },
-      { key: "motor_average_rate_2026", label: "Motor Average Rate 2026", ...pctCol("motor_average_rate_2026", 2) },
       { key: "motor_average_rate_2025", label: "Motor Average Rate 2025", ...pctCol("motor_average_rate_2025", 2) },
     ],
-    countRows,
-    { rowClass: (r) => (r.isTotal ? "summary-total" : "") }
+    data.monthly_count_summary,
+    { totalRow: data.monthly_count_total }
   );
 }
 
@@ -694,6 +725,7 @@ function renderBranches() {
   renderTable("branchTable", entityColumns("branch"), rows, {
     rowKey: (r) => r.branch,
     childrenFor: (r) => branchMonthlyTable(r.branch),
+    totalRow: data.table_totals.branches,
   });
   document.getElementById("branchSearch").addEventListener("input", applyBranchFilter);
   document.getElementById("branchFilter").addEventListener("change", applyBranchFilter);
@@ -716,6 +748,7 @@ function renderBranches() {
 
 function branchMonthlyTable(branch) {
   const rows = data.branch_monthly.filter((r) => r.branch === branch);
+  const total = data.branches.find((r) => r.branch === branch);
   if (!rows.length) return `<p class="source-note">No monthly branch detail is available for ${branch}.</p>`;
   return `<div class="nested-table-wrap"><table class="nested-table">
     <thead><tr><th>Month</th><th>2025 Premium</th><th>2026 Premium</th><th>YoY Change</th><th>YoY %</th><th>New</th><th>Renewal</th><th>Approved Policies</th></tr></thead>
@@ -724,6 +757,7 @@ function branchMonthlyTable(branch) {
         (r) => `<tr><td>${r.month}</td><td>${fmtMoney(r.premium_2025, false)}</td><td>${fmtMoney(r.premium_2026, false)}</td><td>${fmtMoney(r.yoy_change, false)}</td><td>${fmtPct(r.yoy_change_pct)}</td><td>${fmtMoney(r.new_premium, false)}</td><td>${fmtMoney(r.renewal_premium, false)}</td><td>${fmtNumber(r.approved_policies)}</td></tr>`
       )
       .join("")}</tbody>
+    <tfoot><tr class="summary-total"><td>Grand Total</td><td>${fmtMoney(total.premium_2025, false)}</td><td>${fmtMoney(total.premium_2026, false)}</td><td>${fmtMoney(total.yoy_change, false)}</td><td>${fmtPct(total.yoy_change_pct)}</td><td>${fmtMoney(total.new_premium, false)}</td><td>${fmtMoney(total.renewal_premium, false)}</td><td>${fmtNumber(total.approved_policies)}</td></tr></tfoot>
   </table></div>`;
 }
 
@@ -783,7 +817,7 @@ function renderSellers() {
     },
     options: { responsive: true, maintainAspectRatio: false, indexAxis: "y", scales: { x: { stacked: true, ticks: { callback: (v) => fmtMoney(v) } }, y: { stacked: true } } },
   });
-  renderTable("sellerTable", entityColumns("seller"), rows);
+  renderTable("sellerTable", entityColumns("seller"), rows, { totalRow: data.table_totals.sellers });
   document.getElementById("sellerSearch").addEventListener("input", (e) => {
     const q = e.target.value.toLowerCase();
     filterTable("sellerTable", (r) => r.seller.toLowerCase().includes(q));
@@ -812,7 +846,7 @@ function renderInsurers() {
     { key: "yoy_change_pct", label: "YoY Change %", ...pctCol("yoy_change_pct") },
     { key: "share_2026_pct", label: "2026 Share %", ...pctCol("share_2026_pct") },
     { key: "growth_class", label: "Growth Classification" },
-  ], rows);
+  ], rows, { totalRow: data.table_totals.insurers });
 }
 
 function renderLob() {
@@ -841,7 +875,7 @@ function renderLob() {
     { key: "target_achievement_pct", label: "Target Achievement", ...pctCol("target_achievement_pct") },
     { key: "new_premium", label: "New Premium", ...moneyCol("new_premium") },
     { key: "renewal_premium", label: "Renewal Premium", ...moneyCol("renewal_premium") },
-  ], rows);
+  ], rows, { totalRow: data.table_totals.lines_of_business });
 }
 
 function renderHeatmap() {

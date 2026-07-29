@@ -487,6 +487,7 @@ tr.summary-total td {
   background: #edf4fc;
   color: var(--navy);
   font-weight: 700;
+  border-top: 2px solid #c9d8ea;
 }
 
 tr.highlight-risk td {
