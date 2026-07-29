@@ -959,6 +959,26 @@ footer {
     font-size: 8px;
   }
 
+  #branchesPerMonthHeatmap .heatmap-grid {
+    gap: 1px 2px;
+  }
+
+  #branchesPerMonthHeatmap .heatmap-cell {
+    padding: 2px 5px;
+    font-size: 7px;
+    line-height: 1.1;
+  }
+
+  #lobHeatmap .heatmap-grid {
+    gap: 1px 2px;
+  }
+
+  #lobHeatmap .heatmap-cell {
+    padding: 2px 4px;
+    font-size: 7px;
+    line-height: 1.1;
+  }
+
   .quality {
     padding: 10px;
   }
