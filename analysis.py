@@ -986,10 +986,44 @@ def build_metric_catalog(data):
             approved,
         )
 
+    for key, output_key, label in (
+        ("motor_premium", "motor_mix_pct", "Motor Premium Mix"),
+        ("non_motor_premium", "non_motor_mix_pct", "Non-Motor Premium Mix"),
+    ):
+        totals[output_key] = register_rate(
+            registry,
+            f"totals.{output_key}",
+            label,
+            totals[key],
+            approved,
+        )
+
+    for kpi_name, output_key, label in (
+        ("Retail Approved Gross", "retail_mix_pct", "Retail Premium Mix"),
+        ("Corporate Approved Gross", "corporate_mix_pct", "Corporate Premium Mix"),
+    ):
+        totals[output_key] = register_rate(
+            registry,
+            f"totals.{output_key}",
+            label,
+            data["kpis"][kpi_name]["value_2026"],
+            approved,
+        )
+
+    for record in data["policy_type_mix"]:
+        record["share_pct"] = register_rate(
+            registry,
+            f"policy-type.{metric_slug(record['category'])}.share",
+            f"{record['category']} Share",
+            record["premium"],
+            approved,
+        )
+
     top3_premium = sum(
         money(record["premium_2026"])
         for record in sorted(data["insurers"], key=lambda item: money(item["premium_2026"]), reverse=True)[:3]
     )
+    renewal_total = next((record for record in data["renewals"] if record["month"] == "Grand Total"), None)
     data["summary_metrics"] = {
         "top3_insurer_share_pct": register_rate(
             registry,
@@ -997,7 +1031,14 @@ def build_metric_catalog(data):
             "Top 3 Insurer Share",
             top3_premium,
             approved,
-        )
+        ),
+        "renewal_variance_pct": register_rate(
+            registry,
+            "renewal.Grand Total.benchmark_variance",
+            "Overall Renewal Rate Variance to 50%",
+            renewal_total["renewed_policies"] - (renewal_total["policies_up_for_renewal"] / 2),
+            renewal_total["policies_up_for_renewal"],
+        ) if renewal_total else None,
     }
     return registry
 

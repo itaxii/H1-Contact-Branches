@@ -47,6 +47,39 @@ function value(n) {
   return Number.isFinite(Number(n)) ? Number(n) : 0;
 }
 
+function fixedHalfUp(n, decimals = 0, useGrouping = false, scalePower = 0) {
+  const match = String(n).trim().toLowerCase().match(/^([+-])?(\d*)(?:\.(\d*))?(?:e([+-]?\d+))?$/);
+  if (!match) return "N/A";
+  const negative = match[1] === "-";
+  const integerPart = match[2] || "0";
+  const fractionPart = match[3] || "";
+  const exponent = Number(match[4] || 0);
+  const digits = BigInt((integerPart + fractionPart).replace(/^0+(?=\d)/, "") || "0");
+  const decimalPlaces = fractionPart.length - exponent;
+  const shift = scalePower + decimals - decimalPlaces;
+  let units;
+  if (shift >= 0) {
+    units = digits * (10n ** BigInt(shift));
+  } else {
+    const divisor = 10n ** BigInt(-shift);
+    const quotient = digits / divisor;
+    const remainder = digits % divisor;
+    units = quotient + (remainder * 2n >= divisor ? 1n : 0n);
+  }
+
+  let text = units.toString().padStart(decimals + 1, "0");
+  let whole = decimals ? text.slice(0, -decimals) : text;
+  const fraction = decimals ? text.slice(-decimals) : "";
+  if (useGrouping) whole = whole.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const signed = negative && units !== 0n ? `-${whole}` : whole;
+  return decimals ? `${signed}.${fraction}` : signed;
+}
+
+function integerHalfUp(n) {
+  const number = Number(n);
+  return Math.sign(number) * Math.floor(Math.abs(number) + 0.5);
+}
+
 function fmtMoney(n, compact = true) {
   if (n === null || n === undefined || Number.isNaN(Number(n))) return "N/A";
   const num = Number(n);
@@ -54,21 +87,46 @@ function fmtMoney(n, compact = true) {
   const signOpen = num < 0 ? "(" : "";
   const signClose = num < 0 ? ")" : "";
   if (compact) {
-    if (abs >= 1_000_000) return `${signOpen}EGP ${(abs / 1_000_000).toFixed(1)}M${signClose}`;
-    if (abs >= 1_000) return `${signOpen}EGP ${(abs / 1_000).toFixed(1)}K${signClose}`;
+    if (abs >= 1_000_000) return `${signOpen}EGP ${fixedHalfUp(abs, 1, false, -6)}M${signClose}`;
+    if (abs >= 1_000) return `${signOpen}EGP ${fixedHalfUp(abs, 1, false, -3)}K${signClose}`;
   }
-  return `${signOpen}${Math.round(abs).toLocaleString("en-US")}${signClose}`;
+  return `${signOpen}${fixedHalfUp(abs, 0, true)}${signClose}`;
 }
 
-function fmtPct(n) {
+function fmtPct(n, decimals = 1) {
   if (n === null || n === undefined || Number.isNaN(Number(n))) return "N/A";
-  return `${(Number(n) * 100).toFixed(1)}%`;
+  return `${fixedHalfUp(n, decimals, false, 2)}%`;
 }
 
 function fmtNumber(n) {
   if (n === null || n === undefined || Number.isNaN(Number(n))) return "N/A";
-  return Math.round(Number(n)).toLocaleString("en-US");
+  return fixedHalfUp(Number(n), 0, true);
 }
+
+function validateDashboardMetrics() {
+  const metrics = data.calculated_metrics || {};
+  const failures = [];
+  Object.values(metrics).forEach((metric) => {
+    const numerator = metric.numerator === null ? null : Number(metric.numerator);
+    const denominator = metric.denominator === null ? null : Number(metric.denominator);
+    const raw = numerator === null || denominator === null || denominator === 0 ? null : numerator / denominator;
+    const actual = fmtPct(raw, metric.decimals);
+    if (actual !== metric.display) {
+      failures.push({
+        metric_id: metric.metric_id,
+        numerator: metric.numerator,
+        denominator: metric.denominator,
+        expected_display: metric.display,
+        actual_display: actual,
+      });
+    }
+  });
+  return { status: failures.length ? "fail" : "pass", checked: Object.keys(metrics).length, failures };
+}
+
+window.dashboardFormatting = { formatPercent: fmtPct, formatMoney: fmtMoney, formatNumber: fmtNumber };
+window.validateDashboardMetrics = validateDashboardMetrics;
+window.dashboardChartsReady = false;
 
 function statusClass(n, inverse = false) {
   if (n === null || n === undefined) return "warning";
@@ -83,8 +141,8 @@ function shortLabel(label, max = 24) {
 function formatPremiumRange(start, end) {
   const compact = (amount) => {
     if (amount === 0) return "0";
-    if (amount >= 1_000_000) return `${(amount / 1_000_000).toFixed(1).replace(".0", "")}M`;
-    return `${Math.round(amount / 1_000)}K`;
+    if (amount >= 1_000_000) return `${fixedHalfUp(amount, 1, false, -6).replace(".0", "")}M`;
+    return `${fixedHalfUp(amount, 0, false, -3)}K`;
   };
   return `EGP ${compact(start)}–${compact(end)}`;
 }
@@ -232,14 +290,14 @@ function renderKpis() {
   const renewalTotal = data.renewals.find((r) => r.month === "Grand Total");
   const cards = [
     kpiCard("Approved Gross Premiums", fmtMoney(t.approved_gross_premium), "vs YTD 2025", k["Approved Gross Premiums"].change_pct, "Below target", { status: "negative" }),
-    kpiCard("Target Achievement", fmtPct(t.target_achievement_pct), "of 2026 target", t.target_achievement_pct - 1, `${fmtMoney(t.target_gap)} target gap`, { status: "warning" }),
+    kpiCard("Target Achievement", fmtPct(t.target_achievement_pct), "of 2026 target", t.target_variance_pct, `${fmtMoney(t.target_gap)} target gap`, { status: "warning" }),
     kpiCard("YoY Growth %", fmtPct(k["Approved Gross Premiums"].change_pct), "premium change", k["Approved Gross Premiums"].change_pct, `${fmtMoney(k["Approved Gross Premiums"].change)} absolute movement`, { status: "negative" }),
     kpiCard("Total Policies", fmtNumber(t.total_policies), "vs YTD 2025", k["Total Policies"].change_pct, "Total issued policies", { status: "negative" }),
     kpiCard("Approved Policies", fmtNumber(t.approved_policies), "vs YTD 2025", k["Total Approved Policies"].change_pct, "Approved-policy base", { status: "negative" }),
     kpiCard("Average Premium per Policy", fmtMoney(t.avg_premium_per_policy), "vs YTD 2025", k["Avg Premium per policy"].change_pct, "Higher ticket size offset lower volume"),
-    kpiCard("New Premiums", fmtMoney(t.new_premium), "share of approved", t.new_premium / t.approved_gross_premium, "New production mix", { status: "positive" }),
-    kpiCard("Renewal Premiums", fmtMoney(t.renewal_premium), "share of approved", t.renewal_premium / t.approved_gross_premium, "Renewal production mix", { status: "positive" }),
-    kpiCard("Motor Renewal Rate", fmtPct(renewalTotal.renewal_rate), "YTD aggregate", renewalTotal.renewal_rate - 0.5, `${fmtNumber(renewalTotal.not_renewed_policies)} not renewed`, { status: renewalTotal.renewal_rate >= 0.5 ? "positive" : "warning" }),
+    kpiCard("New Premiums", fmtMoney(t.new_premium), "share of approved", t.new_premium_mix_pct, "New production mix", { status: "positive" }),
+    kpiCard("Renewal Premiums", fmtMoney(t.renewal_premium), "share of approved", t.renewal_premium_mix_pct, "Renewal production mix", { status: "positive" }),
+    kpiCard("Motor Renewal Rate", fmtPct(renewalTotal.renewal_rate), "YTD aggregate", data.summary_metrics.renewal_variance_pct, `${fmtNumber(renewalTotal.not_renewed_policies)} not renewed`, { status: renewalTotal.renewal_rate >= 0.5 ? "positive" : "warning" }),
     kpiCard("Pending Pipeline", fmtMoney(t.pending_total), "of approved premium", t.pending_as_pct_approved, "Separate from approved premium", { status: "warning" }),
   ];
   document.getElementById("kpiGrid").innerHTML = cards.join("");
@@ -341,15 +399,15 @@ function exportTable(id) {
 }
 
 function moneyCol(key) {
-  return { raw: (r) => r[key], format: (r) => fmtMoney(r[key], false), export: (r) => Math.round(value(r[key])) };
+  return { raw: (r) => r[key], format: (r) => fmtMoney(r[key], false), export: (r) => integerHalfUp(value(r[key])) };
 }
 
-function pctCol(key) {
-  return { raw: (r) => r[key], format: (r) => fmtPct(r[key]), export: (r) => r[key] };
+function pctCol(key, decimals = 1) {
+  return { raw: (r) => r[key], format: (r) => fmtPct(r[key], decimals), export: (r) => r[key] };
 }
 
 function countCol(key) {
-  return { raw: (r) => r[key], format: (r) => fmtNumber(r[key]), export: (r) => Math.round(value(r[key])) };
+  return { raw: (r) => r[key], format: (r) => fmtNumber(r[key]), export: (r) => integerHalfUp(value(r[key])) };
 }
 
 function renderMonthly() {
@@ -435,8 +493,8 @@ function renderMonthly() {
       { key: "non_motor_policies_2026", label: "Non-Motor Policies 2026", ...countCol("non_motor_policies_2026") },
       { key: "motor_policies_2025", label: "Motor Policies 2025", ...countCol("motor_policies_2025") },
       { key: "non_motor_policies_2025", label: "Non-Motor Policies 2025", ...countCol("non_motor_policies_2025") },
-      { key: "motor_average_rate_2026", label: "Motor Average Rate 2026", ...pctCol("motor_average_rate_2026") },
-      { key: "motor_average_rate_2025", label: "Motor Average Rate 2025", ...pctCol("motor_average_rate_2025") },
+      { key: "motor_average_rate_2026", label: "Motor Average Rate 2026", ...pctCol("motor_average_rate_2026", 2) },
+      { key: "motor_average_rate_2025", label: "Motor Average Rate 2025", ...pctCol("motor_average_rate_2025", 2) },
     ],
     countRows,
     { rowClass: (r) => (r.isTotal ? "summary-total" : "") }
@@ -448,11 +506,11 @@ function renderMix() {
     { category: "New Premium", premium: data.totals.new_premium },
     { category: "Renewal Premium", premium: data.totals.renewal_premium },
   ];
-  donut("newRenewalDonut", policyMix.map((r) => r.category), policyMix.map((r) => r.premium), [COLORS.blue, COLORS.green, COLORS.orange]);
-  donut("motorDonut", ["Motor", "Non-Motor"], [data.totals.motor_premium, data.totals.non_motor_premium], [COLORS.orange, COLORS.blue]);
+  donut("newRenewalDonut", policyMix.map((r) => r.category), policyMix.map((r) => r.premium), [COLORS.blue, COLORS.green, COLORS.orange], policyMix.map((r) => r.share_pct));
+  donut("motorDonut", ["Motor", "Non-Motor"], [data.totals.motor_premium, data.totals.non_motor_premium], [COLORS.orange, COLORS.blue], [data.totals.motor_mix_pct, data.totals.non_motor_mix_pct]);
   const retail = data.kpis["Retail Approved Gross"].value_2026;
   const corporate = data.kpis["Corporate Approved Gross"].value_2026;
-  donut("retailDonut", ["Retail", "Corporate"], [retail, corporate], [COLORS.blue, COLORS.green]);
+  donut("retailDonut", ["Retail", "Corporate"], [retail, corporate], [COLORS.blue, COLORS.green], [data.totals.retail_mix_pct, data.totals.corporate_mix_pct]);
   const totals = Object.entries(data.status_mix).map(([year, rows]) => ({
     year,
     collection: rows.reduce((s, r) => s + value(r.collection), 0),
@@ -474,10 +532,10 @@ function renderMix() {
     options: { responsive: true, maintainAspectRatio: false, indexAxis: "y", scales: { x: { stacked: true, ticks: { callback: (v) => fmtMoney(v) } }, y: { stacked: true } } },
   });
   document.getElementById("mixInterpretation").textContent =
-    `Motor premium represents ${fmtPct(data.totals.motor_premium / data.totals.approved_gross_premium)} of approved premium, while non-motor contributes ${fmtPct(data.totals.non_motor_premium / data.totals.approved_gross_premium)}. This creates concentration risk in motor-led production and a clear cross-sell opportunity.`;
+    `Motor premium represents ${fmtPct(data.totals.motor_mix_pct)} of approved premium, while non-motor contributes ${fmtPct(data.totals.non_motor_mix_pct)}. This creates concentration risk in motor-led production and a clear cross-sell opportunity.`;
 }
 
-function donut(id, labels, values, colors) {
+function donut(id, labels, values, colors, percentages) {
   makeChart(id, {
     type: "doughnut",
     data: { labels, datasets: [{ data: values, backgroundColor: colors, borderColor: "#fff", borderWidth: 3 }] },
@@ -489,8 +547,7 @@ function donut(id, labels, values, colors) {
         tooltip: {
           callbacks: {
             label: (ctx) => {
-              const sum = ctx.dataset.data.reduce((a, b) => a + value(b), 0);
-              return `${ctx.label}: ${fmtMoney(ctx.raw)} (${fmtPct(ctx.raw / sum)})`;
+              return `${ctx.label}: ${fmtMoney(ctx.raw)} (${fmtPct(percentages[ctx.dataIndex])})`;
             },
           },
         },
@@ -740,7 +797,7 @@ function renderInsurers() {
   const noBase = rows.filter((r) => r.growth_class === "New Base").length;
   const negative = rows.filter((r) => r.growth_class === "Negative Growth").length;
   document.getElementById("insurerStrip").innerHTML = [
-    ["Top 3 Share", fmtPct(top3.reduce((s, r) => s + value(r.premium_2026), 0) / data.totals.approved_gross_premium)],
+    ["Top 3 Share", fmtPct(data.summary_metrics.top3_insurer_share_pct)],
     ["Positive Growth", fmtNumber(positive)],
     ["Negative Growth", fmtNumber(negative)],
     ["New 2026 Base", fmtNumber(noBase)],
@@ -856,7 +913,7 @@ function renderDrivers() {
   const negativeDrivers = [
     ["Premium decline", fmtMoney(data.kpis["Approved Gross Premiums"].change), "Approved gross premium fell materially vs YTD 2025.", "Launch recovery actions against target gap."],
     ["Target gap", fmtMoney(data.totals.target_gap), `Achievement is ${fmtPct(data.totals.target_achievement_pct)}.`, "Monitor weekly production against branch targets."],
-    ["Motor concentration", fmtPct(data.totals.motor_premium / data.totals.approved_gross_premium), "Approved premium is heavily motor-led.", "Grow non-motor cross-sell and insurer breadth."],
+    ["Motor concentration", fmtPct(data.totals.motor_mix_pct), "Approved premium is heavily motor-led.", "Grow non-motor cross-sell and insurer breadth."],
   ];
   document.getElementById("driverGrid").innerHTML = [driverPanel("Positive Drivers", positiveDrivers), driverPanel("Negative Drivers", negativeDrivers)].join("");
 }
@@ -917,6 +974,7 @@ function registerActions() {
 }
 
 function prepareForPrint() {
+  window.dashboardChartsReady = false;
   document.body.classList.add("pdf-mode");
   charts.forEach((chart) => {
     chart.options.animation = false;
@@ -926,6 +984,9 @@ function prepareForPrint() {
         : { display: true, fontSize: 9 };
     chart.resize();
     chart.update("none");
+  });
+  requestAnimationFrame(() => {
+    window.dashboardChartsReady = true;
   });
 }
 
@@ -961,6 +1022,9 @@ function init() {
   renderDrivers();
   addChartDescriptions();
   registerActions();
+  requestAnimationFrame(() => {
+    window.dashboardChartsReady = true;
+  });
 }
 
 init();

@@ -4,6 +4,10 @@
   "description": "Single-page interactive executive dashboard generated from `H1 Contact Branches v2.xlsx`.",
   "main": "app.js",
   "scripts": {
+    "data": "python analysis.py",
+    "test:python": "python -m unittest discover -s tests -p \"test_*.py\" -v",
+    "test:browser": "node tests/verify-section3.js && node tests/verify-rounding.js",
+    "test": "npm run test:python && npm run test:browser",
     "pdf": "node generate-pdf.js"
   },
   "keywords": [],
