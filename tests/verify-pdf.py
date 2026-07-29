@@ -1,9 +1,10 @@
+import os
 from pathlib import Path
 
 import fitz
 
 
-pdf_path = Path(__file__).resolve().parent.parent / "contact-branches-report.pdf"
+pdf_path = Path(os.environ.get("PDF_PATH", Path(__file__).resolve().parent.parent / "contact-branches-report.pdf"))
 document = fitz.open(pdf_path)
 text = "\n".join(page.get_text() for page in document).upper()
 

@@ -30,6 +30,10 @@ async function main() {
       await page.evaluate(() => window.dashboardFormatting.formatPercent(0.01945, 2)),
       "1.95%"
     );
+    assert.equal(
+      await page.evaluate(() => window.REPORT_DATA.calculated_metrics["renewal.June.rate"].display),
+      "39.3%"
+    );
 
     const result = await page.evaluate(() => window.validateDashboardMetrics());
     assert.equal(result.status, "pass", JSON.stringify(result.failures, null, 2));
