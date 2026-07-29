@@ -2,7 +2,7 @@ const path = require("path");
 const { chromium } = require("playwright-core");
 
 const root = __dirname;
-const output = path.join(root, "contact-branches-report-sample.pdf");
+const output = path.join(root, "contact-branches-report.pdf");
 const chromeCandidates = [
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
   "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",

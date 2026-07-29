@@ -905,10 +905,6 @@ function initAuth() {
 }
 
 function registerActions() {
-  document.getElementById("printBtn").addEventListener("click", () => {
-    prepareForPrint();
-    setTimeout(() => window.print(), 150);
-  });
   document.getElementById("resetBtn").addEventListener("click", () => {
     document.querySelectorAll(".filters input").forEach((el) => (el.value = ""));
     document.querySelectorAll(".filters select").forEach((el) => (el.value = "all"));

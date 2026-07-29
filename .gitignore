@@ -1,5 +1,6 @@
 ﻿node_modules/
 *.pdf
+!contact-branches-report.pdf
 __pycache__/
 pdf-review-pages*/
 .worktrees/

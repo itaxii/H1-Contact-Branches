@@ -29,6 +29,11 @@ async function main() {
     assert.match(await page.locator("#monthlyCountTable").innerText(), /Motor Average Rate 2026/);
     assert.match(await page.locator("#monthlyCountTable").innerText(), /July/);
 
+    const pdfDownload = page.locator("#pdfDownload");
+    assert.equal(await pdfDownload.innerText(), "Download Full PDF");
+    assert.equal(await pdfDownload.getAttribute("href"), "contact-branches-report.pdf");
+    assert.notEqual(await pdfDownload.getAttribute("download"), null);
+
     await page.emulateMedia({ media: "print" });
     const dataCellWhiteSpace = await page.locator("#monthlyTable tbody td").first().evaluate((cell) => getComputedStyle(cell).whiteSpace);
     assert.equal(dataCellWhiteSpace, "nowrap");
