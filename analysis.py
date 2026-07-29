@@ -6,6 +6,15 @@ from pathlib import Path
 
 import pandas as pd
 
+from report_metrics import (
+    MetricRegistry,
+    format_count,
+    format_money,
+    format_percent,
+    ratio,
+    yoy_rate,
+)
+
 
 BASE_DIR = Path(__file__).resolve().parent
 WORKBOOK = BASE_DIR.parent / "Branch Report.xlsx"
@@ -80,9 +89,13 @@ def parse_percent(value):
 
 
 def safe_div(numerator, denominator):
-    if numerator is None or denominator in (None, 0):
-        return None
-    return numerator / denominator
+    result = ratio(numerator, denominator)
+    return float(result) if result is not None else None
+
+
+def safe_yoy(current, previous):
+    result = yoy_rate(current, previous)
+    return float(result) if result is not None else None
 
 
 def money(value):
@@ -187,8 +200,8 @@ def row_to_record(row, cols, name_key):
         {
             "premium_2025": parse_number(row.iloc[cols[1]]),
             "premium_2026": parse_number(row.iloc[cols[2]]),
-            "yoy_change": parse_number(row.iloc[cols[3]]),
-            "yoy_change_pct": parse_percent(row.iloc[cols[4]]),
+            "source_yoy_change": parse_number(row.iloc[cols[3]]),
+            "source_yoy_change_pct": parse_percent(row.iloc[cols[4]]),
             "pending_operation_paid": parse_number(row.iloc[cols[5]]),
             "pending_finance": parse_number(row.iloc[cols[6]]),
             "pending_payment": parse_number(row.iloc[cols[7]]),
@@ -205,6 +218,12 @@ def row_to_record(row, cols, name_key):
             "non_motor_premium": parse_number(row.iloc[cols[18]]),
         }
     )
+    record["yoy_change"] = (
+        record["premium_2026"] - record["premium_2025"]
+        if record["premium_2026"] is not None and record["premium_2025"] is not None
+        else None
+    )
+    record["yoy_change_pct"] = safe_yoy(record["premium_2026"], record["premium_2025"])
     record["contribution_pct"] = None
     record["avg_premium_per_policy"] = safe_div(record["premium_2026"], record["approved_policies"])
     record["renewal_mix_pct"] = safe_div(record["renewal_premium"], record["premium_2026"])
@@ -322,12 +341,16 @@ def extract_kpis(df):
         name = clean_name(df.iat[ridx, 2])
         if not name:
             continue
+        value_2025 = parse_number(df.iat[ridx, 3])
+        value_2026 = parse_number(df.iat[ridx, 4])
         kpis[name] = {
             "label": name,
-            "value_2025": parse_number(df.iat[ridx, 3]),
-            "value_2026": parse_number(df.iat[ridx, 4]),
-            "change": parse_number(df.iat[ridx, 5]),
-            "change_pct": parse_percent(df.iat[ridx, 6]),
+            "value_2025": value_2025,
+            "value_2026": value_2026,
+            "change": value_2026 - value_2025 if value_2026 is not None and value_2025 is not None else None,
+            "change_pct": safe_yoy(value_2026, value_2025),
+            "source_change": parse_number(df.iat[ridx, 5]),
+            "source_change_pct": parse_percent(df.iat[ridx, 6]),
         }
     return kpis
 
@@ -381,7 +404,15 @@ def extract_monthly(df):
         percent_fields={"target_achievement_pct"},
     )
     for record in [*records, total]:
-        record["yoy_pct"] = safe_div(record["actual_2026"] - record["actual_2025"], record["actual_2025"])
+        record["source_target_achievement_pct"] = record["target_achievement_pct"]
+        record["source_yoy_change"] = record["yoy_change"]
+        record["yoy_change"] = (
+            record["actual_2026"] - record["actual_2025"]
+            if record["actual_2026"] is not None and record["actual_2025"] is not None
+            else None
+        )
+        record["target_achievement_pct"] = safe_div(record["actual_2026"], record["target_2026"])
+        record["yoy_pct"] = safe_yoy(record["actual_2026"], record["actual_2025"])
     return records, total
 
 
@@ -445,12 +476,16 @@ def extract_insurers(df):
             if records:
                 break
             continue
+        premium_2025 = parse_number(df.iat[ridx, 10])
+        premium_2026 = parse_number(df.iat[ridx, 11])
         rec = {
             "insurance_company": name,
-            "premium_2025": parse_number(df.iat[ridx, 10]),
-            "premium_2026": parse_number(df.iat[ridx, 11]),
-            "yoy_change": parse_number(df.iat[ridx, 12]),
-            "yoy_change_pct": parse_percent(df.iat[ridx, 13]),
+            "premium_2025": premium_2025,
+            "premium_2026": premium_2026,
+            "yoy_change": premium_2026 - premium_2025 if premium_2026 is not None and premium_2025 is not None else None,
+            "yoy_change_pct": safe_yoy(premium_2026, premium_2025),
+            "source_yoy_change": parse_number(df.iat[ridx, 12]),
+            "source_yoy_change_pct": parse_percent(df.iat[ridx, 13]),
         }
         if name.lower() == "grand total":
             total = rec
@@ -487,8 +522,8 @@ def extract_lob_totals(df):
             "premium_2025": parse_number(df.iat[ridx, 3]),
             "target_2026": parse_number(df.iat[ridx, 4]),
             "premium_2026": parse_number(df.iat[ridx, 5]),
-            "target_achievement_pct": parse_percent(df.iat[ridx, 6]),
-            "yoy_change": parse_number(df.iat[ridx, 7]),
+            "source_target_achievement_pct": parse_percent(df.iat[ridx, 6]),
+            "source_yoy_change": parse_number(df.iat[ridx, 7]),
             "new_premium": parse_number(df.iat[ridx, 8]),
             "renewal_premium": parse_number(df.iat[ridx, 9]),
             "endorsement_premium": parse_number(df.iat[ridx, 10]),
@@ -496,11 +531,13 @@ def extract_lob_totals(df):
             "non_motor_premium": parse_number(df.iat[ridx, 12]),
             "pending_finance": parse_number(df.iat[ridx, 13]),
         }
-        rec["yoy_change_pct"] = (
-            safe_div(money(rec["premium_2026"]) - money(rec["premium_2025"]), rec["premium_2025"])
-            if rec["premium_2025"] not in (None, 0)
+        rec["yoy_change"] = (
+            rec["premium_2026"] - rec["premium_2025"]
+            if rec["premium_2026"] is not None and rec["premium_2025"] is not None
             else None
         )
+        rec["target_achievement_pct"] = safe_div(rec["premium_2026"], rec["target_2026"])
+        rec["yoy_change_pct"] = safe_yoy(rec["premium_2026"], rec["premium_2025"])
         rec["new_2026_base"] = (rec["premium_2025"] in (None, 0)) and money(rec["premium_2026"]) != 0
         if lob.lower() == "grand total":
             total = rec
@@ -566,8 +603,7 @@ def build_insights(data):
     weakest_month = min(monthly, key=lambda r: money(r["actual_2026"]))
     top_branch = max(branches, key=lambda r: money(r["premium_2026"]))
     top_seller = max(sellers, key=lambda r: money(r["premium_2026"])) if sellers else None
-    top_insurers = sorted(insurers, key=lambda r: money(r["premium_2026"]), reverse=True)[:3]
-    top3_share = sum(money(r["premium_2026"]) for r in top_insurers) / money(total["approved_gross_premium"])
+    top3_share = data["summary_metrics"]["top3_insurer_share_pct"]
     top_lob = max(lobs, key=lambda r: money(r["premium_2026"]))
     positive_branches = [r for r in branches if r.get("growth_class") == "Positive Growth"]
     highest_pending = max(branches, key=lambda r: money(r["pending_total"]))
@@ -575,21 +611,21 @@ def build_insights(data):
 
     return {
         "positive_highlights": [
-            f"{best_achievement['month']} delivered the strongest target achievement at {best_achievement['target_achievement_pct']:.1%}, supported by EGP {best_achievement['actual_2026']/1_000_000:.1f}M in approved premium.",
-            f"{top_branch['branch']} was the leading branch with EGP {top_branch['premium_2026']/1_000_000:.1f}M, contributing {top_branch['contribution_pct']:.1%} of approved premium.",
+            f"{best_achievement['month']} delivered the strongest target achievement at {format_percent(best_achievement['target_achievement_pct'])}, supported by {format_money(best_achievement['actual_2026'], compact=True)} in approved premium.",
+            f"{top_branch['branch']} was the leading branch with {format_money(top_branch['premium_2026'], compact=True)}, contributing {format_percent(top_branch['contribution_pct'])} of approved premium.",
             f"{len(positive_branches)} branches grew year over year, led by {max(positive_branches, key=lambda r: money(r['yoy_change']))['branch']} in absolute growth." if positive_branches else "No branch recorded positive year-over-year premium growth.",
         ],
         "key_concerns": [
-            f"Approved gross premium declined {k['Approved Gross Premiums']['change_pct']:.1%} versus YTD 2025, a decrease of EGP {abs(k['Approved Gross Premiums']['change'])/1_000_000:.1f}M.",
-            f"Target achievement reached {total['target_achievement_pct']:.1%}, leaving EGP {total['target_gap']/1_000_000:.1f}M below the YTD 2026 target.",
-            f"{weakest_month['month']} was the weakest month at EGP {weakest_month['actual_2026']/1_000_000:.1f}M and only {weakest_month['target_achievement_pct']:.1%} of target.",
-            f"The top three insurers represented {top3_share:.1%} of YTD 2026 approved premium, creating concentration exposure.",
+            f"Approved gross premium declined {format_percent(k['Approved Gross Premiums']['change_pct'])} versus YTD 2025, a decrease of {format_money(abs(k['Approved Gross Premiums']['change']), compact=True)}.",
+            f"Target achievement reached {format_percent(total['target_achievement_pct'])}, leaving {format_money(total['target_gap'], compact=True)} below the YTD 2026 target.",
+            f"{weakest_month['month']} was the weakest month at {format_money(weakest_month['actual_2026'], compact=True)} and only {format_percent(weakest_month['target_achievement_pct'])} of target.",
+            f"The top three insurers represented {format_percent(top3_share)} of YTD 2026 approved premium, creating concentration exposure.",
         ],
         "opportunities": [
-            f"Pending pipeline totals EGP {total['pending_total']/1_000_000:.1f}M, equal to {total['pending_as_pct_approved']:.1%} of approved premium.",
-            f"{top_lob['line_of_business']} remains the largest line at EGP {top_lob['premium_2026']/1_000_000:.1f}M; improving its conversion has the highest near-term impact.",
-            f"Motor renewal rate was {renewal_total['renewal_rate']:.1%} across YTD, leaving {renewal_total['not_renewed_policies']:.0f} not-renewed policies as a recovery pool." if renewal_total else "Renewal-rate opportunity could not be calculated from the available workbook data.",
-            f"{top_seller['seller']} led seller production at EGP {top_seller['premium_2026']/1_000_000:.1f}M; top-seller practices should be replicated across declining sellers." if top_seller else "Seller-level opportunities are limited because only the workbook's top-seller section is available.",
+            f"Pending pipeline totals {format_money(total['pending_total'], compact=True)}, equal to {format_percent(total['pending_as_pct_approved'])} of approved premium.",
+            f"{top_lob['line_of_business']} remains the largest line at {format_money(top_lob['premium_2026'], compact=True)}; improving its conversion has the highest near-term impact.",
+            f"Motor renewal rate was {format_percent(renewal_total['renewal_rate'])} across YTD, leaving {format_count(renewal_total['not_renewed_policies'])} not-renewed policies as a recovery pool." if renewal_total else "Renewal-rate opportunity could not be calculated from the available workbook data.",
+            f"{top_seller['seller']} led seller production at {format_money(top_seller['premium_2026'], compact=True)}; top-seller practices should be replicated across declining sellers." if top_seller else "Seller-level opportunities are limited because only the workbook's top-seller section is available.",
         ],
     }
 
@@ -607,56 +643,55 @@ def build_recommendations(data):
     largest_decline_branch = min(branches, key=lambda r: money(r["yoy_change"]))
     motor_lob = max(lobs, key=lambda r: money(r["motor_premium"]))
     top_seller = max(sellers, key=lambda r: money(r["premium_2026"])) if sellers else None
-    top_insurers = sorted(insurers, key=lambda r: money(r["premium_2026"]), reverse=True)[:3]
-    top3_share = sum(money(r["premium_2026"]) for r in top_insurers) / money(total["approved_gross_premium"])
+    top3_share = data["summary_metrics"]["top3_insurer_share_pct"]
 
     rows = [
         {
             "priority": "P1",
             "action": "Close the YTD target gap with branch-level recovery plans.",
-            "evidence": f"YTD achievement is {total['target_achievement_pct']:.1%}, leaving EGP {total['target_gap']/1_000_000:.1f}M below target.",
+            "evidence": f"YTD achievement is {format_percent(total['target_achievement_pct'])}, leaving {format_money(total['target_gap'], compact=True)} below target.",
             "kpi": "Target achievement %, approved premium gap",
         },
         {
             "priority": "P1",
             "action": "Convert pending pipeline starting with the largest exposed branches.",
-            "evidence": f"{highest_pending['branch']} has EGP {highest_pending['pending_total']/1_000_000:.1f}M pending exposure.",
+            "evidence": f"{highest_pending['branch']} has {format_money(highest_pending['pending_total'], compact=True)} pending exposure.",
             "kpi": "Pending conversion value, pending aging",
         },
         {
             "priority": "P2",
             "action": "Recover high-value declining branches through account-level action reviews.",
-            "evidence": f"{largest_decline_branch['branch']} declined by EGP {abs(largest_decline_branch['yoy_change'])/1_000_000:.1f}M YoY.",
+            "evidence": f"{largest_decline_branch['branch']} declined by {format_money(abs(largest_decline_branch['yoy_change']), compact=True)} YoY.",
             "kpi": "Branch YoY change, branch win-back premium",
         },
         {
             "priority": "P2",
             "action": "Improve motor renewal conversion and follow up not-renewed policies.",
-            "evidence": f"YTD renewal rate is {renewal_total['renewal_rate']:.1%} with {renewal_total['not_renewed_policies']:.0f} not-renewed policies." if renewal_total else "Renewal policy totals are available only in aggregate.",
+            "evidence": f"YTD renewal rate is {format_percent(renewal_total['renewal_rate'])} with {format_count(renewal_total['not_renewed_policies'])} not-renewed policies." if renewal_total else "Renewal policy totals are available only in aggregate.",
             "kpi": "Renewal rate, not-renewed policies",
         },
         {
             "priority": "P2",
             "action": "Reduce motor concentration by expanding non-motor cross-sell.",
-            "evidence": f"{motor_lob['line_of_business']} contributes EGP {motor_lob['premium_2026']/1_000_000:.1f}M of approved premium.",
+            "evidence": f"{motor_lob['line_of_business']} contributes {format_money(motor_lob['premium_2026'], compact=True)} of approved premium.",
             "kpi": "Non-motor premium share, cross-sell premium",
         },
         {
             "priority": "P3",
             "action": "Manage insurer concentration and broaden active insurer participation.",
-            "evidence": f"Top three insurers account for {top3_share:.1%} of approved premium.",
+            "evidence": f"Top three insurers account for {format_percent(top3_share)} of approved premium.",
             "kpi": "Top-3 insurer share, insurer active count",
         },
         {
             "priority": "P3",
             "action": "Replicate top-seller practices in lower-performing seller cohorts.",
-            "evidence": f"{top_seller['seller']} produced EGP {top_seller['premium_2026']/1_000_000:.1f}M." if top_seller else "Seller analysis is limited to the workbook's top 20 sellers.",
+            "evidence": f"{top_seller['seller']} produced {format_money(top_seller['premium_2026'], compact=True)}." if top_seller else "Seller analysis is limited to the workbook's top 20 sellers.",
             "kpi": "Seller premium, average premium per policy",
         },
         {
             "priority": "P3",
             "action": "Investigate weak monthly cadence and set early-warning triggers.",
-            "evidence": f"{weakest_month['month']} achieved only {weakest_month['target_achievement_pct']:.1%} of target.",
+            "evidence": f"{weakest_month['month']} achieved only {format_percent(weakest_month['target_achievement_pct'])} of target.",
             "kpi": "Monthly achievement %, monthly YoY %",
         },
     ]
@@ -748,6 +783,223 @@ def build_premium_distribution(branches):
         if not assigned:
             bins[0]["count"] += 1
     return bins
+
+
+def metric_slug(value):
+    return re.sub(r"[^a-z0-9]+", "-", clean_name(value).lower()).strip("-")
+
+
+def register_rate(registry, metric_id, label, numerator, denominator, decimals=1, source_rate=None):
+    result = registry.register(
+        metric_id,
+        label,
+        numerator,
+        denominator,
+        decimals=decimals,
+        source_rate=source_rate,
+    )
+    return float(result) if result is not None else None
+
+
+def build_metric_catalog(data):
+    registry = MetricRegistry()
+    approved = data["totals"]["approved_gross_premium"]
+
+    for name, record in data["kpis"].items():
+        record["change_pct"] = register_rate(
+            registry,
+            f"kpi.{metric_slug(name)}.yoy",
+            f"{name} YoY",
+            record["change"],
+            record["value_2025"],
+            source_rate=record.get("source_change_pct"),
+        )
+
+    for record in [*data["monthly"], data["monthly_total"]]:
+        month = record["month"]
+        record["target_achievement_pct"] = register_rate(
+            registry,
+            f"monthly.{month}.target_achievement",
+            f"{month} Target Achievement",
+            record["actual_2026"],
+            record["target_2026"],
+            source_rate=record.get("source_target_achievement_pct"),
+        )
+        yoy_change = (
+            record["actual_2026"] - record["actual_2025"]
+            if record["actual_2026"] is not None and record["actual_2025"] is not None
+            else None
+        )
+        record["yoy_pct"] = register_rate(
+            registry,
+            f"monthly.{month}.yoy",
+            f"{month} YoY",
+            yoy_change,
+            record["actual_2025"],
+        )
+
+    for record in [*data["monthly_count_summary"], data["monthly_count_total"]]:
+        month = record["month"]
+        for year in (2025, 2026):
+            key = f"motor_average_rate_{year}"
+            source_rate = record.get(key)
+            record[key] = register_rate(
+                registry,
+                f"monthly-count.{month}.motor_average_rate_{year}",
+                f"{month} Motor Average Rate {year}",
+                source_rate,
+                1,
+                decimals=2,
+                source_rate=source_rate,
+            )
+
+    def register_entity(records, area, name_key, contribution_denominator=None):
+        for record in records:
+            name = record[name_key]
+            identity = f"{name}-{record['month']}" if record.get("month") else name
+            display_name = f"{name} {record['month']}" if record.get("month") else name
+            prefix = f"{area}.{metric_slug(identity)}"
+            record["yoy_change_pct"] = register_rate(
+                registry,
+                f"{prefix}.yoy",
+                f"{display_name} YoY",
+                record.get("yoy_change"),
+                record.get("premium_2025"),
+                source_rate=record.get("source_yoy_change_pct"),
+            )
+            if contribution_denominator is not None:
+                record["contribution_pct"] = register_rate(
+                    registry,
+                    f"{prefix}.contribution",
+                    f"{display_name} Contribution",
+                    record.get("premium_2026"),
+                    contribution_denominator,
+                )
+            record["renewal_mix_pct"] = register_rate(
+                registry,
+                f"{prefix}.renewal_mix",
+                f"{display_name} Renewal Mix",
+                record.get("renewal_premium"),
+                record.get("premium_2026"),
+            )
+            record["motor_mix_pct"] = register_rate(
+                registry,
+                f"{prefix}.motor_mix",
+                f"{display_name} Motor Mix",
+                record.get("motor_premium"),
+                record.get("premium_2026"),
+            )
+
+    register_entity(data["branches"], "branch", "branch", approved)
+    register_entity(data["branch_monthly"], "branch-monthly", "branch")
+    register_entity(data["sellers"], "seller", "seller", sum(money(r["premium_2026"]) for r in data["sellers"]))
+
+    insurer_total = sum(money(r["premium_2026"]) for r in data["insurers"])
+    for record in data["insurers"]:
+        name = record["insurance_company"]
+        prefix = f"insurer.{metric_slug(name)}"
+        record["yoy_change_pct"] = register_rate(
+            registry,
+            f"{prefix}.yoy",
+            f"{name} YoY",
+            record.get("yoy_change"),
+            record.get("premium_2025"),
+            source_rate=record.get("source_yoy_change_pct"),
+        )
+        record["share_2026_pct"] = register_rate(
+            registry,
+            f"{prefix}.share",
+            f"{name} 2026 Share",
+            record.get("premium_2026"),
+            insurer_total,
+        )
+
+    lob_total = sum(money(r["premium_2026"]) for r in data["lines_of_business"])
+    for record in data["lines_of_business"]:
+        name = record["line_of_business"]
+        prefix = f"lob.{metric_slug(name)}"
+        record["target_achievement_pct"] = register_rate(
+            registry,
+            f"{prefix}.target_achievement",
+            f"{name} Target Achievement",
+            record.get("premium_2026"),
+            record.get("target_2026"),
+            source_rate=record.get("source_target_achievement_pct"),
+        )
+        record["yoy_change_pct"] = register_rate(
+            registry,
+            f"{prefix}.yoy",
+            f"{name} YoY",
+            record.get("yoy_change"),
+            record.get("premium_2025"),
+        )
+        record["share_2026_pct"] = register_rate(
+            registry,
+            f"{prefix}.share",
+            f"{name} 2026 Share",
+            record.get("premium_2026"),
+            lob_total,
+        )
+
+    for record in data["renewals"]:
+        record["renewal_rate"] = register_rate(
+            registry,
+            f"renewal.{record['month']}.rate",
+            f"{record['month']} Renewal Rate",
+            record.get("renewed_policies"),
+            record.get("policies_up_for_renewal"),
+        )
+
+    totals = data["totals"]
+    totals["target_achievement_pct"] = register_rate(
+        registry,
+        "totals.target_achievement",
+        "Overall Target Achievement",
+        approved,
+        totals["target_2026"],
+        source_rate=data["monthly_total"].get("source_target_achievement_pct"),
+    )
+    totals["target_variance_pct"] = register_rate(
+        registry,
+        "totals.target_variance",
+        "Target Variance",
+        approved - totals["target_2026"],
+        totals["target_2026"],
+    )
+    totals["pending_as_pct_approved"] = register_rate(
+        registry,
+        "totals.pending_share",
+        "Pending as Share of Approved Premium",
+        totals["pending_total"],
+        approved,
+    )
+    for key, label in (
+        ("new_premium", "New Premium Mix"),
+        ("renewal_premium", "Renewal Premium Mix"),
+        ("other_policy_types_premium", "Other Policy Types Mix"),
+    ):
+        totals[f"{key}_mix_pct"] = register_rate(
+            registry,
+            f"totals.{key}_mix",
+            label,
+            totals[key],
+            approved,
+        )
+
+    top3_premium = sum(
+        money(record["premium_2026"])
+        for record in sorted(data["insurers"], key=lambda item: money(item["premium_2026"]), reverse=True)[:3]
+    )
+    data["summary_metrics"] = {
+        "top3_insurer_share_pct": register_rate(
+            registry,
+            "insurers.top3_share",
+            "Top 3 Insurer Share",
+            top3_premium,
+            approved,
+        )
+    }
+    return registry
 
 
 def make_check(name, expected, actual, tolerance=1, severity="error"):
@@ -901,6 +1153,8 @@ def main():
             "Possible spelling inconsistencies are retained as provided by the workbook, including 'Renew Premuims'.",
         ],
     }
+    registry = build_metric_catalog(data)
+    data["calculated_metrics"] = registry.to_json()
     data["insights"] = build_insights(data)
     data["management_actions"] = build_recommendations(data)
     data["reconciliation"] = reconciliation(data)

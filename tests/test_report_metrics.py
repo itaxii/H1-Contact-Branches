@@ -1,3 +1,4 @@
+import json
 import unittest
 from decimal import Decimal
 
@@ -9,6 +10,7 @@ from report_metrics import (
     ratio,
     yoy_rate,
 )
+from analysis import DATA_DIR, main
 
 
 class DecimalMetricTests(unittest.TestCase):
@@ -73,6 +75,29 @@ class MetricRegistryTests(unittest.TestCase):
 
         self.assertEqual(changes[0]["previous_display"], "-54.0%")
         self.assertEqual(changes[0]["corrected_display"], "-54.5%")
+
+
+class GeneratedMetricCatalogTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        main()
+        cls.data = json.loads((DATA_DIR / "report-data.json").read_text(encoding="utf-8"))
+
+    def test_catalog_contains_raw_inputs_and_reusable_aggregates(self):
+        catalog = self.data["calculated_metrics"]
+
+        self.assertEqual(catalog["renewal.June.rate"]["display"], "39.3%")
+        self.assertIn("totals.new_premium_mix", catalog)
+        self.assertIn("insurers.top3_share", catalog)
+        self.assertEqual(
+            self.data["totals"]["new_premium_mix_pct"],
+            catalog["totals.new_premium_mix"]["value_numeric"],
+        )
+
+    def test_motor_average_rate_catalog_uses_two_decimals(self):
+        metric = self.data["calculated_metrics"]["monthly-count.January.motor_average_rate_2026"]
+
+        self.assertEqual(metric["decimals"], 2)
 
 
 if __name__ == "__main__":

@@ -2,7 +2,14 @@ import unittest
 
 import pandas as pd
 
-from analysis import WORKBOOK, extract_lob_totals, extract_monthly, extract_monthly_counts
+from analysis import (
+    WORKBOOK,
+    extract_kpis,
+    extract_lob_totals,
+    extract_monthly,
+    extract_monthly_counts,
+    row_to_record,
+)
 
 
 def build_summary_fixture(title, headers, january, total):
@@ -84,6 +91,22 @@ def build_count_fixture():
     )
 
 
+def build_kpi_fixture(previous, current, source_rate):
+    rows = [[None] * 7 for _ in range(20)]
+    rows[12][2] = "Approved Gross Premiums"
+    rows[12][3] = previous
+    rows[12][4] = current
+    rows[12][5] = 999
+    rows[12][6] = source_rate
+    return pd.DataFrame(rows)
+
+
+def build_entity_row(previous, current):
+    values = ["Sample Branch", previous, current, 999, 0.99]
+    values.extend([0] * 14)
+    return pd.Series(values)
+
+
 class MonthlySummaryExtractionTests(unittest.TestCase):
     def test_amount_summary_maps_every_new_header(self):
         rows, total = extract_monthly(build_amount_fixture())
@@ -104,6 +127,26 @@ class MonthlySummaryExtractionTests(unittest.TestCase):
         self.assertEqual(rows[0]["non_motor_policies_2025"], 25.0)
         self.assertAlmostEqual(rows[0]["motor_average_rate_2026"], 0.019)
         self.assertEqual(total["month"], "Grand Total")
+
+    def test_amount_summary_recalculates_target_achievement_from_raw_values(self):
+        fixture = build_amount_fixture()
+        fixture.iat[2, 12] = 0.99
+
+        rows, _ = extract_monthly(fixture)
+
+        self.assertAlmostEqual(rows[0]["target_achievement_pct"], 370 / 406.25)
+
+    def test_kpi_yoy_recalculates_from_raw_values(self):
+        result = extract_kpis(build_kpi_fixture(previous=200, current=91, source_rate=-0.54))
+
+        self.assertEqual(result["Approved Gross Premiums"]["change"], -109)
+        self.assertAlmostEqual(result["Approved Gross Premiums"]["change_pct"], -109 / 200)
+
+    def test_entity_missing_prior_year_keeps_yoy_undefined(self):
+        record = row_to_record(build_entity_row(previous=None, current=100), list(range(19)), "branch")
+
+        self.assertIsNone(record["yoy_change_pct"])
+        self.assertEqual(record["growth_class"], "New Base")
 
 
 class MonthlySummaryWorkbookTests(unittest.TestCase):
