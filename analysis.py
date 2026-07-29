@@ -129,6 +129,58 @@ def find_row(df, text, start=0, col=None):
     return None
 
 
+def normalize_header(value):
+    return re.sub(r"[^a-z0-9]+", " ", clean_name(value).lower()).strip()
+
+
+def extract_summary_rows(df, section_titles, field_aliases, percent_fields=None):
+    percent_fields = set(percent_fields or [])
+    section_row = None
+    for title in section_titles:
+        section_row = find_row(df, title, col=2)
+        if section_row is not None:
+            break
+    if section_row is None:
+        raise ValueError(f"Missing workbook section: {section_titles[0]}")
+
+    header_row = find_row(df, "Month", start=section_row, col=2)
+    if header_row is None:
+        raise ValueError(f"Missing Month header after workbook section: {section_titles[0]}")
+
+    headers = {
+        normalize_header(df.iat[header_row, cidx]): cidx
+        for cidx in range(df.shape[1])
+        if normalize_header(df.iat[header_row, cidx])
+    }
+    columns = {}
+    for key, aliases in field_aliases.items():
+        columns[key] = next((headers[normalize_header(alias)] for alias in aliases if normalize_header(alias) in headers), None)
+        if columns[key] is None:
+            raise ValueError(f"Missing column '{aliases[0]}' in workbook section: {section_titles[0]}")
+
+    records = []
+    total = None
+    for ridx in range(header_row + 1, len(df)):
+        month = clean_name(df.iat[ridx, columns["month"]])
+        if month not in MONTH_ORDER and month != "Grand Total":
+            if records:
+                break
+            continue
+        record = {"month": month}
+        for key, cidx in columns.items():
+            if key == "month":
+                continue
+            parser = parse_percent if key in percent_fields else parse_number
+            record[key] = parser(df.iat[ridx, cidx])
+        if month == "Grand Total":
+            total = record
+            break
+        records.append(record)
+    if total is None:
+        raise ValueError(f"Missing Grand Total row in workbook section: {section_titles[0]}")
+    return records, total
+
+
 def row_to_record(row, cols, name_key):
     record = {name_key: clean_name(row.iloc[cols[0]])}
     record.update(
@@ -303,37 +355,61 @@ def extract_renewals(df):
 
 
 def extract_monthly(df):
-    records = []
-    total = None
-    section_row = find_row(df, "2025 vs 2026 By Summary", col=2)
-    header_row = find_row(df, "Month", start=section_row or 60, col=2) or 67
-    for ridx in range(header_row + 1, len(df)):
-        month = clean_name(df.iat[ridx, 2])
-        if month not in MONTH_ORDER and month != "Grand Total":
-            if records:
-                break
-            continue
-        rec = {
-            "month": month,
-            "actual_2025": parse_number(df.iat[ridx, 3]),
-            "target_2026": parse_number(df.iat[ridx, 4]),
-            "actual_2026": parse_number(df.iat[ridx, 5]),
-            "target_achievement_pct": parse_percent(df.iat[ridx, 6]),
-            "yoy_change": parse_number(df.iat[ridx, 7]),
-            "new_premium": parse_number(df.iat[ridx, 8]),
-            "renewal_premium": parse_number(df.iat[ridx, 9]),
-            "endorsement_premium": parse_number(df.iat[ridx, 10]),
-            "motor_premium": parse_number(df.iat[ridx, 11]),
-            "non_motor_premium": parse_number(df.iat[ridx, 12]),
-            "pending_finance": parse_number(df.iat[ridx, 13]),
-        }
-        rec["yoy_pct"] = safe_div(rec["actual_2026"] - rec["actual_2025"], rec["actual_2025"]) if rec["actual_2025"] else None
-        if month == "Grand Total":
-            total = rec
-            break
-        else:
-            records.append(rec)
+    fields = {
+        "month": ["Month"],
+        "new_premium_2025": ["New Premiums 2025"],
+        "renewal_premium_2025": ["Renewal Premiums 2025"],
+        "other_premium_2025": ["Other Policies (Endorsement + Collection ) 2025"],
+        "new_premium": ["New Premiums 2026"],
+        "renewal_premium": ["Renewal Premiums 2026", "Renewal Premuims 2026"],
+        "endorsement_premium": ["Other Policies (Endorsement + Collection ) 2026"],
+        "actual_2025": ["2025"],
+        "actual_2026": ["2026"],
+        "target_2026": ["Target ( 2025 + 25%)"],
+        "target_achievement_pct": ["Target Achievement %"],
+        "yoy_change": ["2025 VS 2026 YOY"],
+        "motor_premium": ["Motor Premiums 2026"],
+        "non_motor_premium": ["Non-Motor Premiums 2026"],
+        "motor_premium_2025": ["Motor Premium 2025", "Motor Premiums 2025"],
+        "non_motor_premium_2025": ["Non-Motor Premium 2025", "Non-Motor Premiums 2025"],
+        "pending_finance": ["Pending Finance"],
+    }
+    records, total = extract_summary_rows(
+        df,
+        ["2025 vs 2026 By Premium Amount Summary", "2025 vs 2026 By Summary"],
+        fields,
+        percent_fields={"target_achievement_pct"},
+    )
+    for record in [*records, total]:
+        record["yoy_pct"] = safe_div(record["actual_2026"] - record["actual_2025"], record["actual_2025"])
     return records, total
+
+
+def extract_monthly_counts(df):
+    fields = {
+        "month": ["Month"],
+        "new_policies_2025": ["New Policies 2025"],
+        "renewal_policies_2025": ["Renewal Policies 2025"],
+        "other_policies_2025": ["Other Policies 2025"],
+        "new_policies_2026": ["New Policies 2026"],
+        "renewal_policies_2026": ["Renewal Policies 2026"],
+        "other_policies_2026": ["Other Policies 2026"],
+        "total_policies_2025": ["2025"],
+        "total_policies_2026": ["2026"],
+        "yoy_change": ["YoY"],
+        "motor_policies_2026": ["Motor Policies 2026"],
+        "non_motor_policies_2026": ["Non-Motor Policies 2026"],
+        "motor_policies_2025": ["Motor Policies 2025"],
+        "non_motor_policies_2025": ["Non-Motor Policies LY", "Non-Motor Policies 2025"],
+        "motor_average_rate_2026": ["Motor Average Rate 2026"],
+        "motor_average_rate_2025": ["Motor Average Rate 2025"],
+    }
+    return extract_summary_rows(
+        df,
+        ["2025 vs 2026 By Premium Count Summary"],
+        fields,
+        percent_fields={"motor_average_rate_2026", "motor_average_rate_2025"},
+    )
 
 
 def extract_status_mix(df):
