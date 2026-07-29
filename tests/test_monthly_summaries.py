@@ -211,5 +211,25 @@ class DashboardTableTotalTests(unittest.TestCase):
                 total = self.data["table_totals"][total_key]["premium_2026"]
                 self.assertLessEqual(abs(total - detail_sum), 2)
 
+    def test_seller_contribution_uses_overall_approved_premium(self):
+        approved = self.data["totals"]["approved_gross_premium"]
+        for seller in self.data["sellers"]:
+            with self.subTest(seller=seller["seller"]):
+                self.assertAlmostEqual(
+                    seller["contribution_pct"],
+                    seller["premium_2026"] / approved,
+                    places=12,
+                )
+
+    def test_seller_total_contribution_uses_overall_approved_premium(self):
+        approved = self.data["totals"]["approved_gross_premium"]
+        total = self.data["table_totals"]["sellers"]
+
+        self.assertAlmostEqual(
+            total["contribution_pct"],
+            total["premium_2026"] / approved,
+            places=12,
+        )
+
 if __name__ == "__main__":
     unittest.main()

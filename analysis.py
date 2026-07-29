@@ -276,9 +276,6 @@ def extract_sellers(df):
             break
         if not is_total_label(name):
             records.append(rec)
-    total_2026 = total["premium_2026"] if total else sum(money(r["premium_2026"]) for r in records)
-    for rec in records:
-        rec["contribution_pct"] = safe_div(rec["premium_2026"], total_2026)
     return records, total
 
 
@@ -928,7 +925,7 @@ def build_metric_catalog(data):
 
     register_entity(data["branches"], "branch", "branch", approved)
     register_entity(data["branch_monthly"], "branch-monthly", "branch")
-    register_entity(data["sellers"], "seller", "seller", sum(money(r["premium_2026"]) for r in data["sellers"]))
+    register_entity(data["sellers"], "seller", "seller", approved)
 
     insurer_total = sum(money(r["premium_2026"]) for r in data["insurers"])
     for record in data["insurers"]:
@@ -993,13 +990,19 @@ def build_metric_catalog(data):
             source_rate=total.get("source_yoy_change_pct"),
         )
         total["avg_premium_per_policy"] = safe_div(total.get("premium_2026"), total.get("approved_policies"))
-        if area in {"branches", "sellers"}:
+        if area == "sellers":
+            contribution_denominator = approved
+        elif area == "branches":
+            contribution_denominator = total.get("premium_2026")
+        else:
+            contribution_denominator = None
+        if contribution_denominator is not None:
             total["contribution_pct"] = register_rate(
                 registry,
                 f"{prefix}.contribution",
                 f"{area.title()} Grand Total Contribution",
                 total.get("premium_2026"),
-                total.get("premium_2026"),
+                contribution_denominator,
             )
         if area in {"insurers", "lines_of_business"}:
             total["share_2026_pct"] = register_rate(
