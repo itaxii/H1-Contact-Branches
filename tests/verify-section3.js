@@ -28,6 +28,10 @@ async function main() {
     assert.match(await page.locator("#monthlyTable").innerText(), /Pending Finance/);
     assert.match(await page.locator("#monthlyCountTable").innerText(), /Motor Average Rate 2026/);
     assert.match(await page.locator("#monthlyCountTable").innerText(), /July/);
+
+    await page.emulateMedia({ media: "print" });
+    const dataCellWhiteSpace = await page.locator("#monthlyTable tbody td").first().evaluate((cell) => getComputedStyle(cell).whiteSpace);
+    assert.equal(dataCellWhiteSpace, "nowrap");
   } finally {
     await browser.close();
   }

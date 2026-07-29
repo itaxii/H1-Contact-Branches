@@ -898,10 +898,18 @@ footer {
   th,
   td {
     padding: 4px 5px;
-    white-space: normal;
     word-break: normal;
-    overflow-wrap: anywhere;
     line-height: 1.2;
+  }
+
+  th {
+    white-space: normal;
+    overflow-wrap: normal;
+  }
+
+  td {
+    white-space: nowrap;
+    overflow-wrap: normal;
   }
 
   .table-wrap {
