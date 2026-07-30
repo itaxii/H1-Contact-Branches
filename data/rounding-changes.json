@@ -1035,15 +1035,6 @@
     "denominator": "9908"
   },
   {
-    "metric_id": "branch-monthly.tanta-july.yoy",
-    "report_area": "branch-monthly",
-    "label": "Tanta July YoY",
-    "previous_display": "-100.0%",
-    "corrected_display": "N/A",
-    "numerator": null,
-    "denominator": "246995"
-  },
-  {
     "metric_id": "branch-monthly.wadi-degla-sales-february.yoy",
     "report_area": "branch-monthly",
     "label": "Wadi Degla Sales February YoY",
@@ -1120,17 +1111,17 @@
     "report_area": "kpi",
     "label": "Approved Gross Premiums YoY",
     "previous_display": "-54.0%",
-    "corrected_display": "-54.5%",
-    "numerator": "-19224332",
+    "corrected_display": "-54.4%",
+    "numerator": "-19202538",
     "denominator": "35297539"
   },
   {
     "metric_id": "kpi.avg-premium-per-policy.yoy",
     "report_area": "kpi",
     "label": "Avg Premium per policy YoY",
-    "previous_display": "161.0%",
-    "corrected_display": "160.7%",
-    "numerator": "4425",
+    "previous_display": "160.0%",
+    "corrected_display": "160.2%",
+    "numerator": "4412",
     "denominator": "2754"
   },
   {
@@ -1156,8 +1147,8 @@
     "report_area": "kpi",
     "label": "Renewal Policies YoY",
     "previous_display": "-80.0%",
-    "corrected_display": "-80.3%",
-    "numerator": "-2030",
+    "corrected_display": "-80.2%",
+    "numerator": "-2027",
     "denominator": "2527"
   },
   {
@@ -1166,16 +1157,16 @@
     "label": "Retail Approved Gross YoY",
     "previous_display": "-55.0%",
     "corrected_display": "-54.6%",
-    "numerator": "-18630274",
+    "numerator": "-18608480",
     "denominator": "34096550"
   },
   {
     "metric_id": "kpi.total-approved-policies.yoy",
     "report_area": "kpi",
     "label": "Total Approved Policies YoY",
-    "previous_display": "-83.0%",
+    "previous_display": "-82.0%",
     "corrected_display": "-82.5%",
-    "numerator": "-10577",
+    "numerator": "-10570",
     "denominator": "12816"
   },
   {
@@ -1184,7 +1175,7 @@
     "label": "Total Policies YoY",
     "previous_display": "-82.0%",
     "corrected_display": "-81.7%",
-    "numerator": "-10473",
+    "numerator": "-10470",
     "denominator": "12816"
   },
   {
@@ -1245,9 +1236,9 @@
     "metric_id": "lob.insurance-bundle-w-finance.target_achievement",
     "report_area": "lob",
     "label": "Insurance Bundle W/Finance Target Achievement",
-    "previous_display": "14.0%",
-    "corrected_display": "14.2%",
-    "numerator": "112700",
+    "previous_display": "15.0%",
+    "corrected_display": "14.7%",
+    "numerator": "116900",
     "denominator": "793625"
   },
   {
@@ -1292,7 +1283,7 @@
     "label": "Motor Vehicle Private Company Comprehensive Target Achievement",
     "previous_display": "41.0%",
     "corrected_display": "41.2%",
-    "numerator": "13338465",
+    "numerator": "13356059",
     "denominator": "32411271"
   },
   {
@@ -1366,14 +1357,5 @@
     "corrected_display": "194.4%",
     "numerator": "324556",
     "denominator": "166965"
-  },
-  {
-    "metric_id": "monthly.July.target_achievement",
-    "report_area": "monthly",
-    "label": "July Target Achievement",
-    "previous_display": "10.0%",
-    "corrected_display": "9.7%",
-    "numerator": "660189",
-    "denominator": "6810580.603"
   }
 ]
