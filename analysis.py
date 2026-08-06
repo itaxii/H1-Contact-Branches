@@ -233,6 +233,51 @@ def row_to_record(row, cols, name_key):
     return record
 
 
+ENTITY_SUM_FIELDS = [
+    "premium_2025",
+    "premium_2026",
+    "pending_operation_paid",
+    "pending_finance",
+    "pending_payment",
+    "new_premium",
+    "renewal_premium",
+    "approved_policies",
+    "total_policies",
+    "total_policies_ly",
+    "new_policies",
+    "renewal_policies",
+    "retail_approved_gross",
+    "corporate_approved_gross",
+    "motor_premium",
+    "non_motor_premium",
+]
+
+
+def aggregate_entity_records(records, name_key, name):
+    aggregate = {name_key: name}
+    for field in ENTITY_SUM_FIELDS:
+        values = [record.get(field) for record in records if record.get(field) is not None]
+        aggregate[field] = sum(values) if values else None
+    aggregate["yoy_change"] = (
+        aggregate["premium_2026"] - aggregate["premium_2025"]
+        if aggregate["premium_2026"] is not None and aggregate["premium_2025"] is not None
+        else None
+    )
+    aggregate["source_yoy_change"] = aggregate["yoy_change"]
+    aggregate["source_yoy_change_pct"] = None
+    aggregate["yoy_change_pct"] = safe_yoy(aggregate["premium_2026"], aggregate["premium_2025"])
+    aggregate["contribution_pct"] = None
+    aggregate["avg_premium_per_policy"] = safe_div(aggregate["premium_2026"], aggregate["approved_policies"])
+    aggregate["renewal_mix_pct"] = safe_div(aggregate["renewal_premium"], aggregate["premium_2026"])
+    aggregate["motor_mix_pct"] = safe_div(aggregate["motor_premium"], aggregate["premium_2026"])
+    aggregate["pending_total"] = sum(
+        money(aggregate[field])
+        for field in ["pending_operation_paid", "pending_finance", "pending_payment"]
+    )
+    aggregate["growth_class"] = classify_yoy(aggregate["premium_2025"], aggregate["premium_2026"])
+    return aggregate
+
+
 def extract_entity_table(df, start_row, end_row, name_key):
     cols = list(range(2, 21))
     records = []
@@ -262,21 +307,97 @@ def extract_sellers(df):
         return [], None
     cols = list(range(2, 21))
     records = []
+    monthly = []
     total = None
+    current_seller = None
+    current_months = []
+
+    def flush_seller():
+        nonlocal current_seller, current_months
+        if current_seller:
+            records.append(aggregate_entity_records(current_months, "seller", current_seller))
+        current_seller = None
+        current_months = []
+
     for ridx in range(header_row + 1, len(df)):
         row = df.iloc[ridx]
         name = clean_name(row.iloc[2])
         if not name:
-            if records:
-                break
             continue
-        rec = row_to_record(row, cols, "seller")
         if name.lower() == "grand total":
-            total = rec
+            flush_seller()
+            total = row_to_record(row, cols, "seller")
             break
-        if not is_total_label(name):
-            records.append(rec)
-    return records, total
+        if name in MONTH_ORDER and current_seller:
+            record = row_to_record(row, cols, "month")
+            record["seller"] = current_seller
+            current_months.append(record)
+            monthly.append(record)
+            continue
+        flush_seller()
+        current_seller = name
+    flush_seller()
+    return records, total, monthly
+
+
+def extract_branches_per_day(df):
+    title_row = find_row(df, "Branches Per Day last month", col=2)
+    if title_row is None:
+        return {"month": None, "rows": [], "total": None}
+    month_row = find_row(df, "Month", start=title_row + 1, col=2)
+    header_row = find_row(df, "Branch", start=title_row + 1, col=2)
+    month = clean_name(df.iat[month_row, 3]) if month_row is not None else None
+    if header_row is None:
+        return {"month": month, "rows": [], "total": None}
+
+    rows = []
+    total = None
+    for ridx in range(header_row + 1, len(df)):
+        raw_date = df.iat[ridx, 2]
+        label = clean_name(raw_date)
+        if not label:
+            continue
+        premium = parse_number(df.iat[ridx, 3])
+        if label.lower() == "grand total":
+            total = premium
+            break
+        try:
+            if isinstance(raw_date, (int, float)) and not isinstance(raw_date, bool):
+                parsed_date = pd.Timestamp("1899-12-30") + pd.to_timedelta(raw_date, unit="D")
+            else:
+                parsed_date = pd.to_datetime(raw_date)
+        except (TypeError, ValueError, OverflowError):
+            continue
+        rows.append(
+            {
+                "date": parsed_date.strftime("%Y-%m-%d"),
+                "label": f"{parsed_date.strftime('%b')} {parsed_date.day}",
+                "premium_2026": premium,
+            }
+        )
+    return {"month": month, "rows": rows, "total": total}
+
+
+def build_seller_mvps(sellers, seller_monthly, latest_month):
+    def winner(rows, metric, month=None):
+        candidates = [row for row in rows if money(row.get(metric)) > 0]
+        if not candidates:
+            return {"seller": None, "metric": metric, "value": None, "month": month}
+        top = max(candidates, key=lambda row: money(row.get(metric)))
+        return {
+            "seller": top["seller"],
+            "metric": metric,
+            "value": top.get(metric),
+            "month": month,
+        }
+
+    latest_rows = [row for row in seller_monthly if row.get("month") == latest_month]
+    return {
+        "overall": winner(sellers, "premium_2026"),
+        "non_motor": winner(sellers, "non_motor_premium"),
+        "motor": winner(sellers, "motor_premium"),
+        "last_month": winner(latest_rows, "premium_2026", latest_month),
+    }
 
 
 def extract_branch_breakdown(df):
@@ -926,6 +1047,7 @@ def build_metric_catalog(data):
     register_entity(data["branches"], "branch", "branch", approved)
     register_entity(data["branch_monthly"], "branch-monthly", "branch")
     register_entity(data["sellers"], "seller", "seller", approved)
+    register_entity(data["seller_monthly"], "seller-monthly", "seller")
 
     insurer_total = sum(money(r["premium_2026"]) for r in data["insurers"])
     for record in data["insurers"]:
@@ -1183,6 +1305,13 @@ def validate_report(data, registry=None):
         make_check("Pending category totals = total pending", totals["pending_total"], sum(money(r["premium"]) for r in data["pending_categories"])),
         make_check("Policy-type premium totals = approved gross premium", approved, sum(money(r["premium"]) for r in data["policy_type_mix"])),
         make_check("Premium distribution branch counts = unique branches", len(data["branches"]), sum(int(r["count"]) for r in data["premium_distribution_bins"]), tolerance=0),
+        make_check(
+            "Branches per day rows = workbook daily total",
+            data["branches_per_day_last_month"]["total"],
+            sum(money(r["premium_2026"]) for r in data["branches_per_day_last_month"]["rows"]),
+            severity="warning",
+            source="workbook",
+        ),
     ]
     for renewal in data["renewals"]:
         checks.append(
@@ -1236,8 +1365,9 @@ def main():
     lobs, lob_total = extract_lob_totals(overview)
     lob_monthly = extract_lob_monthly(overview)
     branches, branch_total, branch_monthly = extract_branch_breakdown(branches_sheet)
-    sellers, seller_total = extract_sellers(branches_sheet)
+    sellers, seller_total, seller_monthly = extract_sellers(branches_sheet)
     branches_per_month = extract_branches_per_month(branches_sheet)
+    branches_per_day_last_month = extract_branches_per_day(branches_sheet)
 
     approved = kpis["Approved Gross Premiums"]["value_2026"]
     target = monthly_total["target_2026"]
@@ -1271,6 +1401,8 @@ def main():
     premium_distribution_bins = build_premium_distribution(branches)
     reporting_months = [r["month"] for r in monthly if r["month"] in MONTH_ORDER and money(r["actual_2026"]) != 0]
     reporting_period = month_range_label(reporting_months)
+    latest_reporting_month = reporting_months[-1] if reporting_months else None
+    seller_mvps = build_seller_mvps(sellers, seller_monthly, branches_per_day_last_month["month"] or latest_reporting_month)
     table_totals = {
         "branches": normalize_entity_total(branch_total, branches, "branch"),
         "sellers": normalize_entity_total(seller_total, sellers, "seller"),
@@ -1284,7 +1416,7 @@ def main():
             "subtitle": "YTD 2026 Executive Report",
             "reporting_period": reporting_period,
             "reporting_months": reporting_months,
-            "latest_reporting_month": reporting_months[-1] if reporting_months else None,
+            "latest_reporting_month": latest_reporting_month,
             "last_updated": date.today().isoformat(),
             "source": WORKBOOK.name,
             "generated_by": "analysis.py",
@@ -1300,6 +1432,9 @@ def main():
         "branch_monthly": branch_monthly,
         "branches_per_month": branches_per_month,
         "sellers": sellers,
+        "seller_monthly": seller_monthly,
+        "seller_mvps": seller_mvps,
+        "branches_per_day_last_month": branches_per_day_last_month,
         "insurers": insurers,
         "lines_of_business": lobs,
         "line_of_business_monthly": lob_monthly,

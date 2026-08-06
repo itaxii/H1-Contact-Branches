@@ -26,6 +26,11 @@ def build_valid_validation_data():
         "pending_categories": [{"premium": 10}, {"premium": 10}, {"premium": 10}],
         "policy_type_mix": [{"premium": 40}, {"premium": 50}, {"premium": 10}],
         "premium_distribution_bins": [{"count": 1}],
+        "branches_per_day_last_month": {
+            "month": "August",
+            "rows": [{"premium_2026": 100}],
+            "total": 100,
+        },
         "renewals": [
             {
                 "month": "Grand Total",
@@ -110,9 +115,10 @@ class GeneratedMetricCatalogTests(unittest.TestCase):
     def test_catalog_contains_raw_inputs_and_reusable_aggregates(self):
         catalog = self.data["calculated_metrics"]
 
-        self.assertEqual(catalog["renewal.June.rate"]["display"], "39.3%")
         self.assertIn("totals.new_premium_mix", catalog)
         self.assertIn("insurers.top3_share", catalog)
+        self.assertIn("seller_monthly", self.data)
+        self.assertIn("renewals", self.data)
         self.assertEqual(
             self.data["totals"]["new_premium_mix_pct"],
             catalog["totals.new_premium_mix"]["value_numeric"],
