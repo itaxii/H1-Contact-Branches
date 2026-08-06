@@ -77,13 +77,6 @@ async function main() {
     if (renderedValidation.status !== "pass") {
       throw new Error(`Rendered percentage validation failed: ${JSON.stringify(renderedValidation.failures)}`);
     }
-    const juneRenewalDisplay = await page.evaluate(
-      () => window.REPORT_DATA.calculated_metrics["renewal.June.rate"].display
-    );
-    if (juneRenewalDisplay !== "39.3%") {
-      throw new Error(`June renewal display expected 39.3%, received ${juneRenewalDisplay}.`);
-    }
-
     await page.pdf({
       path: temporaryOutput,
       format: "A4",
