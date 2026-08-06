@@ -30,10 +30,10 @@ async function main() {
       await page.evaluate(() => window.dashboardFormatting.formatPercent(0.01945, 2)),
       "1.95%"
     );
-    assert.equal(
-      await page.evaluate(() => window.REPORT_DATA.calculated_metrics["renewal.June.rate"].display),
-      "39.3%"
-    );
+    assert.equal(await page.evaluate(() => {
+      const metric = window.REPORT_DATA.calculated_metrics["monthly-count.January.motor_average_rate_2026"];
+      return metric.display === window.dashboardFormatting.formatPercent(metric.value_numeric, metric.decimals);
+    }), true);
 
     const result = await page.evaluate(() => window.validateDashboardMetrics());
     assert.equal(result.status, "pass", JSON.stringify(result.failures, null, 2));

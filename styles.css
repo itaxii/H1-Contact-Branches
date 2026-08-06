@@ -306,6 +306,10 @@ main {
   gap: 14px;
 }
 
+#sellerMvpGrid {
+  padding-bottom: 24px;
+}
+
 .kpi-card {
   padding: 18px;
   min-height: 146px;

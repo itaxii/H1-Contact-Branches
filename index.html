@@ -60,7 +60,7 @@
       <a href="#sellers">Sellers</a>
       <a href="#insurers">Insurance Companies</a>
       <a href="#lob">Line of Business</a>
-      <a href="#renewals">Renewals</a>
+      <a href="#branchesPerDay">Branches Per Day</a>
       <a href="#pipeline">Pending Pipeline</a>
     </nav>
 
@@ -189,10 +189,13 @@
           <input id="sellerSearch" type="search" placeholder="Search sellers" />
           <button class="btn btn--small" data-export="sellerTable" type="button">Download CSV</button>
         </div>
+        <div class="kpi-grid" id="sellerMvpGrid"></div>
         <div class="chart-grid">
           <article class="panel"><h3>Top 10 Sellers</h3><canvas id="sellerTop"></canvas></article>
           <article class="panel"><h3>Seller Growth</h3><canvas id="sellerGrowth"></canvas></article>
           <article class="panel panel--wide"><h3>Seller Premium Mix</h3><canvas id="sellerMix"></canvas></article>
+          <article class="panel"><h3>Top 10 Sellers - New Business</h3><canvas id="sellerNewTop"></canvas></article>
+          <article class="panel"><h3>Top 10 Sellers - Renewal Business</h3><canvas id="sellerRenewalTop"></canvas></article>
         </div>
         <div class="table-card"><div class="table-wrap"><table id="sellerTable"></table></div></div>
       </section>
@@ -224,15 +227,14 @@
         <div class="table-card"><div class="table-wrap"><table id="lobTable"></table></div></div>
       </section>
 
-      <section class="section" id="renewals">
+      <section class="section" id="branchesPerDay">
         <div class="section__header">
           <p class="eyebrow">Section 9</p>
-          <h2>Renewal Performance</h2>
+          <h2>Branches Per Day - This Month</h2>
+          <p class="source-note" id="branchesPerDayMonth"></p>
         </div>
-        <div class="summary-strip" id="renewalStrip"></div>
         <div class="chart-grid">
-          <article class="panel"><h3>Monthly Motor Renewal Rate</h3><canvas id="renewalLine"></canvas></article>
-          <article class="panel"><h3>Renewal Funnel</h3><canvas id="renewalFunnel"></canvas></article>
+          <article class="panel panel--wide"><h3>Daily Approved Premium</h3><canvas id="branchesPerDayChart"></canvas></article>
         </div>
       </section>
 

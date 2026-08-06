@@ -26,6 +26,16 @@ def build_valid_validation_data():
         "pending_categories": [{"premium": 10}, {"premium": 10}, {"premium": 10}],
         "policy_type_mix": [{"premium": 40}, {"premium": 50}, {"premium": 10}],
         "premium_distribution_bins": [{"count": 1}],
+        "branches_per_day_last_month": {
+            "month": "August",
+            "rows": [{"premium_2026": 100}],
+            "total": 100,
+        },
+        "branches_per_day_this_month": {
+            "month": "September",
+            "daily_rows": [{"premium_2026": 100}],
+            "total": 100,
+        },
         "renewals": [
             {
                 "month": "Grand Total",
@@ -110,9 +120,10 @@ class GeneratedMetricCatalogTests(unittest.TestCase):
     def test_catalog_contains_raw_inputs_and_reusable_aggregates(self):
         catalog = self.data["calculated_metrics"]
 
-        self.assertEqual(catalog["renewal.June.rate"]["display"], "39.3%")
         self.assertIn("totals.new_premium_mix", catalog)
         self.assertIn("insurers.top3_share", catalog)
+        self.assertIn("seller_monthly", self.data)
+        self.assertIn("renewals", self.data)
         self.assertEqual(
             self.data["totals"]["new_premium_mix_pct"],
             catalog["totals.new_premium_mix"]["value_numeric"],
@@ -153,6 +164,16 @@ class ReportValidationTests(unittest.TestCase):
 
         self.assertEqual(result["status"], "blocked")
         self.assertTrue(any("Renewal counts reconcile" in item["name"] for item in result["blocking_failures"]))
+
+    def test_daily_reconciliation_uses_this_month_day_totals(self):
+        data = build_valid_validation_data()
+        data["branches_per_day_this_month"]["daily_rows"][0]["premium_2026"] = 90
+
+        result = validate_report(data, MetricRegistry())
+
+        warning = next(item for item in result["warnings"] if item["name"] == "Branches per day rows = workbook daily total")
+        self.assertEqual(warning["expected"], 100)
+        self.assertEqual(warning["actual"], 90)
 
 
 if __name__ == "__main__":

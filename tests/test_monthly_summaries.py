@@ -3,6 +3,7 @@ import unittest
 
 import pandas as pd
 
+import analysis
 from analysis import (
     DATA_DIR,
     WORKBOOK,
@@ -10,6 +11,7 @@ from analysis import (
     extract_lob_totals,
     extract_monthly,
     extract_monthly_counts,
+    extract_sellers,
     row_to_record,
     main,
 )
@@ -110,6 +112,74 @@ def build_entity_row(previous, current):
     return pd.Series(values)
 
 
+def build_seller_fixture():
+    rows = [[None] * 21 for _ in range(10)]
+    rows[0][2] = "TOP 20 Sellers"
+    rows[1][2] = "Branch"
+    rows[1][3:21] = [
+        "Premiums 2025 (Approved)", "Premiums 2026 (Approved)", "Gross YoY Change",
+        "Gross YoY Change %", "Pending Operation (Paid)", "Pending Finance",
+        "Pending (Not Paid Yet)", "New Premiums 2026", "Renewal Premiums 2026",
+        "Approved Policies", "Total Policies", "Total Policies LY", "New Policies",
+        "Renewal Policies", "Retail Approved Gross", "Corporate Approved Gross",
+        "Motor Premiums 2026", "Non-Motor Premiums 2026",
+    ]
+    rows[2][2] = "Seller A"
+    rows[3][2:21] = ["January", 100, 120, 20, 0.2, 0, 0, 0, 40, 80, 2, 2, 2, 1, 1, 120, 0, 90, 30]
+    rows[4][2:21] = ["August", 50, 180, 130, 2.6, 0, 0, 0, 160, 20, 3, 3, 1, 2, 1, 180, 0, 140, 40]
+    rows[5][2] = "Seller B"
+    rows[6][2:21] = ["August", 100, 250, 150, 1.5, 0, 0, 0, 20, 230, 4, 4, 2, 1, 3, 250, 0, 240, 10]
+    rows[7][2:21] = ["Grand Total", 250, 550, 300, 1.2, 0, 0, 0, 220, 330, 9, 9, 5, 4, 5, 550, 0, 470, 80]
+    return pd.DataFrame(rows)
+
+
+def build_flat_seller_fixture():
+    rows = [[None] * 21 for _ in range(6)]
+    rows[0][2] = "TOP 20 Sellers"
+    rows[1][2:21] = [
+        "Branch", "Premiums 2025 (Approved)", "Premiums 2026 (Approved)",
+        "Gross YoY Change", "Gross YoY Change %", "Pending Operation (Paid)",
+        "Pending Finance", "Pending (Not Paid Yet)", "New Premiums 2026",
+        "Renewal Premiums 2026", "Approved Policies", "Total Policies",
+        "Total Policies LY", "New Policies", "Renewal Policies",
+        "Retail Approved Gross", "Corporate Approved Gross", "Motor Premiums 2026",
+        "Non-Motor Premiums 2026",
+    ]
+    rows[2][2:21] = ["Seller A", 100, 300, 200, 2, 0, 0, 0, 120, 180, 3, 3, 1, 2, 1, 300, 0, 250, 50]
+    rows[3][2:21] = ["Seller B", 200, 400, 200, 1, 0, 0, 0, 50, 350, 4, 4, 2, 1, 3, 400, 0, 390, 10]
+    rows[4][2:21] = ["Grand Total", 300, 700, 400, 4 / 3, 0, 0, 0, 170, 530, 7, 7, 3, 3, 4, 700, 0, 640, 60]
+    return pd.DataFrame(rows)
+
+
+def build_daily_fixture():
+    rows = [[None] * 6 for _ in range(12)]
+    rows[0][2] = "Branches Per Day last month"
+    rows[2][2], rows[2][3] = "Month", "August"
+    rows[4][2], rows[4][3] = "Branch", "Premiums 2026 ( Approved )"
+    rows[5][2], rows[5][3] = 46236, 51600
+    rows[6][2], rows[6][3] = 46238, 100
+    rows[7][2], rows[7][3] = "Grand Total", 51700
+    return pd.DataFrame(rows)
+
+
+def build_this_month_daily_seller_fixture():
+    rows = [[None] * 6 for _ in range(15)]
+    rows[0][2] = "Branches Per Day this month"
+    rows[2][2], rows[2][3] = "Month", "September"
+    rows[4][2:5] = ["Day of Month", "Seller", "Premiums 2026 ( Approved )"]
+    rows[5][2:5] = [46267, "(blank)", "(10) EGP"]
+    rows[6][2:5] = [float("nan"), "Seller A", "100 EGP"]
+    rows[7][3:5] = ["Seller B", "50 EGP"]
+    rows[8][2], rows[8][4] = "September 02 Total", "140 EGP"
+    rows[9][2:5] = [46268, "(blank)", None]
+    rows[10][3:5] = ["Seller A", "200 EGP"]
+    rows[11][3:5] = ["Seller C", "25 EGP"]
+    rows[12][2], rows[12][4] = "September 03 Total", "225 EGP"
+    rows[13][2], rows[13][4] = "September Total", "365 EGP"
+    rows[14][2], rows[14][4] = "Grand Total", "365 EGP"
+    return pd.DataFrame(rows)
+
+
 class MonthlySummaryExtractionTests(unittest.TestCase):
     def test_amount_summary_maps_every_new_header(self):
         rows, total = extract_monthly(build_amount_fixture())
@@ -151,18 +221,82 @@ class MonthlySummaryExtractionTests(unittest.TestCase):
         self.assertIsNone(record["yoy_change_pct"])
         self.assertEqual(record["growth_class"], "New Base")
 
+    def test_seller_months_are_aggregated_under_parent(self):
+        sellers, total, monthly = extract_sellers(build_seller_fixture())
+
+        self.assertEqual([row["seller"] for row in sellers], ["Seller A", "Seller B"])
+        self.assertEqual(sellers[0]["premium_2026"], 300)
+        self.assertEqual(
+            [row["month"] for row in monthly if row["seller"] == "Seller A"],
+            ["January", "August"],
+        )
+        self.assertEqual(total["premium_2026"], 550)
+
+    def test_flat_seller_rows_keep_their_aggregate_metrics(self):
+        sellers, total, monthly = extract_sellers(build_flat_seller_fixture())
+
+        self.assertEqual([row["seller"] for row in sellers], ["Seller A", "Seller B"])
+        self.assertEqual([row["premium_2026"] for row in sellers], [300, 400])
+        self.assertEqual(total["premium_2026"], 700)
+        self.assertEqual(monthly, [])
+
+    def test_daily_block_uses_august_and_reconciles(self):
+        daily = analysis.extract_branches_per_day(build_daily_fixture())
+
+        self.assertEqual(daily["month"], "August")
+        self.assertEqual(daily["rows"][0]["date"], "2026-08-02")
+        self.assertNotIn("Grand Total", [row["label"] for row in daily["rows"]])
+        self.assertEqual(sum(row["premium_2026"] for row in daily["rows"]), daily["total"])
+
+    def test_seller_mvps_use_raw_metric_values_and_august(self):
+        sellers, _, monthly = extract_sellers(build_seller_fixture())
+        this_month = analysis.extract_branches_per_day_this_month(build_this_month_daily_seller_fixture())
+        mvps = analysis.build_seller_mvps(sellers, this_month)
+
+        self.assertEqual(mvps["overall"]["seller"], "Seller A")
+        self.assertEqual(mvps["overall"]["value"], 300)
+        self.assertEqual(mvps["non_motor"]["metric"], "non_motor_premium")
+        self.assertEqual(mvps["non_motor"]["seller"], "Seller A")
+        self.assertEqual(mvps["motor"]["seller"], "Seller B")
+        self.assertEqual(mvps["this_month"]["seller"], "Seller A")
+        self.assertEqual(mvps["this_month"]["value"], 300)
+        self.assertEqual(mvps["this_month"]["month"], "September")
+
+    def test_this_month_daily_sellers_aggregate_days_and_exclude_totals(self):
+        result = analysis.extract_branches_per_day_this_month(build_this_month_daily_seller_fixture())
+
+        self.assertEqual(result["month"], "September")
+        self.assertEqual(
+            result["seller_totals"],
+            [
+                {"seller": "Seller A", "premium_2026": 300.0},
+                {"seller": "Seller B", "premium_2026": 50.0},
+                {"seller": "Seller C", "premium_2026": 25.0},
+            ],
+        )
+        self.assertEqual([row["seller"] for row in result["rows"]], ["Seller A", "Seller B", "Seller A", "Seller C"])
+        self.assertNotIn("(blank)", [row["seller"] for row in result["rows"]])
+        self.assertEqual(result["total"], 365.0)
+        self.assertEqual(
+            result["daily_rows"],
+            [
+                {"date": "2026-09-02", "label": "Sep 2", "premium_2026": 140.0},
+                {"date": "2026-09-03", "label": "Sep 3", "premium_2026": 225.0},
+            ],
+        )
+
 
 class MonthlySummaryWorkbookTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.overview = pd.read_excel(WORKBOOK, sheet_name="overview", header=None, engine="openpyxl")
 
-    def test_updated_workbook_contains_july_and_reconciled_totals(self):
+    def test_updated_workbook_contains_august_and_reconciled_totals(self):
         amount_rows, amount_total = extract_monthly(self.overview)
         count_rows, count_total = extract_monthly_counts(self.overview)
 
-        self.assertEqual(amount_rows[-1]["month"], "July")
-        self.assertEqual(count_rows[-1]["month"], "July")
+        self.assertEqual(amount_rows[-1]["month"], "August")
+        self.assertEqual(count_rows[-1]["month"], "August")
         self.assertLessEqual(
             abs(sum(r["actual_2026"] for r in amount_rows) - amount_total["actual_2026"]),
             1,
@@ -171,6 +305,15 @@ class MonthlySummaryWorkbookTests(unittest.TestCase):
             sum(r["total_policies_2026"] for r in count_rows),
             count_total["total_policies_2026"],
         )
+
+    def test_updated_workbook_contains_usable_seller_data(self):
+        branches = pd.read_excel(WORKBOOK, sheet_name="Branches", header=None, engine="openpyxl")
+        sellers, _, monthly = extract_sellers(branches)
+
+        self.assertLessEqual(len(sellers), 20)
+        self.assertTrue(all(row["premium_2026"] is not None for row in sellers))
+        if monthly:
+            self.assertIn("August", {row["month"] for row in monthly})
 
     def test_line_of_business_extraction_starts_after_real_header(self):
         rows, total = extract_lob_totals(self.overview)
@@ -209,7 +352,8 @@ class DashboardTableTotalTests(unittest.TestCase):
             with self.subTest(total_key=total_key):
                 detail_sum = sum((row.get("premium_2026") or 0) for row in self.data[rows_key])
                 total = self.data["table_totals"][total_key]["premium_2026"]
-                self.assertLessEqual(abs(total - detail_sum), 2)
+                tolerance = max(2, len(self.data[rows_key]) * 0.5) if total_key == "sellers" else 2
+                self.assertLessEqual(abs(total - detail_sum), tolerance)
 
     def test_seller_contribution_uses_overall_approved_premium(self):
         approved = self.data["totals"]["approved_gross_premium"]

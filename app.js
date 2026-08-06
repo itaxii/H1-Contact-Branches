@@ -32,13 +32,14 @@ const CHART_DESCRIPTIONS = {
   sellerTop: "Ranks top sellers by 2026 premium to show who is driving production.",
   sellerGrowth: "Shows seller YoY movement to identify strong recoveries and sellers needing support.",
   sellerMix: "Shows each top seller's new versus renewal premium mix, which helps explain seller production quality.",
+  sellerNewTop: "Ranks sellers using only approved new-business premium from the workbook.",
+  sellerRenewalTop: "Ranks sellers using only approved renewal-business premium from the workbook.",
   insurerTop: "Ranks insurers by 2026 premium to show carrier concentration.",
   insurerGrowth: "Shows insurer YoY movement to identify where carrier production is growing or shrinking.",
   lobTop: "Ranks lines of business by 2026 premium to show the strongest product categories.",
   lobGrowth: "Shows YoY movement by line of business to identify product categories losing or gaining momentum.",
   lobMix: "Shows new versus renewal production by line of business to explain the business mix behind each product category.",
-  renewalLine: "Tracks monthly motor renewal rate, important for monitoring retention and renewal follow-up effectiveness.",
-  renewalFunnel: "Compares policies up for renewal, renewed, and not renewed to size the recovery opportunity.",
+  branchesPerDayChart: "Shows approved branch-channel premium by day for the workbook's latest month.",
   pendingBranch: "Shows pending value by branch so teams can prioritize conversion follow-up.",
   pendingMix: "Splits pending exposure by category to clarify whether the issue is operation-paid, finance, or not-paid-yet.",
 };
@@ -288,6 +289,7 @@ function renderKpis() {
   const k = data.kpis;
   const t = data.totals;
   const renewalTotal = data.renewals.find((r) => r.month === "Grand Total");
+  const renewalRate = renewalTotal?.renewal_rate ?? null;
   const cards = [
     kpiCard("Approved Gross Premiums", fmtMoney(t.approved_gross_premium), "vs YTD 2025", k["Approved Gross Premiums"].change_pct, "Below target", { status: "negative" }),
     kpiCard("Target Achievement", fmtPct(t.target_achievement_pct), "of 2026 target", t.target_variance_pct, `${fmtMoney(t.target_gap)} target gap`, { status: "warning" }),
@@ -297,7 +299,7 @@ function renderKpis() {
     kpiCard("Average Premium per Policy", fmtMoney(t.avg_premium_per_policy), "vs YTD 2025", k["Avg Premium per policy"].change_pct, "Higher ticket size offset lower volume"),
     kpiCard("New Premiums", fmtMoney(t.new_premium), "share of approved", t.new_premium_mix_pct, "New production mix", { status: "positive" }),
     kpiCard("Renewal Premiums", fmtMoney(t.renewal_premium), "share of approved", t.renewal_premium_mix_pct, "Renewal production mix", { status: "positive" }),
-    kpiCard("Motor Renewal Rate", fmtPct(renewalTotal.renewal_rate), "YTD aggregate", data.summary_metrics.renewal_variance_pct, `${fmtNumber(renewalTotal.not_renewed_policies)} not renewed`, { status: renewalTotal.renewal_rate >= 0.5 ? "positive" : "warning" }),
+    kpiCard("Motor Renewal Rate", fmtPct(renewalRate), "YTD aggregate", data.summary_metrics.renewal_variance_pct, renewalTotal ? `${fmtNumber(renewalTotal.not_renewed_policies)} not renewed` : "Not available in current workbook", { status: renewalRate >= 0.5 ? "positive" : "warning" }),
     kpiCard("Pending Pipeline", fmtMoney(t.pending_total), "of approved premium", t.pending_as_pct_approved, "Separate from approved premium", { status: "warning" }),
   ];
   document.getElementById("kpiGrid").innerHTML = cards.join("");
@@ -831,20 +833,38 @@ function entityColumns(nameKey) {
 
 function renderSellers() {
   const rows = data.sellers;
+  const mvpLabels = [
+    ["MVP Seller - Overall", data.seller_mvps.overall, "2026 approved premium"],
+    ["MVP Seller - Non-Motor", data.seller_mvps.non_motor, "2026 non-motor premium"],
+    ["MVP Seller - Motor", data.seller_mvps.motor, "2026 motor premium"],
+    ["MVP Seller - This Month", data.seller_mvps.this_month, `${data.seller_mvps.this_month.month} approved premium`],
+  ];
+  document.getElementById("sellerMvpGrid").innerHTML = mvpLabels
+    .map(([label, mvp, context]) => `<article class="kpi-card"><span>${label}</span><strong>${mvp.seller || "N/A"}</strong><div class="delta positive">${fmtMoney(mvp.value)}</div><p class="context">${context}</p></article>`)
+    .join("");
   bar("sellerTop", rows.slice().sort(byDesc("premium_2026")).slice(0, 10), "seller", "premium_2026", COLORS.blue);
   signedBar("sellerGrowth", rows.slice().sort(byDesc("yoy_change")).slice(0, 12), "seller", "yoy_change");
+  const sellerMixRows = rows.slice().sort(byDesc("premium_2026")).slice(0, 12);
   makeChart("sellerMix", {
     type: "bar",
     data: {
-      labels: rows.slice(0, 12).map((r) => shortLabel(r.seller, 18)),
+      labels: sellerMixRows.map((r) => shortLabel(r.seller, 18)),
       datasets: [
-        { label: "New", data: rows.slice(0, 12).map((r) => r.new_premium), backgroundColor: COLORS.blue },
-        { label: "Renewal", data: rows.slice(0, 12).map((r) => r.renewal_premium), backgroundColor: COLORS.green },
+        { label: "New", data: sellerMixRows.map((r) => r.new_premium), backgroundColor: COLORS.blue },
+        { label: "Renewal", data: sellerMixRows.map((r) => r.renewal_premium), backgroundColor: COLORS.green },
       ],
     },
     options: { responsive: true, maintainAspectRatio: false, indexAxis: "y", scales: { x: { stacked: true, ticks: { callback: (v) => fmtMoney(v) } }, y: { stacked: true } } },
   });
-  renderTable("sellerTable", entityColumns("seller"), rows, { totalRow: data.table_totals.sellers });
+  const topNew = rows.filter((row) => value(row.new_premium) > 0).sort(byDesc("new_premium")).slice(0, 10);
+  const topRenewal = rows.filter((row) => value(row.renewal_premium) > 0).sort(byDesc("renewal_premium")).slice(0, 10);
+  bar("sellerNewTop", topNew, "seller", "new_premium", COLORS.blue);
+  bar("sellerRenewalTop", topRenewal, "seller", "renewal_premium", COLORS.green);
+  renderTable("sellerTable", entityColumns("seller"), rows.slice(0, 20), {
+    rowKey: (row) => row.seller,
+    childrenFor: (row) => sellerMonthlyTable(row.seller),
+    totalRow: data.table_totals.sellers,
+  });
   document.getElementById("sellerSearch").addEventListener("input", (e) => {
     const q = e.target.value.toLowerCase();
     filterTable("sellerTable", (r) => r.seller.toLowerCase().includes(q));
@@ -918,26 +938,35 @@ function renderHeatmap() {
   });
 }
 
-function renderRenewals() {
-  const monthly = data.renewals.filter((r) => r.month !== "Grand Total");
-  const total = data.renewals.find((r) => r.month === "Grand Total");
-  const best = monthly.slice().sort(byDesc("renewal_rate"))[0];
-  const weakest = monthly.slice().sort(byAsc("renewal_rate"))[0];
-  document.getElementById("renewalStrip").innerHTML = [
-    ["Policies Up for Renewal", fmtNumber(total.policies_up_for_renewal)],
-    ["Renewed Policies", fmtNumber(total.renewed_policies)],
-    ["Not Renewed Policies", fmtNumber(total.not_renewed_policies)],
-    ["Overall YTD Renewal Rate", fmtPct(total.renewal_rate)],
-  ].map(([a, b]) => `<div class="summary-item"><span>${a}</span><strong>${b}</strong></div>`).join("");
-  makeChart("renewalLine", {
-    type: "line",
-    data: { labels: monthly.map((r) => r.month), datasets: [{ label: "Motor Renewal Rate %", data: monthly.map((r) => r.renewal_rate), borderColor: COLORS.blue, backgroundColor: COLORS.blue, tension: 0.25 }] },
-    options: { responsive: true, maintainAspectRatio: false, scales: { y: { min: 0, max: 0.7, ticks: { callback: (v) => fmtPct(v) } } } },
-  });
-  makeChart("renewalFunnel", {
+function sellerMonthlyTable(seller) {
+  const rows = data.seller_monthly.filter((row) => row.seller === seller);
+  const total = data.sellers.find((row) => row.seller === seller);
+  if (!rows.length) return `<p class="source-note">No monthly seller detail is available for ${seller}.</p>`;
+  return `<div class="nested-table-wrap"><table class="nested-table">
+    <thead><tr><th>Month</th><th>2025 Premium</th><th>2026 Premium</th><th>YoY Change</th><th>YoY %</th><th>New</th><th>Renewal</th><th>Approved Policies</th></tr></thead>
+    <tbody>${rows.map((row) => `<tr><td>${row.month}</td><td>${fmtMoney(row.premium_2025, false)}</td><td>${fmtMoney(row.premium_2026, false)}</td><td>${fmtMoney(row.yoy_change, false)}</td><td>${fmtPct(row.yoy_change_pct)}</td><td>${fmtMoney(row.new_premium, false)}</td><td>${fmtMoney(row.renewal_premium, false)}</td><td>${fmtNumber(row.approved_policies)}</td></tr>`).join("")}</tbody>
+    <tfoot><tr class="summary-total"><td>Grand Total</td><td>${fmtMoney(total.premium_2025, false)}</td><td>${fmtMoney(total.premium_2026, false)}</td><td>${fmtMoney(total.yoy_change, false)}</td><td>${fmtPct(total.yoy_change_pct)}</td><td>${fmtMoney(total.new_premium, false)}</td><td>${fmtMoney(total.renewal_premium, false)}</td><td>${fmtNumber(total.approved_policies)}</td></tr></tfoot>
+  </table></div>`;
+}
+
+function renderBranchesPerDay() {
+  const daily = data.branches_per_day_this_month;
+  document.getElementById("branchesPerDayMonth").textContent = `${daily.month} 2026`;
+  makeChart("branchesPerDayChart", {
     type: "bar",
-    data: { labels: ["Up for Renewal", "Renewed", "Not Renewed"], datasets: [{ label: "Policies", data: [total.policies_up_for_renewal, total.renewed_policies, total.not_renewed_policies], backgroundColor: [COLORS.blue, COLORS.green, COLORS.orange] }] },
-    options: { responsive: true, maintainAspectRatio: false, indexAxis: "y", scales: { x: { beginAtZero: true } } },
+    data: {
+      labels: daily.daily_rows.map((row) => row.label),
+      datasets: [{ label: "Approved Premium", data: daily.daily_rows.map((row) => row.premium_2026), backgroundColor: COLORS.blue }],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: { grid: { display: false } },
+        y: { beginAtZero: true, ticks: { callback: (v) => fmtMoney(v) } },
+      },
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => fmtMoney(ctx.raw) } } },
+    },
   });
 }
 
@@ -1074,7 +1103,7 @@ function init() {
   renderSellers();
   renderInsurers();
   renderLob();
-  renderRenewals();
+  renderBranchesPerDay();
   renderPending();
   renderDrivers();
   addChartDescriptions();

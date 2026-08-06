@@ -4,9 +4,9 @@
     {
       "name": "Monthly totals = overall total",
       "status": "pass",
-      "expected": 16095001.0,
-      "actual": 16095000.0,
-      "difference": -1.0,
+      "expected": 14689721.0,
+      "actual": 14689721.0,
+      "difference": 0.0,
       "tolerance": 1,
       "severity": "warning",
       "source": "workbook"
@@ -14,9 +14,9 @@
     {
       "name": "Monthly amount rows = workbook grand total",
       "status": "pass",
-      "expected": 16095001.0,
-      "actual": 16095000.0,
-      "difference": -1.0,
+      "expected": 14689721.0,
+      "actual": 14689721.0,
+      "difference": 0.0,
       "tolerance": 1,
       "severity": "warning",
       "source": "workbook"
@@ -24,8 +24,8 @@
     {
       "name": "Monthly count rows = workbook grand total",
       "status": "pass",
-      "expected": 2246.0,
-      "actual": 2246.0,
+      "expected": 2206.0,
+      "actual": 2206.0,
       "difference": 0.0,
       "tolerance": 0,
       "severity": "warning",
@@ -34,8 +34,8 @@
     {
       "name": "Branch totals = overall total",
       "status": "pass",
-      "expected": 16095001.0,
-      "actual": 16095002.0,
+      "expected": 14689721.0,
+      "actual": 14689722.0,
       "difference": 1.0,
       "tolerance": 1,
       "severity": "warning",
@@ -44,8 +44,8 @@
     {
       "name": "Line-of-business totals = overall total",
       "status": "pass",
-      "expected": 16095001.0,
-      "actual": 16095001.0,
+      "expected": 14689721.0,
+      "actual": 14689721.0,
       "difference": 0.0,
       "tolerance": 1,
       "severity": "warning",
@@ -54,8 +54,8 @@
     {
       "name": "Insurer totals = overall total",
       "status": "warning",
-      "expected": 16095001.0,
-      "actual": 16095003.0,
+      "expected": 14689721.0,
+      "actual": 14689723.0,
       "difference": 2.0,
       "tolerance": 1,
       "severity": "warning",
@@ -64,8 +64,8 @@
     {
       "name": "Pending category totals = total pending",
       "status": "pass",
-      "expected": 743520.0,
-      "actual": 743520.0,
+      "expected": 657142.0,
+      "actual": 657142.0,
       "difference": 0.0,
       "tolerance": 1,
       "severity": "error",
@@ -74,8 +74,8 @@
     {
       "name": "Policy-type premium totals = approved gross premium",
       "status": "pass",
-      "expected": 16095001.0,
-      "actual": 16095001.0,
+      "expected": 14689721.0,
+      "actual": 14689721.0,
       "difference": 0.0,
       "tolerance": 1,
       "severity": "error",
@@ -92,91 +92,21 @@
       "source": "report"
     },
     {
-      "name": "Renewal counts reconcile - January",
+      "name": "Branches per day rows = workbook daily total",
       "status": "pass",
-      "expected": 211.0,
-      "actual": 211.0,
+      "expected": 51700.0,
+      "actual": 51700.0,
       "difference": 0.0,
-      "tolerance": 0,
-      "severity": "error",
-      "source": "report"
-    },
-    {
-      "name": "Renewal counts reconcile - February",
-      "status": "pass",
-      "expected": 169.0,
-      "actual": 169.0,
-      "difference": 0.0,
-      "tolerance": 0,
-      "severity": "error",
-      "source": "report"
-    },
-    {
-      "name": "Renewal counts reconcile - March",
-      "status": "pass",
-      "expected": 180.0,
-      "actual": 180.0,
-      "difference": 0.0,
-      "tolerance": 0,
-      "severity": "error",
-      "source": "report"
-    },
-    {
-      "name": "Renewal counts reconcile - April",
-      "status": "pass",
-      "expected": 144.0,
-      "actual": 144.0,
-      "difference": 0.0,
-      "tolerance": 0,
-      "severity": "error",
-      "source": "report"
-    },
-    {
-      "name": "Renewal counts reconcile - May",
-      "status": "pass",
-      "expected": 181.0,
-      "actual": 181.0,
-      "difference": 0.0,
-      "tolerance": 0,
-      "severity": "error",
-      "source": "report"
-    },
-    {
-      "name": "Renewal counts reconcile - June",
-      "status": "pass",
-      "expected": 163.0,
-      "actual": 163.0,
-      "difference": 0.0,
-      "tolerance": 0,
-      "severity": "error",
-      "source": "report"
-    },
-    {
-      "name": "Renewal counts reconcile - July",
-      "status": "pass",
-      "expected": 169.0,
-      "actual": 169.0,
-      "difference": 0.0,
-      "tolerance": 0,
-      "severity": "error",
-      "source": "report"
-    },
-    {
-      "name": "Renewal counts reconcile - Grand Total",
-      "status": "pass",
-      "expected": 1217.0,
-      "actual": 1217.0,
-      "difference": 0.0,
-      "tolerance": 0,
-      "severity": "error",
-      "source": "report"
+      "tolerance": 1,
+      "severity": "warning",
+      "source": "workbook"
     },
     {
       "name": "Branch contribution shares total 100%",
       "status": "pass",
       "expected": 1,
-      "actual": 1.0000000621310927,
-      "difference": 6.213109271513417e-08,
+      "actual": 1.0000000680748122,
+      "difference": 6.807481223169987e-08,
       "tolerance": 0.0001,
       "severity": "error",
       "source": "report"
@@ -203,7 +133,7 @@
     }
   ],
   "percentage_checks": {
-    "checked": 1657,
+    "checked": 1793,
     "failures": []
   },
   "blocking_failures": [],
@@ -211,8 +141,8 @@
     {
       "name": "Insurer totals = overall total",
       "status": "warning",
-      "expected": 16095001.0,
-      "actual": 16095003.0,
+      "expected": 14689721.0,
+      "actual": 14689723.0,
       "difference": 2.0,
       "tolerance": 1,
       "severity": "warning",
@@ -223,8 +153,8 @@
     {
       "name": "Insurer totals = overall total",
       "status": "warning",
-      "expected": 16095001.0,
-      "actual": 16095003.0,
+      "expected": 14689721.0,
+      "actual": 14689723.0,
       "difference": 2.0,
       "tolerance": 1,
       "severity": "warning",
