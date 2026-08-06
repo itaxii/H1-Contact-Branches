@@ -939,7 +939,9 @@ function renderHeatmap() {
 }
 
 function sellerMonthlyTable(seller) {
-  const rows = data.seller_monthly.filter((row) => row.seller === seller);
+  const rows = data.seller_monthly
+    .filter((row) => row.seller === seller)
+    .sort((a, b) => MONTHS.indexOf(a.month) - MONTHS.indexOf(b.month));
   const total = data.sellers.find((row) => row.seller === seller);
   if (!rows.length) return `<p class="source-note">No monthly seller detail is available for ${seller}.</p>`;
   return `<div class="nested-table-wrap"><table class="nested-table">

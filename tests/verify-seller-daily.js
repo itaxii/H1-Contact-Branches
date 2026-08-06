@@ -89,6 +89,17 @@ async function main() {
     const childText = await page.locator("#sellerTable > tbody > tr.child-row").innerText();
     if (firstSellerMonths.length) firstSellerMonths.forEach((month) => assert.match(childText, new RegExp(month, "i")));
     else assert.match(childText, /No monthly seller detail is available/i);
+    const displayedSellerMonths = await page
+      .locator("#sellerTable > tbody > tr.child-row .nested-table tbody tr td:first-child")
+      .allTextContents();
+    const expectedSellerMonths = await page.evaluate(() => {
+      const seller = data.sellers[0].seller;
+      return data.seller_monthly
+        .filter((row) => row.seller === seller)
+        .map((row) => row.month)
+        .sort((a, b) => MONTHS.indexOf(a) - MONTHS.indexOf(b));
+    });
+    assert.deepEqual(displayedSellerMonths, expectedSellerMonths);
 
     assert.equal(await page.locator("#renewals, #renewalStrip, #renewalLine, #renewalFunnel").count(), 0);
     assert.equal(await page.locator("#branchesPerDay").count(), 1);
