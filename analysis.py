@@ -334,6 +334,10 @@ def extract_sellers(df):
             current_months.append(record)
             monthly.append(record)
             continue
+        if any(parse_number(row.iloc[cidx]) is not None for cidx in cols[1:]):
+            flush_seller()
+            records.append(row_to_record(row, cols, "seller"))
+            continue
         flush_seller()
         current_seller = name
     flush_seller()
@@ -378,7 +382,50 @@ def extract_branches_per_day(df):
     return {"month": month, "rows": rows, "total": total}
 
 
-def build_seller_mvps(sellers, seller_monthly, latest_month):
+def extract_branches_per_day_this_month(df):
+    title_row = find_row(df, "Branches Per Day this month", col=2)
+    if title_row is None:
+        return {"month": None, "rows": [], "seller_totals": [], "total": None}
+    month_row = find_row(df, "Month", start=title_row + 1, col=2)
+    header_row = find_row(df, "Day of Month", start=title_row + 1, col=2)
+    month = clean_name(df.iat[month_row, 3]) if month_row is not None else None
+    if header_row is None:
+        return {"month": month, "rows": [], "seller_totals": [], "total": None}
+
+    rows = []
+    totals_by_seller = {}
+    total = None
+    current_date = None
+    for ridx in range(header_row + 1, len(df)):
+        raw_day = df.iat[ridx, 2]
+        day_label = clean_name(raw_day)
+        seller = clean_name(df.iat[ridx, 3])
+        premium = parse_number(df.iat[ridx, 4])
+
+        if day_label.lower() == "grand total":
+            total = premium
+            break
+        if pd.notna(raw_day) and isinstance(raw_day, (int, float)) and not isinstance(raw_day, bool):
+            current_date = pd.Timestamp("1899-12-30") + pd.to_timedelta(raw_day, unit="D")
+        if not seller or seller.lower() == "(blank)" or is_total_label(seller) or premium is None:
+            continue
+
+        record = {
+            "date": current_date.strftime("%Y-%m-%d") if current_date is not None else None,
+            "seller": seller,
+            "premium_2026": premium,
+        }
+        rows.append(record)
+        totals_by_seller[seller] = totals_by_seller.get(seller, 0.0) + premium
+
+    seller_totals = [
+        {"seller": seller, "premium_2026": premium}
+        for seller, premium in totals_by_seller.items()
+    ]
+    return {"month": month, "rows": rows, "seller_totals": seller_totals, "total": total}
+
+
+def build_seller_mvps(sellers, this_month):
     def winner(rows, metric, month=None):
         candidates = [row for row in rows if money(row.get(metric)) > 0]
         if not candidates:
@@ -391,12 +438,11 @@ def build_seller_mvps(sellers, seller_monthly, latest_month):
             "month": month,
         }
 
-    latest_rows = [row for row in seller_monthly if row.get("month") == latest_month]
     return {
         "overall": winner(sellers, "premium_2026"),
         "non_motor": winner(sellers, "non_motor_premium"),
         "motor": winner(sellers, "motor_premium"),
-        "last_month": winner(latest_rows, "premium_2026", latest_month),
+        "this_month": winner(this_month["seller_totals"], "premium_2026", this_month["month"]),
     }
 
 
@@ -1368,6 +1414,7 @@ def main():
     sellers, seller_total, seller_monthly = extract_sellers(branches_sheet)
     branches_per_month = extract_branches_per_month(branches_sheet)
     branches_per_day_last_month = extract_branches_per_day(branches_sheet)
+    branches_per_day_this_month = extract_branches_per_day_this_month(branches_sheet)
 
     approved = kpis["Approved Gross Premiums"]["value_2026"]
     target = monthly_total["target_2026"]
@@ -1402,7 +1449,7 @@ def main():
     reporting_months = [r["month"] for r in monthly if r["month"] in MONTH_ORDER and money(r["actual_2026"]) != 0]
     reporting_period = month_range_label(reporting_months)
     latest_reporting_month = reporting_months[-1] if reporting_months else None
-    seller_mvps = build_seller_mvps(sellers, seller_monthly, branches_per_day_last_month["month"] or latest_reporting_month)
+    seller_mvps = build_seller_mvps(sellers, branches_per_day_this_month)
     table_totals = {
         "branches": normalize_entity_total(branch_total, branches, "branch"),
         "sellers": normalize_entity_total(seller_total, sellers, "seller"),
@@ -1435,6 +1482,7 @@ def main():
         "seller_monthly": seller_monthly,
         "seller_mvps": seller_mvps,
         "branches_per_day_last_month": branches_per_day_last_month,
+        "branches_per_day_this_month": branches_per_day_this_month,
         "insurers": insurers,
         "lines_of_business": lobs,
         "line_of_business_monthly": lob_monthly,

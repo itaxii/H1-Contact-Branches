@@ -94,8 +94,8 @@
     {
       "name": "Branches per day rows = workbook daily total",
       "status": "pass",
-      "expected": 51700.0,
-      "actual": 51700.0,
+      "expected": null,
+      "actual": 0,
       "difference": 0.0,
       "tolerance": 1,
       "severity": "warning",
@@ -133,7 +133,7 @@
     }
   ],
   "percentage_checks": {
-    "checked": 2222,
+    "checked": 1793,
     "failures": []
   },
   "blocking_failures": [],

@@ -837,7 +837,7 @@ function renderSellers() {
     ["MVP Seller - Overall", data.seller_mvps.overall, "2026 approved premium"],
     ["MVP Seller - Non-Motor", data.seller_mvps.non_motor, "2026 non-motor premium"],
     ["MVP Seller - Motor", data.seller_mvps.motor, "2026 motor premium"],
-    ["MVP Seller - Last Month", data.seller_mvps.last_month, `${data.seller_mvps.last_month.month} approved premium`],
+    ["MVP Seller - This Month", data.seller_mvps.this_month, `${data.seller_mvps.this_month.month} approved premium`],
   ];
   document.getElementById("sellerMvpGrid").innerHTML = mvpLabels
     .map(([label, mvp, context]) => `<article class="kpi-card"><span>${label}</span><strong>${mvp.seller || "N/A"}</strong><div class="delta positive">${fmtMoney(mvp.value)}</div><p class="context">${context}</p></article>`)

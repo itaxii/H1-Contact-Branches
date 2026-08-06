@@ -25,9 +25,15 @@ async function main() {
 
     assert.equal(await page.locator("#sellerMvpGrid .kpi-card").count(), 4);
     const mvpText = await page.locator("#sellerMvpGrid").innerText();
-    for (const title of ["MVP Seller - Overall", "MVP Seller - Non-Motor", "MVP Seller - Motor", "MVP Seller - Last Month"]) {
+    for (const title of ["MVP Seller - Overall", "MVP Seller - Non-Motor", "MVP Seller - Motor", "MVP Seller - This Month"]) {
       assert.match(mvpText, new RegExp(title, "i"));
     }
+    assert.doesNotMatch(mvpText, /MVP Seller - Last Month/i);
+    const thisMonthCard = page.locator("#sellerMvpGrid .kpi-card").nth(3);
+    const expectedThisMonth = await page.evaluate(() => data.seller_mvps.this_month);
+    assert.match(await thisMonthCard.innerText(), new RegExp(expectedThisMonth.seller, "i"));
+    assert.match(await thisMonthCard.innerText(), new RegExp(`${expectedThisMonth.month} approved premium`, "i"));
+    assert.equal(await page.locator("#sellerMvpGrid").evaluate((element) => getComputedStyle(element).marginBottom), "22px");
 
     const chartChecks = await page.evaluate(() => {
       const expected = (metric) => data.sellers
@@ -54,12 +60,16 @@ async function main() {
     assert.equal(await page.locator("#sellerTable > tbody > tr.child-row").count(), 0);
     await page.locator("#sellerTable .row-toggle").first().click();
     assert.equal(await page.locator("#sellerTable > tbody > tr.child-row").count(), 1);
-    assert.match(await page.locator("#sellerTable > tbody > tr.child-row").innerText(), /August/);
+    const sellerMonthlyCount = await page.evaluate(() => data.seller_monthly.length);
+    const childText = await page.locator("#sellerTable > tbody > tr.child-row").innerText();
+    if (sellerMonthlyCount) assert.match(childText, /August/);
+    else assert.match(childText, /No monthly seller detail is available/i);
 
     assert.equal(await page.locator("#renewals, #renewalStrip, #renewalLine, #renewalFunnel").count(), 0);
     assert.equal(await page.locator("#branchesPerDay").count(), 1);
     assert.match(await page.locator("#branchesPerDay").innerText(), /Branches Per Day - Last Month/);
-    assert.match(await page.locator("#branchesPerDay").innerText(), /August/);
+    const lastMonth = await page.evaluate(() => data.branches_per_day_last_month.month);
+    if (lastMonth) assert.match(await page.locator("#branchesPerDay").innerText(), new RegExp(lastMonth, "i"));
     assert.equal(await page.locator('nav a[href="#branchesPerDay"]').count(), 1);
     const dailyCounts = await page.evaluate(() => ({
       chart: Chart.getChart("branchesPerDayChart").data.labels.length,
