@@ -17722,6 +17722,18 @@ window.REPORT_DATA = {
         "premium_2026": 53263.0
       }
     ],
+    "daily_rows": [
+      {
+        "date": "2026-08-02",
+        "label": "Aug 2",
+        "premium_2026": 51600.0
+      },
+      {
+        "date": "2026-08-04",
+        "label": "Aug 4",
+        "premium_2026": 100.0
+      }
+    ],
     "seller_totals": [
       {
         "seller": "Ashraqat Mahmuod Hosny Qurashi",
@@ -42913,8 +42925,8 @@ window.REPORT_DATA = {
       {
         "name": "Branches per day rows = workbook daily total",
         "status": "pass",
-        "expected": null,
-        "actual": 0,
+        "expected": 51700.0,
+        "actual": 51700.0,
         "difference": 0.0,
         "tolerance": 1,
         "severity": "warning",

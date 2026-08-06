@@ -844,13 +844,14 @@ function renderSellers() {
     .join("");
   bar("sellerTop", rows.slice().sort(byDesc("premium_2026")).slice(0, 10), "seller", "premium_2026", COLORS.blue);
   signedBar("sellerGrowth", rows.slice().sort(byDesc("yoy_change")).slice(0, 12), "seller", "yoy_change");
+  const sellerMixRows = rows.slice().sort(byDesc("premium_2026")).slice(0, 12);
   makeChart("sellerMix", {
     type: "bar",
     data: {
-      labels: rows.slice(0, 12).map((r) => shortLabel(r.seller, 18)),
+      labels: sellerMixRows.map((r) => shortLabel(r.seller, 18)),
       datasets: [
-        { label: "New", data: rows.slice(0, 12).map((r) => r.new_premium), backgroundColor: COLORS.blue },
-        { label: "Renewal", data: rows.slice(0, 12).map((r) => r.renewal_premium), backgroundColor: COLORS.green },
+        { label: "New", data: sellerMixRows.map((r) => r.new_premium), backgroundColor: COLORS.blue },
+        { label: "Renewal", data: sellerMixRows.map((r) => r.renewal_premium), backgroundColor: COLORS.green },
       ],
     },
     options: { responsive: true, maintainAspectRatio: false, indexAxis: "y", scales: { x: { stacked: true, ticks: { callback: (v) => fmtMoney(v) } }, y: { stacked: true } } },
@@ -949,13 +950,13 @@ function sellerMonthlyTable(seller) {
 }
 
 function renderBranchesPerDay() {
-  const daily = data.branches_per_day_last_month;
+  const daily = data.branches_per_day_this_month;
   document.getElementById("branchesPerDayMonth").textContent = `${daily.month} 2026`;
   makeChart("branchesPerDayChart", {
     type: "bar",
     data: {
-      labels: daily.rows.map((row) => row.label),
-      datasets: [{ label: "Approved Premium", data: daily.rows.map((row) => row.premium_2026), backgroundColor: COLORS.blue }],
+      labels: daily.daily_rows.map((row) => row.label),
+      datasets: [{ label: "Approved Premium", data: daily.daily_rows.map((row) => row.premium_2026), backgroundColor: COLORS.blue }],
     },
     options: {
       responsive: true,

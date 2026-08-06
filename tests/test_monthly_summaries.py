@@ -277,6 +277,13 @@ class MonthlySummaryExtractionTests(unittest.TestCase):
         self.assertEqual([row["seller"] for row in result["rows"]], ["Seller A", "Seller B", "Seller A", "Seller C"])
         self.assertNotIn("(blank)", [row["seller"] for row in result["rows"]])
         self.assertEqual(result["total"], 365.0)
+        self.assertEqual(
+            result["daily_rows"],
+            [
+                {"date": "2026-09-02", "label": "Sep 2", "premium_2026": 140.0},
+                {"date": "2026-09-03", "label": "Sep 3", "premium_2026": 225.0},
+            ],
+        )
 
 
 class MonthlySummaryWorkbookTests(unittest.TestCase):

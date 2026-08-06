@@ -33,7 +33,17 @@ async function main() {
     const expectedThisMonth = await page.evaluate(() => data.seller_mvps.this_month);
     assert.match(await thisMonthCard.innerText(), new RegExp(expectedThisMonth.seller, "i"));
     assert.match(await thisMonthCard.innerText(), new RegExp(`${expectedThisMonth.month} approved premium`, "i"));
-    assert.equal(await page.locator("#sellerMvpGrid").evaluate((element) => getComputedStyle(element).marginBottom), "22px");
+    const sellerSpacing = await page.evaluate(() => {
+      const mvpGrid = document.getElementById("sellerMvpGrid");
+      const cardsBottom = Math.max(...Array.from(mvpGrid.children).map((card) => card.getBoundingClientRect().bottom));
+      const chartTop = mvpGrid.nextElementSibling.getBoundingClientRect().top;
+      return {
+        paddingBottom: getComputedStyle(mvpGrid).paddingBottom,
+        visibleGap: chartTop - cardsBottom,
+      };
+    });
+    assert.equal(sellerSpacing.paddingBottom, "24px");
+    assert.ok(sellerSpacing.visibleGap >= 23, `Expected at least 23px visible gap, received ${sellerSpacing.visibleGap}px`);
 
     const chartChecks = await page.evaluate(() => {
       const expected = (metric) => data.sellers
@@ -56,6 +66,18 @@ async function main() {
     assert.deepEqual(chartChecks.newValues, chartChecks.expectedNew);
     assert.deepEqual(chartChecks.renewalValues, chartChecks.expectedRenewal);
 
+    const sellerMixOrder = await page.evaluate(() => {
+      const chart = Chart.getChart("sellerMix");
+      const expected = data.sellers.slice().sort((a, b) => Number(b.premium_2026) - Number(a.premium_2026)).slice(0, 12);
+      return {
+        labels: chart.data.labels,
+        expectedLabels: expected.map((row) => shortLabel(row.seller, 18)),
+        totals: chart.data.datasets[0].data.map((value, index) => Number(value) + Number(chart.data.datasets[1].data[index])),
+      };
+    });
+    assert.deepEqual(sellerMixOrder.labels, sellerMixOrder.expectedLabels);
+    assert.deepEqual(sellerMixOrder.totals, sellerMixOrder.totals.slice().sort((a, b) => b - a));
+
     assert.ok(await page.locator("#sellerTable > tbody > tr:not(.child-row)").count() <= 20);
     assert.equal(await page.locator("#sellerTable > tbody > tr.child-row").count(), 0);
     await page.locator("#sellerTable .row-toggle").first().click();
@@ -67,15 +89,18 @@ async function main() {
 
     assert.equal(await page.locator("#renewals, #renewalStrip, #renewalLine, #renewalFunnel").count(), 0);
     assert.equal(await page.locator("#branchesPerDay").count(), 1);
-    assert.match(await page.locator("#branchesPerDay").innerText(), /Branches Per Day - Last Month/);
-    const lastMonth = await page.evaluate(() => data.branches_per_day_last_month.month);
-    if (lastMonth) assert.match(await page.locator("#branchesPerDay").innerText(), new RegExp(lastMonth, "i"));
+    assert.match(await page.locator("#branchesPerDay").innerText(), /Branches Per Day - This Month/);
+    const thisMonth = await page.evaluate(() => data.branches_per_day_this_month.month);
+    assert.match(await page.locator("#branchesPerDay").innerText(), new RegExp(thisMonth, "i"));
     assert.equal(await page.locator('nav a[href="#branchesPerDay"]').count(), 1);
     const dailyCounts = await page.evaluate(() => ({
       chart: Chart.getChart("branchesPerDayChart").data.labels.length,
-      source: data.branches_per_day_last_month.rows.length,
+      source: data.branches_per_day_this_month.daily_rows.length,
+      values: Chart.getChart("branchesPerDayChart").data.datasets[0].data,
+      expectedValues: data.branches_per_day_this_month.daily_rows.map((row) => row.premium_2026),
     }));
     assert.equal(dailyCounts.chart, dailyCounts.source);
+    assert.deepEqual(dailyCounts.values, dailyCounts.expectedValues);
 
     const renewalCard = page.locator("#kpiGrid .kpi-card").filter({ hasText: "Motor Renewal Rate" });
     assert.equal(await renewalCard.count(), 1);

@@ -31,6 +31,11 @@ def build_valid_validation_data():
             "rows": [{"premium_2026": 100}],
             "total": 100,
         },
+        "branches_per_day_this_month": {
+            "month": "September",
+            "daily_rows": [{"premium_2026": 100}],
+            "total": 100,
+        },
         "renewals": [
             {
                 "month": "Grand Total",
@@ -159,6 +164,16 @@ class ReportValidationTests(unittest.TestCase):
 
         self.assertEqual(result["status"], "blocked")
         self.assertTrue(any("Renewal counts reconcile" in item["name"] for item in result["blocking_failures"]))
+
+    def test_daily_reconciliation_uses_this_month_day_totals(self):
+        data = build_valid_validation_data()
+        data["branches_per_day_this_month"]["daily_rows"][0]["premium_2026"] = 90
+
+        result = validate_report(data, MetricRegistry())
+
+        warning = next(item for item in result["warnings"] if item["name"] == "Branches per day rows = workbook daily total")
+        self.assertEqual(warning["expected"], 100)
+        self.assertEqual(warning["actual"], 90)
 
 
 if __name__ == "__main__":

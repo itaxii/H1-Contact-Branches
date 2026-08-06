@@ -385,14 +385,15 @@ def extract_branches_per_day(df):
 def extract_branches_per_day_this_month(df):
     title_row = find_row(df, "Branches Per Day this month", col=2)
     if title_row is None:
-        return {"month": None, "rows": [], "seller_totals": [], "total": None}
+        return {"month": None, "rows": [], "daily_rows": [], "seller_totals": [], "total": None}
     month_row = find_row(df, "Month", start=title_row + 1, col=2)
     header_row = find_row(df, "Day of Month", start=title_row + 1, col=2)
     month = clean_name(df.iat[month_row, 3]) if month_row is not None else None
     if header_row is None:
-        return {"month": month, "rows": [], "seller_totals": [], "total": None}
+        return {"month": month, "rows": [], "daily_rows": [], "seller_totals": [], "total": None}
 
     rows = []
+    daily_rows = []
     totals_by_seller = {}
     total = None
     current_date = None
@@ -407,6 +408,15 @@ def extract_branches_per_day_this_month(df):
             break
         if pd.notna(raw_day) and isinstance(raw_day, (int, float)) and not isinstance(raw_day, bool):
             current_date = pd.Timestamp("1899-12-30") + pd.to_timedelta(raw_day, unit="D")
+        if re.fullmatch(r"[A-Za-z]+\s+\d{1,2}\s+Total", day_label, flags=re.IGNORECASE) and premium is not None:
+            daily_rows.append(
+                {
+                    "date": current_date.strftime("%Y-%m-%d") if current_date is not None else None,
+                    "label": f"{current_date.strftime('%b')} {current_date.day}" if current_date is not None else day_label[:-6],
+                    "premium_2026": premium,
+                }
+            )
+            continue
         if not seller or seller.lower() == "(blank)" or is_total_label(seller) or premium is None:
             continue
 
@@ -422,7 +432,7 @@ def extract_branches_per_day_this_month(df):
         {"seller": seller, "premium_2026": premium}
         for seller, premium in totals_by_seller.items()
     ]
-    return {"month": month, "rows": rows, "seller_totals": seller_totals, "total": total}
+    return {"month": month, "rows": rows, "daily_rows": daily_rows, "seller_totals": seller_totals, "total": total}
 
 
 def build_seller_mvps(sellers, this_month):
@@ -1353,8 +1363,8 @@ def validate_report(data, registry=None):
         make_check("Premium distribution branch counts = unique branches", len(data["branches"]), sum(int(r["count"]) for r in data["premium_distribution_bins"]), tolerance=0),
         make_check(
             "Branches per day rows = workbook daily total",
-            data["branches_per_day_last_month"]["total"],
-            sum(money(r["premium_2026"]) for r in data["branches_per_day_last_month"]["rows"]),
+            data["branches_per_day_this_month"]["total"],
+            sum(money(r["premium_2026"]) for r in data["branches_per_day_this_month"]["daily_rows"]),
             severity="warning",
             source="workbook",
         ),
