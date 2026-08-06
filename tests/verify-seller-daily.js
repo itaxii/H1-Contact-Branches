@@ -82,9 +82,12 @@ async function main() {
     assert.equal(await page.locator("#sellerTable > tbody > tr.child-row").count(), 0);
     await page.locator("#sellerTable .row-toggle").first().click();
     assert.equal(await page.locator("#sellerTable > tbody > tr.child-row").count(), 1);
-    const sellerMonthlyCount = await page.evaluate(() => data.seller_monthly.length);
+    const firstSellerMonths = await page.evaluate(() => {
+      const seller = data.sellers[0].seller;
+      return data.seller_monthly.filter((row) => row.seller === seller).map((row) => row.month);
+    });
     const childText = await page.locator("#sellerTable > tbody > tr.child-row").innerText();
-    if (sellerMonthlyCount) assert.match(childText, /August/);
+    if (firstSellerMonths.length) firstSellerMonths.forEach((month) => assert.match(childText, new RegExp(month, "i")));
     else assert.match(childText, /No monthly seller detail is available/i);
 
     assert.equal(await page.locator("#renewals, #renewalStrip, #renewalLine, #renewalFunnel").count(), 0);
