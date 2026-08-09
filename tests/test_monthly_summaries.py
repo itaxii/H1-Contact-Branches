@@ -422,5 +422,12 @@ class DashboardTableTotalTests(unittest.TestCase):
                 self.assertEqual(seller["new_policies"], sum((row["new_policies"] or 0) for row in months))
                 self.assertEqual(seller["renewal_policies"], sum((row["renewal_policies"] or 0) for row in months))
 
+    def test_missing_renewal_table_has_unavailable_data_quality_note(self):
+        self.assertEqual(self.data["renewals"], [])
+        self.assertIn(
+            "Workbook has no dedicated renewal-policy table; renewal-rate analysis is unavailable.",
+            self.data["data_quality_notes"],
+        )
+
 if __name__ == "__main__":
     unittest.main()

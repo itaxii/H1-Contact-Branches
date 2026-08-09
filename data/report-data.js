@@ -23703,7 +23703,7 @@ window.REPORT_DATA = {
     "Workbook values include formatted text such as EGP amounts, percentages, blanks, and parentheses for negatives; analysis.py converts these before calculation.",
     "Grand Total, month total, and year total rows are excluded from rankings and retained only for reconciliation.",
     "Seller data comes from the workbook's Top 20 seller section, not a complete all-seller extract.",
-    "Renewal-rate analysis is based on aggregated monthly workbook counts; policy-level renewal aging and reasons for non-renewal are not available.",
+    "Workbook has no dedicated renewal-policy table; renewal-rate analysis is unavailable.",
     "Pending values are reported separately from approved premium and are not added to approved production.",
     "Some percentage fields are mixed between decimal and formatted percentage text; all are normalized to decimal rates in JSON.",
     "Rows with no prior-year base are labeled separately so high growth from a tiny or blank base is not overstated.",
