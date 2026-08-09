@@ -257,7 +257,7 @@ def aggregate_entity_records(records, name_key, name):
     aggregate = {name_key: name}
     for field in ENTITY_SUM_FIELDS:
         values = [record.get(field) for record in records if record.get(field) is not None]
-        aggregate[field] = sum(values) if values else None
+        aggregate[field] = sum(values) if values else 0 if field in {"new_policies", "renewal_policies"} else None
     aggregate["yoy_change"] = (
         aggregate["premium_2026"] - aggregate["premium_2025"]
         if aggregate["premium_2026"] is not None and aggregate["premium_2025"] is not None
@@ -530,13 +530,30 @@ def extract_kpis(df):
 
 
 def extract_renewals(df):
+    header_row = find_row(df, "Renewed Policies")
+    if header_row is None:
+        return []
+
+    columns = {
+        normalize_header(df.iat[header_row, cidx]): cidx
+        for cidx in range(df.shape[1])
+        if normalize_header(df.iat[header_row, cidx])
+    }
+    month_column = columns.get(normalize_header("Month"))
+    renewed_column = columns.get(normalize_header("Renewed Policies"))
+    up_for_renewal_column = columns.get(normalize_header("Policies Up for Renewal"))
+    if None in {month_column, renewed_column, up_for_renewal_column}:
+        return []
+
     records = []
-    for ridx in range(13, 21):
-        month = clean_name(df.iat[ridx, 9])
+    for ridx in range(header_row + 1, len(df)):
+        month = clean_name(df.iat[ridx, month_column])
         if month not in MONTH_ORDER and month != "Grand Total":
+            if records and not month:
+                break
             continue
-        renewed = parse_number(df.iat[ridx, 10])
-        up_for_renewal = parse_number(df.iat[ridx, 11])
+        renewed = parse_number(df.iat[ridx, renewed_column])
+        up_for_renewal = parse_number(df.iat[ridx, up_for_renewal_column])
         not_renewed = None if renewed is None or up_for_renewal is None else up_for_renewal - renewed
         rate = safe_div(renewed, up_for_renewal)
         records.append(
@@ -677,25 +694,85 @@ def extract_status_mix(df):
 
 
 def extract_insurers(df):
+    field_aliases = {
+        "insurance_company": ("Insurance Company",),
+        "premium_2025": ("2025",),
+        "premium_2026": ("2026",),
+        "source_yoy_change": ("2025 VS 2026 YOY",),
+        "source_yoy_change_pct": ("Gross YoY Change %",),
+        "new_policies_2026": ("New Policies 2026",),
+        "renewal_policies_2026": ("Renewal Policies 2026",),
+        "other_policies_2026": ("Other Policies 2026",),
+    }
+    section_titles = (
+        "2025 vs 2026 By Insurance Company Summary",
+        "2025 vs 2026 By Insurer",
+    )
+    section_title = section_titles[0]
+    section_row = next((find_row(df, title) for title in section_titles if find_row(df, title) is not None), None)
+    if section_row is None:
+        raise ValueError(f"Missing workbook section: {section_title}")
+    header_row = find_row(df, "Insurance Company", start=section_row)
+    if header_row is None:
+        raise ValueError(f"Missing Insurance Company header after workbook section: {section_title}")
+    headers = {}
+    for cidx in range(df.shape[1]):
+        normalized = normalize_header(df.iat[header_row, cidx])
+        if normalized:
+            headers.setdefault(normalized, []).append(cidx)
+
+    columns = {}
+    for key, aliases in field_aliases.items():
+        columns[key] = next(
+            (
+                headers[normalize_header(alias)][-1]
+                if key == "other_policies_2026"
+                else headers[normalize_header(alias)][0]
+                for alias in aliases
+                if normalize_header(alias) in headers
+            ),
+            None,
+        )
+        if columns[key] is None and key in {"source_yoy_change", "source_yoy_change_pct"}:
+            legacy_change_columns = headers.get(normalize_header("Change"), [])
+            if len(legacy_change_columns) >= 2:
+                columns[key] = legacy_change_columns[0 if key == "source_yoy_change" else 1]
+        if columns[key] is None and key in {
+            "new_policies_2026",
+            "renewal_policies_2026",
+            "other_policies_2026",
+        }:
+            continue
+        if columns[key] is None:
+            raise ValueError(f"Missing column '{aliases[0]}' in workbook section: {section_title}")
+
     records = []
     total = None
-    header_row = find_row(df, "Insurance Company", col=9) or 37
     for ridx in range(header_row + 1, len(df)):
-        name = clean_name(df.iat[ridx, 9])
+        name = clean_name(df.iat[ridx, columns["insurance_company"]])
         if not name:
             if records:
                 break
             continue
-        premium_2025 = parse_number(df.iat[ridx, 10])
-        premium_2026 = parse_number(df.iat[ridx, 11])
+        premium_2025 = parse_number(df.iat[ridx, columns["premium_2025"]])
+        premium_2026 = parse_number(df.iat[ridx, columns["premium_2026"]])
         rec = {
             "insurance_company": name,
             "premium_2025": premium_2025,
             "premium_2026": premium_2026,
             "yoy_change": premium_2026 - premium_2025 if premium_2026 is not None and premium_2025 is not None else None,
             "yoy_change_pct": safe_yoy(premium_2026, premium_2025),
-            "source_yoy_change": parse_number(df.iat[ridx, 12]),
-            "source_yoy_change_pct": parse_percent(df.iat[ridx, 13]),
+            "source_yoy_change": parse_number(df.iat[ridx, columns["source_yoy_change"]]),
+            "source_yoy_change_pct": parse_percent(df.iat[ridx, columns["source_yoy_change_pct"]]),
+            "new_policies_2026": parse_number(df.iat[ridx, columns["new_policies_2026"]])
+            if columns["new_policies_2026"] is not None
+            else None,
+            "renewal_policies_2026": parse_number(df.iat[ridx, columns["renewal_policies_2026"]])
+            if columns["renewal_policies_2026"] is not None
+            else None,
+            "other_policies_2026": parse_number(df.iat[ridx, columns["other_policies_2026"]])
+            if columns["other_policies_2026"] is not None
+            else None,
         }
         if name.lower() == "grand total":
             total = rec
@@ -1507,7 +1584,9 @@ def main():
             "Workbook values include formatted text such as EGP amounts, percentages, blanks, and parentheses for negatives; analysis.py converts these before calculation.",
             "Grand Total, month total, and year total rows are excluded from rankings and retained only for reconciliation.",
             "Seller data comes from the workbook's Top 20 seller section, not a complete all-seller extract.",
-            "Renewal-rate analysis is based on aggregated monthly workbook counts; policy-level renewal aging and reasons for non-renewal are not available.",
+            "Renewal-rate analysis is based on aggregated monthly workbook counts; policy-level renewal aging and reasons for non-renewal are not available."
+            if renewals
+            else "Workbook has no dedicated renewal-policy table; renewal-rate analysis is unavailable.",
             "Pending values are reported separately from approved premium and are not added to approved production.",
             "Some percentage fields are mixed between decimal and formatted percentage text; all are normalized to decimal rates in JSON.",
             "Rows with no prior-year base are labeled separately so high growth from a tiny or blank base is not overstated.",

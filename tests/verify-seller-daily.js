@@ -80,6 +80,13 @@ async function main() {
 
     assert.ok(await page.locator("#sellerTable > tbody > tr:not(.child-row)").count() <= 20);
     assert.equal(await page.locator("#sellerTable > tbody > tr.child-row").count(), 0);
+    const sellerHeaders = await page.locator("#sellerTable thead th").allTextContents();
+    assert.ok(sellerHeaders.includes("New Policies 2026"));
+    assert.ok(sellerHeaders.includes("Renewal Policies 2026"));
+    const sellerWithMonthlyDetail = await page.evaluate(() => data.sellers
+      .slice(0, 20)
+      .findIndex((seller) => data.seller_monthly.some((row) => row.seller === seller.seller)));
+    assert.ok(sellerWithMonthlyDetail >= 0, "Expected at least one displayed seller with monthly detail");
     await page.locator("#sellerTable .row-toggle").first().click();
     assert.equal(await page.locator("#sellerTable > tbody > tr.child-row").count(), 1);
     const firstSellerMonths = await page.evaluate(() => {
@@ -88,18 +95,47 @@ async function main() {
     });
     const childText = await page.locator("#sellerTable > tbody > tr.child-row").innerText();
     if (firstSellerMonths.length) firstSellerMonths.forEach((month) => assert.match(childText, new RegExp(month, "i")));
-    else assert.match(childText, /No monthly seller detail is available/i);
+    else {
+      assert.match(childText, /No monthly seller detail is available/i);
+      await page.locator("#sellerTable .row-toggle").first().click();
+    }
+    if (sellerWithMonthlyDetail !== 0) await page.locator("#sellerTable .row-toggle").nth(sellerWithMonthlyDetail).click();
     const displayedSellerMonths = await page
       .locator("#sellerTable > tbody > tr.child-row .nested-table tbody tr td:first-child")
       .allTextContents();
     const expectedSellerMonths = await page.evaluate(() => {
-      const seller = data.sellers[0].seller;
+      const seller = data.sellers
+        .slice(0, 20)
+        .find((item) => data.seller_monthly.some((row) => row.seller === item.seller)).seller;
       return data.seller_monthly
         .filter((row) => row.seller === seller)
         .map((row) => row.month)
         .sort((a, b) => MONTHS.indexOf(a) - MONTHS.indexOf(b));
     });
     assert.deepEqual(displayedSellerMonths, expectedSellerMonths);
+    const nestedHeaders = await page.locator("#sellerTable > tbody > tr.child-row .nested-table thead th").allTextContents();
+    assert.ok(nestedHeaders.includes("New Policies 2026"));
+    assert.ok(nestedHeaders.includes("Renewal Policies 2026"));
+    const firstMonthlyPolicyCounts = await page.locator("#sellerTable > tbody > tr.child-row .nested-table tbody tr").first().locator("td").evaluateAll((cells) => ({
+      newPolicies: cells[7].textContent,
+      renewalPolicies: cells[8].textContent,
+    }));
+    const expectedFirstMonthlyPolicyCounts = await page.evaluate(() => {
+      const seller = window.REPORT_DATA.sellers
+        .slice(0, 20)
+        .find((item) => window.REPORT_DATA.seller_monthly.some((row) => row.seller === item.seller)).seller;
+      const row = window.REPORT_DATA.seller_monthly
+        .filter((item) => item.seller === seller)
+        .sort((a, b) => MONTHS.indexOf(a.month) - MONTHS.indexOf(b.month))[0];
+      const format = (number) => number === null || number === undefined
+        ? "N/A"
+        : new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(number);
+      return {
+        newPolicies: format(row.new_policies),
+        renewalPolicies: format(row.renewal_policies),
+      };
+    });
+    assert.deepEqual(firstMonthlyPolicyCounts, expectedFirstMonthlyPolicyCounts);
 
     assert.equal(await page.locator("#renewals, #renewalStrip, #renewalLine, #renewalFunnel").count(), 0);
     assert.equal(await page.locator("#branchesPerDay").count(), 1);

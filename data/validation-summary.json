@@ -64,8 +64,8 @@
     {
       "name": "Pending category totals = total pending",
       "status": "pass",
-      "expected": 657142.0,
-      "actual": 657142.0,
+      "expected": 765951.0,
+      "actual": 765951.0,
       "difference": 0.0,
       "tolerance": 1,
       "severity": "error",

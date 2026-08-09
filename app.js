@@ -812,7 +812,7 @@ function renderBranchesPerMonthHeatmap() {
 }
 
 function entityColumns(nameKey) {
-  return [
+  const columns = [
     { key: nameKey, label: nameKey === "branch" ? "Branch" : "Seller" },
     { key: "premium_2025", label: "Premium 2025", ...moneyCol("premium_2025") },
     { key: "premium_2026", label: "Premium 2026", ...moneyCol("premium_2026") },
@@ -829,6 +829,13 @@ function entityColumns(nameKey) {
     { key: "pending_finance", label: "Pending Finance", ...moneyCol("pending_finance") },
     { key: "pending_payment", label: "Pending Payment", ...moneyCol("pending_payment") },
   ];
+  if (nameKey === "seller") {
+    columns.splice(3, 0,
+      { key: "new_policies", label: "New Policies 2026", ...countCol("new_policies") },
+      { key: "renewal_policies", label: "Renewal Policies 2026", ...countCol("renewal_policies") },
+    );
+  }
+  return columns;
 }
 
 function renderSellers() {
@@ -889,6 +896,9 @@ function renderInsurers() {
     { key: "insurance_company", label: "Insurance Company" },
     { key: "premium_2025", label: "Premium 2025", ...moneyCol("premium_2025") },
     { key: "premium_2026", label: "Premium 2026", ...moneyCol("premium_2026") },
+    { key: "new_policies_2026", label: "New Policies 2026", ...countCol("new_policies_2026") },
+    { key: "renewal_policies_2026", label: "Renewal Policies 2026", ...countCol("renewal_policies_2026") },
+    { key: "other_policies_2026", label: "Other Policies 2026", ...countCol("other_policies_2026") },
     { key: "yoy_change", label: "YoY Change", ...moneyCol("yoy_change") },
     { key: "yoy_change_pct", label: "YoY Change %", ...pctCol("yoy_change_pct") },
     { key: "share_2026_pct", label: "2026 Share %", ...pctCol("share_2026_pct") },
@@ -945,9 +955,9 @@ function sellerMonthlyTable(seller) {
   const total = data.sellers.find((row) => row.seller === seller);
   if (!rows.length) return `<p class="source-note">No monthly seller detail is available for ${seller}.</p>`;
   return `<div class="nested-table-wrap"><table class="nested-table">
-    <thead><tr><th>Month</th><th>2025 Premium</th><th>2026 Premium</th><th>YoY Change</th><th>YoY %</th><th>New</th><th>Renewal</th><th>Approved Policies</th></tr></thead>
-    <tbody>${rows.map((row) => `<tr><td>${row.month}</td><td>${fmtMoney(row.premium_2025, false)}</td><td>${fmtMoney(row.premium_2026, false)}</td><td>${fmtMoney(row.yoy_change, false)}</td><td>${fmtPct(row.yoy_change_pct)}</td><td>${fmtMoney(row.new_premium, false)}</td><td>${fmtMoney(row.renewal_premium, false)}</td><td>${fmtNumber(row.approved_policies)}</td></tr>`).join("")}</tbody>
-    <tfoot><tr class="summary-total"><td>Grand Total</td><td>${fmtMoney(total.premium_2025, false)}</td><td>${fmtMoney(total.premium_2026, false)}</td><td>${fmtMoney(total.yoy_change, false)}</td><td>${fmtPct(total.yoy_change_pct)}</td><td>${fmtMoney(total.new_premium, false)}</td><td>${fmtMoney(total.renewal_premium, false)}</td><td>${fmtNumber(total.approved_policies)}</td></tr></tfoot>
+    <thead><tr><th>Month</th><th>2025 Premium</th><th>2026 Premium</th><th>YoY Change</th><th>YoY %</th><th>New</th><th>Renewal</th><th>New Policies 2026</th><th>Renewal Policies 2026</th><th>Approved Policies</th></tr></thead>
+    <tbody>${rows.map((row) => `<tr><td>${row.month}</td><td>${fmtMoney(row.premium_2025, false)}</td><td>${fmtMoney(row.premium_2026, false)}</td><td>${fmtMoney(row.yoy_change, false)}</td><td>${fmtPct(row.yoy_change_pct)}</td><td>${fmtMoney(row.new_premium, false)}</td><td>${fmtMoney(row.renewal_premium, false)}</td><td>${fmtNumber(row.new_policies)}</td><td>${fmtNumber(row.renewal_policies)}</td><td>${fmtNumber(row.approved_policies)}</td></tr>`).join("")}</tbody>
+    <tfoot><tr class="summary-total"><td>Grand Total</td><td>${fmtMoney(total.premium_2025, false)}</td><td>${fmtMoney(total.premium_2026, false)}</td><td>${fmtMoney(total.yoy_change, false)}</td><td>${fmtPct(total.yoy_change_pct)}</td><td>${fmtMoney(total.new_premium, false)}</td><td>${fmtMoney(total.renewal_premium, false)}</td><td>${fmtNumber(total.new_policies)}</td><td>${fmtNumber(total.renewal_policies)}</td><td>${fmtNumber(total.approved_policies)}</td></tr></tfoot>
   </table></div>`;
 }
 
