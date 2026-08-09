@@ -21,7 +21,6 @@ const CHART_DESCRIPTIONS = {
   newRenewalDonut: "Shows approved premium by policy type, including any other policy types needed to reconcile back to approved gross premium.",
   motorDonut: "Shows motor versus non-motor concentration, important for understanding product dependency and diversification risk.",
   retailDonut: "Shows retail versus corporate approved gross premium, clarifying the customer segment mix behind total production.",
-  statusStacked: "Compares policy status mix by year to show whether the channel is relying more on new, renewal, endorsement, or collection activity.",
   branchTop: "Ranks the highest-producing branches by 2026 approved premium to identify the main contributors to YTD production.",
   branchBottom: "Ranks the largest negative branch movements by YoY premium change to focus recovery attention.",
   branchContribution: "Shows each top branch's share of total 2026 approved premium, highlighting concentration by branch.",
@@ -288,8 +287,6 @@ function kpiCard(label, current, comparison, delta, context, options = {}) {
 function renderKpis() {
   const k = data.kpis;
   const t = data.totals;
-  const renewalTotal = data.renewals.find((r) => r.month === "Grand Total");
-  const renewalRate = renewalTotal?.renewal_rate ?? null;
   const cards = [
     kpiCard("Approved Gross Premiums", fmtMoney(t.approved_gross_premium), "vs YTD 2025", k["Approved Gross Premiums"].change_pct, "Below target", { status: "negative" }),
     kpiCard("Target Achievement", fmtPct(t.target_achievement_pct), "of 2026 target", t.target_variance_pct, `${fmtMoney(t.target_gap)} target gap`, { status: "warning" }),
@@ -299,7 +296,6 @@ function renderKpis() {
     kpiCard("Average Premium per Policy", fmtMoney(t.avg_premium_per_policy), "vs YTD 2025", k["Avg Premium per policy"].change_pct, "Higher ticket size offset lower volume"),
     kpiCard("New Premiums", fmtMoney(t.new_premium), "share of approved", t.new_premium_mix_pct, "New production mix", { status: "positive" }),
     kpiCard("Renewal Premiums", fmtMoney(t.renewal_premium), "share of approved", t.renewal_premium_mix_pct, "Renewal production mix", { status: "positive" }),
-    kpiCard("Motor Renewal Rate", fmtPct(renewalRate), "YTD aggregate", data.summary_metrics.renewal_variance_pct, renewalTotal ? `${fmtNumber(renewalTotal.not_renewed_policies)} not renewed` : "Not available in current workbook", { status: renewalRate >= 0.5 ? "positive" : "warning" }),
     kpiCard("Pending Pipeline", fmtMoney(t.pending_total), "of approved premium", t.pending_as_pct_approved, "Separate from approved premium", { status: "warning" }),
   ];
   document.getElementById("kpiGrid").innerHTML = cards.join("");
@@ -544,28 +540,6 @@ function renderMix() {
   const retail = data.kpis["Retail Approved Gross"].value_2026;
   const corporate = data.kpis["Corporate Approved Gross"].value_2026;
   donut("retailDonut", ["Retail", "Corporate"], [retail, corporate], [COLORS.blue, COLORS.green], [data.totals.retail_mix_pct, data.totals.corporate_mix_pct]);
-  const totals = Object.entries(data.status_mix).map(([year, rows]) => ({
-    year,
-    collection: rows.reduce((s, r) => s + value(r.collection), 0),
-    endorsement: rows.reduce((s, r) => s + value(r.endorsement), 0),
-    new: rows.reduce((s, r) => s + value(r.new), 0),
-    renewal: rows.reduce((s, r) => s + value(r.renewal), 0),
-  }));
-  makeChart("statusStacked", {
-    type: "bar",
-    data: {
-      labels: totals.map((r) => r.year),
-      datasets: [
-        { label: "Collection", data: totals.map((r) => r.collection), backgroundColor: COLORS.grey },
-        { label: "Endorsement", data: totals.map((r) => r.endorsement), backgroundColor: COLORS.orange },
-        { label: "New", data: totals.map((r) => r.new), backgroundColor: COLORS.blue },
-        { label: "Renewal", data: totals.map((r) => r.renewal), backgroundColor: COLORS.green },
-      ],
-    },
-    options: { responsive: true, maintainAspectRatio: false, indexAxis: "y", scales: { x: { stacked: true, ticks: { callback: (v) => fmtMoney(v) } }, y: { stacked: true } } },
-  });
-  document.getElementById("mixInterpretation").textContent =
-    `Motor premium represents ${fmtPct(data.totals.motor_mix_pct)} of approved premium, while non-motor contributes ${fmtPct(data.totals.non_motor_mix_pct)}. This creates concentration risk in motor-led production and a clear cross-sell opportunity.`;
 }
 
 function donut(id, labels, values, colors, percentages) {

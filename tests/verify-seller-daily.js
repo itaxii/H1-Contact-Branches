@@ -152,9 +152,10 @@ async function main() {
     assert.equal(dailyCounts.chart, dailyCounts.source);
     assert.deepEqual(dailyCounts.values, dailyCounts.expectedValues);
 
-    const renewalCard = page.locator("#kpiGrid .kpi-card").filter({ hasText: "Motor Renewal Rate" });
-    assert.equal(await renewalCard.count(), 1);
-    assert.match(await renewalCard.innerText(), /N\/A/);
+    assert.equal(await page.locator("#kpiGrid .kpi-card").filter({ hasText: "Motor Renewal Rate" }).count(), 0);
+    assert.equal(await page.getByRole("heading", { name: "Status Mix by Year", exact: true }).count(), 0);
+    assert.equal(await page.locator("#statusStacked, #mixInterpretation").count(), 0);
+    assert.equal(await page.evaluate(() => Chart.getChart("statusStacked") === undefined), true);
     assert.deepEqual(pageErrors, []);
   } finally {
     await browser.close();
