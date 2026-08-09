@@ -80,6 +80,9 @@ async function main() {
 
     assert.ok(await page.locator("#sellerTable > tbody > tr:not(.child-row)").count() <= 20);
     assert.equal(await page.locator("#sellerTable > tbody > tr.child-row").count(), 0);
+    const sellerHeaders = await page.locator("#sellerTable thead th").allTextContents();
+    assert.ok(sellerHeaders.includes("New Policies 2026"));
+    assert.ok(sellerHeaders.includes("Renewal Policies 2026"));
     await page.locator("#sellerTable .row-toggle").first().click();
     assert.equal(await page.locator("#sellerTable > tbody > tr.child-row").count(), 1);
     const firstSellerMonths = await page.evaluate(() => {
@@ -100,6 +103,27 @@ async function main() {
         .sort((a, b) => MONTHS.indexOf(a) - MONTHS.indexOf(b));
     });
     assert.deepEqual(displayedSellerMonths, expectedSellerMonths);
+    const nestedHeaders = await page.locator("#sellerTable > tbody > tr.child-row .nested-table thead th").allTextContents();
+    assert.ok(nestedHeaders.includes("New Policies 2026"));
+    assert.ok(nestedHeaders.includes("Renewal Policies 2026"));
+    const firstMonthlyPolicyCounts = await page.locator("#sellerTable > tbody > tr.child-row .nested-table tbody tr").first().locator("td").evaluateAll((cells) => ({
+      newPolicies: cells[7].textContent,
+      renewalPolicies: cells[8].textContent,
+    }));
+    const expectedFirstMonthlyPolicyCounts = await page.evaluate(() => {
+      const seller = window.REPORT_DATA.sellers[0].seller;
+      const row = window.REPORT_DATA.seller_monthly
+        .filter((item) => item.seller === seller)
+        .sort((a, b) => MONTHS.indexOf(a.month) - MONTHS.indexOf(b.month))[0];
+      const format = (number) => number === null || number === undefined
+        ? "N/A"
+        : new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(number);
+      return {
+        newPolicies: format(row.new_policies),
+        renewalPolicies: format(row.renewal_policies),
+      };
+    });
+    assert.deepEqual(firstMonthlyPolicyCounts, expectedFirstMonthlyPolicyCounts);
 
     assert.equal(await page.locator("#renewals, #renewalStrip, #renewalLine, #renewalFunnel").count(), 0);
     assert.equal(await page.locator("#branchesPerDay").count(), 1);
