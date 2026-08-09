@@ -257,7 +257,7 @@ def aggregate_entity_records(records, name_key, name):
     aggregate = {name_key: name}
     for field in ENTITY_SUM_FIELDS:
         values = [record.get(field) for record in records if record.get(field) is not None]
-        aggregate[field] = sum(values) if values else None
+        aggregate[field] = sum(values) if values else 0 if field in {"new_policies", "renewal_policies"} else None
     aggregate["yoy_change"] = (
         aggregate["premium_2026"] - aggregate["premium_2025"]
         if aggregate["premium_2026"] is not None and aggregate["premium_2025"] is not None
@@ -530,13 +530,30 @@ def extract_kpis(df):
 
 
 def extract_renewals(df):
+    header_row = find_row(df, "Renewed Policies")
+    if header_row is None:
+        return []
+
+    columns = {
+        normalize_header(df.iat[header_row, cidx]): cidx
+        for cidx in range(df.shape[1])
+        if normalize_header(df.iat[header_row, cidx])
+    }
+    month_column = columns.get(normalize_header("Month"))
+    renewed_column = columns.get(normalize_header("Renewed Policies"))
+    up_for_renewal_column = columns.get(normalize_header("Policies Up for Renewal"))
+    if None in {month_column, renewed_column, up_for_renewal_column}:
+        return []
+
     records = []
-    for ridx in range(13, 21):
-        month = clean_name(df.iat[ridx, 9])
+    for ridx in range(header_row + 1, len(df)):
+        month = clean_name(df.iat[ridx, month_column])
         if month not in MONTH_ORDER and month != "Grand Total":
+            if records and not month:
+                break
             continue
-        renewed = parse_number(df.iat[ridx, 10])
-        up_for_renewal = parse_number(df.iat[ridx, 11])
+        renewed = parse_number(df.iat[ridx, renewed_column])
+        up_for_renewal = parse_number(df.iat[ridx, up_for_renewal_column])
         not_renewed = None if renewed is None or up_for_renewal is None else up_for_renewal - renewed
         rate = safe_div(renewed, up_for_renewal)
         records.append(

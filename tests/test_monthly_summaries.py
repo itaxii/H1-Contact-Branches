@@ -11,6 +11,7 @@ from analysis import (
     extract_lob_totals,
     extract_monthly,
     extract_monthly_counts,
+    extract_renewals,
     extract_insurers,
     extract_sellers,
     row_to_record,
@@ -178,6 +179,13 @@ def build_daily_fixture():
     return pd.DataFrame(rows)
 
 
+def build_status_summary_fixture():
+    rows = [[None] * 15 for _ in range(21)]
+    rows[8][9:15] = ["Month", "Collection", "Endorsement", "New", "Renewal", "Grand Total"]
+    rows[13][9:15] = ["April", None, 125850, 1611092, 2730565, 4467507]
+    return pd.DataFrame(rows)
+
+
 def build_this_month_daily_seller_fixture():
     rows = [[None] * 6 for _ in range(15)]
     rows[0][2] = "Branches Per Day this month"
@@ -263,6 +271,9 @@ class MonthlySummaryExtractionTests(unittest.TestCase):
         self.assertEqual(rows[0]["renewal_policies_2026"], 3)
         self.assertEqual(rows[0]["other_policies_2026"], 2)
         self.assertEqual(total["other_policies_2026"], 2)
+
+    def test_status_summary_is_not_parsed_as_renewal_policy_data(self):
+        self.assertEqual(extract_renewals(build_status_summary_fixture()), [])
 
     def test_daily_block_uses_august_and_reconciles(self):
         daily = analysis.extract_branches_per_day(build_daily_fixture())
@@ -398,6 +409,18 @@ class DashboardTableTotalTests(unittest.TestCase):
             total["premium_2026"] / approved,
             places=12,
         )
+
+    def test_latest_workbook_policy_counts_are_serialized_and_reconciled(self):
+        for insurer in self.data["insurers"]:
+            self.assertIn("new_policies_2026", insurer)
+            self.assertIn("renewal_policies_2026", insurer)
+            self.assertIn("other_policies_2026", insurer)
+
+        for seller in self.data["sellers"]:
+            months = [row for row in self.data["seller_monthly"] if row["seller"] == seller["seller"]]
+            if months:
+                self.assertEqual(seller["new_policies"], sum((row["new_policies"] or 0) for row in months))
+                self.assertEqual(seller["renewal_policies"], sum((row["renewal_policies"] or 0) for row in months))
 
 if __name__ == "__main__":
     unittest.main()

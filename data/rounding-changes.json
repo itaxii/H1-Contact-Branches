@@ -1705,8 +1705,8 @@
     "report_area": "kpi",
     "label": "New Policies YoY",
     "previous_display": "-84.0%",
-    "corrected_display": "-83.6%",
-    "numerator": "-9175",
+    "corrected_display": "-83.5%",
+    "numerator": "-9174",
     "denominator": "10981"
   },
   {
@@ -1742,7 +1742,7 @@
     "label": "Total Policies YoY",
     "previous_display": "-83.0%",
     "corrected_display": "-83.5%",
-    "numerator": "-11684",
+    "numerator": "-11683",
     "denominator": "13993"
   },
   {
