@@ -677,25 +677,85 @@ def extract_status_mix(df):
 
 
 def extract_insurers(df):
+    field_aliases = {
+        "insurance_company": ("Insurance Company",),
+        "premium_2025": ("2025",),
+        "premium_2026": ("2026",),
+        "source_yoy_change": ("2025 VS 2026 YOY",),
+        "source_yoy_change_pct": ("Gross YoY Change %",),
+        "new_policies_2026": ("New Policies 2026",),
+        "renewal_policies_2026": ("Renewal Policies 2026",),
+        "other_policies_2026": ("Other Policies 2026",),
+    }
+    section_titles = (
+        "2025 vs 2026 By Insurance Company Summary",
+        "2025 vs 2026 By Insurer",
+    )
+    section_title = section_titles[0]
+    section_row = next((find_row(df, title) for title in section_titles if find_row(df, title) is not None), None)
+    if section_row is None:
+        raise ValueError(f"Missing workbook section: {section_title}")
+    header_row = find_row(df, "Insurance Company", start=section_row)
+    if header_row is None:
+        raise ValueError(f"Missing Insurance Company header after workbook section: {section_title}")
+    headers = {}
+    for cidx in range(df.shape[1]):
+        normalized = normalize_header(df.iat[header_row, cidx])
+        if normalized:
+            headers.setdefault(normalized, []).append(cidx)
+
+    columns = {}
+    for key, aliases in field_aliases.items():
+        columns[key] = next(
+            (
+                headers[normalize_header(alias)][-1]
+                if key == "other_policies_2026"
+                else headers[normalize_header(alias)][0]
+                for alias in aliases
+                if normalize_header(alias) in headers
+            ),
+            None,
+        )
+        if columns[key] is None and key in {"source_yoy_change", "source_yoy_change_pct"}:
+            legacy_change_columns = headers.get(normalize_header("Change"), [])
+            if len(legacy_change_columns) >= 2:
+                columns[key] = legacy_change_columns[0 if key == "source_yoy_change" else 1]
+        if columns[key] is None and key in {
+            "new_policies_2026",
+            "renewal_policies_2026",
+            "other_policies_2026",
+        }:
+            continue
+        if columns[key] is None:
+            raise ValueError(f"Missing column '{aliases[0]}' in workbook section: {section_title}")
+
     records = []
     total = None
-    header_row = find_row(df, "Insurance Company", col=9) or 37
     for ridx in range(header_row + 1, len(df)):
-        name = clean_name(df.iat[ridx, 9])
+        name = clean_name(df.iat[ridx, columns["insurance_company"]])
         if not name:
             if records:
                 break
             continue
-        premium_2025 = parse_number(df.iat[ridx, 10])
-        premium_2026 = parse_number(df.iat[ridx, 11])
+        premium_2025 = parse_number(df.iat[ridx, columns["premium_2025"]])
+        premium_2026 = parse_number(df.iat[ridx, columns["premium_2026"]])
         rec = {
             "insurance_company": name,
             "premium_2025": premium_2025,
             "premium_2026": premium_2026,
             "yoy_change": premium_2026 - premium_2025 if premium_2026 is not None and premium_2025 is not None else None,
             "yoy_change_pct": safe_yoy(premium_2026, premium_2025),
-            "source_yoy_change": parse_number(df.iat[ridx, 12]),
-            "source_yoy_change_pct": parse_percent(df.iat[ridx, 13]),
+            "source_yoy_change": parse_number(df.iat[ridx, columns["source_yoy_change"]]),
+            "source_yoy_change_pct": parse_percent(df.iat[ridx, columns["source_yoy_change_pct"]]),
+            "new_policies_2026": parse_number(df.iat[ridx, columns["new_policies_2026"]])
+            if columns["new_policies_2026"] is not None
+            else None,
+            "renewal_policies_2026": parse_number(df.iat[ridx, columns["renewal_policies_2026"]])
+            if columns["renewal_policies_2026"] is not None
+            else None,
+            "other_policies_2026": parse_number(df.iat[ridx, columns["other_policies_2026"]])
+            if columns["other_policies_2026"] is not None
+            else None,
         }
         if name.lower() == "grand total":
             total = rec

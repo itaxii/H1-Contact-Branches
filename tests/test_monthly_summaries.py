@@ -11,6 +11,7 @@ from analysis import (
     extract_lob_totals,
     extract_monthly,
     extract_monthly_counts,
+    extract_insurers,
     extract_sellers,
     row_to_record,
     main,
@@ -151,6 +152,21 @@ def build_flat_seller_fixture():
     return pd.DataFrame(rows)
 
 
+def build_insurer_fixture():
+    rows = [[None] * 18 for _ in range(6)]
+    rows[0][1] = "2025 vs 2026 By Insurance Company Summary"
+    rows[1][2:16] = [
+        "Insurance Company", "2025", "2026", "New Premiums 2025",
+        "Renewal Premiums 2025", "Other Policies 2025", "New Premiums 2026",
+        "Renewal Premuims 2026", "Other Policies 2026", "2025 VS 2026 YOY",
+        "Gross YoY Change %", "New Policies 2026", "Renewal Policies 2026",
+        "Other Policies 2026",
+    ]
+    rows[2][2:16] = ["Insurer A", 100, 200, 0, 0, 0, 0, 0, 0, 100, 1, 4, 3, 2]
+    rows[3][2:16] = ["Grand Total", 100, 200, 0, 0, 0, 0, 0, 0, 100, 1, 4, 3, 2]
+    return pd.DataFrame(rows)
+
+
 def build_daily_fixture():
     rows = [[None] * 6 for _ in range(12)]
     rows[0][2] = "Branches Per Day last month"
@@ -239,6 +255,14 @@ class MonthlySummaryExtractionTests(unittest.TestCase):
         self.assertEqual([row["premium_2026"] for row in sellers], [300, 400])
         self.assertEqual(total["premium_2026"], 700)
         self.assertEqual(monthly, [])
+
+    def test_insurer_policy_counts_are_mapped_by_header(self):
+        rows, total = extract_insurers(build_insurer_fixture())
+
+        self.assertEqual(rows[0]["new_policies_2026"], 4)
+        self.assertEqual(rows[0]["renewal_policies_2026"], 3)
+        self.assertEqual(rows[0]["other_policies_2026"], 2)
+        self.assertEqual(total["other_policies_2026"], 2)
 
     def test_daily_block_uses_august_and_reconciles(self):
         daily = analysis.extract_branches_per_day(build_daily_fixture())
