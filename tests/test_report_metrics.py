@@ -206,6 +206,8 @@ class ReportValidationTests(unittest.TestCase):
                 self.assertEqual(warning["actual"], data["branches_per_day_this_month"]["totals"][key] - 1)
                 self.assertEqual(warning["difference"], -1)
                 self.assertEqual(warning["severity"], "warning")
+                self.assertEqual(warning["tolerance"], 1)
+                self.assertEqual(warning["source"], "workbook")
 
 
 if __name__ == "__main__":

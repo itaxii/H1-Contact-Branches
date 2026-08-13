@@ -14,6 +14,7 @@ from analysis import (
     extract_renewals,
     extract_insurers,
     extract_sellers,
+    extract_branches_per_day_this_month,
     row_to_record,
     main,
 )
@@ -387,6 +388,24 @@ class MonthlySummaryWorkbookTests(unittest.TestCase):
         self.assertTrue(all(row["premium_2026"] is not None for row in sellers))
         if monthly:
             self.assertIn("August", {row["month"] for row in monthly})
+
+    def test_latest_daily_approved_and_pending_totals(self):
+        branches = pd.read_excel(WORKBOOK, sheet_name="Branches", header=None, engine="openpyxl")
+        result = extract_branches_per_day_this_month(branches)
+
+        self.assertEqual(result["month"], "August")
+        self.assertEqual(
+            result["totals"],
+            {
+                "premium_2026": 273294.0,
+                "pending_operation_paid": 44200.0,
+                "pending_not_paid": 94702.0,
+                "pending_finance": 111332.0,
+            },
+        )
+        self.assertEqual(len(result["daily_rows"]), 9)
+        self.assertEqual(result["daily_rows"][0]["premium_2026"], 51600.0)
+        self.assertEqual(result["daily_rows"][-1]["pending_finance"], -32403.0)
 
     def test_line_of_business_extraction_starts_after_real_header(self):
         rows, total = extract_lob_totals(self.overview)

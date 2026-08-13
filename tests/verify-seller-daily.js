@@ -169,6 +169,12 @@ async function main() {
     assert.deepEqual(dailyChart.datasetLabels, [
       "Approved Premium", "Pending Operation Paid", "Pending Not Paid Yet", "Pending Finance",
     ]);
+    for (const values of dailyChart.expectedValues) {
+      assert.ok(values.every(Number.isFinite), "Every source daily value must be finite");
+    }
+    for (const values of dailyChart.values) {
+      assert.ok(values.every(Number.isFinite), "Every plotted daily value must be finite");
+    }
     assert.deepEqual(dailyChart.values, dailyChart.expectedValues);
     assert.equal(dailyChart.legendVisible, true);
     assert.equal(dailyChart.stackedX, false);

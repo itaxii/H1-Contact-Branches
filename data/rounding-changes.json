@@ -480,9 +480,9 @@
     "metric_id": "branch-monthly.el-mokattam-july.yoy",
     "report_area": "branch-monthly",
     "label": "El Mokattam July YoY",
-    "previous_display": "-100.0%",
-    "corrected_display": "N/A",
-    "numerator": null,
+    "previous_display": "3409.9%",
+    "corrected_display": "3409.8%",
+    "numerator": "25642",
     "denominator": "752"
   },
   {
@@ -1017,15 +1017,6 @@
     "denominator": "50043"
   },
   {
-    "metric_id": "branch-monthly.misr-el-gedida-august.yoy",
-    "report_area": "branch-monthly",
-    "label": "Misr El-Gedida August YoY",
-    "previous_display": "-100.0%",
-    "corrected_display": "N/A",
-    "numerator": null,
-    "denominator": "235183"
-  },
-  {
     "metric_id": "branch-monthly.mit-ghamr-april.yoy",
     "report_area": "branch-monthly",
     "label": "Mit Ghamr April YoY",
@@ -1497,9 +1488,9 @@
     "metric_id": "branch-monthly.sohag-august.yoy",
     "report_area": "branch-monthly",
     "label": "Sohag August YoY",
-    "previous_display": "-100.0%",
-    "corrected_display": "N/A",
-    "numerator": null,
+    "previous_display": "68.2%",
+    "corrected_display": "68.1%",
+    "numerator": "31902",
     "denominator": "46812"
   },
   {
@@ -1678,18 +1669,9 @@
     "report_area": "kpi",
     "label": "Approved Gross Premiums YoY",
     "previous_display": "-63.0%",
-    "corrected_display": "-63.4%",
-    "numerator": "-25414832",
+    "corrected_display": "-62.7%",
+    "numerator": "-25140143",
     "denominator": "40104553"
-  },
-  {
-    "metric_id": "kpi.avg-premium-per-policy.yoy",
-    "report_area": "kpi",
-    "label": "Avg Premium per policy YoY",
-    "previous_display": "132.0%",
-    "corrected_display": "132.3%",
-    "numerator": "3793",
-    "denominator": "2866"
   },
   {
     "metric_id": "kpi.corporate-approved-gross.yoy",
@@ -1706,26 +1688,8 @@
     "label": "New Policies YoY",
     "previous_display": "-84.0%",
     "corrected_display": "-83.5%",
-    "numerator": "-9174",
+    "numerator": "-9171",
     "denominator": "10981"
-  },
-  {
-    "metric_id": "kpi.renewal-policies.yoy",
-    "report_area": "kpi",
-    "label": "Renewal Policies YoY",
-    "previous_display": "-85.0%",
-    "corrected_display": "-84.8%",
-    "numerator": "-2386",
-    "denominator": "2814"
-  },
-  {
-    "metric_id": "kpi.retail-approved-gross.yoy",
-    "report_area": "kpi",
-    "label": "Retail Approved Gross YoY",
-    "previous_display": "-64.0%",
-    "corrected_display": "-63.7%",
-    "numerator": "-24718676",
-    "denominator": "38801466"
   },
   {
     "metric_id": "kpi.total-approved-policies.yoy",
@@ -1733,7 +1697,7 @@
     "label": "Total Approved Policies YoY",
     "previous_display": "-84.0%",
     "corrected_display": "-84.2%",
-    "numerator": "-11787",
+    "numerator": "-11781",
     "denominator": "13993"
   },
   {
@@ -1742,7 +1706,7 @@
     "label": "Total Policies YoY",
     "previous_display": "-83.0%",
     "corrected_display": "-83.5%",
-    "numerator": "-11683",
+    "numerator": "-11684",
     "denominator": "13993"
   },
   {
@@ -1840,8 +1804,8 @@
     "report_area": "lob",
     "label": "Motor Vehicle Private Company Comprehensive Target Achievement",
     "previous_display": "33.0%",
-    "corrected_display": "32.6%",
-    "numerator": "12040483",
+    "corrected_display": "33.3%",
+    "numerator": "12315172",
     "denominator": "36932925"
   },
   {
@@ -1920,18 +1884,18 @@
     "metric_id": "monthly.August.target_achievement",
     "report_area": "monthly",
     "label": "August Target Achievement",
-    "previous_display": "1.0%",
-    "corrected_display": "0.9%",
-    "numerator": "51700",
+    "previous_display": "5.0%",
+    "corrected_display": "4.5%",
+    "numerator": "273294",
     "denominator": "6008767.456"
   },
   {
     "metric_id": "monthly.July.target_achievement",
     "report_area": "monthly",
     "label": "July Target Achievement",
-    "previous_display": "6.0%",
-    "corrected_display": "6.3%",
-    "numerator": "428586",
+    "previous_display": "7.0%",
+    "corrected_display": "6.7%",
+    "numerator": "454981",
     "denominator": "6810580.603"
   },
   {
@@ -2005,15 +1969,6 @@
     "corrected_display": "N/A",
     "numerator": null,
     "denominator": "20848"
-  },
-  {
-    "metric_id": "seller-monthly.doaa-fadel-mohamed-ahmed-august.yoy",
-    "report_area": "seller-monthly",
-    "label": "Doaa Fadel Mohamed Ahmed August YoY",
-    "previous_display": "-100.0%",
-    "corrected_display": "N/A",
-    "numerator": null,
-    "denominator": "25260"
   },
   {
     "metric_id": "seller-monthly.doaa-fadel-mohamed-ahmed-february.yoy",
@@ -2347,15 +2302,6 @@
     "corrected_display": "N/A",
     "numerator": null,
     "denominator": "272262"
-  },
-  {
-    "metric_id": "seller-monthly.zizi-samir-el-sayed-mohamed-ismail-august.yoy",
-    "report_area": "seller-monthly",
-    "label": "Zizi Samir El Sayed Mohamed Ismail August YoY",
-    "previous_display": "-100.0%",
-    "corrected_display": "N/A",
-    "numerator": null,
-    "denominator": "187595"
   },
   {
     "metric_id": "seller-monthly.zizi-samir-el-sayed-mohamed-ismail-july.yoy",
