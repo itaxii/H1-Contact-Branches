@@ -14,6 +14,7 @@ from analysis import (
     extract_renewals,
     extract_insurers,
     extract_sellers,
+    extract_branches_per_day_this_month,
     row_to_record,
     main,
 )
@@ -187,20 +188,23 @@ def build_status_summary_fixture():
 
 
 def build_this_month_daily_seller_fixture():
-    rows = [[None] * 6 for _ in range(15)]
+    rows = [[None] * 8 for _ in range(16)]
     rows[0][2] = "Branches Per Day this month"
     rows[2][2], rows[2][3] = "Month", "September"
-    rows[4][2:5] = ["Day of Month", "Seller", "Premiums 2026 ( Approved )"]
-    rows[5][2:5] = [46267, "(blank)", "(10) EGP"]
-    rows[6][2:5] = [float("nan"), "Seller A", "100 EGP"]
-    rows[7][3:5] = ["Seller B", "50 EGP"]
-    rows[8][2], rows[8][4] = "September 02 Total", "140 EGP"
-    rows[9][2:5] = [46268, "(blank)", None]
-    rows[10][3:5] = ["Seller A", "200 EGP"]
-    rows[11][3:5] = ["Seller C", "25 EGP"]
-    rows[12][2], rows[12][4] = "September 03 Total", "225 EGP"
-    rows[13][2], rows[13][4] = "September Total", "365 EGP"
-    rows[14][2], rows[14][4] = "Grand Total", "365 EGP"
+    rows[4][2:8] = [
+        "Day of Month", "Seller", "Premiums 2026 ( Approved )",
+        "Pending Operation ( Paid )", "Pending ( Not Paid Yet )", "Pending Finance",
+    ]
+    rows[5][2:8] = [46267, "(blank)", "(10) EGP", None, None, None]
+    rows[6][3:8] = ["Seller A", "100 EGP", "20 EGP", None, None]
+    rows[7][3:8] = ["Seller B", "50 EGP", None, "30 EGP", None]
+    rows[8][2:8] = ["September 02 Total", None, "140 EGP", "20 EGP", "30 EGP", None]
+    rows[9][2:8] = [46268, "(blank)", None, None, None, None]
+    rows[10][3:8] = ["Seller A", "200 EGP", None, None, None]
+    rows[11][3:8] = ["Seller C", "25 EGP", None, None, None]
+    rows[12][3:8] = ["Seller D", None, None, None, "40 EGP"]
+    rows[13][2:8] = ["September 03 Total", None, "225 EGP", None, None, "40 EGP"]
+    rows[15][2:8] = ["Grand Total", None, "365 EGP", "20 EGP", "30 EGP", "40 EGP"]
     return pd.DataFrame(rows)
 
 
@@ -309,16 +313,98 @@ class MonthlySummaryExtractionTests(unittest.TestCase):
                 {"seller": "Seller C", "premium_2026": 25.0},
             ],
         )
-        self.assertEqual([row["seller"] for row in result["rows"]], ["Seller A", "Seller B", "Seller A", "Seller C"])
+        self.assertEqual([row["seller"] for row in result["rows"]], ["Seller A", "Seller B", "Seller A", "Seller C", "Seller D"])
         self.assertNotIn("(blank)", [row["seller"] for row in result["rows"]])
+        self.assertEqual(
+            result["rows"][-1],
+            {
+                "date": "2026-09-03",
+                "seller": "Seller D",
+                "premium_2026": None,
+                "pending_operation_paid": None,
+                "pending_not_paid": None,
+                "pending_finance": 40.0,
+            },
+        )
         self.assertEqual(result["total"], 365.0)
         self.assertEqual(
             result["daily_rows"],
             [
-                {"date": "2026-09-02", "label": "Sep 2", "premium_2026": 140.0},
-                {"date": "2026-09-03", "label": "Sep 3", "premium_2026": 225.0},
+                {
+                    "date": "2026-09-02",
+                    "label": "Sep 2",
+                    "premium_2026": 140.0,
+                    "pending_operation_paid": 20.0,
+                    "pending_not_paid": 30.0,
+                    "pending_finance": 0.0,
+                },
+                {
+                    "date": "2026-09-03",
+                    "label": "Sep 3",
+                    "premium_2026": 225.0,
+                    "pending_operation_paid": 0.0,
+                    "pending_not_paid": 0.0,
+                    "pending_finance": 40.0,
+                },
             ],
         )
+        self.assertEqual(
+            result["totals"],
+            {
+                "premium_2026": 365.0,
+                "pending_operation_paid": 20.0,
+                "pending_not_paid": 30.0,
+                "pending_finance": 40.0,
+            },
+        )
+        self.assertEqual(result["seller_totals"][0], {"seller": "Seller A", "premium_2026": 300.0})
+
+    def test_this_month_daily_requires_all_measure_headers(self):
+        fixture = build_this_month_daily_seller_fixture()
+        fixture.iat[4, 5] = None
+        fixture.iat[4, 7] = None
+
+        with self.assertRaisesRegex(
+            ValueError,
+            r"Missing required Branches Per Day this month header\(s\): "
+            r"Pending Operation \( Paid \), Pending Finance",
+        ):
+            analysis.extract_branches_per_day_this_month(fixture)
+
+    def test_this_month_daily_requires_source_table(self):
+        fixture = build_this_month_daily_seller_fixture()
+        fixture.iat[0, 2] = None
+
+        with self.assertRaisesRegex(
+            ValueError,
+            r"Missing required source table: Branches Per Day this month",
+        ):
+            analysis.extract_branches_per_day_this_month(fixture)
+
+    def test_this_month_daily_requires_measure_headers_when_header_row_is_missing(self):
+        fixture = build_this_month_daily_seller_fixture()
+        fixture.iat[4, 2] = None
+
+        with self.assertRaisesRegex(
+            ValueError,
+            r"Missing required Branches Per Day this month header\(s\): "
+            r"Premiums 2026 \( Approved \), Pending Operation \( Paid \), "
+            r"Pending \( Not Paid Yet \), Pending Finance",
+        ):
+            analysis.extract_branches_per_day_this_month(fixture)
+
+    def test_this_month_daily_skips_empty_subtotals_but_keeps_explicit_zero(self):
+        fixture = build_this_month_daily_seller_fixture()
+        fixture.loc[14, 2] = 46269
+        fixture.loc[15, 2:7] = ["September 04 Total", None, None, None, None, None]
+        fixture.loc[16, 2] = 46270
+        fixture.loc[17, 2:7] = ["September 05 Total", None, "0 EGP", None, None, None]
+        fixture.loc[18, 2:7] = ["Grand Total", None, "365 EGP", "20 EGP", "30 EGP", "40 EGP"]
+
+        result = analysis.extract_branches_per_day_this_month(fixture)
+
+        self.assertNotIn("Sep 4", [row["label"] for row in result["daily_rows"]])
+        self.assertIn("Sep 5", [row["label"] for row in result["daily_rows"]])
 
 
 class MonthlySummaryWorkbookTests(unittest.TestCase):
@@ -349,6 +435,24 @@ class MonthlySummaryWorkbookTests(unittest.TestCase):
         self.assertTrue(all(row["premium_2026"] is not None for row in sellers))
         if monthly:
             self.assertIn("August", {row["month"] for row in monthly})
+
+    def test_latest_daily_approved_and_pending_totals(self):
+        branches = pd.read_excel(WORKBOOK, sheet_name="Branches", header=None, engine="openpyxl")
+        result = extract_branches_per_day_this_month(branches)
+
+        self.assertEqual(result["month"], "August")
+        self.assertEqual(
+            result["totals"],
+            {
+                "premium_2026": 273294.0,
+                "pending_operation_paid": 44200.0,
+                "pending_not_paid": 94702.0,
+                "pending_finance": 111332.0,
+            },
+        )
+        self.assertEqual(len(result["daily_rows"]), 9)
+        self.assertEqual(result["daily_rows"][0]["premium_2026"], 51600.0)
+        self.assertEqual(result["daily_rows"][-1]["pending_finance"], -32403.0)
 
     def test_line_of_business_extraction_starts_after_real_header(self):
         rows, total = extract_lob_totals(self.overview)

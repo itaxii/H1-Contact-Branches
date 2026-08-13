@@ -383,56 +383,101 @@ def extract_branches_per_day(df):
 
 
 def extract_branches_per_day_this_month(df):
+    measure_aliases = {
+        "premium_2026": ("Premiums 2026 ( Approved )",),
+        "pending_operation_paid": ("Pending Operation ( Paid )",),
+        "pending_not_paid": ("Pending ( Not Paid Yet )",),
+        "pending_finance": ("Pending Finance",),
+    }
+    required_headers = [aliases[0] for aliases in measure_aliases.values()]
+    empty_totals = {key: 0.0 for key in measure_aliases}
     title_row = find_row(df, "Branches Per Day this month", col=2)
     if title_row is None:
-        return {"month": None, "rows": [], "daily_rows": [], "seller_totals": [], "total": None}
+        raise ValueError("Missing required source table: Branches Per Day this month")
     month_row = find_row(df, "Month", start=title_row + 1, col=2)
     header_row = find_row(df, "Day of Month", start=title_row + 1, col=2)
     month = clean_name(df.iat[month_row, 3]) if month_row is not None else None
     if header_row is None:
-        return {"month": month, "rows": [], "daily_rows": [], "seller_totals": [], "total": None}
+        raise ValueError(
+            "Missing required Branches Per Day this month header(s): "
+            + ", ".join(required_headers)
+        )
+
+    headers = {
+        normalize_header(df.iat[header_row, cidx]): cidx
+        for cidx in range(df.shape[1])
+        if normalize_header(df.iat[header_row, cidx])
+    }
+    measure_columns = {
+        key: next((headers[normalize_header(alias)] for alias in aliases if normalize_header(alias) in headers), None)
+        for key, aliases in measure_aliases.items()
+    }
+    missing_headers = [
+        aliases[0]
+        for key, aliases in measure_aliases.items()
+        if measure_columns[key] is None
+    ]
+    if missing_headers:
+        raise ValueError(
+            "Missing required Branches Per Day this month header(s): "
+            + ", ".join(missing_headers)
+        )
 
     rows = []
     daily_rows = []
     totals_by_seller = {}
     total = None
+    totals = empty_totals.copy()
     current_date = None
     for ridx in range(header_row + 1, len(df)):
         raw_day = df.iat[ridx, 2]
         day_label = clean_name(raw_day)
         seller = clean_name(df.iat[ridx, 3])
-        premium = parse_number(df.iat[ridx, 4])
+        measures = {
+            key: parse_number(df.iat[ridx, column]) if column is not None else None
+            for key, column in measure_columns.items()
+        }
+        premium = measures["premium_2026"]
 
         if day_label.lower() == "grand total":
-            total = premium
+            totals = {key: money(value) for key, value in measures.items()}
+            total = totals["premium_2026"]
             break
         if pd.notna(raw_day) and isinstance(raw_day, (int, float)) and not isinstance(raw_day, bool):
             current_date = pd.Timestamp("1899-12-30") + pd.to_timedelta(raw_day, unit="D")
-        if re.fullmatch(r"[A-Za-z]+\s+\d{1,2}\s+Total", day_label, flags=re.IGNORECASE) and premium is not None:
+        if re.fullmatch(r"[A-Za-z]+\s+\d{1,2}\s+Total", day_label, flags=re.IGNORECASE):
+            if not any(value is not None for value in measures.values()):
+                continue
             daily_rows.append(
                 {
                     "date": current_date.strftime("%Y-%m-%d") if current_date is not None else None,
                     "label": f"{current_date.strftime('%b')} {current_date.day}" if current_date is not None else day_label[:-6],
-                    "premium_2026": premium,
+                    **{key: money(value) for key, value in measures.items()},
                 }
             )
             continue
-        if not seller or seller.lower() == "(blank)" or is_total_label(seller) or premium is None:
+        if not seller or seller.lower() == "(blank)" or is_total_label(seller):
+            continue
+        if premium is None and not any(
+            measures[key] is not None
+            for key in ("pending_operation_paid", "pending_not_paid", "pending_finance")
+        ):
             continue
 
         record = {
             "date": current_date.strftime("%Y-%m-%d") if current_date is not None else None,
             "seller": seller,
-            "premium_2026": premium,
+            **measures,
         }
         rows.append(record)
-        totals_by_seller[seller] = totals_by_seller.get(seller, 0.0) + premium
+        if premium is not None:
+            totals_by_seller[seller] = totals_by_seller.get(seller, 0.0) + premium
 
     seller_totals = [
         {"seller": seller, "premium_2026": premium}
         for seller, premium in totals_by_seller.items()
     ]
-    return {"month": month, "rows": rows, "daily_rows": daily_rows, "seller_totals": seller_totals, "total": total}
+    return {"month": month, "rows": rows, "daily_rows": daily_rows, "seller_totals": seller_totals, "totals": totals, "total": total}
 
 
 def build_seller_mvps(sellers, this_month):
@@ -1438,14 +1483,24 @@ def validate_report(data, registry=None):
         make_check("Pending category totals = total pending", totals["pending_total"], sum(money(r["premium"]) for r in data["pending_categories"])),
         make_check("Policy-type premium totals = approved gross premium", approved, sum(money(r["premium"]) for r in data["policy_type_mix"])),
         make_check("Premium distribution branch counts = unique branches", len(data["branches"]), sum(int(r["count"]) for r in data["premium_distribution_bins"]), tolerance=0),
-        make_check(
-            "Branches per day rows = workbook daily total",
-            data["branches_per_day_this_month"]["total"],
-            sum(money(r["premium_2026"]) for r in data["branches_per_day_this_month"]["daily_rows"]),
-            severity="warning",
-            source="workbook",
-        ),
     ]
+    daily_measure_checks = (
+        ("premium_2026", "Branches per day approved total"),
+        ("pending_operation_paid", "Branches per day pending operation paid total"),
+        ("pending_not_paid", "Branches per day pending not paid total"),
+        ("pending_finance", "Branches per day pending finance total"),
+    )
+    daily_data = data["branches_per_day_this_month"]
+    for key, name in daily_measure_checks:
+        checks.append(
+            make_check(
+                name,
+                daily_data["totals"][key],
+                sum(money(row[key]) for row in daily_data["daily_rows"]),
+                severity="warning",
+                source="workbook",
+            )
+        )
     for renewal in data["renewals"]:
         checks.append(
             make_check(
