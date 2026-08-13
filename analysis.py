@@ -393,7 +393,7 @@ def extract_branches_per_day_this_month(df):
     empty_totals = {key: 0.0 for key in measure_aliases}
     title_row = find_row(df, "Branches Per Day this month", col=2)
     if title_row is None:
-        return {"month": None, "rows": [], "daily_rows": [], "seller_totals": [], "totals": empty_totals, "total": None}
+        raise ValueError("Missing required source table: Branches Per Day this month")
     month_row = find_row(df, "Month", start=title_row + 1, col=2)
     header_row = find_row(df, "Day of Month", start=title_row + 1, col=2)
     month = clean_name(df.iat[month_row, 3]) if month_row is not None else None

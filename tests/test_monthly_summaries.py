@@ -371,6 +371,16 @@ class MonthlySummaryExtractionTests(unittest.TestCase):
         ):
             analysis.extract_branches_per_day_this_month(fixture)
 
+    def test_this_month_daily_requires_source_table(self):
+        fixture = build_this_month_daily_seller_fixture()
+        fixture.iat[0, 2] = None
+
+        with self.assertRaisesRegex(
+            ValueError,
+            r"Missing required source table: Branches Per Day this month",
+        ):
+            analysis.extract_branches_per_day_this_month(fixture)
+
     def test_this_month_daily_requires_measure_headers_when_header_row_is_missing(self):
         fixture = build_this_month_daily_seller_fixture()
         fixture.iat[4, 2] = None
