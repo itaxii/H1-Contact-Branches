@@ -1467,14 +1467,24 @@ def validate_report(data, registry=None):
         make_check("Pending category totals = total pending", totals["pending_total"], sum(money(r["premium"]) for r in data["pending_categories"])),
         make_check("Policy-type premium totals = approved gross premium", approved, sum(money(r["premium"]) for r in data["policy_type_mix"])),
         make_check("Premium distribution branch counts = unique branches", len(data["branches"]), sum(int(r["count"]) for r in data["premium_distribution_bins"]), tolerance=0),
-        make_check(
-            "Branches per day rows = workbook daily total",
-            data["branches_per_day_this_month"]["total"],
-            sum(money(r["premium_2026"]) for r in data["branches_per_day_this_month"]["daily_rows"]),
-            severity="warning",
-            source="workbook",
-        ),
     ]
+    daily_measure_checks = (
+        ("premium_2026", "Branches per day approved total"),
+        ("pending_operation_paid", "Branches per day pending operation paid total"),
+        ("pending_not_paid", "Branches per day pending not paid total"),
+        ("pending_finance", "Branches per day pending finance total"),
+    )
+    daily_data = data["branches_per_day_this_month"]
+    for key, name in daily_measure_checks:
+        checks.append(
+            make_check(
+                name,
+                daily_data["totals"][key],
+                sum(money(row[key]) for row in daily_data["daily_rows"]),
+                severity="warning",
+                source="workbook",
+            )
+        )
     for renewal in data["renewals"]:
         checks.append(
             make_check(

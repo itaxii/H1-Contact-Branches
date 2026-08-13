@@ -33,7 +33,18 @@ def build_valid_validation_data():
         },
         "branches_per_day_this_month": {
             "month": "September",
-            "daily_rows": [{"premium_2026": 100}],
+            "daily_rows": [{
+                "premium_2026": 100,
+                "pending_operation_paid": 20,
+                "pending_not_paid": 30,
+                "pending_finance": 40,
+            }],
+            "totals": {
+                "premium_2026": 100,
+                "pending_operation_paid": 20,
+                "pending_not_paid": 30,
+                "pending_finance": 40,
+            },
             "total": 100,
         },
         "renewals": [
@@ -171,9 +182,30 @@ class ReportValidationTests(unittest.TestCase):
 
         result = validate_report(data, MetricRegistry())
 
-        warning = next(item for item in result["warnings"] if item["name"] == "Branches per day rows = workbook daily total")
+        warning = next(item for item in result["warnings"] if item["name"] == "Branches per day approved total")
         self.assertEqual(warning["expected"], 100)
         self.assertEqual(warning["actual"], 90)
+
+    def test_daily_measures_reconcile_independently(self):
+        cases = {
+            "premium_2026": "Branches per day approved total",
+            "pending_operation_paid": "Branches per day pending operation paid total",
+            "pending_not_paid": "Branches per day pending not paid total",
+            "pending_finance": "Branches per day pending finance total",
+        }
+
+        for key, check_name in cases.items():
+            with self.subTest(key=key):
+                data = build_valid_validation_data()
+                data["branches_per_day_this_month"]["daily_rows"][0][key] -= 1
+
+                result = validate_report(data, MetricRegistry())
+
+                warning = next(item for item in result["checks"] if item["name"] == check_name)
+                self.assertEqual(warning["expected"], data["branches_per_day_this_month"]["totals"][key])
+                self.assertEqual(warning["actual"], data["branches_per_day_this_month"]["totals"][key] - 1)
+                self.assertEqual(warning["difference"], -1)
+                self.assertEqual(warning["severity"], "warning")
 
 
 if __name__ == "__main__":
