@@ -187,20 +187,22 @@ def build_status_summary_fixture():
 
 
 def build_this_month_daily_seller_fixture():
-    rows = [[None] * 6 for _ in range(15)]
+    rows = [[None] * 8 for _ in range(15)]
     rows[0][2] = "Branches Per Day this month"
     rows[2][2], rows[2][3] = "Month", "September"
-    rows[4][2:5] = ["Day of Month", "Seller", "Premiums 2026 ( Approved )"]
-    rows[5][2:5] = [46267, "(blank)", "(10) EGP"]
-    rows[6][2:5] = [float("nan"), "Seller A", "100 EGP"]
-    rows[7][3:5] = ["Seller B", "50 EGP"]
-    rows[8][2], rows[8][4] = "September 02 Total", "140 EGP"
-    rows[9][2:5] = [46268, "(blank)", None]
-    rows[10][3:5] = ["Seller A", "200 EGP"]
-    rows[11][3:5] = ["Seller C", "25 EGP"]
-    rows[12][2], rows[12][4] = "September 03 Total", "225 EGP"
-    rows[13][2], rows[13][4] = "September Total", "365 EGP"
-    rows[14][2], rows[14][4] = "Grand Total", "365 EGP"
+    rows[4][2:8] = [
+        "Day of Month", "Seller", "Premiums 2026 ( Approved )",
+        "Pending Operation ( Paid )", "Pending ( Not Paid Yet )", "Pending Finance",
+    ]
+    rows[5][2:8] = [46267, "(blank)", "(10) EGP", None, None, None]
+    rows[6][3:8] = ["Seller A", "100 EGP", "20 EGP", None, None]
+    rows[7][3:8] = ["Seller B", "50 EGP", None, "30 EGP", None]
+    rows[8][2:8] = ["September 02 Total", None, "140 EGP", "20 EGP", "30 EGP", None]
+    rows[9][2:8] = [46268, "(blank)", None, None, None, None]
+    rows[10][3:8] = ["Seller A", "200 EGP", None, None, None]
+    rows[11][3:8] = ["Seller C", "25 EGP", None, None, "40 EGP"]
+    rows[12][2:8] = ["September 03 Total", None, "225 EGP", None, None, "40 EGP"]
+    rows[14][2:8] = ["Grand Total", None, "365 EGP", "20 EGP", "30 EGP", "40 EGP"]
     return pd.DataFrame(rows)
 
 
@@ -315,10 +317,34 @@ class MonthlySummaryExtractionTests(unittest.TestCase):
         self.assertEqual(
             result["daily_rows"],
             [
-                {"date": "2026-09-02", "label": "Sep 2", "premium_2026": 140.0},
-                {"date": "2026-09-03", "label": "Sep 3", "premium_2026": 225.0},
+                {
+                    "date": "2026-09-02",
+                    "label": "Sep 2",
+                    "premium_2026": 140.0,
+                    "pending_operation_paid": 20.0,
+                    "pending_not_paid": 30.0,
+                    "pending_finance": 0.0,
+                },
+                {
+                    "date": "2026-09-03",
+                    "label": "Sep 3",
+                    "premium_2026": 225.0,
+                    "pending_operation_paid": 0.0,
+                    "pending_not_paid": 0.0,
+                    "pending_finance": 40.0,
+                },
             ],
         )
+        self.assertEqual(
+            result["totals"],
+            {
+                "premium_2026": 365.0,
+                "pending_operation_paid": 20.0,
+                "pending_not_paid": 30.0,
+                "pending_finance": 40.0,
+            },
+        )
+        self.assertEqual(result["seller_totals"][0], {"seller": "Seller A", "premium_2026": 300.0})
 
 
 class MonthlySummaryWorkbookTests(unittest.TestCase):

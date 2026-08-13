@@ -383,37 +383,60 @@ def extract_branches_per_day(df):
 
 
 def extract_branches_per_day_this_month(df):
+    measure_aliases = {
+        "premium_2026": ("Premiums 2026 ( Approved )",),
+        "pending_operation_paid": ("Pending Operation ( Paid )",),
+        "pending_not_paid": ("Pending ( Not Paid Yet )",),
+        "pending_finance": ("Pending Finance",),
+    }
+    empty_totals = {key: 0.0 for key in measure_aliases}
     title_row = find_row(df, "Branches Per Day this month", col=2)
     if title_row is None:
-        return {"month": None, "rows": [], "daily_rows": [], "seller_totals": [], "total": None}
+        return {"month": None, "rows": [], "daily_rows": [], "seller_totals": [], "totals": empty_totals, "total": None}
     month_row = find_row(df, "Month", start=title_row + 1, col=2)
     header_row = find_row(df, "Day of Month", start=title_row + 1, col=2)
     month = clean_name(df.iat[month_row, 3]) if month_row is not None else None
     if header_row is None:
-        return {"month": month, "rows": [], "daily_rows": [], "seller_totals": [], "total": None}
+        return {"month": month, "rows": [], "daily_rows": [], "seller_totals": [], "totals": empty_totals, "total": None}
+
+    headers = {
+        normalize_header(df.iat[header_row, cidx]): cidx
+        for cidx in range(df.shape[1])
+        if normalize_header(df.iat[header_row, cidx])
+    }
+    measure_columns = {
+        key: next((headers[normalize_header(alias)] for alias in aliases if normalize_header(alias) in headers), None)
+        for key, aliases in measure_aliases.items()
+    }
 
     rows = []
     daily_rows = []
     totals_by_seller = {}
     total = None
+    totals = empty_totals.copy()
     current_date = None
     for ridx in range(header_row + 1, len(df)):
         raw_day = df.iat[ridx, 2]
         day_label = clean_name(raw_day)
         seller = clean_name(df.iat[ridx, 3])
-        premium = parse_number(df.iat[ridx, 4])
+        measures = {
+            key: parse_number(df.iat[ridx, column]) if column is not None else None
+            for key, column in measure_columns.items()
+        }
+        premium = measures["premium_2026"]
 
         if day_label.lower() == "grand total":
-            total = premium
+            totals = {key: money(value) for key, value in measures.items()}
+            total = totals["premium_2026"]
             break
         if pd.notna(raw_day) and isinstance(raw_day, (int, float)) and not isinstance(raw_day, bool):
             current_date = pd.Timestamp("1899-12-30") + pd.to_timedelta(raw_day, unit="D")
-        if re.fullmatch(r"[A-Za-z]+\s+\d{1,2}\s+Total", day_label, flags=re.IGNORECASE) and premium is not None:
+        if re.fullmatch(r"[A-Za-z]+\s+\d{1,2}\s+Total", day_label, flags=re.IGNORECASE):
             daily_rows.append(
                 {
                     "date": current_date.strftime("%Y-%m-%d") if current_date is not None else None,
                     "label": f"{current_date.strftime('%b')} {current_date.day}" if current_date is not None else day_label[:-6],
-                    "premium_2026": premium,
+                    **{key: money(value) for key, value in measures.items()},
                 }
             )
             continue
@@ -423,7 +446,7 @@ def extract_branches_per_day_this_month(df):
         record = {
             "date": current_date.strftime("%Y-%m-%d") if current_date is not None else None,
             "seller": seller,
-            "premium_2026": premium,
+            **measures,
         }
         rows.append(record)
         totals_by_seller[seller] = totals_by_seller.get(seller, 0.0) + premium
@@ -432,7 +455,7 @@ def extract_branches_per_day_this_month(df):
         {"seller": seller, "premium_2026": premium}
         for seller, premium in totals_by_seller.items()
     ]
-    return {"month": month, "rows": rows, "daily_rows": daily_rows, "seller_totals": seller_totals, "total": total}
+    return {"month": month, "rows": rows, "daily_rows": daily_rows, "seller_totals": seller_totals, "totals": totals, "total": total}
 
 
 def build_seller_mvps(sellers, this_month):
