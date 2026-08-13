@@ -139,18 +139,40 @@ async function main() {
 
     assert.equal(await page.locator("#renewals, #renewalStrip, #renewalLine, #renewalFunnel").count(), 0);
     assert.equal(await page.locator("#branchesPerDay").count(), 1);
-    assert.match(await page.locator("#branchesPerDay").innerText(), /Branches Per Day - This Month/);
+    assert.equal(
+      await page.getByRole("heading", { name: "Daily Approved and Pending Premiums", exact: true }).count(),
+      1
+    );
     const thisMonth = await page.evaluate(() => data.branches_per_day_this_month.month);
     assert.match(await page.locator("#branchesPerDay").innerText(), new RegExp(thisMonth, "i"));
     assert.equal(await page.locator('nav a[href="#branchesPerDay"]').count(), 1);
-    const dailyCounts = await page.evaluate(() => ({
-      chart: Chart.getChart("branchesPerDayChart").data.labels.length,
-      source: data.branches_per_day_this_month.daily_rows.length,
-      values: Chart.getChart("branchesPerDayChart").data.datasets[0].data,
-      expectedValues: data.branches_per_day_this_month.daily_rows.map((row) => row.premium_2026),
-    }));
-    assert.equal(dailyCounts.chart, dailyCounts.source);
-    assert.deepEqual(dailyCounts.values, dailyCounts.expectedValues);
+    const dailyChart = await page.evaluate(() => {
+      const chart = Chart.getChart("branchesPerDayChart");
+      const dailyRows = window.REPORT_DATA.branches_per_day_this_month.daily_rows;
+      return {
+        labels: chart.data.labels,
+        sourceLabels: dailyRows.map((row) => row.label),
+        datasetLabels: chart.data.datasets.map((item) => item.label),
+        values: chart.data.datasets.map((item) => item.data),
+        expectedValues: [
+          dailyRows.map((row) => row.premium_2026),
+          dailyRows.map((row) => row.pending_operation_paid),
+          dailyRows.map((row) => row.pending_not_paid),
+          dailyRows.map((row) => row.pending_finance),
+        ],
+        legendVisible: chart.options.plugins.legend.display,
+        stackedX: Boolean(chart.options.scales.x.stacked),
+        stackedY: Boolean(chart.options.scales.y.stacked),
+      };
+    });
+    assert.deepEqual(dailyChart.labels, dailyChart.sourceLabels);
+    assert.deepEqual(dailyChart.datasetLabels, [
+      "Approved Premium", "Pending Operation Paid", "Pending Not Paid Yet", "Pending Finance",
+    ]);
+    assert.deepEqual(dailyChart.values, dailyChart.expectedValues);
+    assert.equal(dailyChart.legendVisible, true);
+    assert.equal(dailyChart.stackedX, false);
+    assert.equal(dailyChart.stackedY, false);
 
     assert.equal(await page.locator("#kpiGrid .kpi-card").filter({ hasText: "Motor Renewal Rate" }).count(), 0);
     assert.equal(await page.getByRole("heading", { name: "Status Mix by Year", exact: true }).count(), 0);

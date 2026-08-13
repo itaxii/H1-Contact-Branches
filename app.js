@@ -38,7 +38,7 @@ const CHART_DESCRIPTIONS = {
   lobTop: "Ranks lines of business by 2026 premium to show the strongest product categories.",
   lobGrowth: "Shows YoY movement by line of business to identify product categories losing or gaining momentum.",
   lobMix: "Shows new versus renewal production by line of business to explain the business mix behind each product category.",
-  branchesPerDayChart: "Shows approved branch-channel premium by day for the workbook's latest month.",
+  branchesPerDayChart: "Compares approved production with operation-paid, not-paid-yet, and finance pending amounts for each available day in the workbook's latest month.",
   pendingBranch: "Shows pending value by branch so teams can prioritize conversion follow-up.",
   pendingMix: "Splits pending exposure by category to clarify whether the issue is operation-paid, finance, or not-paid-yet.",
 };
@@ -937,12 +937,22 @@ function sellerMonthlyTable(seller) {
 
 function renderBranchesPerDay() {
   const daily = data.branches_per_day_this_month;
+  const measures = [
+    ["Approved Premium", "premium_2026", COLORS.blue],
+    ["Pending Operation Paid", "pending_operation_paid", COLORS.green],
+    ["Pending Not Paid Yet", "pending_not_paid", COLORS.orange],
+    ["Pending Finance", "pending_finance", COLORS.grey],
+  ];
   document.getElementById("branchesPerDayMonth").textContent = `${daily.month} 2026`;
   makeChart("branchesPerDayChart", {
     type: "bar",
     data: {
       labels: daily.daily_rows.map((row) => row.label),
-      datasets: [{ label: "Approved Premium", data: daily.daily_rows.map((row) => row.premium_2026), backgroundColor: COLORS.blue }],
+      datasets: measures.map(([label, field, backgroundColor]) => ({
+        label,
+        data: daily.daily_rows.map((row) => row[field]),
+        backgroundColor,
+      })),
     },
     options: {
       responsive: true,
@@ -951,7 +961,7 @@ function renderBranchesPerDay() {
         x: { grid: { display: false } },
         y: { beginAtZero: true, ticks: { callback: (v) => fmtMoney(v) } },
       },
-      plugins: { legend: { display: false }, tooltip: { callbacks: { label: (ctx) => fmtMoney(ctx.raw) } } },
+      plugins: { legend: { display: true }, tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${fmtMoney(ctx.raw)}` } } },
     },
   });
 }
