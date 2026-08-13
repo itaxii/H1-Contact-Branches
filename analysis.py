@@ -440,7 +440,12 @@ def extract_branches_per_day_this_month(df):
                 }
             )
             continue
-        if not seller or seller.lower() == "(blank)" or is_total_label(seller) or premium is None:
+        if not seller or seller.lower() == "(blank)" or is_total_label(seller):
+            continue
+        if premium is None and not any(
+            measures[key] is not None
+            for key in ("pending_operation_paid", "pending_not_paid", "pending_finance")
+        ):
             continue
 
         record = {
@@ -449,7 +454,8 @@ def extract_branches_per_day_this_month(df):
             **measures,
         }
         rows.append(record)
-        totals_by_seller[seller] = totals_by_seller.get(seller, 0.0) + premium
+        if premium is not None:
+            totals_by_seller[seller] = totals_by_seller.get(seller, 0.0) + premium
 
     seller_totals = [
         {"seller": seller, "premium_2026": premium}

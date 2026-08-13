@@ -187,7 +187,7 @@ def build_status_summary_fixture():
 
 
 def build_this_month_daily_seller_fixture():
-    rows = [[None] * 8 for _ in range(15)]
+    rows = [[None] * 8 for _ in range(16)]
     rows[0][2] = "Branches Per Day this month"
     rows[2][2], rows[2][3] = "Month", "September"
     rows[4][2:8] = [
@@ -200,9 +200,10 @@ def build_this_month_daily_seller_fixture():
     rows[8][2:8] = ["September 02 Total", None, "140 EGP", "20 EGP", "30 EGP", None]
     rows[9][2:8] = [46268, "(blank)", None, None, None, None]
     rows[10][3:8] = ["Seller A", "200 EGP", None, None, None]
-    rows[11][3:8] = ["Seller C", "25 EGP", None, None, "40 EGP"]
-    rows[12][2:8] = ["September 03 Total", None, "225 EGP", None, None, "40 EGP"]
-    rows[14][2:8] = ["Grand Total", None, "365 EGP", "20 EGP", "30 EGP", "40 EGP"]
+    rows[11][3:8] = ["Seller C", "25 EGP", None, None, None]
+    rows[12][3:8] = ["Seller D", None, None, None, "40 EGP"]
+    rows[13][2:8] = ["September 03 Total", None, "225 EGP", None, None, "40 EGP"]
+    rows[15][2:8] = ["Grand Total", None, "365 EGP", "20 EGP", "30 EGP", "40 EGP"]
     return pd.DataFrame(rows)
 
 
@@ -311,8 +312,19 @@ class MonthlySummaryExtractionTests(unittest.TestCase):
                 {"seller": "Seller C", "premium_2026": 25.0},
             ],
         )
-        self.assertEqual([row["seller"] for row in result["rows"]], ["Seller A", "Seller B", "Seller A", "Seller C"])
+        self.assertEqual([row["seller"] for row in result["rows"]], ["Seller A", "Seller B", "Seller A", "Seller C", "Seller D"])
         self.assertNotIn("(blank)", [row["seller"] for row in result["rows"]])
+        self.assertEqual(
+            result["rows"][-1],
+            {
+                "date": "2026-09-03",
+                "seller": "Seller D",
+                "premium_2026": None,
+                "pending_operation_paid": None,
+                "pending_not_paid": None,
+                "pending_finance": 40.0,
+            },
+        )
         self.assertEqual(result["total"], 365.0)
         self.assertEqual(
             result["daily_rows"],
