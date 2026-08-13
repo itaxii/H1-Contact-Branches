@@ -359,6 +359,43 @@ class MonthlySummaryExtractionTests(unittest.TestCase):
         )
         self.assertEqual(result["seller_totals"][0], {"seller": "Seller A", "premium_2026": 300.0})
 
+    def test_this_month_daily_requires_all_measure_headers(self):
+        fixture = build_this_month_daily_seller_fixture()
+        fixture.iat[4, 5] = None
+        fixture.iat[4, 7] = None
+
+        with self.assertRaisesRegex(
+            ValueError,
+            r"Missing required Branches Per Day this month header\(s\): "
+            r"Pending Operation \( Paid \), Pending Finance",
+        ):
+            analysis.extract_branches_per_day_this_month(fixture)
+
+    def test_this_month_daily_requires_measure_headers_when_header_row_is_missing(self):
+        fixture = build_this_month_daily_seller_fixture()
+        fixture.iat[4, 2] = None
+
+        with self.assertRaisesRegex(
+            ValueError,
+            r"Missing required Branches Per Day this month header\(s\): "
+            r"Premiums 2026 \( Approved \), Pending Operation \( Paid \), "
+            r"Pending \( Not Paid Yet \), Pending Finance",
+        ):
+            analysis.extract_branches_per_day_this_month(fixture)
+
+    def test_this_month_daily_skips_empty_subtotals_but_keeps_explicit_zero(self):
+        fixture = build_this_month_daily_seller_fixture()
+        fixture.loc[14, 2] = 46269
+        fixture.loc[15, 2:7] = ["September 04 Total", None, None, None, None, None]
+        fixture.loc[16, 2] = 46270
+        fixture.loc[17, 2:7] = ["September 05 Total", None, "0 EGP", None, None, None]
+        fixture.loc[18, 2:7] = ["Grand Total", None, "365 EGP", "20 EGP", "30 EGP", "40 EGP"]
+
+        result = analysis.extract_branches_per_day_this_month(fixture)
+
+        self.assertNotIn("Sep 4", [row["label"] for row in result["daily_rows"]])
+        self.assertIn("Sep 5", [row["label"] for row in result["daily_rows"]])
+
 
 class MonthlySummaryWorkbookTests(unittest.TestCase):
     @classmethod

@@ -140,7 +140,11 @@ async function main() {
     assert.equal(await page.locator("#renewals, #renewalStrip, #renewalLine, #renewalFunnel").count(), 0);
     assert.equal(await page.locator("#branchesPerDay").count(), 1);
     assert.equal(
-      await page.getByRole("heading", { name: "Daily Approved and Pending Premiums", exact: true }).count(),
+      await page.locator("#branchesPerDay > .section__header > h2", { hasText: "Branches Per Day - This Month" }).count(),
+      1
+    );
+    assert.equal(
+      await page.locator("#branchesPerDay .panel > h3", { hasText: "Daily Approved and Pending Premiums" }).count(),
       1
     );
     const thisMonth = await page.evaluate(() => data.branches_per_day_this_month.month);

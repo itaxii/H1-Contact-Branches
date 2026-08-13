@@ -389,6 +389,7 @@ def extract_branches_per_day_this_month(df):
         "pending_not_paid": ("Pending ( Not Paid Yet )",),
         "pending_finance": ("Pending Finance",),
     }
+    required_headers = [aliases[0] for aliases in measure_aliases.values()]
     empty_totals = {key: 0.0 for key in measure_aliases}
     title_row = find_row(df, "Branches Per Day this month", col=2)
     if title_row is None:
@@ -397,7 +398,10 @@ def extract_branches_per_day_this_month(df):
     header_row = find_row(df, "Day of Month", start=title_row + 1, col=2)
     month = clean_name(df.iat[month_row, 3]) if month_row is not None else None
     if header_row is None:
-        return {"month": month, "rows": [], "daily_rows": [], "seller_totals": [], "totals": empty_totals, "total": None}
+        raise ValueError(
+            "Missing required Branches Per Day this month header(s): "
+            + ", ".join(required_headers)
+        )
 
     headers = {
         normalize_header(df.iat[header_row, cidx]): cidx
@@ -408,6 +412,16 @@ def extract_branches_per_day_this_month(df):
         key: next((headers[normalize_header(alias)] for alias in aliases if normalize_header(alias) in headers), None)
         for key, aliases in measure_aliases.items()
     }
+    missing_headers = [
+        aliases[0]
+        for key, aliases in measure_aliases.items()
+        if measure_columns[key] is None
+    ]
+    if missing_headers:
+        raise ValueError(
+            "Missing required Branches Per Day this month header(s): "
+            + ", ".join(missing_headers)
+        )
 
     rows = []
     daily_rows = []
@@ -432,6 +446,8 @@ def extract_branches_per_day_this_month(df):
         if pd.notna(raw_day) and isinstance(raw_day, (int, float)) and not isinstance(raw_day, bool):
             current_date = pd.Timestamp("1899-12-30") + pd.to_timedelta(raw_day, unit="D")
         if re.fullmatch(r"[A-Za-z]+\s+\d{1,2}\s+Total", day_label, flags=re.IGNORECASE):
+            if not any(value is not None for value in measures.values()):
+                continue
             daily_rows.append(
                 {
                     "date": current_date.strftime("%Y-%m-%d") if current_date is not None else None,
