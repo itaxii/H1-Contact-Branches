@@ -394,8 +394,10 @@ def extract_branches_per_day_this_month(df):
     title_row = find_row(df, "Branches Per Day this month", col=2)
     if title_row is None:
         raise ValueError("Missing required source table: Branches Per Day this month")
+    year_row = find_row(df, "Year", start=title_row + 1, col=2)
     month_row = find_row(df, "Month", start=title_row + 1, col=2)
     header_row = find_row(df, "Day of Month", start=title_row + 1, col=2)
+    report_year = parse_number(df.iat[year_row, 3]) if year_row is not None else None
     month = clean_name(df.iat[month_row, 3]) if month_row is not None else None
     if header_row is None:
         raise ValueError(
@@ -445,6 +447,10 @@ def extract_branches_per_day_this_month(df):
             break
         if pd.notna(raw_day) and isinstance(raw_day, (int, float)) and not isinstance(raw_day, bool):
             current_date = pd.Timestamp("1899-12-30") + pd.to_timedelta(raw_day, unit="D")
+        elif report_year is not None and re.fullmatch(r"[A-Za-z]+\s+\d{1,2}", day_label):
+            parsed_date = pd.to_datetime(f"{int(report_year)} {day_label}", errors="coerce")
+            if pd.notna(parsed_date):
+                current_date = parsed_date
         if re.fullmatch(r"[A-Za-z]+\s+\d{1,2}\s+Total", day_label, flags=re.IGNORECASE):
             if not any(value is not None for value in measures.values()):
                 continue
