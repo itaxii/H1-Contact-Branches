@@ -406,6 +406,17 @@ class MonthlySummaryExtractionTests(unittest.TestCase):
         self.assertNotIn("Sep 4", [row["label"] for row in result["daily_rows"]])
         self.assertIn("Sep 5", [row["label"] for row in result["daily_rows"]])
 
+    def test_this_month_daily_parses_text_day_labels(self):
+        fixture = build_this_month_daily_seller_fixture()
+        fixture.loc[1, 2:3] = ["Year", "2026"]
+        fixture.iat[9, 2] = "September 16"
+        fixture.iat[13, 2] = "September 16 Total"
+
+        result = analysis.extract_branches_per_day_this_month(fixture)
+
+        self.assertEqual(result["daily_rows"][-1]["date"], "2026-09-16")
+        self.assertEqual(result["daily_rows"][-1]["label"], "Sep 16")
+
 
 class MonthlySummaryWorkbookTests(unittest.TestCase):
     @classmethod
@@ -444,15 +455,15 @@ class MonthlySummaryWorkbookTests(unittest.TestCase):
         self.assertEqual(
             result["totals"],
             {
-                "premium_2026": 273294.0,
-                "pending_operation_paid": 44200.0,
-                "pending_not_paid": 94702.0,
-                "pending_finance": 111332.0,
+                "premium_2026": 451859.0,
+                "pending_operation_paid": 168719.0,
+                "pending_not_paid": 95252.0,
+                "pending_finance": 21997.0,
             },
         )
-        self.assertEqual(len(result["daily_rows"]), 9)
+        self.assertEqual(len(result["daily_rows"]), 11)
         self.assertEqual(result["daily_rows"][0]["premium_2026"], 51600.0)
-        self.assertEqual(result["daily_rows"][-1]["pending_finance"], -32403.0)
+        self.assertEqual(result["daily_rows"][-1]["pending_finance"], 0.0)
 
     def test_line_of_business_extraction_starts_after_real_header(self):
         rows, total = extract_lob_totals(self.overview)

@@ -207,15 +207,6 @@
     "denominator": "44536"
   },
   {
-    "metric_id": "branch-monthly.aswan-august.yoy",
-    "report_area": "branch-monthly",
-    "label": "Aswan August YoY",
-    "previous_display": "-100.0%",
-    "corrected_display": "N/A",
-    "numerator": null,
-    "denominator": "31452"
-  },
-  {
     "metric_id": "branch-monthly.aswan-june.yoy",
     "report_area": "branch-monthly",
     "label": "Aswan June YoY",
@@ -421,15 +412,6 @@
     "corrected_display": "N/A",
     "numerator": null,
     "denominator": "237287"
-  },
-  {
-    "metric_id": "branch-monthly.downtown-5th-settlement-august.yoy",
-    "report_area": "branch-monthly",
-    "label": "DownTown - 5th Settlement August YoY",
-    "previous_display": "-100.0%",
-    "corrected_display": "N/A",
-    "numerator": null,
-    "denominator": "296470"
   },
   {
     "metric_id": "branch-monthly.dubai-february.yoy",
@@ -1668,10 +1650,19 @@
     "metric_id": "kpi.approved-gross-premiums.yoy",
     "report_area": "kpi",
     "label": "Approved Gross Premiums YoY",
-    "previous_display": "-63.0%",
-    "corrected_display": "-62.7%",
-    "numerator": "-25140143",
+    "previous_display": "-62.0%",
+    "corrected_display": "-62.2%",
+    "numerator": "-24961578",
     "denominator": "40104553"
+  },
+  {
+    "metric_id": "kpi.avg-premium-per-policy.yoy",
+    "report_area": "kpi",
+    "label": "Avg Premium per policy YoY",
+    "previous_display": "138.0%",
+    "corrected_display": "138.1%",
+    "numerator": "3958",
+    "denominator": "2866"
   },
   {
     "metric_id": "kpi.corporate-approved-gross.yoy",
@@ -1686,18 +1677,27 @@
     "metric_id": "kpi.new-policies.yoy",
     "report_area": "kpi",
     "label": "New Policies YoY",
-    "previous_display": "-84.0%",
-    "corrected_display": "-83.5%",
-    "numerator": "-9171",
+    "previous_display": "-83.0%",
+    "corrected_display": "-83.2%",
+    "numerator": "-9140",
     "denominator": "10981"
+  },
+  {
+    "metric_id": "kpi.retail-approved-gross.yoy",
+    "report_area": "kpi",
+    "label": "Retail Approved Gross YoY",
+    "previous_display": "-63.0%",
+    "corrected_display": "-62.5%",
+    "numerator": "-24265422",
+    "denominator": "38801466"
   },
   {
     "metric_id": "kpi.total-approved-policies.yoy",
     "report_area": "kpi",
     "label": "Total Approved Policies YoY",
     "previous_display": "-84.0%",
-    "corrected_display": "-84.2%",
-    "numerator": "-11781",
+    "corrected_display": "-84.1%",
+    "numerator": "-11774",
     "denominator": "13993"
   },
   {
@@ -1705,8 +1705,8 @@
     "report_area": "kpi",
     "label": "Total Policies YoY",
     "previous_display": "-83.0%",
-    "corrected_display": "-83.5%",
-    "numerator": "-11684",
+    "corrected_display": "-83.3%",
+    "numerator": "-11653",
     "denominator": "13993"
   },
   {
@@ -1803,9 +1803,9 @@
     "metric_id": "lob.motor-vehicle-private-company-comprehensive.target_achievement",
     "report_area": "lob",
     "label": "Motor Vehicle Private Company Comprehensive Target Achievement",
-    "previous_display": "33.0%",
-    "corrected_display": "33.3%",
-    "numerator": "12315172",
+    "previous_display": "34.0%",
+    "corrected_display": "33.8%",
+    "numerator": "12481282",
     "denominator": "36932925"
   },
   {
@@ -1875,18 +1875,18 @@
     "metric_id": "lob.term-yrt.target_achievement",
     "report_area": "lob",
     "label": "Term (YRT) Target Achievement",
-    "previous_display": "157.0%",
-    "corrected_display": "156.8%",
-    "numerator": "349238",
+    "previous_display": "162.0%",
+    "corrected_display": "162.4%",
+    "numerator": "361693",
     "denominator": "222769"
   },
   {
     "metric_id": "monthly.August.target_achievement",
     "report_area": "monthly",
     "label": "August Target Achievement",
-    "previous_display": "5.0%",
-    "corrected_display": "4.5%",
-    "numerator": "273294",
+    "previous_display": "8.0%",
+    "corrected_display": "7.5%",
+    "numerator": "451859",
     "denominator": "6008767.456"
   },
   {
@@ -2127,15 +2127,6 @@
     "metric_id": "seller-monthly.mohamed-gamal-mohamed-madbouly-july.yoy",
     "report_area": "seller-monthly",
     "label": "Mohamed Gamal Mohamed Madbouly July YoY",
-    "previous_display": "-100.0%",
-    "corrected_display": "N/A",
-    "numerator": null,
-    "denominator": "700"
-  },
-  {
-    "metric_id": "seller-monthly.mohiee-eldin-ashraf-farouk-mohamed-august.yoy",
-    "report_area": "seller-monthly",
-    "label": "Mohiee Eldin Ashraf Farouk Mohamed August YoY",
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
