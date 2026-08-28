@@ -455,14 +455,15 @@ class MonthlySummaryWorkbookTests(unittest.TestCase):
         self.assertEqual(
             result["totals"],
             {
-                "premium_2026": 451859.0,
-                "pending_operation_paid": 168719.0,
-                "pending_not_paid": 95252.0,
-                "pending_finance": 21997.0,
+                "premium_2026": 563975.0,
+                "pending_operation_paid": 12600.0,
+                "pending_not_paid": 129466.0,
+                "pending_finance": 79790.0,
             },
         )
-        self.assertEqual(len(result["daily_rows"]), 11)
+        self.assertEqual(len(result["daily_rows"]), 16)
         self.assertEqual(result["daily_rows"][0]["premium_2026"], 51600.0)
+        self.assertEqual(result["daily_rows"][-1]["label"], "Aug 26")
         self.assertEqual(result["daily_rows"][-1]["pending_finance"], 0.0)
 
     def test_line_of_business_extraction_starts_after_real_header(self):
