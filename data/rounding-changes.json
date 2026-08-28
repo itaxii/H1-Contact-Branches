@@ -1629,15 +1629,6 @@
     "denominator": "28300"
   },
   {
-    "metric_id": "branch-monthly.zamalek-august.yoy",
-    "report_area": "branch-monthly",
-    "label": "Zamalek August YoY",
-    "previous_display": "-100.0%",
-    "corrected_display": "N/A",
-    "numerator": null,
-    "denominator": "366108"
-  },
-  {
     "metric_id": "insurer.egyptian-takaful.yoy",
     "report_area": "insurer",
     "label": "Egyptian Takaful YoY",
@@ -1647,21 +1638,12 @@
     "denominator": "102015"
   },
   {
-    "metric_id": "kpi.approved-gross-premiums.yoy",
-    "report_area": "kpi",
-    "label": "Approved Gross Premiums YoY",
-    "previous_display": "-62.0%",
-    "corrected_display": "-62.2%",
-    "numerator": "-24961578",
-    "denominator": "40104553"
-  },
-  {
     "metric_id": "kpi.avg-premium-per-policy.yoy",
     "report_area": "kpi",
     "label": "Avg Premium per policy YoY",
-    "previous_display": "138.0%",
-    "corrected_display": "138.1%",
-    "numerator": "3958",
+    "previous_display": "140.0%",
+    "corrected_display": "139.5%",
+    "numerator": "3999",
     "denominator": "2866"
   },
   {
@@ -1679,16 +1661,25 @@
     "label": "New Policies YoY",
     "previous_display": "-83.0%",
     "corrected_display": "-83.2%",
-    "numerator": "-9140",
+    "numerator": "-9131",
     "denominator": "10981"
+  },
+  {
+    "metric_id": "kpi.renewal-policies.yoy",
+    "report_area": "kpi",
+    "label": "Renewal Policies YoY",
+    "previous_display": "-85.0%",
+    "corrected_display": "-84.9%",
+    "numerator": "-2389",
+    "denominator": "2814"
   },
   {
     "metric_id": "kpi.retail-approved-gross.yoy",
     "report_area": "kpi",
     "label": "Retail Approved Gross YoY",
-    "previous_display": "-63.0%",
-    "corrected_display": "-62.5%",
-    "numerator": "-24265422",
+    "previous_display": "-62.0%",
+    "corrected_display": "-62.2%",
+    "numerator": "-24153306",
     "denominator": "38801466"
   },
   {
@@ -1697,7 +1688,7 @@
     "label": "Total Approved Policies YoY",
     "previous_display": "-84.0%",
     "corrected_display": "-84.1%",
-    "numerator": "-11774",
+    "numerator": "-11771",
     "denominator": "13993"
   },
   {
@@ -1705,8 +1696,8 @@
     "report_area": "kpi",
     "label": "Total Policies YoY",
     "previous_display": "-83.0%",
-    "corrected_display": "-83.3%",
-    "numerator": "-11653",
+    "corrected_display": "-83.2%",
+    "numerator": "-11640",
     "denominator": "13993"
   },
   {
@@ -1804,8 +1795,8 @@
     "report_area": "lob",
     "label": "Motor Vehicle Private Company Comprehensive Target Achievement",
     "previous_display": "34.0%",
-    "corrected_display": "33.8%",
-    "numerator": "12481282",
+    "corrected_display": "34.1%",
+    "numerator": "12593398",
     "denominator": "36932925"
   },
   {
@@ -1884,9 +1875,9 @@
     "metric_id": "monthly.August.target_achievement",
     "report_area": "monthly",
     "label": "August Target Achievement",
-    "previous_display": "8.0%",
-    "corrected_display": "7.5%",
-    "numerator": "451859",
+    "previous_display": "9.0%",
+    "corrected_display": "9.4%",
+    "numerator": "563975",
     "denominator": "6008767.456"
   },
   {
@@ -1906,15 +1897,6 @@
     "corrected_display": "N/A",
     "numerator": null,
     "denominator": "129240"
-  },
-  {
-    "metric_id": "seller-monthly.ali-mabrouk-ali-august.yoy",
-    "report_area": "seller-monthly",
-    "label": "Ali Mabrouk Ali August YoY",
-    "previous_display": "-100.0%",
-    "corrected_display": "N/A",
-    "numerator": null,
-    "denominator": "112620"
   },
   {
     "metric_id": "seller-monthly.ali-mabrouk-ali-july.yoy",

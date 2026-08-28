@@ -14,7 +14,7 @@ window.REPORT_DATA = {
       "August"
     ],
     "latest_reporting_month": "August",
-    "last_updated": "2026-08-22",
+    "last_updated": "2026-08-28",
     "source": "Branch Report.xlsx",
     "generated_by": "analysis.py"
   },
@@ -22,65 +22,65 @@ window.REPORT_DATA = {
     "Approved Gross Premiums": {
       "label": "Approved Gross Premiums",
       "value_2025": 40104553.0,
-      "value_2026": 15142975.0,
-      "change": -24961578.0,
-      "change_pct": -0.6224125724577955,
-      "source_change": -24961578.0,
+      "value_2026": 15255091.0,
+      "change": -24849462.0,
+      "change_pct": -0.6196169796481711,
+      "source_change": -24849462.0,
       "source_change_pct": -0.62
     },
     "Avg Premium per policy": {
       "label": "Avg Premium per policy",
       "value_2025": 2866.0,
-      "value_2026": 6824.0,
-      "change": 3958.0,
-      "change_pct": 1.3810188415910676,
-      "source_change": 3958.0,
-      "source_change_pct": 1.38
+      "value_2026": 6865.0,
+      "change": 3999.0,
+      "change_pct": 1.395324494068388,
+      "source_change": 3999.0,
+      "source_change_pct": 1.4
     },
     "Total Policies": {
       "label": "Total Policies",
       "value_2025": 13993.0,
-      "value_2026": 2340.0,
-      "change": -11653.0,
-      "change_pct": -0.8327735296219538,
-      "source_change": -11653.0,
+      "value_2026": 2353.0,
+      "change": -11640.0,
+      "change_pct": -0.8318444936754091,
+      "source_change": -11640.0,
       "source_change_pct": -0.83
     },
     "Total Approved Policies": {
       "label": "Total Approved Policies",
       "value_2025": 13993.0,
-      "value_2026": 2219.0,
-      "change": -11774.0,
-      "change_pct": -0.8414207103551776,
-      "source_change": -11774.0,
+      "value_2026": 2222.0,
+      "change": -11771.0,
+      "change_pct": -0.8412063174444365,
+      "source_change": -11771.0,
       "source_change_pct": -0.84
     },
     "New Policies": {
       "label": "New Policies",
       "value_2025": 10981.0,
-      "value_2026": 1841.0,
-      "change": -9140.0,
-      "change_pct": -0.8323467808032056,
-      "source_change": -9140.0,
+      "value_2026": 1850.0,
+      "change": -9131.0,
+      "change_pct": -0.8315271833166378,
+      "source_change": -9131.0,
       "source_change_pct": -0.83
     },
     "Renewal Policies": {
       "label": "Renewal Policies",
       "value_2025": 2814.0,
-      "value_2026": 423.0,
-      "change": -2391.0,
-      "change_pct": -0.849680170575693,
-      "source_change": -2391.0,
+      "value_2026": 425.0,
+      "change": -2389.0,
+      "change_pct": -0.8489694385216773,
+      "source_change": -2389.0,
       "source_change_pct": -0.85
     },
     "Retail Approved Gross": {
       "label": "Retail Approved Gross",
       "value_2025": 38801466.0,
-      "value_2026": 14536044.0,
-      "change": -24265422.0,
-      "change_pct": -0.6253738454108925,
-      "source_change": -24265421.0,
-      "source_change_pct": -0.63
+      "value_2026": 14648160.0,
+      "change": -24153306.0,
+      "change_pct": -0.6224843669566505,
+      "source_change": -24153305.0,
+      "source_change_pct": -0.62
     },
     "Corporate Approved Gross": {
       "label": "Corporate Approved Gross",
@@ -93,33 +93,33 @@ window.REPORT_DATA = {
     }
   },
   "totals": {
-    "approved_gross_premium": 15142975.0,
+    "approved_gross_premium": 15255091.0,
     "approved_gross_premium_2025": 40104553.0,
     "target_2026": 50130691.0,
-    "target_achievement_pct": 0.3020699435401758,
-    "target_gap": 34987716.0,
-    "total_policies": 2340.0,
-    "approved_policies": 2219.0,
-    "avg_premium_per_policy": 6824.0,
-    "new_premium": 6820327.0,
+    "target_achievement_pct": 0.30430641779902856,
+    "target_gap": 34875600.0,
+    "total_policies": 2353.0,
+    "approved_policies": 2222.0,
+    "avg_premium_per_policy": 6865.0,
+    "new_premium": 6964846.0,
     "renewal_premium": 8238668.0,
-    "endorsement_premium": 83981.0,
-    "motor_premium": 13234854.0,
+    "endorsement_premium": 51578.0,
+    "motor_premium": 13346970.0,
     "non_motor_premium": 1908121.0,
-    "pending_operation_paid": 176469.0,
-    "pending_finance": 40397.0,
-    "pending_payment": 245605.0,
-    "pending_total": 462471.0,
-    "pending_as_pct_approved": 0.030540300040117613,
-    "other_policy_types_premium": 83980.0,
-    "target_variance_pct": -0.6979300564598242,
-    "new_premium_mix_pct": 0.45039544739392356,
-    "renewal_premium_mix_pct": 0.5440587467125846,
-    "other_policy_types_premium_mix_pct": 0.0055458058934918664,
-    "motor_mix_pct": 0.8739929901488974,
-    "non_motor_mix_pct": 0.12600700985110258,
-    "retail_mix_pct": 0.9599199628870813,
-    "corporate_mix_pct": 0.040080037112918694
+    "pending_operation_paid": 12600.0,
+    "pending_finance": 105940.0,
+    "pending_payment": 279819.0,
+    "pending_total": 398359.0,
+    "pending_as_pct_approved": 0.02611318411669914,
+    "other_policy_types_premium": 51577.0,
+    "target_variance_pct": -0.6956935822009714,
+    "new_premium_mix_pct": 0.456558797322153,
+    "renewal_premium_mix_pct": 0.5400602330068041,
+    "other_policy_types_premium_mix_pct": 0.0033809696710429323,
+    "motor_mix_pct": 0.8749190680016264,
+    "non_motor_mix_pct": 0.12508093199837353,
+    "retail_mix_pct": 0.9602145277271699,
+    "corporate_mix_pct": 0.0397854722728301
   },
   "monthly": [
     {
@@ -271,7 +271,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 101046.0,
       "motor_premium_2025": 4736909.0,
       "non_motor_premium_2025": 711556.0,
-      "pending_finance": 15050.0,
+      "pending_finance": 22800.0,
       "source_target_achievement_pct": 0.07,
       "source_yoy_change": -4993484.0,
       "yoy_pct": -0.9164937127234392
@@ -281,22 +281,22 @@ window.REPORT_DATA = {
       "new_premium_2025": 1602058.77,
       "renewal_premium_2025": 3186865.2,
       "other_premium_2025": 18090.0,
-      "new_premium": 365467.0,
+      "new_premium": 509986.0,
       "renewal_premium": 103729.0,
-      "endorsement_premium": -17337.0,
+      "endorsement_premium": -49740.0,
       "actual_2025": 4807014.0,
-      "actual_2026": 451859.0,
+      "actual_2026": 563975.0,
       "target_2026": 6008767.456,
-      "target_achievement_pct": 0.07519994796084184,
-      "yoy_change": -4355155.0,
-      "motor_premium": 423630.0,
+      "target_achievement_pct": 0.09385868302106581,
+      "yoy_change": -4243039.0,
+      "motor_premium": 535746.0,
       "non_motor_premium": 28229.0,
       "motor_premium_2025": 4104304.0,
       "non_motor_premium_2025": 702710.0,
-      "pending_finance": 21997.0,
-      "source_target_achievement_pct": 0.08,
-      "source_yoy_change": -4355154.0,
-      "yoy_pct": -0.9060000657372748
+      "pending_finance": 79790.0,
+      "source_target_achievement_pct": 0.09,
+      "source_yoy_change": -4243038.0,
+      "yoy_pct": -0.8826766470827836
     }
   ],
   "monthly_total": {
@@ -304,22 +304,22 @@ window.REPORT_DATA = {
     "new_premium_2025": 12142426.62,
     "renewal_premium_2025": 26523912.66,
     "other_premium_2025": 1438213.74,
-    "new_premium": 6820327.0,
+    "new_premium": 6964846.0,
     "renewal_premium": 8238668.0,
-    "endorsement_premium": 83981.0,
+    "endorsement_premium": 51578.0,
     "actual_2025": 40104553.0,
-    "actual_2026": 15142975.0,
+    "actual_2026": 15255091.0,
     "target_2026": 50130691.0,
-    "target_achievement_pct": 0.3020699435401758,
-    "yoy_change": -24961578.0,
-    "motor_premium": 13234854.0,
+    "target_achievement_pct": 0.30430641779902856,
+    "yoy_change": -24849462.0,
+    "motor_premium": 13346970.0,
     "non_motor_premium": 1908121.0,
     "motor_premium_2025": 32314210.0,
     "non_motor_premium_2025": 7790343.0,
-    "pending_finance": 40397.0,
-    "source_target_achievement_pct": 0.302,
-    "source_yoy_change": -24961578.0,
-    "yoy_pct": -0.6224125724577955
+    "pending_finance": 105940.0,
+    "source_target_achievement_pct": 0.304,
+    "source_yoy_change": -24849462.0,
+    "yoy_pct": -0.6196169796481711
   },
   "monthly_count_summary": [
     {
@@ -453,13 +453,13 @@ window.REPORT_DATA = {
       "new_policies_2025": 872.0,
       "renewal_policies_2025": 287.0,
       "other_policies_2025": 18.0,
-      "new_policies_2026": 9.0,
+      "new_policies_2026": 11.0,
       "renewal_policies_2026": 5.0,
-      "other_policies_2026": 2.0,
+      "other_policies_2026": 3.0,
       "total_policies_2025": 1177.0,
-      "total_policies_2026": 16.0,
-      "yoy_change": 1161.0,
-      "motor_policies_2026": 12.0,
+      "total_policies_2026": 19.0,
+      "yoy_change": 1158.0,
+      "motor_policies_2026": 15.0,
       "non_motor_policies_2026": 4.0,
       "motor_policies_2025": 207.0,
       "non_motor_policies_2025": 970.0,
@@ -472,13 +472,13 @@ window.REPORT_DATA = {
     "new_policies_2025": 10981.0,
     "renewal_policies_2025": 2814.0,
     "other_policies_2025": 198.0,
-    "new_policies_2026": 1722.0,
+    "new_policies_2026": 1724.0,
     "renewal_policies_2026": 422.0,
-    "other_policies_2026": 75.0,
+    "other_policies_2026": 76.0,
     "total_policies_2025": 13993.0,
-    "total_policies_2026": 2219.0,
-    "yoy_change": 11774.0,
-    "motor_policies_2026": 577.0,
+    "total_policies_2026": 2222.0,
+    "yoy_change": 11771.0,
+    "motor_policies_2026": 580.0,
     "non_motor_policies_2026": 1642.0,
     "motor_policies_2025": 1589.0,
     "non_motor_policies_2025": 12404.0,
@@ -493,30 +493,30 @@ window.REPORT_DATA = {
     {
       "branch": "Giza",
       "premium_2025": 3962497.0,
-      "premium_2026": 2106273.0,
-      "source_yoy_change": -1856224.0,
-      "source_yoy_change_pct": -0.468,
-      "pending_operation_paid": 88239.0,
+      "premium_2026": 2194512.0,
+      "source_yoy_change": -1767985.0,
+      "source_yoy_change_pct": -0.446,
+      "pending_operation_paid": 700.0,
       "pending_finance": 19900.0,
       "pending_payment": 94702.0,
-      "new_premium": 1104098.0,
+      "new_premium": 1192337.0,
       "renewal_premium": 1013469.0,
-      "approved_policies": 238.0,
+      "approved_policies": 239.0,
       "total_policies": 250.0,
       "total_policies_ly": 1364.0,
       "new_policies": 190.0,
       "renewal_policies": 47.0,
-      "retail_approved_gross": 2106273.0,
+      "retail_approved_gross": 2194512.0,
       "corporate_approved_gross": null,
-      "motor_premium": 2018274.0,
+      "motor_premium": 2106513.0,
       "non_motor_premium": 87999.0,
-      "yoy_change": -1856224.0,
-      "yoy_change_pct": -0.4684480518218689,
-      "contribution_pct": 0.13909241744109066,
-      "avg_premium_per_policy": 8849.88655462185,
-      "renewal_mix_pct": 0.4811669712330738,
-      "motor_mix_pct": 0.958220515574192,
-      "pending_total": 202841.0,
+      "yoy_change": -1767985.0,
+      "yoy_change_pct": -0.4461795176122531,
+      "contribution_pct": 0.14385440244178158,
+      "avg_premium_per_policy": 9182.058577405858,
+      "renewal_mix_pct": 0.46181975764999234,
+      "motor_mix_pct": 0.9599004243312408,
+      "pending_total": 115302.0,
       "growth_class": "Negative Growth"
     },
     {
@@ -541,7 +541,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 25050.0,
       "yoy_change": -2162737.0,
       "yoy_change_pct": -0.5911486926590521,
-      "contribution_pct": 0.0987782123393851,
+      "contribution_pct": 0.09805225022912023,
       "avg_premium_per_policy": 16806.696629213482,
       "renewal_mix_pct": 0.7315830500950664,
       "motor_mix_pct": 0.9832530639204812,
@@ -551,30 +551,30 @@ window.REPORT_DATA = {
     {
       "branch": "Zamalek",
       "premium_2025": 3809854.0,
-      "premium_2026": 1454475.0,
-      "source_yoy_change": -2355379.0,
-      "source_yoy_change_pct": -0.618,
-      "pending_operation_paid": 12650.0,
-      "pending_finance": -29503.0,
+      "premium_2026": 1422072.0,
+      "source_yoy_change": -2387782.0,
+      "source_yoy_change_pct": -0.627,
+      "pending_operation_paid": 4450.0,
+      "pending_finance": 16440.0,
       "pending_payment": null,
       "new_premium": 534005.0,
       "renewal_premium": 920320.0,
-      "approved_policies": 478.0,
-      "total_policies": 507.0,
+      "approved_policies": 479.0,
+      "total_policies": 515.0,
       "total_policies_ly": 1694.0,
-      "new_policies": 471.0,
-      "renewal_policies": 29.0,
-      "retail_approved_gross": 1331347.0,
+      "new_policies": 475.0,
+      "renewal_policies": 31.0,
+      "retail_approved_gross": 1298944.0,
       "corporate_approved_gross": 123128.0,
-      "motor_premium": 1146497.0,
+      "motor_premium": 1114094.0,
       "non_motor_premium": 307978.0,
-      "yoy_change": -2355379.0,
-      "yoy_change_pct": -0.6182334021198712,
-      "contribution_pct": 0.09604948829407696,
-      "avg_premium_per_policy": 3042.834728033473,
-      "renewal_mix_pct": 0.6327506488595541,
-      "motor_mix_pct": 0.7882548685951976,
-      "pending_total": -16853.0,
+      "yoy_change": -2387782.0,
+      "yoy_change_pct": -0.6267384524446343,
+      "contribution_pct": 0.09321950291873055,
+      "avg_premium_per_policy": 2968.8350730688935,
+      "renewal_mix_pct": 0.6471683571577248,
+      "motor_mix_pct": 0.7834300935536316,
+      "pending_total": 20890.0,
       "growth_class": "Negative Growth"
     },
     {
@@ -599,7 +599,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 15900.0,
       "yoy_change": -604450.0,
       "yoy_change_pct": -0.4171765337595857,
-      "contribution_pct": 0.05576559427721435,
+      "contribution_pct": 0.05535574976248912,
       "avg_premium_per_policy": 12603.835820895523,
       "renewal_mix_pct": 0.4348995863614133,
       "motor_mix_pct": 0.9811713325841339,
@@ -628,7 +628,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 427203.0,
       "yoy_change": 65358.0,
       "yoy_change_pct": 0.08738062673720436,
-      "contribution_pct": 0.05370985556008644,
+      "contribution_pct": 0.053315119523049716,
       "avg_premium_per_policy": 42806.68421052631,
       "renewal_mix_pct": 0.5788655731335612,
       "motor_mix_pct": 0.47474631974593245,
@@ -657,7 +657,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 64500.0,
       "yoy_change": -692354.0,
       "yoy_change_pct": -0.4859954654256253,
-      "contribution_pct": 0.04835615194504382,
+      "contribution_pct": 0.04800076249954851,
       "avg_premium_per_policy": 14645.12,
       "renewal_mix_pct": 0.6164729275007648,
       "motor_mix_pct": 0.9119160512170607,
@@ -686,11 +686,40 @@ window.REPORT_DATA = {
       "non_motor_premium": 41020.0,
       "yoy_change": -1303987.0,
       "yoy_change_pct": -0.6782760173981613,
-      "contribution_pct": 0.04084501229117792,
+      "contribution_pct": 0.040544825330769904,
       "avg_premium_per_policy": 7451.987951807229,
       "renewal_mix_pct": 0.5484943776626274,
       "motor_mix_pct": 0.9336814790263777,
       "pending_total": 19423.0,
+      "growth_class": "Negative Growth"
+    },
+    {
+      "branch": "Tanta",
+      "premium_2025": 1574543.0,
+      "premium_2026": 615926.0,
+      "source_yoy_change": -958617.0,
+      "source_yoy_change_pct": -0.609,
+      "pending_operation_paid": null,
+      "pending_finance": 1400.0,
+      "pending_payment": 2250.0,
+      "new_premium": 532010.0,
+      "renewal_premium": 95325.0,
+      "approved_policies": 197.0,
+      "total_policies": 204.0,
+      "total_policies_ly": 811.0,
+      "new_policies": 196.0,
+      "renewal_policies": 5.0,
+      "retail_approved_gross": 615926.0,
+      "corporate_approved_gross": null,
+      "motor_premium": 527826.0,
+      "non_motor_premium": 88100.0,
+      "yoy_change": -958617.0,
+      "yoy_change_pct": -0.608822369411315,
+      "contribution_pct": 0.04037511149556564,
+      "avg_premium_per_policy": 3126.527918781726,
+      "renewal_mix_pct": 0.15476696875923407,
+      "motor_mix_pct": 0.85696333650471,
+      "pending_total": 3650.0,
       "growth_class": "Negative Growth"
     },
     {
@@ -699,8 +728,8 @@ window.REPORT_DATA = {
       "premium_2026": 579024.0,
       "source_yoy_change": -1555071.0,
       "source_yoy_change_pct": -0.729,
-      "pending_operation_paid": 700.0,
-      "pending_finance": 2100.0,
+      "pending_operation_paid": null,
+      "pending_finance": 2800.0,
       "pending_payment": null,
       "new_premium": 69184.0,
       "renewal_premium": 499085.0,
@@ -715,40 +744,11 @@ window.REPORT_DATA = {
       "non_motor_premium": 150278.0,
       "yoy_change": -1555071.0,
       "yoy_change_pct": -0.7286793699436998,
-      "contribution_pct": 0.03823713636191039,
+      "contribution_pct": 0.03795611576489449,
       "avg_premium_per_policy": 11135.076923076924,
       "renewal_mix_pct": 0.8619418193373677,
       "motor_mix_pct": 0.7404632623172788,
       "pending_total": 2800.0,
-      "growth_class": "Negative Growth"
-    },
-    {
-      "branch": "Tanta",
-      "premium_2025": 1574543.0,
-      "premium_2026": 559646.0,
-      "source_yoy_change": -1014897.0,
-      "source_yoy_change_pct": -0.645,
-      "pending_operation_paid": 56980.0,
-      "pending_finance": 700.0,
-      "pending_payment": 2250.0,
-      "new_premium": 475730.0,
-      "renewal_premium": 95325.0,
-      "approved_policies": 196.0,
-      "total_policies": 204.0,
-      "total_policies_ly": 811.0,
-      "new_policies": 196.0,
-      "renewal_policies": 5.0,
-      "retail_approved_gross": 559646.0,
-      "corporate_approved_gross": null,
-      "motor_premium": 471546.0,
-      "non_motor_premium": 88100.0,
-      "yoy_change": -1014897.0,
-      "yoy_change_pct": -0.6445660740926097,
-      "contribution_pct": 0.036957467076317564,
-      "avg_premium_per_policy": 2855.3367346938776,
-      "renewal_mix_pct": 0.17033088773974978,
-      "motor_mix_pct": 0.8425790589050935,
-      "pending_total": 59930.0,
       "growth_class": "Negative Growth"
     },
     {
@@ -773,7 +773,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 40400.0,
       "yoy_change": -1216620.0,
       "yoy_change_pct": -0.7124890853221814,
-      "contribution_pct": 0.03242051182148818,
+      "contribution_pct": 0.032182240014169694,
       "avg_premium_per_policy": 4675.647619047619,
       "renewal_mix_pct": 0.9085026163933492,
       "motor_mix_pct": 0.9177093878515429,
@@ -802,7 +802,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 24500.0,
       "yoy_change": -311889.0,
       "yoy_change_pct": -0.4072226799304864,
-      "contribution_pct": 0.0299811628824587,
+      "contribution_pct": 0.02976081886368295,
       "avg_premium_per_policy": 8566.11320754717,
       "renewal_mix_pct": 0.4258288473229311,
       "motor_mix_pct": 0.9460357177469803,
@@ -831,7 +831,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 60450.0,
       "yoy_change": -268036.0,
       "yoy_change_pct": -0.37494317156521945,
-      "contribution_pct": 0.02950774203880017,
+      "contribution_pct": 0.029290877386441025,
       "avg_premium_per_policy": 3410.9541984732823,
       "renewal_mix_pct": 0.28106795573310056,
       "motor_mix_pct": 0.8647151633153177,
@@ -860,7 +860,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 29700.0,
       "yoy_change": -614063.0,
       "yoy_change_pct": -0.6285337321144715,
-      "contribution_pct": 0.02396583234139923,
+      "contribution_pct": 0.02378969748525263,
       "avg_premium_per_policy": 5111.4647887323945,
       "renewal_mix_pct": 0.5007357114908766,
       "motor_mix_pct": 0.9181624296665326,
@@ -873,8 +873,8 @@ window.REPORT_DATA = {
       "premium_2026": 354757.0,
       "source_yoy_change": -330197.0,
       "source_yoy_change_pct": -0.482,
-      "pending_operation_paid": 450.0,
-      "pending_finance": 1650.0,
+      "pending_operation_paid": 1650.0,
+      "pending_finance": 3300.0,
       "pending_payment": null,
       "new_premium": 169656.0,
       "renewal_premium": 180550.0,
@@ -889,11 +889,11 @@ window.REPORT_DATA = {
       "non_motor_premium": 71991.0,
       "yoy_change": -330197.0,
       "yoy_change_pct": -0.48207178876245704,
-      "contribution_pct": 0.02342716672252315,
+      "contribution_pct": 0.023254990743745808,
       "avg_premium_per_policy": 2589.4671532846714,
       "renewal_mix_pct": 0.5089399222566433,
       "motor_mix_pct": 0.7970695433775796,
-      "pending_total": 2100.0,
+      "pending_total": 4950.0,
       "growth_class": "Negative Growth"
     },
     {
@@ -918,7 +918,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 224718.0,
       "yoy_change": -278637.0,
       "yoy_change_pct": -0.46180274724546216,
-      "contribution_pct": 0.021444333098350886,
+      "contribution_pct": 0.021286729787452597,
       "avg_premium_per_policy": 8326.435897435897,
       "renewal_mix_pct": 0.48098580055492085,
       "motor_mix_pct": 0.3079872263504254,
@@ -947,7 +947,7 @@ window.REPORT_DATA = {
       "non_motor_premium": null,
       "yoy_change": -927221.0,
       "yoy_change_pct": -0.7576764895989357,
-      "contribution_pct": 0.01958320607410367,
+      "contribution_pct": 0.01943928095873043,
       "avg_premium_per_policy": 22811.384615384617,
       "renewal_mix_pct": 0.6492405951144503,
       "motor_mix_pct": 1.0,
@@ -960,8 +960,8 @@ window.REPORT_DATA = {
       "premium_2026": 281060.0,
       "source_yoy_change": -1437111.0,
       "source_yoy_change_pct": -0.836,
-      "pending_operation_paid": 11100.0,
-      "pending_finance": null,
+      "pending_operation_paid": null,
+      "pending_finance": 11100.0,
       "pending_payment": 550.0,
       "new_premium": 196910.0,
       "renewal_premium": 84150.0,
@@ -976,7 +976,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 9150.0,
       "yoy_change": -1437111.0,
       "yoy_change_pct": -0.8364190758661391,
-      "contribution_pct": 0.018560421581624482,
+      "contribution_pct": 0.018424013334302627,
       "avg_premium_per_policy": 10037.857142857143,
       "renewal_mix_pct": 0.2994022628620223,
       "motor_mix_pct": 0.9674446737351455,
@@ -1005,7 +1005,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 3500.0,
       "yoy_change": -436645.0,
       "yoy_change_pct": -0.6339443214402382,
-      "contribution_pct": 0.01664996475263282,
+      "contribution_pct": 0.016527597246060347,
       "avg_premium_per_policy": 13270.0,
       "renewal_mix_pct": 0.35754967675405547,
       "motor_mix_pct": 0.986118272319835,
@@ -1034,7 +1034,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 3900.0,
       "yoy_change": -706139.0,
       "yoy_change_pct": -0.7500308025661724,
-      "contribution_pct": 0.01554126583448761,
+      "contribution_pct": 0.015427046616765512,
       "avg_premium_per_policy": 13074.5,
       "renewal_mix_pct": 0.7225302858405462,
       "motor_mix_pct": 0.9834283019108443,
@@ -1063,7 +1063,7 @@ window.REPORT_DATA = {
       "non_motor_premium": null,
       "yoy_change": -206684.0,
       "yoy_change_pct": -0.5012343882623984,
-      "contribution_pct": 0.013581611275195265,
+      "contribution_pct": 0.013481794372776931,
       "avg_premium_per_policy": 25708.25,
       "renewal_mix_pct": 0.08168584014859043,
       "motor_mix_pct": 1.0,
@@ -1092,7 +1092,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 700.0,
       "yoy_change": 6349.0,
       "yoy_change_pct": 0.034620019521132445,
-      "contribution_pct": 0.012529902479532588,
+      "contribution_pct": 0.012437815021883514,
       "avg_premium_per_policy": 63246.666666666664,
       "renewal_mix_pct": 0.19724359650047432,
       "motor_mix_pct": 0.9963107410140192,
@@ -1107,13 +1107,13 @@ window.REPORT_DATA = {
       "source_yoy_change_pct": -0.606,
       "pending_operation_paid": null,
       "pending_finance": null,
-      "pending_payment": null,
+      "pending_payment": 2714.0,
       "new_premium": 60820.0,
       "renewal_premium": 121525.0,
       "approved_policies": 27.0,
-      "total_policies": 27.0,
+      "total_policies": 28.0,
       "total_policies_ly": 202.0,
-      "new_policies": 9.0,
+      "new_policies": 10.0,
       "renewal_policies": 17.0,
       "retail_approved_gross": 187645.0,
       "corporate_approved_gross": null,
@@ -1121,11 +1121,11 @@ window.REPORT_DATA = {
       "non_motor_premium": 93775.0,
       "yoy_change": -288400.0,
       "yoy_change_pct": -0.6058250795618061,
-      "contribution_pct": 0.012391554499693752,
+      "contribution_pct": 0.0123004838188117,
       "avg_premium_per_policy": 6949.814814814815,
       "renewal_mix_pct": 0.6476324975352394,
       "motor_mix_pct": 0.5002531375736098,
-      "pending_total": 0,
+      "pending_total": 2714.0,
       "growth_class": "Negative Growth"
     },
     {
@@ -1150,7 +1150,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 1850.0,
       "yoy_change": -72031.0,
       "yoy_change_pct": -0.2846512546927485,
-      "contribution_pct": 0.011953991867516126,
+      "contribution_pct": 0.011866137016160704,
       "avg_premium_per_policy": 12929.92857142857,
       "renewal_mix_pct": 0.2532772802854949,
       "motor_mix_pct": 0.9897800783343185,
@@ -1179,7 +1179,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 7100.0,
       "yoy_change": -55466.0,
       "yoy_change_pct": -0.25095693563420174,
-      "contribution_pct": 0.010932594156696422,
+      "contribution_pct": 0.010852245981357962,
       "avg_premium_per_policy": 9738.35294117647,
       "renewal_mix_pct": 0.3936165072001546,
       "motor_mix_pct": 0.9571131729003576,
@@ -1208,7 +1208,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 2850.0,
       "yoy_change": -209325.0,
       "yoy_change_pct": -0.5841502925983909,
-      "contribution_pct": 0.009840602655686878,
+      "contribution_pct": 0.009768279979450794,
       "avg_premium_per_policy": 13546.90909090909,
       "renewal_mix_pct": 0.7990148708863478,
       "motor_mix_pct": 0.9808745369624738,
@@ -1237,7 +1237,7 @@ window.REPORT_DATA = {
       "non_motor_premium": null,
       "yoy_change": 80790.0,
       "yoy_change_pct": 1.9753056234718827,
-      "contribution_pct": 0.008036069530590918,
+      "contribution_pct": 0.007977009117808605,
       "avg_premium_per_policy": 30422.5,
       "renewal_mix_pct": 0.2888487139452708,
       "motor_mix_pct": 1.0,
@@ -1266,7 +1266,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 1400.0,
       "yoy_change": -515563.0,
       "yoy_change_pct": -0.8102158006562653,
-      "contribution_pct": 0.007974985100351814,
+      "contribution_pct": 0.007916373622418902,
       "avg_premium_per_policy": 15095.625,
       "renewal_mix_pct": 0.8028236657972094,
       "motor_mix_pct": 0.9884072371962075,
@@ -1295,7 +1295,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 1300.0,
       "yoy_change": -260229.0,
       "yoy_change_pct": -0.707796040374149,
-      "contribution_pct": 0.00709451082102427,
+      "contribution_pct": 0.007042370314277378,
       "avg_premium_per_policy": 13429.0,
       "renewal_mix_pct": 0.8678233673393402,
       "motor_mix_pct": 0.9878993223620522,
@@ -1308,7 +1308,7 @@ window.REPORT_DATA = {
       "premium_2026": 100368.0,
       "source_yoy_change": -529181.0,
       "source_yoy_change_pct": -0.841,
-      "pending_operation_paid": null,
+      "pending_operation_paid": 1400.0,
       "pending_finance": 700.0,
       "pending_payment": null,
       "new_premium": 10350.0,
@@ -1324,11 +1324,11 @@ window.REPORT_DATA = {
       "non_motor_premium": 10350.0,
       "yoy_change": -529181.0,
       "yoy_change_pct": -0.8405715837845823,
-      "contribution_pct": 0.006628023885663154,
+      "contribution_pct": 0.006579311785160771,
       "avg_premium_per_policy": 3345.6,
       "renewal_mix_pct": 0.9155308464849354,
       "motor_mix_pct": 0.8968794835007173,
-      "pending_total": 700.0,
+      "pending_total": 2100.0,
       "growth_class": "Negative Growth"
     },
     {
@@ -1353,7 +1353,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 2800.0,
       "yoy_change": -135895.0,
       "yoy_change_pct": -0.5920757396862188,
-      "contribution_pct": 0.006182933010191194,
+      "contribution_pct": 0.006137492067402286,
       "avg_premium_per_policy": 13375.42857142857,
       "renewal_mix_pct": null,
       "motor_mix_pct": 0.9700944162002819,
@@ -1382,7 +1382,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 700.0,
       "yoy_change": -147100.0,
       "yoy_change_pct": -0.6207327262446303,
-      "contribution_pct": 0.0059352934281407714,
+      "contribution_pct": 0.005891672491498084,
       "avg_premium_per_policy": 11234.75,
       "renewal_mix_pct": 0.8006964996995928,
       "motor_mix_pct": 0.9922116647010392,
@@ -1411,7 +1411,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 4700.0,
       "yoy_change": -197766.0,
       "yoy_change_pct": -0.6973044444052677,
-      "contribution_pct": 0.0056692294611857975,
+      "contribution_pct": 0.00562756393914661,
       "avg_premium_per_policy": 4088.0476190476193,
       "renewal_mix_pct": 0.8894221248937088,
       "motor_mix_pct": 0.9452527111556337,
@@ -1424,15 +1424,15 @@ window.REPORT_DATA = {
       "premium_2026": 69920.0,
       "source_yoy_change": -490496.0,
       "source_yoy_change_pct": -0.875,
-      "pending_operation_paid": null,
+      "pending_operation_paid": 700.0,
       "pending_finance": null,
       "pending_payment": null,
       "new_premium": 37600.0,
       "renewal_premium": 43850.0,
       "approved_policies": 22.0,
-      "total_policies": 22.0,
+      "total_policies": 23.0,
       "total_policies_ly": 388.0,
-      "new_policies": 18.0,
+      "new_policies": 19.0,
       "renewal_policies": 3.0,
       "retail_approved_gross": 69920.0,
       "corporate_approved_gross": null,
@@ -1440,11 +1440,11 @@ window.REPORT_DATA = {
       "non_motor_premium": 9800.0,
       "yoy_change": -490496.0,
       "yoy_change_pct": -0.8752355393136527,
-      "contribution_pct": 0.004617322553857482,
+      "contribution_pct": 0.004583387932592471,
       "avg_premium_per_policy": 3178.181818181818,
       "renewal_mix_pct": 0.6271453089244852,
       "motor_mix_pct": 0.8598398169336384,
-      "pending_total": 0,
+      "pending_total": 700.0,
       "growth_class": "Negative Growth"
     },
     {
@@ -1469,7 +1469,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 24709.0,
       "yoy_change": -446193.0,
       "yoy_change_pct": -0.8720890006000348,
-      "contribution_pct": 0.004321739948722097,
+      "contribution_pct": 0.0042899776867932156,
       "avg_premium_per_policy": 13088.8,
       "renewal_mix_pct": 0.3668632724161115,
       "motor_mix_pct": 0.6224405598679787,
@@ -1498,7 +1498,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 18500.0,
       "yoy_change": -218181.0,
       "yoy_change_pct": -0.7985221296265798,
-      "contribution_pct": 0.0036353490645002055,
+      "contribution_pct": 0.003608631374273677,
       "avg_premium_per_policy": 1529.1666666666667,
       "renewal_mix_pct": 0.6267029972752044,
       "motor_mix_pct": 0.6639418710263397,
@@ -1527,7 +1527,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 4400.0,
       "yoy_change": -177770.0,
       "yoy_change_pct": -0.7709153671355965,
-      "contribution_pct": 0.0034884822830388348,
+      "contribution_pct": 0.0034628439777907587,
       "avg_premium_per_policy": 4802.363636363636,
       "renewal_mix_pct": 0.7985840305909968,
       "motor_mix_pct": 0.9167076818233446,
@@ -1540,8 +1540,8 @@ window.REPORT_DATA = {
       "premium_2026": 46400.0,
       "source_yoy_change": -100340.0,
       "source_yoy_change_pct": -0.684,
-      "pending_operation_paid": 3450.0,
-      "pending_finance": 600.0,
+      "pending_operation_paid": 900.0,
+      "pending_finance": 3150.0,
       "pending_payment": null,
       "new_premium": 46400.0,
       "renewal_premium": null,
@@ -1556,7 +1556,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 3100.0,
       "yoy_change": -100340.0,
       "yoy_change_pct": -0.6837944664031621,
-      "contribution_pct": 0.0030641270952372303,
+      "contribution_pct": 0.003041607552521319,
       "avg_premium_per_policy": 6628.571428571428,
       "renewal_mix_pct": null,
       "motor_mix_pct": 0.9331896551724138,
@@ -1569,15 +1569,15 @@ window.REPORT_DATA = {
       "premium_2026": 44200.0,
       "source_yoy_change": 21200.0,
       "source_yoy_change_pct": 0.922,
-      "pending_operation_paid": null,
+      "pending_operation_paid": 2800.0,
       "pending_finance": 700.0,
       "pending_payment": 50700.0,
       "new_premium": 44200.0,
       "renewal_premium": null,
       "approved_policies": 4.0,
-      "total_policies": 8.0,
+      "total_policies": 10.0,
       "total_policies_ly": 39.0,
-      "new_policies": 8.0,
+      "new_policies": 10.0,
       "renewal_policies": null,
       "retail_approved_gross": 44200.0,
       "corporate_approved_gross": null,
@@ -1585,11 +1585,11 @@ window.REPORT_DATA = {
       "non_motor_premium": 2100.0,
       "yoy_change": 21200.0,
       "yoy_change_pct": 0.9217391304347826,
-      "contribution_pct": 0.0029188452071009824,
+      "contribution_pct": 0.0028973934013241873,
       "avg_premium_per_policy": 11050.0,
       "renewal_mix_pct": null,
       "motor_mix_pct": 0.9524886877828054,
-      "pending_total": 51400.0,
+      "pending_total": 54200.0,
       "growth_class": "Positive Growth"
     },
     {
@@ -1614,7 +1614,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 700.0,
       "yoy_change": -209105.0,
       "yoy_change_pct": -0.8334030808473326,
-      "contribution_pct": 0.002760355874588712,
+      "contribution_pct": 0.0027400688727454987,
       "avg_premium_per_policy": 20900.0,
       "renewal_mix_pct": null,
       "motor_mix_pct": 0.9832535885167464,
@@ -1629,13 +1629,13 @@ window.REPORT_DATA = {
       "source_yoy_change_pct": -0.629,
       "pending_operation_paid": null,
       "pending_finance": null,
-      "pending_payment": null,
+      "pending_payment": 31500.0,
       "new_premium": 41604.0,
       "renewal_premium": null,
       "approved_policies": 4.0,
-      "total_policies": 4.0,
+      "total_policies": 5.0,
       "total_policies_ly": 21.0,
-      "new_policies": 4.0,
+      "new_policies": 5.0,
       "renewal_policies": null,
       "retail_approved_gross": 41604.0,
       "corporate_approved_gross": null,
@@ -1643,11 +1643,11 @@ window.REPORT_DATA = {
       "non_motor_premium": 2100.0,
       "yoy_change": -70529.0,
       "yoy_change_pct": -0.6289763049236174,
-      "contribution_pct": 0.00274741257910021,
+      "contribution_pct": 0.002727220702911572,
       "avg_premium_per_policy": 10401.0,
       "renewal_mix_pct": null,
       "motor_mix_pct": 0.9495240842226709,
-      "pending_total": 0,
+      "pending_total": 31500.0,
       "growth_class": "Negative Growth"
     },
     {
@@ -1672,7 +1672,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 8450.0,
       "yoy_change": -267822.0,
       "yoy_change_pct": -0.8822122669477568,
-      "contribution_pct": 0.002361358979989071,
+      "contribution_pct": 0.002344004372048649,
       "avg_premium_per_policy": 2103.4117647058824,
       "renewal_mix_pct": 0.7636892443648974,
       "motor_mix_pct": 0.7636892443648974,
@@ -1701,7 +1701,7 @@ window.REPORT_DATA = {
       "non_motor_premium": null,
       "yoy_change": null,
       "yoy_change_pct": null,
-      "contribution_pct": 0.0020669650448475285,
+      "contribution_pct": 0.0020517740602137347,
       "avg_premium_per_policy": 31300.0,
       "renewal_mix_pct": null,
       "motor_mix_pct": 1.0,
@@ -1730,7 +1730,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 700.0,
       "yoy_change": -399938.0,
       "yoy_change_pct": -0.9315224834512669,
-      "contribution_pct": 0.001941494323275314,
+      "contribution_pct": 0.0019272254750889392,
       "avg_premium_per_policy": 9800.0,
       "renewal_mix_pct": 0.9761904761904762,
       "motor_mix_pct": 0.9761904761904762,
@@ -1759,7 +1759,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 1400.0,
       "yoy_change": -60912.0,
       "yoy_change_pct": -0.6785945054700208,
-      "contribution_pct": 0.0019051738512412522,
+      "contribution_pct": 0.0018911719372896563,
       "avg_premium_per_policy": 7212.5,
       "renewal_mix_pct": 0.951473136915078,
       "motor_mix_pct": 0.951473136915078,
@@ -1788,7 +1788,7 @@ window.REPORT_DATA = {
       "non_motor_premium": null,
       "yoy_change": -205516.0,
       "yoy_change_pct": -0.8880419658983866,
-      "contribution_pct": 0.0017110244189137208,
+      "contribution_pct": 0.0016984493897807624,
       "avg_premium_per_policy": 12955.0,
       "renewal_mix_pct": 0.9980702431493632,
       "motor_mix_pct": 1.0,
@@ -1817,7 +1817,7 @@ window.REPORT_DATA = {
       "non_motor_premium": null,
       "yoy_change": -326965.0,
       "yoy_change_pct": -0.94699723400866,
-      "contribution_pct": 0.001208481160406063,
+      "contribution_pct": 0.001199599530412503,
       "avg_premium_per_policy": 18300.0,
       "renewal_mix_pct": 1.0,
       "motor_mix_pct": 1.0,
@@ -1846,7 +1846,7 @@ window.REPORT_DATA = {
       "non_motor_premium": null,
       "yoy_change": -350058.0,
       "yoy_change_pct": -0.9537351616585703,
-      "contribution_pct": 0.0011213780647461942,
+      "contribution_pct": 0.0011131365915811318,
       "avg_premium_per_policy": 8490.5,
       "renewal_mix_pct": 1.0,
       "motor_mix_pct": 1.0,
@@ -1875,7 +1875,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 4700.0,
       "yoy_change": -188566.0,
       "yoy_change_pct": -0.9294963745076872,
-      "contribution_pct": 0.0009445303845512523,
+      "contribution_pct": 0.0009375886384420781,
       "avg_premium_per_policy": 1191.9166666666667,
       "renewal_mix_pct": 0.4645878487030693,
       "motor_mix_pct": 0.6713976088932392,
@@ -1904,7 +1904,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 7600.0,
       "yoy_change": -42800.0,
       "yoy_change_pct": -0.8492063492063492,
-      "contribution_pct": 0.0005018828862888567,
+      "contribution_pct": 0.0004981943404991816,
       "avg_premium_per_policy": 542.8571428571429,
       "renewal_mix_pct": null,
       "motor_mix_pct": null,
@@ -1917,8 +1917,8 @@ window.REPORT_DATA = {
       "premium_2026": 6700.0,
       "source_yoy_change": -69200.0,
       "source_yoy_change_pct": -0.912,
-      "pending_operation_paid": 2900.0,
-      "pending_finance": 2750.0,
+      "pending_operation_paid": null,
+      "pending_finance": 5650.0,
       "pending_payment": null,
       "new_premium": 6700.0,
       "renewal_premium": null,
@@ -1933,7 +1933,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 6700.0,
       "yoy_change": -69200.0,
       "yoy_change_pct": -0.9117259552042161,
-      "contribution_pct": 0.00044244938659675524,
+      "contribution_pct": 0.0004391976422821732,
       "avg_premium_per_policy": 609.0909090909091,
       "renewal_mix_pct": null,
       "motor_mix_pct": null,
@@ -1962,7 +1962,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 4400.0,
       "yoy_change": -62350.0,
       "yoy_change_pct": -0.9340823970037453,
-      "contribution_pct": 0.00029056377627249597,
+      "contribution_pct": 0.00028842830239426303,
       "avg_premium_per_policy": 4400.0,
       "renewal_mix_pct": null,
       "motor_mix_pct": null,
@@ -1991,7 +1991,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 2100.0,
       "yoy_change": -258491.0,
       "yoy_change_pct": -0.99175110592731,
-      "contribution_pct": 0.00014198002704224235,
+      "contribution_pct": 0.00014093655685174216,
       "avg_premium_per_policy": 537.5,
       "renewal_mix_pct": null,
       "motor_mix_pct": 0.023255813953488372,
@@ -2020,7 +2020,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 2100.0,
       "yoy_change": -229081.0,
       "yoy_change_pct": -0.9909162085119452,
-      "contribution_pct": 0.00013867816594823672,
+      "contribution_pct": 0.0001376589625063528,
       "avg_premium_per_policy": 700.0,
       "renewal_mix_pct": null,
       "motor_mix_pct": null,
@@ -2049,7 +2049,7 @@ window.REPORT_DATA = {
       "non_motor_premium": 700.0,
       "yoy_change": null,
       "yoy_change_pct": null,
-      "contribution_pct": 4.622605531607891e-05,
+      "contribution_pct": 4.588632083545093e-05,
       "avg_premium_per_policy": 700.0,
       "renewal_mix_pct": null,
       "motor_mix_pct": null,
@@ -2474,30 +2474,30 @@ window.REPORT_DATA = {
     {
       "month": "August",
       "premium_2025": 359510.0,
-      "premium_2026": 117043.0,
-      "source_yoy_change": -242467.0,
-      "source_yoy_change_pct": -0.674,
-      "pending_operation_paid": 88239.0,
+      "premium_2026": 205282.0,
+      "source_yoy_change": -154228.0,
+      "source_yoy_change_pct": -0.429,
+      "pending_operation_paid": 700.0,
       "pending_finance": 16400.0,
       "pending_payment": 94702.0,
-      "new_premium": 117043.0,
+      "new_premium": 205282.0,
       "renewal_premium": null,
-      "approved_policies": 4.0,
+      "approved_policies": 5.0,
       "total_policies": 11.0,
       "total_policies_ly": 151.0,
       "new_policies": 11.0,
       "renewal_policies": null,
-      "retail_approved_gross": 117043.0,
+      "retail_approved_gross": 205282.0,
       "corporate_approved_gross": null,
-      "motor_premium": 117043.0,
+      "motor_premium": 205282.0,
       "non_motor_premium": null,
-      "yoy_change": -242467.0,
-      "yoy_change_pct": -0.6744374287224277,
+      "yoy_change": -154228.0,
+      "yoy_change_pct": -0.42899502100080666,
       "contribution_pct": null,
-      "avg_premium_per_policy": 29260.75,
+      "avg_premium_per_policy": 41056.4,
       "renewal_mix_pct": null,
       "motor_mix_pct": 1.0,
-      "pending_total": 199341.0,
+      "pending_total": 111802.0,
       "growth_class": "Negative Growth",
       "branch": "Giza"
     },
@@ -2927,8 +2927,8 @@ window.REPORT_DATA = {
       "premium_2026": 1800.0,
       "source_yoy_change": -473947.0,
       "source_yoy_change_pct": -0.996,
-      "pending_operation_paid": 4400.0,
-      "pending_finance": 2200.0,
+      "pending_operation_paid": null,
+      "pending_finance": 6600.0,
       "pending_payment": null,
       "new_premium": 1800.0,
       "renewal_premium": null,
@@ -2954,31 +2954,31 @@ window.REPORT_DATA = {
     {
       "month": "August",
       "premium_2025": 366108.0,
-      "premium_2026": null,
-      "source_yoy_change": -366108.0,
-      "source_yoy_change_pct": -1.0,
-      "pending_operation_paid": 8250.0,
-      "pending_finance": -31703.0,
+      "premium_2026": -32403.0,
+      "source_yoy_change": -398511.0,
+      "source_yoy_change_pct": -1.089,
+      "pending_operation_paid": 4450.0,
+      "pending_finance": 9840.0,
       "pending_payment": null,
       "new_premium": null,
       "renewal_premium": null,
-      "approved_policies": null,
-      "total_policies": 17.0,
+      "approved_policies": 1.0,
+      "total_policies": 25.0,
       "total_policies_ly": 149.0,
-      "new_policies": 16.0,
-      "renewal_policies": null,
-      "retail_approved_gross": null,
+      "new_policies": 20.0,
+      "renewal_policies": 2.0,
+      "retail_approved_gross": -32403.0,
       "corporate_approved_gross": null,
-      "motor_premium": null,
+      "motor_premium": -32403.0,
       "non_motor_premium": null,
-      "yoy_change": null,
-      "yoy_change_pct": null,
+      "yoy_change": -398511.0,
+      "yoy_change_pct": -1.0885066701629027,
       "contribution_pct": null,
-      "avg_premium_per_policy": null,
+      "avg_premium_per_policy": -32403.0,
       "renewal_mix_pct": null,
-      "motor_mix_pct": null,
-      "pending_total": -23453.0,
-      "growth_class": "No Current Production",
+      "motor_mix_pct": 1.0,
+      "pending_total": 14290.0,
+      "growth_class": "Negative Growth",
       "branch": "Zamalek"
     },
     {
@@ -3943,6 +3943,246 @@ window.REPORT_DATA = {
     },
     {
       "month": "January",
+      "premium_2025": 313504.0,
+      "premium_2026": 84700.0,
+      "source_yoy_change": -228804.0,
+      "source_yoy_change_pct": -0.73,
+      "pending_operation_paid": null,
+      "pending_finance": null,
+      "pending_payment": null,
+      "new_premium": 45500.0,
+      "renewal_premium": 39200.0,
+      "approved_policies": 21.0,
+      "total_policies": 21.0,
+      "total_policies_ly": 189.0,
+      "new_policies": 19.0,
+      "renewal_policies": 2.0,
+      "retail_approved_gross": 84700.0,
+      "corporate_approved_gross": null,
+      "motor_premium": 75000.0,
+      "non_motor_premium": 9700.0,
+      "yoy_change": -228804.0,
+      "yoy_change_pct": -0.7298280085740533,
+      "contribution_pct": null,
+      "avg_premium_per_policy": 4033.3333333333335,
+      "renewal_mix_pct": 0.4628099173553719,
+      "motor_mix_pct": 0.885478158205431,
+      "pending_total": 0,
+      "growth_class": "Negative Growth",
+      "branch": "Tanta"
+    },
+    {
+      "month": "February",
+      "premium_2025": 362556.0,
+      "premium_2026": 73880.0,
+      "source_yoy_change": -288676.0,
+      "source_yoy_change_pct": -0.796,
+      "pending_operation_paid": null,
+      "pending_finance": null,
+      "pending_payment": null,
+      "new_premium": 73880.0,
+      "renewal_premium": null,
+      "approved_policies": 31.0,
+      "total_policies": 31.0,
+      "total_policies_ly": 217.0,
+      "new_policies": 31.0,
+      "renewal_policies": null,
+      "retail_approved_gross": 73880.0,
+      "corporate_approved_gross": null,
+      "motor_premium": 58680.0,
+      "non_motor_premium": 15200.0,
+      "yoy_change": -288676.0,
+      "yoy_change_pct": -0.7962245832367966,
+      "contribution_pct": null,
+      "avg_premium_per_policy": 2383.2258064516127,
+      "renewal_mix_pct": null,
+      "motor_mix_pct": 0.7942609637249594,
+      "pending_total": 0,
+      "growth_class": "Negative Growth",
+      "branch": "Tanta"
+    },
+    {
+      "month": "March",
+      "premium_2025": 88899.0,
+      "premium_2026": 45600.0,
+      "source_yoy_change": -43299.0,
+      "source_yoy_change_pct": -0.487,
+      "pending_operation_paid": null,
+      "pending_finance": null,
+      "pending_payment": null,
+      "new_premium": 45600.0,
+      "renewal_premium": null,
+      "approved_policies": 10.0,
+      "total_policies": 10.0,
+      "total_policies_ly": 57.0,
+      "new_policies": 10.0,
+      "renewal_policies": null,
+      "retail_approved_gross": 45600.0,
+      "corporate_approved_gross": null,
+      "motor_premium": 41450.0,
+      "non_motor_premium": 4150.0,
+      "yoy_change": -43299.0,
+      "yoy_change_pct": -0.4870583471130159,
+      "contribution_pct": null,
+      "avg_premium_per_policy": 4560.0,
+      "renewal_mix_pct": null,
+      "motor_mix_pct": 0.9089912280701754,
+      "pending_total": 0,
+      "growth_class": "Negative Growth",
+      "branch": "Tanta"
+    },
+    {
+      "month": "April",
+      "premium_2025": 39970.0,
+      "premium_2026": 125000.0,
+      "source_yoy_change": 85030.0,
+      "source_yoy_change_pct": 2.127,
+      "pending_operation_paid": null,
+      "pending_finance": 700.0,
+      "pending_payment": null,
+      "new_premium": 124950.0,
+      "renewal_premium": null,
+      "approved_policies": 12.0,
+      "total_policies": 13.0,
+      "total_policies_ly": 51.0,
+      "new_policies": 12.0,
+      "renewal_policies": null,
+      "retail_approved_gross": 125000.0,
+      "corporate_approved_gross": null,
+      "motor_premium": 120650.0,
+      "non_motor_premium": 4350.0,
+      "yoy_change": 85030.0,
+      "yoy_change_pct": 2.1273455091318487,
+      "contribution_pct": null,
+      "avg_premium_per_policy": 10416.666666666666,
+      "renewal_mix_pct": null,
+      "motor_mix_pct": 0.9652,
+      "pending_total": 700.0,
+      "growth_class": "Positive Growth",
+      "branch": "Tanta"
+    },
+    {
+      "month": "May",
+      "premium_2025": 205274.0,
+      "premium_2026": 162445.0,
+      "source_yoy_change": -42829.0,
+      "source_yoy_change_pct": -0.209,
+      "pending_operation_paid": null,
+      "pending_finance": null,
+      "pending_payment": 2250.0,
+      "new_premium": 106320.0,
+      "renewal_premium": 56125.0,
+      "approved_policies": 115.0,
+      "total_policies": 120.0,
+      "total_policies_ly": 97.0,
+      "new_policies": 117.0,
+      "renewal_policies": 3.0,
+      "retail_approved_gross": 162445.0,
+      "corporate_approved_gross": null,
+      "motor_premium": 109845.0,
+      "non_motor_premium": 52600.0,
+      "yoy_change": -42829.0,
+      "yoy_change_pct": -0.20864308192951858,
+      "contribution_pct": null,
+      "avg_premium_per_policy": 1412.5652173913043,
+      "renewal_mix_pct": 0.34550155437224905,
+      "motor_mix_pct": 0.6761980978177229,
+      "pending_total": 2250.0,
+      "growth_class": "Negative Growth",
+      "branch": "Tanta"
+    },
+    {
+      "month": "June",
+      "premium_2025": 129050.0,
+      "premium_2026": 10241.0,
+      "source_yoy_change": -118809.0,
+      "source_yoy_change_pct": -0.921,
+      "pending_operation_paid": null,
+      "pending_finance": null,
+      "pending_payment": null,
+      "new_premium": 21800.0,
+      "renewal_premium": null,
+      "approved_policies": 3.0,
+      "total_policies": 3.0,
+      "total_policies_ly": 75.0,
+      "new_policies": 2.0,
+      "renewal_policies": null,
+      "retail_approved_gross": 10241.0,
+      "corporate_approved_gross": null,
+      "motor_premium": 9541.0,
+      "non_motor_premium": 700.0,
+      "yoy_change": -118809.0,
+      "yoy_change_pct": -0.9206431615652848,
+      "contribution_pct": null,
+      "avg_premium_per_policy": 3413.6666666666665,
+      "renewal_mix_pct": null,
+      "motor_mix_pct": 0.9316473000683527,
+      "pending_total": 0,
+      "growth_class": "Negative Growth",
+      "branch": "Tanta"
+    },
+    {
+      "month": "July",
+      "premium_2025": 246995.0,
+      "premium_2026": 1400.0,
+      "source_yoy_change": -245595.0,
+      "source_yoy_change_pct": -0.994,
+      "pending_operation_paid": null,
+      "pending_finance": null,
+      "pending_payment": null,
+      "new_premium": 1400.0,
+      "renewal_premium": null,
+      "approved_policies": 2.0,
+      "total_policies": 2.0,
+      "total_policies_ly": 73.0,
+      "new_policies": 2.0,
+      "renewal_policies": null,
+      "retail_approved_gross": 1400.0,
+      "corporate_approved_gross": null,
+      "motor_premium": null,
+      "non_motor_premium": 1400.0,
+      "yoy_change": -245595.0,
+      "yoy_change_pct": -0.9943318690661754,
+      "contribution_pct": null,
+      "avg_premium_per_policy": 700.0,
+      "renewal_mix_pct": null,
+      "motor_mix_pct": null,
+      "pending_total": 0,
+      "growth_class": "Negative Growth",
+      "branch": "Tanta"
+    },
+    {
+      "month": "August",
+      "premium_2025": 188295.0,
+      "premium_2026": 112660.0,
+      "source_yoy_change": -75635.0,
+      "source_yoy_change_pct": -0.402,
+      "pending_operation_paid": null,
+      "pending_finance": 700.0,
+      "pending_payment": null,
+      "new_premium": 112560.0,
+      "renewal_premium": null,
+      "approved_policies": 3.0,
+      "total_policies": 4.0,
+      "total_policies_ly": 52.0,
+      "new_policies": 3.0,
+      "renewal_policies": null,
+      "retail_approved_gross": 112660.0,
+      "corporate_approved_gross": null,
+      "motor_premium": 112660.0,
+      "non_motor_premium": null,
+      "yoy_change": -75635.0,
+      "yoy_change_pct": -0.4016835285058021,
+      "contribution_pct": null,
+      "avg_premium_per_policy": 37553.333333333336,
+      "renewal_mix_pct": null,
+      "motor_mix_pct": 1.0,
+      "pending_total": 700.0,
+      "growth_class": "Negative Growth",
+      "branch": "Tanta"
+    },
+    {
+      "month": "January",
       "premium_2025": 341905.0,
       "premium_2026": 106106.0,
       "source_yoy_change": -235799.0,
@@ -4157,8 +4397,8 @@ window.REPORT_DATA = {
       "premium_2026": null,
       "source_yoy_change": -304769.0,
       "source_yoy_change_pct": -1.0,
-      "pending_operation_paid": 700.0,
-      "pending_finance": null,
+      "pending_operation_paid": null,
+      "pending_finance": 700.0,
       "pending_payment": null,
       "new_premium": null,
       "renewal_premium": null,
@@ -4180,246 +4420,6 @@ window.REPORT_DATA = {
       "pending_total": 700.0,
       "growth_class": "No Current Production",
       "branch": "Nasr City"
-    },
-    {
-      "month": "January",
-      "premium_2025": 313504.0,
-      "premium_2026": 84700.0,
-      "source_yoy_change": -228804.0,
-      "source_yoy_change_pct": -0.73,
-      "pending_operation_paid": null,
-      "pending_finance": null,
-      "pending_payment": null,
-      "new_premium": 45500.0,
-      "renewal_premium": 39200.0,
-      "approved_policies": 21.0,
-      "total_policies": 21.0,
-      "total_policies_ly": 189.0,
-      "new_policies": 19.0,
-      "renewal_policies": 2.0,
-      "retail_approved_gross": 84700.0,
-      "corporate_approved_gross": null,
-      "motor_premium": 75000.0,
-      "non_motor_premium": 9700.0,
-      "yoy_change": -228804.0,
-      "yoy_change_pct": -0.7298280085740533,
-      "contribution_pct": null,
-      "avg_premium_per_policy": 4033.3333333333335,
-      "renewal_mix_pct": 0.4628099173553719,
-      "motor_mix_pct": 0.885478158205431,
-      "pending_total": 0,
-      "growth_class": "Negative Growth",
-      "branch": "Tanta"
-    },
-    {
-      "month": "February",
-      "premium_2025": 362556.0,
-      "premium_2026": 73880.0,
-      "source_yoy_change": -288676.0,
-      "source_yoy_change_pct": -0.796,
-      "pending_operation_paid": null,
-      "pending_finance": null,
-      "pending_payment": null,
-      "new_premium": 73880.0,
-      "renewal_premium": null,
-      "approved_policies": 31.0,
-      "total_policies": 31.0,
-      "total_policies_ly": 217.0,
-      "new_policies": 31.0,
-      "renewal_policies": null,
-      "retail_approved_gross": 73880.0,
-      "corporate_approved_gross": null,
-      "motor_premium": 58680.0,
-      "non_motor_premium": 15200.0,
-      "yoy_change": -288676.0,
-      "yoy_change_pct": -0.7962245832367966,
-      "contribution_pct": null,
-      "avg_premium_per_policy": 2383.2258064516127,
-      "renewal_mix_pct": null,
-      "motor_mix_pct": 0.7942609637249594,
-      "pending_total": 0,
-      "growth_class": "Negative Growth",
-      "branch": "Tanta"
-    },
-    {
-      "month": "March",
-      "premium_2025": 88899.0,
-      "premium_2026": 45600.0,
-      "source_yoy_change": -43299.0,
-      "source_yoy_change_pct": -0.487,
-      "pending_operation_paid": null,
-      "pending_finance": null,
-      "pending_payment": null,
-      "new_premium": 45600.0,
-      "renewal_premium": null,
-      "approved_policies": 10.0,
-      "total_policies": 10.0,
-      "total_policies_ly": 57.0,
-      "new_policies": 10.0,
-      "renewal_policies": null,
-      "retail_approved_gross": 45600.0,
-      "corporate_approved_gross": null,
-      "motor_premium": 41450.0,
-      "non_motor_premium": 4150.0,
-      "yoy_change": -43299.0,
-      "yoy_change_pct": -0.4870583471130159,
-      "contribution_pct": null,
-      "avg_premium_per_policy": 4560.0,
-      "renewal_mix_pct": null,
-      "motor_mix_pct": 0.9089912280701754,
-      "pending_total": 0,
-      "growth_class": "Negative Growth",
-      "branch": "Tanta"
-    },
-    {
-      "month": "April",
-      "premium_2025": 39970.0,
-      "premium_2026": 125000.0,
-      "source_yoy_change": 85030.0,
-      "source_yoy_change_pct": 2.127,
-      "pending_operation_paid": null,
-      "pending_finance": 700.0,
-      "pending_payment": null,
-      "new_premium": 124950.0,
-      "renewal_premium": null,
-      "approved_policies": 12.0,
-      "total_policies": 13.0,
-      "total_policies_ly": 51.0,
-      "new_policies": 12.0,
-      "renewal_policies": null,
-      "retail_approved_gross": 125000.0,
-      "corporate_approved_gross": null,
-      "motor_premium": 120650.0,
-      "non_motor_premium": 4350.0,
-      "yoy_change": 85030.0,
-      "yoy_change_pct": 2.1273455091318487,
-      "contribution_pct": null,
-      "avg_premium_per_policy": 10416.666666666666,
-      "renewal_mix_pct": null,
-      "motor_mix_pct": 0.9652,
-      "pending_total": 700.0,
-      "growth_class": "Positive Growth",
-      "branch": "Tanta"
-    },
-    {
-      "month": "May",
-      "premium_2025": 205274.0,
-      "premium_2026": 162445.0,
-      "source_yoy_change": -42829.0,
-      "source_yoy_change_pct": -0.209,
-      "pending_operation_paid": null,
-      "pending_finance": null,
-      "pending_payment": 2250.0,
-      "new_premium": 106320.0,
-      "renewal_premium": 56125.0,
-      "approved_policies": 115.0,
-      "total_policies": 120.0,
-      "total_policies_ly": 97.0,
-      "new_policies": 117.0,
-      "renewal_policies": 3.0,
-      "retail_approved_gross": 162445.0,
-      "corporate_approved_gross": null,
-      "motor_premium": 109845.0,
-      "non_motor_premium": 52600.0,
-      "yoy_change": -42829.0,
-      "yoy_change_pct": -0.20864308192951858,
-      "contribution_pct": null,
-      "avg_premium_per_policy": 1412.5652173913043,
-      "renewal_mix_pct": 0.34550155437224905,
-      "motor_mix_pct": 0.6761980978177229,
-      "pending_total": 2250.0,
-      "growth_class": "Negative Growth",
-      "branch": "Tanta"
-    },
-    {
-      "month": "June",
-      "premium_2025": 129050.0,
-      "premium_2026": 10241.0,
-      "source_yoy_change": -118809.0,
-      "source_yoy_change_pct": -0.921,
-      "pending_operation_paid": null,
-      "pending_finance": null,
-      "pending_payment": null,
-      "new_premium": 21800.0,
-      "renewal_premium": null,
-      "approved_policies": 3.0,
-      "total_policies": 3.0,
-      "total_policies_ly": 75.0,
-      "new_policies": 2.0,
-      "renewal_policies": null,
-      "retail_approved_gross": 10241.0,
-      "corporate_approved_gross": null,
-      "motor_premium": 9541.0,
-      "non_motor_premium": 700.0,
-      "yoy_change": -118809.0,
-      "yoy_change_pct": -0.9206431615652848,
-      "contribution_pct": null,
-      "avg_premium_per_policy": 3413.6666666666665,
-      "renewal_mix_pct": null,
-      "motor_mix_pct": 0.9316473000683527,
-      "pending_total": 0,
-      "growth_class": "Negative Growth",
-      "branch": "Tanta"
-    },
-    {
-      "month": "July",
-      "premium_2025": 246995.0,
-      "premium_2026": 1400.0,
-      "source_yoy_change": -245595.0,
-      "source_yoy_change_pct": -0.994,
-      "pending_operation_paid": null,
-      "pending_finance": null,
-      "pending_payment": null,
-      "new_premium": 1400.0,
-      "renewal_premium": null,
-      "approved_policies": 2.0,
-      "total_policies": 2.0,
-      "total_policies_ly": 73.0,
-      "new_policies": 2.0,
-      "renewal_policies": null,
-      "retail_approved_gross": 1400.0,
-      "corporate_approved_gross": null,
-      "motor_premium": null,
-      "non_motor_premium": 1400.0,
-      "yoy_change": -245595.0,
-      "yoy_change_pct": -0.9943318690661754,
-      "contribution_pct": null,
-      "avg_premium_per_policy": 700.0,
-      "renewal_mix_pct": null,
-      "motor_mix_pct": null,
-      "pending_total": 0,
-      "growth_class": "Negative Growth",
-      "branch": "Tanta"
-    },
-    {
-      "month": "August",
-      "premium_2025": 188295.0,
-      "premium_2026": 56380.0,
-      "source_yoy_change": -131915.0,
-      "source_yoy_change_pct": -0.701,
-      "pending_operation_paid": 56980.0,
-      "pending_finance": null,
-      "pending_payment": null,
-      "new_premium": 56280.0,
-      "renewal_premium": null,
-      "approved_policies": 2.0,
-      "total_policies": 4.0,
-      "total_policies_ly": 52.0,
-      "new_policies": 3.0,
-      "renewal_policies": null,
-      "retail_approved_gross": 56380.0,
-      "corporate_approved_gross": null,
-      "motor_premium": 56380.0,
-      "non_motor_premium": null,
-      "yoy_change": -131915.0,
-      "yoy_change_pct": -0.7005762234791152,
-      "contribution_pct": null,
-      "avg_premium_per_policy": 28190.0,
-      "renewal_mix_pct": null,
-      "motor_mix_pct": 1.0,
-      "pending_total": 56980.0,
-      "growth_class": "Negative Growth",
-      "branch": "Tanta"
     },
     {
       "month": "January",
@@ -5567,8 +5567,8 @@ window.REPORT_DATA = {
       "premium_2026": 40110.0,
       "source_yoy_change": -48992.0,
       "source_yoy_change_pct": -0.55,
-      "pending_operation_paid": 450.0,
-      "pending_finance": 1100.0,
+      "pending_operation_paid": null,
+      "pending_finance": 1550.0,
       "pending_payment": null,
       "new_premium": 40110.0,
       "renewal_premium": null,
@@ -5597,8 +5597,8 @@ window.REPORT_DATA = {
       "premium_2026": 78714.0,
       "source_yoy_change": 31902.0,
       "source_yoy_change_pct": 0.682,
-      "pending_operation_paid": null,
-      "pending_finance": null,
+      "pending_operation_paid": 1650.0,
+      "pending_finance": 1200.0,
       "pending_payment": null,
       "new_premium": 78714.0,
       "renewal_premium": null,
@@ -5617,7 +5617,7 @@ window.REPORT_DATA = {
       "avg_premium_per_policy": 78714.0,
       "renewal_mix_pct": null,
       "motor_mix_pct": 1.0,
-      "pending_total": 0,
+      "pending_total": 2850.0,
       "growth_class": "Positive Growth",
       "branch": "Sohag"
     },
@@ -6317,8 +6317,8 @@ window.REPORT_DATA = {
       "premium_2026": null,
       "source_yoy_change": -153280.0,
       "source_yoy_change_pct": -1.0,
-      "pending_operation_paid": 11100.0,
-      "pending_finance": null,
+      "pending_operation_paid": null,
+      "pending_finance": 11100.0,
       "pending_payment": 550.0,
       "new_premium": null,
       "renewal_premium": null,
@@ -7489,13 +7489,13 @@ window.REPORT_DATA = {
       "source_yoy_change_pct": -0.604,
       "pending_operation_paid": null,
       "pending_finance": null,
-      "pending_payment": null,
+      "pending_payment": 2714.0,
       "new_premium": null,
       "renewal_premium": 12455.0,
       "approved_policies": 2.0,
-      "total_policies": 2.0,
+      "total_policies": 3.0,
       "total_policies_ly": 7.0,
-      "new_policies": null,
+      "new_policies": 1.0,
       "renewal_policies": 2.0,
       "retail_approved_gross": 12455.0,
       "corporate_approved_gross": null,
@@ -7507,7 +7507,7 @@ window.REPORT_DATA = {
       "avg_premium_per_policy": 6227.5,
       "renewal_mix_pct": 1.0,
       "motor_mix_pct": null,
-      "pending_total": 0,
+      "pending_total": 2714.0,
       "growth_class": "Negative Growth",
       "branch": "Aswan"
     },
@@ -9077,7 +9077,7 @@ window.REPORT_DATA = {
       "premium_2026": null,
       "source_yoy_change": -110075.0,
       "source_yoy_change_pct": -1.0,
-      "pending_operation_paid": null,
+      "pending_operation_paid": 1400.0,
       "pending_finance": 700.0,
       "pending_payment": null,
       "new_premium": null,
@@ -9097,7 +9097,7 @@ window.REPORT_DATA = {
       "avg_premium_per_policy": null,
       "renewal_mix_pct": null,
       "motor_mix_pct": null,
-      "pending_total": 700.0,
+      "pending_total": 2100.0,
       "growth_class": "No Current Production",
       "branch": "Alexandria - Ring Road"
     },
@@ -10007,15 +10007,15 @@ window.REPORT_DATA = {
       "premium_2026": null,
       "source_yoy_change": -100493.0,
       "source_yoy_change_pct": -1.0,
-      "pending_operation_paid": null,
+      "pending_operation_paid": 700.0,
       "pending_finance": null,
       "pending_payment": null,
       "new_premium": null,
       "renewal_premium": null,
       "approved_policies": null,
-      "total_policies": null,
+      "total_policies": 1.0,
       "total_policies_ly": 56.0,
-      "new_policies": null,
+      "new_policies": 1.0,
       "renewal_policies": null,
       "retail_approved_gross": null,
       "corporate_approved_gross": null,
@@ -10027,7 +10027,7 @@ window.REPORT_DATA = {
       "avg_premium_per_policy": null,
       "renewal_mix_pct": null,
       "motor_mix_pct": null,
-      "pending_total": 0,
+      "pending_total": 700.0,
       "growth_class": "No Current Production",
       "branch": "Alexandria Corniche"
     },
@@ -10967,8 +10967,8 @@ window.REPORT_DATA = {
       "premium_2026": null,
       "source_yoy_change": -10064.0,
       "source_yoy_change_pct": -1.0,
-      "pending_operation_paid": 3450.0,
-      "pending_finance": 600.0,
+      "pending_operation_paid": 900.0,
+      "pending_finance": 3150.0,
       "pending_payment": null,
       "new_premium": null,
       "renewal_premium": null,
@@ -11177,15 +11177,15 @@ window.REPORT_DATA = {
       "premium_2026": null,
       "source_yoy_change": -4200.0,
       "source_yoy_change_pct": -1.0,
-      "pending_operation_paid": null,
+      "pending_operation_paid": 2800.0,
       "pending_finance": null,
       "pending_payment": null,
       "new_premium": null,
       "renewal_premium": null,
       "approved_policies": null,
-      "total_policies": 2.0,
+      "total_policies": 4.0,
       "total_policies_ly": 6.0,
-      "new_policies": 2.0,
+      "new_policies": 4.0,
       "renewal_policies": null,
       "retail_approved_gross": null,
       "corporate_approved_gross": null,
@@ -11197,7 +11197,7 @@ window.REPORT_DATA = {
       "avg_premium_per_policy": null,
       "renewal_mix_pct": null,
       "motor_mix_pct": null,
-      "pending_total": 0,
+      "pending_total": 2800.0,
       "growth_class": "No Current Production",
       "branch": "Sharm El Sheikh"
     },
@@ -11569,13 +11569,13 @@ window.REPORT_DATA = {
       "source_yoy_change_pct": -1.0,
       "pending_operation_paid": null,
       "pending_finance": null,
-      "pending_payment": null,
+      "pending_payment": 31500.0,
       "new_premium": null,
       "renewal_premium": null,
       "approved_policies": null,
-      "total_policies": null,
+      "total_policies": 1.0,
       "total_policies_ly": 4.0,
-      "new_policies": null,
+      "new_policies": 1.0,
       "renewal_policies": null,
       "retail_approved_gross": null,
       "corporate_approved_gross": null,
@@ -11587,7 +11587,7 @@ window.REPORT_DATA = {
       "avg_premium_per_policy": null,
       "renewal_mix_pct": null,
       "motor_mix_pct": null,
-      "pending_total": 0,
+      "pending_total": 31500.0,
       "growth_class": "No Current Production",
       "branch": "City Stars Mall"
     },
@@ -13667,8 +13667,8 @@ window.REPORT_DATA = {
       "premium_2026": null,
       "source_yoy_change": -52650.0,
       "source_yoy_change_pct": -1.0,
-      "pending_operation_paid": 2900.0,
-      "pending_finance": 2750.0,
+      "pending_operation_paid": null,
+      "pending_finance": 5650.0,
       "pending_payment": null,
       "new_premium": null,
       "renewal_premium": null,
@@ -15139,39 +15139,9 @@ window.REPORT_DATA = {
       "premium_2026": 1400.0
     },
     {
-      "branch": "Zamalek",
-      "month": "January",
-      "premium_2026": 355053.0
-    },
-    {
-      "branch": "Zamalek",
-      "month": "February",
-      "premium_2026": 28000.0
-    },
-    {
-      "branch": "Zamalek",
-      "month": "March",
-      "premium_2026": 205498.0
-    },
-    {
-      "branch": "Zamalek",
-      "month": "April",
-      "premium_2026": 463603.0
-    },
-    {
-      "branch": "Zamalek",
-      "month": "May",
-      "premium_2026": 222261.0
-    },
-    {
-      "branch": "Zamalek",
-      "month": "June",
-      "premium_2026": 178260.0
-    },
-    {
-      "branch": "Zamalek",
-      "month": "July",
-      "premium_2026": 1800.0
+      "branch": "Giza",
+      "month": "August",
+      "premium_2026": 205282.0
     },
     {
       "branch": "DownTown - 5th Settlement",
@@ -15209,6 +15179,51 @@ window.REPORT_DATA = {
       "premium_2026": 18520.0
     },
     {
+      "branch": "DownTown - 5th Settlement",
+      "month": "August",
+      "premium_2026": 75500.0
+    },
+    {
+      "branch": "Zamalek",
+      "month": "January",
+      "premium_2026": 355053.0
+    },
+    {
+      "branch": "Zamalek",
+      "month": "February",
+      "premium_2026": 28000.0
+    },
+    {
+      "branch": "Zamalek",
+      "month": "March",
+      "premium_2026": 205498.0
+    },
+    {
+      "branch": "Zamalek",
+      "month": "April",
+      "premium_2026": 463603.0
+    },
+    {
+      "branch": "Zamalek",
+      "month": "May",
+      "premium_2026": 222261.0
+    },
+    {
+      "branch": "Zamalek",
+      "month": "June",
+      "premium_2026": 178260.0
+    },
+    {
+      "branch": "Zamalek",
+      "month": "July",
+      "premium_2026": 1800.0
+    },
+    {
+      "branch": "Zamalek",
+      "month": "August",
+      "premium_2026": -32403.0
+    },
+    {
       "branch": "Maadi",
       "month": "January",
       "premium_2026": 25185.0
@@ -15242,6 +15257,11 @@ window.REPORT_DATA = {
       "branch": "Maadi",
       "month": "July",
       "premium_2026": 83631.0
+    },
+    {
+      "branch": "Maadi",
+      "month": "August",
+      "premium_2026": 4693.0
     },
     {
       "branch": "October",
@@ -15279,6 +15299,11 @@ window.REPORT_DATA = {
       "premium_2026": 15306.0
     },
     {
+      "branch": "October",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Asyut",
       "month": "January",
       "premium_2026": 168115.0
@@ -15314,39 +15339,9 @@ window.REPORT_DATA = {
       "premium_2026": 19200.0
     },
     {
-      "branch": "Nasr City",
-      "month": "January",
-      "premium_2026": 106106.0
-    },
-    {
-      "branch": "Nasr City",
-      "month": "February",
-      "premium_2026": 54325.0
-    },
-    {
-      "branch": "Nasr City",
-      "month": "March",
-      "premium_2026": 198055.0
-    },
-    {
-      "branch": "Nasr City",
-      "month": "April",
-      "premium_2026": 54840.0
-    },
-    {
-      "branch": "Nasr City",
-      "month": "May",
-      "premium_2026": 6200.0
-    },
-    {
-      "branch": "Nasr City",
-      "month": "June",
-      "premium_2026": 134078.0
-    },
-    {
-      "branch": "Nasr City",
-      "month": "July",
-      "premium_2026": 25420.0
+      "branch": "Asyut",
+      "month": "August",
+      "premium_2026": null
     },
     {
       "branch": "Misr El-Gedida",
@@ -15384,6 +15379,11 @@ window.REPORT_DATA = {
       "premium_2026": 16500.0
     },
     {
+      "branch": "Misr El-Gedida",
+      "month": "August",
+      "premium_2026": 64300.0
+    },
+    {
       "branch": "Tanta",
       "month": "January",
       "premium_2026": 84700.0
@@ -15419,6 +15419,51 @@ window.REPORT_DATA = {
       "premium_2026": 1400.0
     },
     {
+      "branch": "Tanta",
+      "month": "August",
+      "premium_2026": 112660.0
+    },
+    {
+      "branch": "Nasr City",
+      "month": "January",
+      "premium_2026": 106106.0
+    },
+    {
+      "branch": "Nasr City",
+      "month": "February",
+      "premium_2026": 54325.0
+    },
+    {
+      "branch": "Nasr City",
+      "month": "March",
+      "premium_2026": 198055.0
+    },
+    {
+      "branch": "Nasr City",
+      "month": "April",
+      "premium_2026": 54840.0
+    },
+    {
+      "branch": "Nasr City",
+      "month": "May",
+      "premium_2026": 6200.0
+    },
+    {
+      "branch": "Nasr City",
+      "month": "June",
+      "premium_2026": 134078.0
+    },
+    {
+      "branch": "Nasr City",
+      "month": "July",
+      "premium_2026": 25420.0
+    },
+    {
+      "branch": "Nasr City",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Dokki",
       "month": "January",
       "premium_2026": 129831.0
@@ -15451,6 +15496,11 @@ window.REPORT_DATA = {
     {
       "branch": "Dokki",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "Dokki",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -15489,6 +15539,11 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
+      "branch": "Alexandria Roshdy",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "El Mokattam",
       "month": "January",
       "premium_2026": 47041.0
@@ -15522,6 +15577,11 @@ window.REPORT_DATA = {
       "branch": "El Mokattam",
       "month": "July",
       "premium_2026": 26394.0
+    },
+    {
+      "branch": "El Mokattam",
+      "month": "August",
+      "premium_2026": null
     },
     {
       "branch": "Heliopolis",
@@ -15559,108 +15619,8 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Luxor",
-      "month": "January",
-      "premium_2026": 46301.0
-    },
-    {
-      "branch": "Luxor",
-      "month": "February",
-      "premium_2026": 72971.0
-    },
-    {
-      "branch": "Luxor",
-      "month": "March",
-      "premium_2026": 58102.0
-    },
-    {
-      "branch": "Luxor",
-      "month": "April",
-      "premium_2026": 57967.0
-    },
-    {
-      "branch": "Luxor",
-      "month": "May",
-      "premium_2026": 10138.0
-    },
-    {
-      "branch": "Luxor",
-      "month": "June",
-      "premium_2026": null
-    },
-    {
-      "branch": "Luxor",
-      "month": "July",
-      "premium_2026": 63478.0
-    },
-    {
-      "branch": "Mansoura",
-      "month": "January",
-      "premium_2026": 69430.0
-    },
-    {
-      "branch": "Mansoura",
-      "month": "February",
-      "premium_2026": null
-    },
-    {
-      "branch": "Mansoura",
-      "month": "March",
-      "premium_2026": null
-    },
-    {
-      "branch": "Mansoura",
-      "month": "April",
-      "premium_2026": 201101.0
-    },
-    {
-      "branch": "Mansoura",
-      "month": "May",
-      "premium_2026": 22200.0
-    },
-    {
-      "branch": "Mansoura",
-      "month": "June",
-      "premium_2026": null
-    },
-    {
-      "branch": "Mansoura",
-      "month": "July",
-      "premium_2026": 3817.0
-    },
-    {
-      "branch": "Beni Suef",
-      "month": "January",
-      "premium_2026": 197420.0
-    },
-    {
-      "branch": "Beni Suef",
-      "month": "February",
-      "premium_2026": 6750.0
-    },
-    {
-      "branch": "Beni Suef",
-      "month": "March",
-      "premium_2026": null
-    },
-    {
-      "branch": "Beni Suef",
-      "month": "April",
-      "premium_2026": 20600.0
-    },
-    {
-      "branch": "Beni Suef",
-      "month": "May",
-      "premium_2026": 56290.0
-    },
-    {
-      "branch": "Beni Suef",
-      "month": "June",
-      "premium_2026": null
-    },
-    {
-      "branch": "Beni Suef",
-      "month": "July",
+      "branch": "Heliopolis",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -15699,6 +15659,131 @@ window.REPORT_DATA = {
       "premium_2026": 40110.0
     },
     {
+      "branch": "Sohag",
+      "month": "August",
+      "premium_2026": 78714.0
+    },
+    {
+      "branch": "Luxor",
+      "month": "January",
+      "premium_2026": 46301.0
+    },
+    {
+      "branch": "Luxor",
+      "month": "February",
+      "premium_2026": 72971.0
+    },
+    {
+      "branch": "Luxor",
+      "month": "March",
+      "premium_2026": 58102.0
+    },
+    {
+      "branch": "Luxor",
+      "month": "April",
+      "premium_2026": 57967.0
+    },
+    {
+      "branch": "Luxor",
+      "month": "May",
+      "premium_2026": 10138.0
+    },
+    {
+      "branch": "Luxor",
+      "month": "June",
+      "premium_2026": null
+    },
+    {
+      "branch": "Luxor",
+      "month": "July",
+      "premium_2026": 63478.0
+    },
+    {
+      "branch": "Luxor",
+      "month": "August",
+      "premium_2026": 15774.0
+    },
+    {
+      "branch": "Mansoura",
+      "month": "January",
+      "premium_2026": 69430.0
+    },
+    {
+      "branch": "Mansoura",
+      "month": "February",
+      "premium_2026": null
+    },
+    {
+      "branch": "Mansoura",
+      "month": "March",
+      "premium_2026": null
+    },
+    {
+      "branch": "Mansoura",
+      "month": "April",
+      "premium_2026": 201101.0
+    },
+    {
+      "branch": "Mansoura",
+      "month": "May",
+      "premium_2026": 22200.0
+    },
+    {
+      "branch": "Mansoura",
+      "month": "June",
+      "premium_2026": null
+    },
+    {
+      "branch": "Mansoura",
+      "month": "July",
+      "premium_2026": 3817.0
+    },
+    {
+      "branch": "Mansoura",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
+      "branch": "Beni Suef",
+      "month": "January",
+      "premium_2026": 197420.0
+    },
+    {
+      "branch": "Beni Suef",
+      "month": "February",
+      "premium_2026": 6750.0
+    },
+    {
+      "branch": "Beni Suef",
+      "month": "March",
+      "premium_2026": null
+    },
+    {
+      "branch": "Beni Suef",
+      "month": "April",
+      "premium_2026": 20600.0
+    },
+    {
+      "branch": "Beni Suef",
+      "month": "May",
+      "premium_2026": 56290.0
+    },
+    {
+      "branch": "Beni Suef",
+      "month": "June",
+      "premium_2026": null
+    },
+    {
+      "branch": "Beni Suef",
+      "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "Beni Suef",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Hurghada",
       "month": "January",
       "premium_2026": 46077.0
@@ -15731,6 +15816,11 @@ window.REPORT_DATA = {
     {
       "branch": "Hurghada",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "Hurghada",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -15769,6 +15859,11 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
+      "branch": "Al Minufya",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Obour",
       "month": "January",
       "premium_2026": 34200.0
@@ -15801,6 +15896,11 @@ window.REPORT_DATA = {
     {
       "branch": "Obour",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "Obour",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -15839,39 +15939,9 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Madinaty",
-      "month": "January",
-      "premium_2026": 36323.0
-    },
-    {
-      "branch": "Madinaty",
-      "month": "February",
-      "premium_2026": 20703.0
-    },
-    {
-      "branch": "Madinaty",
-      "month": "March",
+      "branch": "El-Abaseya",
+      "month": "August",
       "premium_2026": null
-    },
-    {
-      "branch": "Madinaty",
-      "month": "April",
-      "premium_2026": -5898.0
-    },
-    {
-      "branch": "Madinaty",
-      "month": "May",
-      "premium_2026": 77891.0
-    },
-    {
-      "branch": "Madinaty",
-      "month": "June",
-      "premium_2026": 700.0
-    },
-    {
-      "branch": "Madinaty",
-      "month": "July",
-      "premium_2026": 51300.0
     },
     {
       "branch": "Aswan",
@@ -15909,6 +15979,51 @@ window.REPORT_DATA = {
       "premium_2026": 6508.0
     },
     {
+      "branch": "Aswan",
+      "month": "August",
+      "premium_2026": 12455.0
+    },
+    {
+      "branch": "Madinaty",
+      "month": "January",
+      "premium_2026": 36323.0
+    },
+    {
+      "branch": "Madinaty",
+      "month": "February",
+      "premium_2026": 20703.0
+    },
+    {
+      "branch": "Madinaty",
+      "month": "March",
+      "premium_2026": null
+    },
+    {
+      "branch": "Madinaty",
+      "month": "April",
+      "premium_2026": -5898.0
+    },
+    {
+      "branch": "Madinaty",
+      "month": "May",
+      "premium_2026": 77891.0
+    },
+    {
+      "branch": "Madinaty",
+      "month": "June",
+      "premium_2026": 700.0
+    },
+    {
+      "branch": "Madinaty",
+      "month": "July",
+      "premium_2026": 51300.0
+    },
+    {
+      "branch": "Madinaty",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Zahraa Al-Maadi",
       "month": "January",
       "premium_2026": 32864.0
@@ -15941,6 +16056,11 @@ window.REPORT_DATA = {
     {
       "branch": "Zahraa Al-Maadi",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "Zahraa Al-Maadi",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -15979,6 +16099,11 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
+      "branch": "Dubai",
+      "month": "August",
+      "premium_2026": 27000.0
+    },
+    {
       "branch": "Sadat City",
       "month": "January",
       "premium_2026": 19340.0
@@ -16011,6 +16136,11 @@ window.REPORT_DATA = {
     {
       "branch": "Sadat City",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "Sadat City",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -16049,6 +16179,11 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
+      "branch": "Kafr el Sheikh",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Port Said",
       "month": "January",
       "premium_2026": 27300.0
@@ -16081,6 +16216,11 @@ window.REPORT_DATA = {
     {
       "branch": "Port Said",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "Port Said",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -16119,6 +16259,11 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
+      "branch": "Alexandria - Ring Road",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Rehab",
       "month": "January",
       "premium_2026": null
@@ -16152,6 +16297,11 @@ window.REPORT_DATA = {
       "branch": "Rehab",
       "month": "July",
       "premium_2026": 35478.0
+    },
+    {
+      "branch": "Rehab",
+      "month": "August",
+      "premium_2026": null
     },
     {
       "branch": "Zagazig",
@@ -16189,6 +16339,11 @@ window.REPORT_DATA = {
       "premium_2026": 700.0
     },
     {
+      "branch": "Zagazig",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Qena",
       "month": "January",
       "premium_2026": 35633.0
@@ -16221,6 +16376,11 @@ window.REPORT_DATA = {
     {
       "branch": "Qena",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "Qena",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -16259,6 +16419,11 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
+      "branch": "Alexandria Corniche",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Benha",
       "month": "January",
       "premium_2026": null
@@ -16294,6 +16459,11 @@ window.REPORT_DATA = {
       "premium_2026": 24009.0
     },
     {
+      "branch": "Benha",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Minya",
       "month": "January",
       "premium_2026": 4200.0
@@ -16326,6 +16496,11 @@ window.REPORT_DATA = {
     {
       "branch": "Minya",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "Minya",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -16364,6 +16539,11 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
+      "branch": "Suez",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "El-Mahalla El-Kubra",
       "month": "January",
       "premium_2026": null
@@ -16399,6 +16579,11 @@ window.REPORT_DATA = {
       "premium_2026": 17100.0
     },
     {
+      "branch": "El-Mahalla El-Kubra",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Sharm El Sheikh",
       "month": "January",
       "premium_2026": null
@@ -16431,6 +16616,11 @@ window.REPORT_DATA = {
     {
       "branch": "Sharm El Sheikh",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "Sharm El Sheikh",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -16469,6 +16659,11 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
+      "branch": "Shubra",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "City Stars Mall",
       "month": "January",
       "premium_2026": null
@@ -16501,6 +16696,11 @@ window.REPORT_DATA = {
     {
       "branch": "City Stars Mall",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "City Stars Mall",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -16539,6 +16739,11 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
+      "branch": "Damanhur",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Abu Kibir",
       "month": "January",
       "premium_2026": null
@@ -16571,6 +16776,11 @@ window.REPORT_DATA = {
     {
       "branch": "Abu Kibir",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "Abu Kibir",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -16609,6 +16819,11 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
+      "branch": "Haram",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Alex-El-Agamy",
       "month": "January",
       "premium_2026": 3336.0
@@ -16641,6 +16856,11 @@ window.REPORT_DATA = {
     {
       "branch": "Alex-El-Agamy",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "Alex-El-Agamy",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -16679,6 +16899,11 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
+      "branch": "El-Bahr El-Aazam",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Shubra Al-Khaymah",
       "month": "January",
       "premium_2026": null
@@ -16711,6 +16936,11 @@ window.REPORT_DATA = {
     {
       "branch": "Shubra Al-Khaymah",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "Shubra Al-Khaymah",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -16749,6 +16979,11 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
+      "branch": "Faiyum",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Ismailia",
       "month": "January",
       "premium_2026": 7745.0
@@ -16784,6 +17019,11 @@ window.REPORT_DATA = {
       "premium_2026": 2908.0
     },
     {
+      "branch": "Ismailia",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "El-Zaytoun",
       "month": "January",
       "premium_2026": null
@@ -16816,6 +17056,11 @@ window.REPORT_DATA = {
     {
       "branch": "El-Zaytoun",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "El-Zaytoun",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -16854,6 +17099,11 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
+      "branch": "New Damietta",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "6 October - Low Income",
       "month": "January",
       "premium_2026": 4400.0
@@ -16886,6 +17136,11 @@ window.REPORT_DATA = {
     {
       "branch": "6 October - Low Income",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "6 October - Low Income",
+      "month": "August",
       "premium_2026": null
     },
     {
@@ -16924,6 +17179,11 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
+      "branch": "Damietta",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Talaat Harb",
       "month": "January",
       "premium_2026": null
@@ -16959,6 +17219,11 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
+      "branch": "Talaat Harb",
+      "month": "August",
+      "premium_2026": null
+    },
+    {
       "branch": "Minouf",
       "month": "January",
       "premium_2026": null
@@ -16991,6 +17256,11 @@ window.REPORT_DATA = {
     {
       "branch": "Minouf",
       "month": "July",
+      "premium_2026": null
+    },
+    {
+      "branch": "Minouf",
+      "month": "August",
       "premium_2026": null
     }
   ],
@@ -17017,7 +17287,7 @@ window.REPORT_DATA = {
       "source_yoy_change": 427173.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": 3.8011478910838226,
-      "contribution_pct": 0.03563058117708046,
+      "contribution_pct": 0.035368717236757226,
       "avg_premium_per_policy": 134888.25,
       "renewal_mix_pct": 0.7865825970757275,
       "motor_mix_pct": 0.20526250433228987,
@@ -17029,12 +17299,12 @@ window.REPORT_DATA = {
       "premium_2025": 3566931.0,
       "premium_2026": 2211776.0,
       "pending_operation_paid": null,
-      "pending_finance": 600.0,
+      "pending_finance": 19185.0,
       "pending_payment": null,
       "new_premium": 368350.0,
       "renewal_premium": 1843426.0,
       "approved_policies": 620.0,
-      "total_policies": 621.0,
+      "total_policies": 623.0,
       "total_policies_ly": 1449.0,
       "new_policies": 555.0,
       "renewal_policies": 65.0,
@@ -17046,11 +17316,11 @@ window.REPORT_DATA = {
       "source_yoy_change": -1355155.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": -0.37992184317554784,
-      "contribution_pct": 0.1460595424611082,
+      "contribution_pct": 0.1449860902173576,
       "avg_premium_per_policy": 3567.3806451612904,
       "renewal_mix_pct": 0.8334596270146706,
       "motor_mix_pct": 0.876682810555861,
-      "pending_total": 600.0,
+      "pending_total": 19185.0,
       "growth_class": "Negative Growth"
     },
     {
@@ -17075,7 +17345,7 @@ window.REPORT_DATA = {
       "source_yoy_change": -180375.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": -0.33450103479737997,
-      "contribution_pct": 0.023698183481119132,
+      "contribution_pct": 0.023524015687615366,
       "avg_premium_per_policy": 8752.707317073171,
       "renewal_mix_pct": 0.5010630857072794,
       "motor_mix_pct": 0.36962222141720613,
@@ -17104,7 +17374,7 @@ window.REPORT_DATA = {
       "source_yoy_change": -1388978.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": -0.6930419284533893,
-      "contribution_pct": 0.040625966826201586,
+      "contribution_pct": 0.04032738972189678,
       "avg_premium_per_policy": 11185.418181818182,
       "renewal_mix_pct": 0.9293495752586972,
       "motor_mix_pct": 0.7562118212347895,
@@ -17114,30 +17384,30 @@ window.REPORT_DATA = {
     {
       "seller": "Zizi Samir El Sayed Mohamed Ismail",
       "premium_2025": 1566324.0,
-      "premium_2026": 878273.0,
-      "pending_operation_paid": 56280.0,
+      "premium_2026": 934553.0,
+      "pending_operation_paid": null,
       "pending_finance": null,
       "pending_payment": 2250.0,
-      "new_premium": 387080.0,
+      "new_premium": 443360.0,
       "renewal_premium": 491193.0,
-      "approved_policies": 203.0,
+      "approved_policies": 204.0,
       "total_policies": 209.0,
       "total_policies_ly": 799.0,
-      "new_policies": 177.0,
+      "new_policies": 178.0,
       "renewal_policies": 26.0,
-      "retail_approved_gross": 878273.0,
+      "retail_approved_gross": 934553.0,
       "corporate_approved_gross": null,
-      "motor_premium": 795523.0,
+      "motor_premium": 851803.0,
       "non_motor_premium": 82750.0,
-      "yoy_change": -688051.0,
-      "source_yoy_change": -688051.0,
+      "yoy_change": -631771.0,
+      "source_yoy_change": -631771.0,
       "source_yoy_change_pct": null,
-      "yoy_change_pct": -0.43927756964714837,
-      "contribution_pct": 0.05799870897231224,
-      "avg_premium_per_policy": 4326.467980295566,
-      "renewal_mix_pct": 0.5592714338252457,
-      "motor_mix_pct": 0.9057810043118711,
-      "pending_total": 58530.0,
+      "yoy_change_pct": -0.403346306383609,
+      "contribution_pct": 0.06126171256533311,
+      "avg_premium_per_policy": 4581.142156862745,
+      "renewal_mix_pct": 0.5255913789801113,
+      "motor_mix_pct": 0.9114549950618103,
+      "pending_total": 2250.0,
       "growth_class": "Negative Growth"
     },
     {
@@ -17162,7 +17432,7 @@ window.REPORT_DATA = {
       "source_yoy_change": -388125.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": -0.5750971275148692,
-      "contribution_pct": 0.018936899783563006,
+      "contribution_pct": 0.018797724641563922,
       "avg_premium_per_policy": 2369.9256198347107,
       "renewal_mix_pct": 0.8539480612775099,
       "motor_mix_pct": 0.786613242386517,
@@ -17191,7 +17461,7 @@ window.REPORT_DATA = {
       "source_yoy_change": 44322.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": 0.3115935406311734,
-      "contribution_pct": 0.01232023430006323,
+      "contribution_pct": 0.012229687780951291,
       "avg_premium_per_policy": 46641.25,
       "renewal_mix_pct": null,
       "motor_mix_pct": 0.7051965802803313,
@@ -17204,11 +17474,11 @@ window.REPORT_DATA = {
       "premium_2026": 588917.0,
       "pending_operation_paid": null,
       "pending_finance": null,
-      "pending_payment": null,
+      "pending_payment": 31500.0,
       "new_premium": 137670.0,
       "renewal_premium": 451247.0,
       "approved_policies": 88.0,
-      "total_policies": 88.0,
+      "total_policies": 89.0,
       "total_policies_ly": 248.0,
       "new_policies": 66.0,
       "renewal_policies": 22.0,
@@ -17220,11 +17490,11 @@ window.REPORT_DATA = {
       "source_yoy_change": -375473.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": -0.3893373012992669,
-      "contribution_pct": 0.038890442597970344,
+      "contribution_pct": 0.03860462058207322,
       "avg_premium_per_policy": 6692.238636363636,
       "renewal_mix_pct": 0.7662319138350565,
       "motor_mix_pct": 0.9231300845450208,
-      "pending_total": 0,
+      "pending_total": 31500.0,
       "growth_class": "Negative Growth"
     },
     {
@@ -17249,7 +17519,7 @@ window.REPORT_DATA = {
       "source_yoy_change": -1674935.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": -0.5414720659076281,
-      "contribution_pct": 0.0936648181747642,
+      "contribution_pct": 0.09297643652207646,
       "avg_premium_per_policy": 10827.20610687023,
       "renewal_mix_pct": 0.869095662326455,
       "motor_mix_pct": 0.9698250942635318,
@@ -17278,7 +17548,7 @@ window.REPORT_DATA = {
       "source_yoy_change": 329602.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": 2.2058170039618803,
-      "contribution_pct": 0.03163354624834288,
+      "contribution_pct": 0.031401058177889594,
       "avg_premium_per_policy": 7983.766666666666,
       "renewal_mix_pct": 0.9006692747366531,
       "motor_mix_pct": 0.9686864596076205,
@@ -17307,7 +17577,7 @@ window.REPORT_DATA = {
       "source_yoy_change": -662035.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": -0.5715446256062628,
-      "contribution_pct": 0.03277367888410303,
+      "contribution_pct": 0.03253281150535254,
       "avg_premium_per_policy": 11816.452380952382,
       "renewal_mix_pct": 0.909579258942838,
       "motor_mix_pct": 0.9808580046787067,
@@ -17336,7 +17606,7 @@ window.REPORT_DATA = {
       "source_yoy_change": -1292062.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": -0.8213361710026305,
-      "contribution_pct": 0.018560421581624482,
+      "contribution_pct": 0.018424013334302627,
       "avg_premium_per_policy": 10037.857142857143,
       "renewal_mix_pct": 0.2994022628620223,
       "motor_mix_pct": 0.9674446737351455,
@@ -17346,30 +17616,30 @@ window.REPORT_DATA = {
     {
       "seller": "Ali Mabrouk Ali",
       "premium_2025": 593180.0,
-      "premium_2026": 400000.0,
-      "pending_operation_paid": 88239.0,
+      "premium_2026": 488239.0,
+      "pending_operation_paid": null,
       "pending_finance": 4900.0,
       "pending_payment": 94702.0,
-      "new_premium": 400000.0,
+      "new_premium": 488239.0,
       "renewal_premium": null,
-      "approved_policies": 16.0,
+      "approved_policies": 17.0,
       "total_policies": 25.0,
       "total_policies_ly": 81.0,
-      "new_policies": 16.0,
+      "new_policies": 17.0,
       "renewal_policies": 0,
-      "retail_approved_gross": 400000.0,
+      "retail_approved_gross": 488239.0,
       "corporate_approved_gross": null,
-      "motor_premium": 394400.0,
+      "motor_premium": 482639.0,
       "non_motor_premium": 5600.0,
-      "yoy_change": -193180.0,
-      "source_yoy_change": -193180.0,
+      "yoy_change": -104941.0,
+      "source_yoy_change": -104941.0,
       "source_yoy_change_pct": null,
-      "yoy_change_pct": -0.32566843116760513,
-      "contribution_pct": 0.02641488875204509,
-      "avg_premium_per_policy": 25000.0,
+      "yoy_change_pct": -0.17691257291210088,
+      "contribution_pct": 0.032004987711971036,
+      "avg_premium_per_policy": 28719.941176470587,
       "renewal_mix_pct": null,
-      "motor_mix_pct": 0.986,
-      "pending_total": 187841.0,
+      "motor_mix_pct": 0.9885302075417982,
+      "pending_total": 99602.0,
       "growth_class": "Negative Growth"
     },
     {
@@ -17394,7 +17664,7 @@ window.REPORT_DATA = {
       "source_yoy_change": 239252.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": 10.539735682819384,
-      "contribution_pct": 0.017298582345939287,
+      "contribution_pct": 0.017171447879268633,
       "avg_premium_per_policy": 21829.333333333332,
       "renewal_mix_pct": null,
       "motor_mix_pct": 0.9839665282189103,
@@ -17423,7 +17693,7 @@ window.REPORT_DATA = {
       "source_yoy_change": 322599.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": 31.783152709359605,
-      "contribution_pct": 0.02197381954338563,
+      "contribution_pct": 0.021812324816679232,
       "avg_premium_per_policy": 23767.785714285714,
       "renewal_mix_pct": null,
       "motor_mix_pct": 0.9915852489413942,
@@ -17452,7 +17722,7 @@ window.REPORT_DATA = {
       "source_yoy_change": -2530402.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": -0.732421068840695,
-      "contribution_pct": 0.061047713543738925,
+      "contribution_pct": 0.06059904854058229,
       "avg_premium_per_policy": 28888.875,
       "renewal_mix_pct": 0.9974038449056947,
       "motor_mix_pct": 0.9974038449056947,
@@ -17481,7 +17751,7 @@ window.REPORT_DATA = {
       "source_yoy_change": 98990.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": 1.2219479076657203,
-      "contribution_pct": 0.01188669993842029,
+      "contribution_pct": 0.011799339643401668,
       "avg_premium_per_policy": 60000.0,
       "renewal_mix_pct": null,
       "motor_mix_pct": 1.0,
@@ -17510,7 +17780,7 @@ window.REPORT_DATA = {
       "source_yoy_change": 150020.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": 19.48311688311688,
-      "contribution_pct": 0.010415390634931378,
+      "contribution_pct": 0.010338843603096172,
       "avg_premium_per_policy": 52573.333333333336,
       "renewal_mix_pct": null,
       "motor_mix_pct": 1.0,
@@ -17539,7 +17809,7 @@ window.REPORT_DATA = {
       "source_yoy_change": 146700.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": 10.553956834532373,
-      "contribution_pct": 0.010605577833946103,
+      "contribution_pct": 0.010527633037390599,
       "avg_premium_per_policy": 80300.0,
       "renewal_mix_pct": null,
       "motor_mix_pct": 1.0,
@@ -17568,7 +17838,7 @@ window.REPORT_DATA = {
       "source_yoy_change": 55241.0,
       "source_yoy_change_pct": null,
       "yoy_change_pct": 0.36723284028585673,
-      "contribution_pct": 0.013581611275195265,
+      "contribution_pct": 0.013481794372776931,
       "avg_premium_per_policy": 29380.85714285714,
       "renewal_mix_pct": 0.08168584014859043,
       "motor_mix_pct": 1.0,
@@ -17914,12 +18184,12 @@ window.REPORT_DATA = {
       "source_yoy_change": -341858.0,
       "source_yoy_change_pct": -1.0,
       "pending_operation_paid": null,
-      "pending_finance": null,
+      "pending_finance": 18585.0,
       "pending_payment": null,
       "new_premium": null,
       "renewal_premium": null,
       "approved_policies": null,
-      "total_policies": null,
+      "total_policies": 2.0,
       "total_policies_ly": 104.0,
       "new_policies": null,
       "renewal_policies": null,
@@ -17933,7 +18203,7 @@ window.REPORT_DATA = {
       "avg_premium_per_policy": null,
       "renewal_mix_pct": null,
       "motor_mix_pct": null,
-      "pending_total": 0,
+      "pending_total": 18585.0,
       "growth_class": "No Current Production",
       "seller": "Nourhan Sabry Mahrous"
     },
@@ -18630,30 +18900,30 @@ window.REPORT_DATA = {
     {
       "month": "August",
       "premium_2025": 187595.0,
-      "premium_2026": 56280.0,
-      "source_yoy_change": -131315.0,
-      "source_yoy_change_pct": -0.7,
-      "pending_operation_paid": 56280.0,
+      "premium_2026": 112560.0,
+      "source_yoy_change": -75035.0,
+      "source_yoy_change_pct": -0.4,
+      "pending_operation_paid": null,
       "pending_finance": null,
       "pending_payment": null,
-      "new_premium": 56280.0,
+      "new_premium": 112560.0,
       "renewal_premium": null,
-      "approved_policies": 1.0,
+      "approved_policies": 2.0,
       "total_policies": 2.0,
       "total_policies_ly": 51.0,
-      "new_policies": 1.0,
+      "new_policies": 2.0,
       "renewal_policies": null,
-      "retail_approved_gross": 56280.0,
+      "retail_approved_gross": 112560.0,
       "corporate_approved_gross": null,
-      "motor_premium": 56280.0,
+      "motor_premium": 112560.0,
       "non_motor_premium": null,
-      "yoy_change": -131315.0,
-      "yoy_change_pct": -0.6999920040512807,
+      "yoy_change": -75035.0,
+      "yoy_change_pct": -0.39998400810256135,
       "contribution_pct": null,
       "avg_premium_per_policy": 56280.0,
       "renewal_mix_pct": null,
       "motor_mix_pct": 1.0,
-      "pending_total": 56280.0,
+      "pending_total": 0,
       "growth_class": "Negative Growth",
       "seller": "Zizi Samir El Sayed Mohamed Ismail"
     },
@@ -19235,11 +19505,11 @@ window.REPORT_DATA = {
       "source_yoy_change_pct": -1.0,
       "pending_operation_paid": null,
       "pending_finance": null,
-      "pending_payment": null,
+      "pending_payment": 31500.0,
       "new_premium": null,
       "renewal_premium": null,
       "approved_policies": null,
-      "total_policies": null,
+      "total_policies": 1.0,
       "total_policies_ly": 67.0,
       "new_policies": null,
       "renewal_policies": null,
@@ -19253,7 +19523,7 @@ window.REPORT_DATA = {
       "avg_premium_per_policy": null,
       "renewal_mix_pct": null,
       "motor_mix_pct": null,
-      "pending_total": 0,
+      "pending_total": 31500.0,
       "growth_class": "No Current Production",
       "seller": "Ashrakat Ali Hammad Mahmoud"
     },
@@ -20340,31 +20610,31 @@ window.REPORT_DATA = {
     {
       "month": "August",
       "premium_2025": 112620.0,
-      "premium_2026": null,
-      "source_yoy_change": -112620.0,
-      "source_yoy_change_pct": -1.0,
-      "pending_operation_paid": 88239.0,
+      "premium_2026": 88239.0,
+      "source_yoy_change": -24381.0,
+      "source_yoy_change_pct": -0.216,
+      "pending_operation_paid": null,
       "pending_finance": 1400.0,
       "pending_payment": 94702.0,
-      "new_premium": null,
+      "new_premium": 88239.0,
       "renewal_premium": null,
-      "approved_policies": null,
+      "approved_policies": 1.0,
       "total_policies": 4.0,
       "total_policies_ly": 11.0,
-      "new_policies": null,
+      "new_policies": 1.0,
       "renewal_policies": null,
-      "retail_approved_gross": null,
+      "retail_approved_gross": 88239.0,
       "corporate_approved_gross": null,
-      "motor_premium": null,
+      "motor_premium": 88239.0,
       "non_motor_premium": null,
-      "yoy_change": null,
-      "yoy_change_pct": null,
+      "yoy_change": -24381.0,
+      "yoy_change_pct": -0.21648907831646244,
       "contribution_pct": null,
-      "avg_premium_per_policy": null,
+      "avg_premium_per_policy": 88239.0,
       "renewal_mix_pct": null,
-      "motor_mix_pct": null,
-      "pending_total": 184341.0,
-      "growth_class": "No Current Production",
+      "motor_mix_pct": 1.0,
+      "pending_total": 96102.0,
+      "growth_class": "Negative Growth",
       "seller": "Ali Mabrouk Ali"
     },
     {
@@ -21888,9 +22158,9 @@ window.REPORT_DATA = {
       "month": null
     },
     "this_month": {
-      "seller": "Mohamed Abdelhafez",
+      "seller": "Zizi Samir El Sayed Mohamed Ismail",
       "metric": "premium_2026",
-      "value": 78714.0,
+      "value": 112560.0,
       "month": "August"
     }
   },
@@ -21938,17 +22208,17 @@ window.REPORT_DATA = {
         "date": "2026-08-04",
         "seller": "Ashraf Mohamed Abdelhamid Hashish",
         "premium_2026": null,
-        "pending_operation_paid": 8250.0,
+        "pending_operation_paid": 2250.0,
         "pending_not_paid": null,
-        "pending_finance": 700.0
+        "pending_finance": 6700.0
       },
       {
         "date": "2026-08-04",
         "seller": "Mohamed Abdelaziz Abdelghani Arfa",
         "premium_2026": null,
-        "pending_operation_paid": 700.0,
+        "pending_operation_paid": null,
         "pending_not_paid": null,
-        "pending_finance": null
+        "pending_finance": 700.0
       },
       {
         "date": "2026-08-04",
@@ -21994,9 +22264,9 @@ window.REPORT_DATA = {
         "date": "2026-08-06",
         "seller": "Mahmnoud Saad El Hefnawy",
         "premium_2026": null,
-        "pending_operation_paid": 3000.0,
+        "pending_operation_paid": 450.0,
         "pending_not_paid": null,
-        "pending_finance": 600.0
+        "pending_finance": 3150.0
       },
       {
         "date": "2026-08-06",
@@ -22050,9 +22320,9 @@ window.REPORT_DATA = {
         "date": "2026-08-11",
         "seller": "Mohamed Ali Ahmed Atito",
         "premium_2026": null,
-        "pending_operation_paid": 700.0,
+        "pending_operation_paid": null,
         "pending_not_paid": null,
-        "pending_finance": null
+        "pending_finance": 700.0
       },
       {
         "date": "2026-08-12",
@@ -22098,24 +22368,104 @@ window.REPORT_DATA = {
         "date": "2026-08-16",
         "seller": "Youssef Mostafa Mostafa Abdelgawad",
         "premium_2026": null,
-        "pending_operation_paid": 11100.0,
+        "pending_operation_paid": null,
         "pending_not_paid": 550.0,
+        "pending_finance": 11100.0
+      },
+      {
+        "date": "2026-08-19",
+        "seller": "Ahmed Hussien Abd El Razik Mousa",
+        "premium_2026": null,
+        "pending_operation_paid": 700.0,
+        "pending_not_paid": null,
         "pending_finance": null
       },
       {
         "date": "2026-08-19",
         "seller": "Ali Mabrouk Ali",
+        "premium_2026": 88239.0,
+        "pending_operation_paid": null,
+        "pending_not_paid": null,
+        "pending_finance": null
+      },
+      {
+        "date": "2026-08-19",
+        "seller": "Mohamed Helal Hafez Mohamed",
         "premium_2026": null,
-        "pending_operation_paid": 88239.0,
+        "pending_operation_paid": 1400.0,
         "pending_not_paid": null,
         "pending_finance": null
       },
       {
         "date": "2026-08-19",
         "seller": "Zizi Samir El Sayed Mohamed Ismail",
-        "premium_2026": null,
-        "pending_operation_paid": 56280.0,
+        "premium_2026": 56280.0,
+        "pending_operation_paid": null,
         "pending_not_paid": null,
+        "pending_finance": null
+      },
+      {
+        "date": "2026-08-20",
+        "seller": "Rana Nashaat Khalaf Salib",
+        "premium_2026": null,
+        "pending_operation_paid": 1650.0,
+        "pending_not_paid": null,
+        "pending_finance": 1200.0
+      },
+      {
+        "date": "2026-08-20",
+        "seller": "Shady Abdel Rehim Abd Elghany",
+        "premium_2026": null,
+        "pending_operation_paid": 1400.0,
+        "pending_not_paid": null,
+        "pending_finance": null
+      },
+      {
+        "date": "2026-08-23",
+        "seller": "Ashrakat Ali Hammad Mahmoud",
+        "premium_2026": null,
+        "pending_operation_paid": null,
+        "pending_not_paid": 31500.0,
+        "pending_finance": null
+      },
+      {
+        "date": "2026-08-24",
+        "seller": "Anan Essam Abden Desoky Mohammed",
+        "premium_2026": null,
+        "pending_operation_paid": 700.0,
+        "pending_not_paid": null,
+        "pending_finance": null
+      },
+      {
+        "date": "2026-08-24",
+        "seller": "Mohamed Helal Hafez Mohamed",
+        "premium_2026": null,
+        "pending_operation_paid": 1400.0,
+        "pending_not_paid": null,
+        "pending_finance": null
+      },
+      {
+        "date": "2026-08-24",
+        "seller": "Nourhan Sabry Mahrous",
+        "premium_2026": null,
+        "pending_operation_paid": null,
+        "pending_not_paid": null,
+        "pending_finance": 18585.0
+      },
+      {
+        "date": "2026-08-25",
+        "seller": "Ashraf Mohamed Abdelhamid Hashish",
+        "premium_2026": null,
+        "pending_operation_paid": 2200.0,
+        "pending_not_paid": null,
+        "pending_finance": null
+      },
+      {
+        "date": "2026-08-26",
+        "seller": "Rogina Fawzy Kamel Youssef",
+        "premium_2026": null,
+        "pending_operation_paid": null,
+        "pending_not_paid": 2714.0,
         "pending_finance": null
       }
     ],
@@ -22140,9 +22490,9 @@ window.REPORT_DATA = {
         "date": "2026-08-04",
         "label": "Aug 4",
         "premium_2026": 64400.0,
-        "pending_operation_paid": 8950.0,
+        "pending_operation_paid": 2250.0,
         "pending_not_paid": 0,
-        "pending_finance": 1400.0
+        "pending_finance": 8100.0
       },
       {
         "date": "2026-08-05",
@@ -22156,9 +22506,9 @@ window.REPORT_DATA = {
         "date": "2026-08-06",
         "label": "Aug 6",
         "premium_2026": 56280.0,
-        "pending_operation_paid": 3450.0,
+        "pending_operation_paid": 900.0,
         "pending_not_paid": 0,
-        "pending_finance": 600.0
+        "pending_finance": 3150.0
       },
       {
         "date": "2026-08-09",
@@ -22172,9 +22522,9 @@ window.REPORT_DATA = {
         "date": "2026-08-11",
         "label": "Aug 11",
         "premium_2026": 46520.0,
-        "pending_operation_paid": 700.0,
+        "pending_operation_paid": 0,
         "pending_not_paid": 0,
-        "pending_finance": 15000.0
+        "pending_finance": 15700.0
       },
       {
         "date": "2026-08-12",
@@ -22187,25 +22537,65 @@ window.REPORT_DATA = {
       {
         "date": "2026-08-13",
         "label": "Aug 13",
-        "premium_2026": 27000.0,
+        "premium_2026": -5403.0,
         "pending_operation_paid": 0,
         "pending_not_paid": 0,
-        "pending_finance": -31703.0
+        "pending_finance": 700.0
       },
       {
         "date": "2026-08-16",
         "label": "Aug 16",
         "premium_2026": 22130.0,
-        "pending_operation_paid": 11100.0,
+        "pending_operation_paid": 0,
         "pending_not_paid": 550.0,
-        "pending_finance": 33900.0
+        "pending_finance": 45000.0
       },
       {
         "date": "2026-08-19",
         "label": "Aug 19",
-        "premium_2026": 0,
-        "pending_operation_paid": 144519.0,
+        "premium_2026": 144519.0,
+        "pending_operation_paid": 2100.0,
         "pending_not_paid": 0,
+        "pending_finance": 0
+      },
+      {
+        "date": "2026-08-20",
+        "label": "Aug 20",
+        "premium_2026": 0,
+        "pending_operation_paid": 3050.0,
+        "pending_not_paid": 0,
+        "pending_finance": 1200.0
+      },
+      {
+        "date": "2026-08-23",
+        "label": "Aug 23",
+        "premium_2026": 0,
+        "pending_operation_paid": 0,
+        "pending_not_paid": 31500.0,
+        "pending_finance": 0
+      },
+      {
+        "date": "2026-08-24",
+        "label": "Aug 24",
+        "premium_2026": 0,
+        "pending_operation_paid": 2100.0,
+        "pending_not_paid": 0,
+        "pending_finance": 18585.0
+      },
+      {
+        "date": "2026-08-25",
+        "label": "Aug 25",
+        "premium_2026": 0,
+        "pending_operation_paid": 2200.0,
+        "pending_not_paid": 0,
+        "pending_finance": -15445.0
+      },
+      {
+        "date": "2026-08-26",
+        "label": "Aug 26",
+        "premium_2026": 0,
+        "pending_operation_paid": 0,
+        "pending_not_paid": 2714.0,
         "pending_finance": 0
       }
     ],
@@ -22232,7 +22622,7 @@ window.REPORT_DATA = {
       },
       {
         "seller": "Zizi Samir El Sayed Mohamed Ismail",
-        "premium_2026": 56280.0
+        "premium_2026": 112560.0
       },
       {
         "seller": "Ahmed Mahmoud Mohamed Aboel ela",
@@ -22257,29 +22647,33 @@ window.REPORT_DATA = {
       {
         "seller": "Mohiee Eldin Ashraf Farouk Mohamed",
         "premium_2026": 22130.0
+      },
+      {
+        "seller": "Ali Mabrouk Ali",
+        "premium_2026": 88239.0
       }
     ],
     "totals": {
-      "premium_2026": 451859.0,
-      "pending_operation_paid": 168719.0,
-      "pending_not_paid": 95252.0,
-      "pending_finance": 21997.0
+      "premium_2026": 563975.0,
+      "pending_operation_paid": 12600.0,
+      "pending_not_paid": 129466.0,
+      "pending_finance": 79790.0
     },
-    "total": 451859.0
+    "total": 563975.0
   },
   "insurers": [
     {
       "insurance_company": "Sarwa Insurance Company",
       "premium_2025": 17853207.0,
-      "premium_2026": 8437879.0,
-      "yoy_change": -9415328.0,
-      "yoy_change_pct": -0.5273746055820672,
-      "source_yoy_change": -9415328.0,
-      "source_yoy_change_pct": -0.527,
-      "new_policies_2026": 1246.0,
+      "premium_2026": 8582398.0,
+      "yoy_change": -9270809.0,
+      "yoy_change_pct": -0.5192797574127719,
+      "source_yoy_change": -9270809.0,
+      "source_yoy_change_pct": -0.519,
+      "new_policies_2026": 1248.0,
       "renewal_policies_2026": 132.0,
       "other_policies_2026": 27.0,
-      "share_2026_pct": 0.5572140141268127,
+      "share_2026_pct": 0.5625923093356429,
       "new_2026_base": false,
       "growth_class": "Negative Growth"
     },
@@ -22294,7 +22688,7 @@ window.REPORT_DATA = {
       "new_policies_2026": 21.0,
       "renewal_policies_2026": 57.0,
       "other_policies_2026": 17.0,
-      "share_2026_pct": 0.0888925605579405,
+      "share_2026_pct": 0.08823925229429935,
       "new_2026_base": false,
       "growth_class": "Negative Growth"
     },
@@ -22309,7 +22703,7 @@ window.REPORT_DATA = {
       "new_policies_2026": 2.0,
       "renewal_policies_2026": 87.0,
       "other_policies_2026": 10.0,
-      "share_2026_pct": 0.06721036425004145,
+      "share_2026_pct": 0.0667164074319311,
       "new_2026_base": false,
       "growth_class": "Negative Growth"
     },
@@ -22324,22 +22718,7 @@ window.REPORT_DATA = {
       "new_policies_2026": 252.0,
       "renewal_policies_2026": 22.0,
       "other_policies_2026": 6.0,
-      "share_2026_pct": 0.0651979462162559,
-      "new_2026_base": false,
-      "growth_class": "Negative Growth"
-    },
-    {
-      "insurance_company": "Arab Misr Insurance Group (GIG)",
-      "premium_2025": 1828562.0,
-      "premium_2026": 889694.0,
-      "yoy_change": -938868.0,
-      "yoy_change_pct": -0.5134460849563756,
-      "source_yoy_change": -938869.0,
-      "source_yoy_change_pct": -0.513,
-      "new_policies_2026": 5.0,
-      "renewal_policies_2026": 16.0,
-      "other_policies_2026": 5.0,
-      "share_2026_pct": 0.058752912323646794,
+      "share_2026_pct": 0.06471877949219976,
       "new_2026_base": false,
       "growth_class": "Negative Growth"
     },
@@ -22354,9 +22733,24 @@ window.REPORT_DATA = {
       "new_policies_2026": 16.0,
       "renewal_policies_2026": 48.0,
       "other_policies_2026": 8.0,
-      "share_2026_pct": 0.05665781569898706,
+      "share_2026_pct": 0.05624141393303862,
       "new_2026_base": false,
       "growth_class": "Positive Growth"
+    },
+    {
+      "insurance_company": "Arab Misr Insurance Group (GIG)",
+      "premium_2025": 1828562.0,
+      "premium_2026": 857291.0,
+      "yoy_change": -971271.0,
+      "yoy_change_pct": -0.5311665669526109,
+      "source_yoy_change": -971272.0,
+      "source_yoy_change_pct": -0.531,
+      "new_policies_2026": 5.0,
+      "renewal_policies_2026": 16.0,
+      "other_policies_2026": 6.0,
+      "share_2026_pct": 0.05619703531142026,
+      "new_2026_base": false,
+      "growth_class": "Negative Growth"
     },
     {
       "insurance_company": "Orient Takaful Insurance Company - Egypt",
@@ -22369,7 +22763,7 @@ window.REPORT_DATA = {
       "new_policies_2026": null,
       "renewal_policies_2026": 9.0,
       "other_policies_2026": 2.0,
-      "share_2026_pct": 0.053779451689056915,
+      "share_2026_pct": 0.05338420421297989,
       "new_2026_base": false,
       "growth_class": "Negative Growth"
     },
@@ -22384,7 +22778,7 @@ window.REPORT_DATA = {
       "new_policies_2026": 17.0,
       "renewal_policies_2026": 27.0,
       "other_policies_2026": null,
-      "share_2026_pct": 0.031359619710179844,
+      "share_2026_pct": 0.03112914486984773,
       "new_2026_base": false,
       "growth_class": "Negative Growth"
     },
@@ -22399,7 +22793,7 @@ window.REPORT_DATA = {
       "new_policies_2026": 1.0,
       "renewal_policies_2026": null,
       "other_policies_2026": null,
-      "share_2026_pct": 0.010012232072993309,
+      "share_2026_pct": 0.00993864803052987,
       "new_2026_base": true,
       "growth_class": "New Base"
     },
@@ -22414,7 +22808,7 @@ window.REPORT_DATA = {
       "new_policies_2026": 160.0,
       "renewal_policies_2026": 23.0,
       "other_policies_2026": null,
-      "share_2026_pct": 0.008868797727157613,
+      "share_2026_pct": 0.008803617257528354,
       "new_2026_base": false,
       "growth_class": "Negative Growth"
     },
@@ -22429,7 +22823,7 @@ window.REPORT_DATA = {
       "new_policies_2026": 1.0,
       "renewal_policies_2026": null,
       "other_policies_2026": null,
-      "share_2026_pct": 0.0010315012695324044,
+      "share_2026_pct": 0.0010239203392598132,
       "new_2026_base": false,
       "growth_class": "Negative Growth"
     },
@@ -22444,7 +22838,7 @@ window.REPORT_DATA = {
       "new_policies_2026": null,
       "renewal_policies_2026": 1.0,
       "other_policies_2026": null,
-      "share_2026_pct": 0.000660306094369687,
+      "share_2026_pct": 0.0006554532312585705,
       "new_2026_base": false,
       "growth_class": "Positive Growth"
     },
@@ -22459,7 +22853,7 @@ window.REPORT_DATA = {
       "new_policies_2026": 1.0,
       "renewal_policies_2026": null,
       "other_policies_2026": null,
-      "share_2026_pct": 0.0003624782630258238,
+      "share_2026_pct": 0.0003598142600638357,
       "new_2026_base": true,
       "growth_class": "New Base"
     },
@@ -22484,20 +22878,20 @@ window.REPORT_DATA = {
       "line_of_business": "Motor Vehicle Private Company Comprehensive",
       "premium_2025": 29546340.0,
       "target_2026": 36932925.0,
-      "premium_2026": 12481282.0,
+      "premium_2026": 12593398.0,
       "source_target_achievement_pct": 0.34,
-      "source_yoy_change": -17065058.0,
-      "new_premium": 5572811.0,
+      "source_yoy_change": -16952942.0,
+      "new_premium": 5717330.0,
       "renewal_premium": 6826435.0,
-      "endorsement_premium": 82036.0,
-      "motor_premium": 12481282.0,
+      "endorsement_premium": 49633.0,
+      "motor_premium": 12593398.0,
       "non_motor_premium": null,
-      "pending_finance": 15797.0,
-      "yoy_change": -17065058.0,
-      "target_achievement_pct": 0.33794458467613925,
-      "yoy_change_pct": -0.577569269154826,
+      "pending_finance": 51340.0,
+      "yoy_change": -16952942.0,
+      "target_achievement_pct": 0.3409802500072767,
+      "yoy_change_pct": -0.5737746874909041,
       "new_2026_base": false,
-      "share_2026_pct": 0.8242291887822571,
+      "share_2026_pct": 0.8255210014807516,
       "growth_class": "Negative Growth"
     },
     {
@@ -22512,12 +22906,12 @@ window.REPORT_DATA = {
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 443450.0,
-      "pending_finance": null,
+      "pending_finance": 8750.0,
       "yoy_change": -1886340.0,
       "target_achievement_pct": 0.152271208603143,
       "yoy_change_pct": -0.8096609565669008,
       "new_2026_base": false,
-      "share_2026_pct": 0.02928420604273599,
+      "share_2026_pct": 0.029068984249258165,
       "growth_class": "Negative Growth"
     },
     {
@@ -22537,7 +22931,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": 0.25530394628712283,
       "yoy_change_pct": -0.6808700338428808,
       "new_2026_base": false,
-      "share_2026_pct": 0.040395496921839996,
+      "share_2026_pct": 0.0400986136365886,
       "growth_class": "Negative Growth"
     },
     {
@@ -22557,7 +22951,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": 0.0019801980198019802,
       "yoy_change_pct": -0.9975247524752475,
       "new_2026_base": false,
-      "share_2026_pct": 0.00018490422126431563,
+      "share_2026_pct": 0.00018354528334180373,
       "growth_class": "Negative Growth"
     },
     {
@@ -22577,7 +22971,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": 0.07617676530132308,
       "yoy_change_pct": -0.9047790433733461,
       "new_2026_base": false,
-      "share_2026_pct": 0.006149914399251138,
+      "share_2026_pct": 0.006104716123948392,
       "growth_class": "Negative Growth"
     },
     {
@@ -22592,12 +22986,12 @@ window.REPORT_DATA = {
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 120400.0,
-      "pending_finance": 16100.0,
+      "pending_finance": 17500.0,
       "yoy_change": -619500.0,
       "target_achievement_pct": 0.13017975402081364,
       "yoy_change_pct": -0.8372753074739829,
       "new_2026_base": false,
-      "share_2026_pct": 0.007950881514365573,
+      "share_2026_pct": 0.007892447183697561,
       "growth_class": "Negative Growth"
     },
     {
@@ -22617,7 +23011,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": 0.0017582417582417582,
       "yoy_change_pct": -0.9978021978021978,
       "new_2026_base": false,
-      "share_2026_pct": 5.96976485796219e-05,
+      "share_2026_pct": 5.925890576463949e-05,
       "growth_class": "Negative Growth"
     },
     {
@@ -22632,12 +23026,12 @@ window.REPORT_DATA = {
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 85250.0,
-      "pending_finance": 6600.0,
+      "pending_finance": 13200.0,
       "yoy_change": -377550.0,
       "target_achievement_pct": 0.14736387208297322,
       "yoy_change_pct": -0.8157951598962835,
       "new_2026_base": false,
-      "share_2026_pct": 0.00562967316527961,
+      "share_2026_pct": 0.005588298358888846,
       "growth_class": "Negative Growth"
     },
     {
@@ -22657,7 +23051,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": 0.001432408236347359,
       "yoy_change_pct": -0.9982094897045658,
       "new_2026_base": false,
-      "share_2026_pct": 3.962233312806763e-05,
+      "share_2026_pct": 3.9331132144672226e-05,
       "growth_class": "Negative Growth"
     },
     {
@@ -22677,7 +23071,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": 0.17906271858242015,
       "yoy_change_pct": -0.7761716017719749,
       "new_2026_base": false,
-      "share_2026_pct": 0.006339573300490822,
+      "share_2026_pct": 0.006292981143147557,
       "growth_class": "Negative Growth"
     },
     {
@@ -22692,12 +23086,12 @@ window.REPORT_DATA = {
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 57850.0,
-      "pending_finance": null,
+      "pending_finance": 11050.0,
       "yoy_change": -313400.0,
       "target_achievement_pct": 0.12465979834634522,
       "yoy_change_pct": -0.8441750841750841,
       "new_2026_base": false,
-      "share_2026_pct": 0.003820253285764521,
+      "share_2026_pct": 0.0037921766576154807,
       "growth_class": "Negative Growth"
     },
     {
@@ -22717,7 +23111,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": 0.014097278844175538,
       "yoy_change_pct": -0.9823783790648793,
       "new_2026_base": false,
-      "share_2026_pct": 0.0003665065814346256,
+      "share_2026_pct": 0.0003638129723382181,
       "growth_class": "Negative Growth"
     },
     {
@@ -22737,7 +23131,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": 0.09820963829390217,
       "yoy_change_pct": -0.8772378516624041,
       "new_2026_base": false,
-      "share_2026_pct": 0.001981116656403382,
+      "share_2026_pct": 0.0019665566072336114,
       "growth_class": "Negative Growth"
     },
     {
@@ -22757,7 +23151,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": 0.13405196096386804,
       "yoy_change_pct": -0.832435048795165,
       "new_2026_base": false,
-      "share_2026_pct": 0.0016917415501247278,
+      "share_2026_pct": 0.0016793082388036886,
       "growth_class": "Negative Growth"
     },
     {
@@ -22777,7 +23171,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": 0.15117888487971134,
       "yoy_change_pct": -0.8110267718740312,
       "new_2026_base": false,
-      "share_2026_pct": 0.00124783934464661,
+      "share_2026_pct": 0.001238668455009544,
       "growth_class": "Negative Growth"
     },
     {
@@ -22797,7 +23191,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": 0.42860224648588224,
       "yoy_change_pct": -0.4642458785315928,
       "new_2026_base": false,
-      "share_2026_pct": 0.0057729078995375745,
+      "share_2026_pct": 0.005730480401591836,
       "growth_class": "Negative Growth"
     },
     {
@@ -22837,7 +23231,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": 0.01,
       "yoy_change_pct": -0.9875,
       "new_2026_base": false,
-      "share_2026_pct": 3.6320472034061996e-05,
+      "share_2026_pct": 3.605353779928288e-05,
       "growth_class": "Negative Growth"
     },
     {
@@ -22872,12 +23266,12 @@ window.REPORT_DATA = {
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 18400.0,
-      "pending_finance": 700.0,
+      "pending_finance": 2900.0,
       "yoy_change": -37250.0,
       "target_achievement_pct": 0.2645084312062447,
       "yoy_change_pct": -0.6693620844564241,
       "new_2026_base": false,
-      "share_2026_pct": 0.0012150848825940742,
+      "share_2026_pct": 0.0012061547191032816,
       "growth_class": "Negative Growth"
     },
     {
@@ -22937,7 +23331,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": 0.2938775510204082,
       "yoy_change_pct": -0.6326530612244898,
       "new_2026_base": false,
-      "share_2026_pct": 0.00011886699938420291,
+      "share_2026_pct": 0.00011799339643401668,
       "growth_class": "Negative Growth"
     },
     {
@@ -22977,7 +23371,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": null,
       "yoy_change_pct": null,
       "new_2026_base": true,
-      "share_2026_pct": 0.00029056377627249597,
+      "share_2026_pct": 0.00028842830239426303,
       "growth_class": "New Base"
     },
     {
@@ -22997,7 +23391,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": 1.2285329573044668,
       "yoy_change_pct": 0.535670267046584,
       "new_2026_base": false,
-      "share_2026_pct": 0.007651997048136182,
+      "share_2026_pct": 0.007595759343552916,
       "growth_class": "Positive Growth"
     },
     {
@@ -23017,7 +23411,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": null,
       "yoy_change_pct": null,
       "new_2026_base": true,
-      "share_2026_pct": 0.0036320472034062,
+      "share_2026_pct": 0.0036053537799282877,
       "growth_class": "New Base"
     },
     {
@@ -23037,7 +23431,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": 1.6236235741956915,
       "yoy_change_pct": 1.029531745363746,
       "new_2026_base": false,
-      "share_2026_pct": 0.023885200893483612,
+      "share_2026_pct": 0.02370965863133822,
       "growth_class": "Positive Growth"
     },
     {
@@ -23057,7 +23451,7 @@ window.REPORT_DATA = {
       "target_achievement_pct": null,
       "yoy_change_pct": null,
       "new_2026_base": true,
-      "share_2026_pct": 0.028026395077585482,
+      "share_2026_pct": 0.027820417459325546,
       "growth_class": "New Base"
     }
   ],
@@ -23745,9 +24139,9 @@ window.REPORT_DATA = {
     {
       "month": "August",
       "line_of_business": "Motor Vehicle Private Company Comprehensive",
-      "premium_2026": 423630.0,
+      "premium_2026": 535746.0,
       "premium_2025": 3617323.0,
-      "new_premium": 365467.0,
+      "new_premium": 509986.0,
       "renewal_premium": 75500.0
     },
     {
@@ -23771,32 +24165,32 @@ window.REPORT_DATA = {
   "policy_type_mix": [
     {
       "category": "New Premium",
-      "premium": 6820327.0,
-      "share_pct": 0.45039544739392356
+      "premium": 6964846.0,
+      "share_pct": 0.456558797322153
     },
     {
       "category": "Renewal Premium",
       "premium": 8238668.0,
-      "share_pct": 0.5440587467125846
+      "share_pct": 0.5400602330068041
     },
     {
       "category": "Other Policy Types",
-      "premium": 83980.0,
-      "share_pct": 0.0055458058934918664
+      "premium": 51577.0,
+      "share_pct": 0.0033809696710429323
     }
   ],
   "pending_categories": [
     {
       "category": "Operation Paid",
-      "premium": 176469.0
+      "premium": 12600.0
     },
     {
       "category": "Pending Finance",
-      "premium": 40397.0
+      "premium": 105940.0
     },
     {
       "category": "Pending Payment",
-      "premium": 245605.0
+      "premium": 279819.0
     }
   ],
   "premium_distribution_bins": [
@@ -23841,13 +24235,13 @@ window.REPORT_DATA = {
       "label": "EGP 300K-600K",
       "min": 300000,
       "max": 600000,
-      "count": 8
+      "count": 7
     },
     {
       "label": "EGP 600K-900K",
       "min": 600000,
       "max": 900000,
-      "count": 4
+      "count": 5
     },
     {
       "label": "EGP 900K-1.2M",
@@ -23904,72 +24298,72 @@ window.REPORT_DATA = {
     "branches": {
       "branch": "Grand Total",
       "premium_2025": 40104553.0,
-      "premium_2026": 15142975.0,
-      "source_yoy_change": -24961578.0,
-      "source_yoy_change_pct": -0.622,
-      "pending_operation_paid": 176469.0,
-      "pending_finance": 40397.0,
-      "pending_payment": 245605.0,
-      "new_premium": 6820327.0,
+      "premium_2026": 15255091.0,
+      "source_yoy_change": -24849462.0,
+      "source_yoy_change_pct": -0.62,
+      "pending_operation_paid": 12600.0,
+      "pending_finance": 105940.0,
+      "pending_payment": 279819.0,
+      "new_premium": 6964846.0,
       "renewal_premium": 8238668.0,
-      "approved_policies": 2219.0,
-      "total_policies": 2340.0,
+      "approved_policies": 2222.0,
+      "total_policies": 2353.0,
       "total_policies_ly": 13993.0,
-      "new_policies": 1841.0,
-      "renewal_policies": 423.0,
-      "retail_approved_gross": 14536044.0,
+      "new_policies": 1850.0,
+      "renewal_policies": 425.0,
+      "retail_approved_gross": 14648160.0,
       "corporate_approved_gross": 606931.0,
-      "motor_premium": 13234854.0,
+      "motor_premium": 13346970.0,
       "non_motor_premium": 1908121.0,
-      "yoy_change": -24961578.0,
-      "yoy_change_pct": -0.6224125724577955,
+      "yoy_change": -24849462.0,
+      "yoy_change_pct": -0.6196169796481711,
       "contribution_pct": 1.0,
-      "avg_premium_per_policy": 6824.233889139252,
-      "renewal_mix_pct": 0.5440587467125846,
-      "motor_mix_pct": 0.8739929901488974,
-      "pending_total": 462471.0,
+      "avg_premium_per_policy": 6865.477497749775,
+      "renewal_mix_pct": 0.5400602330068041,
+      "motor_mix_pct": 0.8749190680016264,
+      "pending_total": 398359.0,
       "growth_class": "Grand Total"
     },
     "sellers": {
       "seller": "Grand Total",
       "premium_2025": 19878642.0,
-      "premium_2026": 10963773.0,
-      "source_yoy_change": -8914869.0,
-      "source_yoy_change_pct": -0.448,
-      "pending_operation_paid": 144519.0,
-      "pending_finance": 53700.0,
-      "pending_payment": 97652.0,
-      "new_premium": 3613984.0,
+      "premium_2026": 11108292.0,
+      "source_yoy_change": -8770350.0,
+      "source_yoy_change_pct": -0.441,
+      "pending_operation_paid": null,
+      "pending_finance": 72285.0,
+      "pending_payment": 129152.0,
+      "new_premium": 3758503.0,
       "renewal_premium": 7345239.0,
-      "approved_policies": 1486.0,
-      "total_policies": 1505.0,
+      "approved_policies": 1488.0,
+      "total_policies": 1508.0,
       "total_policies_ly": 5270.0,
-      "new_policies": 1119.0,
+      "new_policies": 1121.0,
       "renewal_policies": 366.0,
-      "retail_approved_gross": 10479970.0,
+      "retail_approved_gross": 10624489.0,
       "corporate_approved_gross": 483803.0,
-      "motor_premium": 9550365.0,
+      "motor_premium": 9694884.0,
       "non_motor_premium": 1413408.0,
-      "yoy_change": -8914869.0,
-      "yoy_change_pct": -0.44846468888568947,
-      "contribution_pct": 0.7240171102441891,
-      "avg_premium_per_policy": 7378.043741588156,
-      "renewal_mix_pct": 0.6699554067746568,
-      "motor_mix_pct": 0.871083795696974,
-      "pending_total": 295871.0,
+      "yoy_change": -8770350.0,
+      "yoy_change_pct": -0.44119462486421357,
+      "contribution_pct": 0.7281695009226756,
+      "avg_premium_per_policy": 7465.25,
+      "renewal_mix_pct": 0.6612392796300277,
+      "motor_mix_pct": 0.8727609969201385,
+      "pending_total": 201437.0,
       "growth_class": "Grand Total"
     },
     "insurers": {
       "insurance_company": "Grand Total",
       "premium_2025": 40104553.0,
-      "premium_2026": 15142975.0,
-      "yoy_change": -24961578.0,
-      "yoy_change_pct": -0.6224125724577955,
-      "source_yoy_change": -24961578.0,
-      "source_yoy_change_pct": -0.6224,
-      "new_policies_2026": 1722.0,
+      "premium_2026": 15255091.0,
+      "yoy_change": -24849462.0,
+      "yoy_change_pct": -0.6196169796481711,
+      "source_yoy_change": -24849462.0,
+      "source_yoy_change_pct": -0.6196,
+      "new_policies_2026": 1724.0,
       "renewal_policies_2026": 422.0,
-      "other_policies_2026": 75.0,
+      "other_policies_2026": 76.0,
       "growth_class": "Grand Total",
       "avg_premium_per_policy": null,
       "share_2026_pct": 1.0
@@ -23978,37 +24372,37 @@ window.REPORT_DATA = {
       "line_of_business": "Grand Total",
       "premium_2025": 40104553.0,
       "target_2026": 50130691.0,
-      "premium_2026": 15142975.0,
-      "source_target_achievement_pct": 0.302,
-      "source_yoy_change": -24961578.0,
-      "new_premium": 6820327.0,
+      "premium_2026": 15255091.0,
+      "source_target_achievement_pct": 0.304,
+      "source_yoy_change": -24849462.0,
+      "new_premium": 6964846.0,
       "renewal_premium": 8238668.0,
-      "endorsement_premium": 83981.0,
-      "motor_premium": 13234854.0,
+      "endorsement_premium": 51578.0,
+      "motor_premium": 13346970.0,
       "non_motor_premium": 1908121.0,
-      "pending_finance": 40397.0,
-      "yoy_change": -24961578.0,
-      "target_achievement_pct": 0.3020699435401758,
-      "yoy_change_pct": -0.6224125724577955,
+      "pending_finance": 105940.0,
+      "yoy_change": -24849462.0,
+      "target_achievement_pct": 0.30430641779902856,
+      "yoy_change_pct": -0.6196169796481711,
       "new_2026_base": false,
       "growth_class": "Grand Total",
       "avg_premium_per_policy": null,
       "share_2026_pct": 1.0,
-      "renewal_mix_pct": 0.5440587467125846,
-      "motor_mix_pct": 0.8739929901488974
+      "renewal_mix_pct": 0.5400602330068041,
+      "motor_mix_pct": 0.8749190680016264
     }
   },
   "management_actions": [
     {
       "priority": "P1",
       "action": "Close the YTD target gap with branch-level recovery plans.",
-      "evidence": "YTD achievement is 30.2%, leaving EGP 35.0M below target.",
+      "evidence": "YTD achievement is 30.4%, leaving EGP 34.9M below target.",
       "kpi": "Target achievement %, approved premium gap"
     },
     {
       "priority": "P1",
       "action": "Convert pending pipeline starting with the largest exposed branches.",
-      "evidence": "Giza has EGP 202.8K pending exposure.",
+      "evidence": "Giza has EGP 115.3K pending exposure.",
       "kpi": "Pending conversion value, pending aging"
     },
     {
@@ -24026,13 +24420,13 @@ window.REPORT_DATA = {
     {
       "priority": "P2",
       "action": "Reduce motor concentration by expanding non-motor cross-sell.",
-      "evidence": "Motor Vehicle Private Company Comprehensive contributes EGP 12.5M of approved premium.",
+      "evidence": "Motor Vehicle Private Company Comprehensive contributes EGP 12.6M of approved premium.",
       "kpi": "Non-motor premium share, cross-sell premium"
     },
     {
       "priority": "P3",
       "action": "Manage insurer concentration and broaden active insurer participation.",
-      "evidence": "Top three insurers account for 71.3% of approved premium.",
+      "evidence": "Top three insurers account for 71.8% of approved premium.",
       "kpi": "Top-3 insurer share, insurer active count"
     },
     {
@@ -24051,18 +24445,18 @@ window.REPORT_DATA = {
   "insights": {
     "positive_highlights": [
       "April delivered the strongest target achievement at 51.5%, supported by EGP 2.9M in approved premium.",
-      "Giza was the leading branch with EGP 2.1M, contributing 13.9% of approved premium.",
+      "Giza was the leading branch with EGP 2.2M, contributing 14.4% of approved premium.",
       "4 branches grew year over year, led by Sadat City in absolute growth."
     ],
     "key_concerns": [
-      "Approved gross premium declined -62.2% versus YTD 2025, a decrease of EGP 25.0M.",
-      "Target achievement reached 30.2%, leaving EGP 35.0M below the YTD 2026 target.",
-      "August was the weakest month at EGP 451.9K and only 7.5% of target.",
-      "The top three insurers represented 71.3% of YTD 2026 approved premium, creating concentration exposure."
+      "Approved gross premium declined -62.0% versus YTD 2025, a decrease of EGP 24.8M.",
+      "Target achievement reached 30.4%, leaving EGP 34.9M below the YTD 2026 target.",
+      "July was the weakest month at EGP 455.0K and only 6.7% of target.",
+      "The top three insurers represented 71.8% of YTD 2026 approved premium, creating concentration exposure."
     ],
     "opportunities": [
-      "Pending pipeline totals EGP 462.5K, equal to 3.1% of approved premium.",
-      "Motor Vehicle Private Company Comprehensive remains the largest line at EGP 12.5M; improving its conversion has the highest near-term impact.",
+      "Pending pipeline totals EGP 398.4K, equal to 2.6% of approved premium.",
+      "Motor Vehicle Private Company Comprehensive remains the largest line at EGP 12.6M; improving its conversion has the highest near-term impact.",
       "Renewal-rate opportunity could not be calculated from the available workbook data.",
       "Nourhan Sabry Mahrous led seller production at EGP 2.2M; top-seller practices should be replicated across declining sellers."
     ]
@@ -24078,7 +24472,7 @@ window.REPORT_DATA = {
     "Possible spelling inconsistencies are retained as provided by the workbook, including 'Renew Premuims'."
   ],
   "summary_metrics": {
-    "top3_insurer_share_pct": 0.7133170331457326,
+    "top3_insurer_share_pct": 0.71754806313512,
     "renewal_variance_pct": null
   },
   "calculated_metrics": {
@@ -24086,92 +24480,92 @@ window.REPORT_DATA = {
       "metric_id": "kpi.approved-gross-premiums.yoy",
       "label": "Approved Gross Premiums YoY",
       "report_area": "kpi",
-      "numerator": "-24961578",
+      "numerator": "-24849462",
       "denominator": "40104553",
-      "value": "-0.6224125724577955026702329783",
-      "display": "-62.2%",
+      "value": "-0.619616979648171119124554262",
+      "display": "-62.0%",
       "decimals": 1,
       "source_rate": "-0.62",
       "source_display": "-62.0%",
-      "value_numeric": -0.6224125724577955
+      "value_numeric": -0.6196169796481711
     },
     "kpi.avg-premium-per-policy.yoy": {
       "metric_id": "kpi.avg-premium-per-policy.yoy",
       "label": "Avg Premium per policy YoY",
       "report_area": "kpi",
-      "numerator": "3958",
+      "numerator": "3999",
       "denominator": "2866",
-      "value": "1.381018841591067690160502442",
-      "display": "138.1%",
+      "value": "1.395324494068387997208653175",
+      "display": "139.5%",
       "decimals": 1,
-      "source_rate": "1.38",
-      "source_display": "138.0%",
-      "value_numeric": 1.3810188415910676
+      "source_rate": "1.4",
+      "source_display": "140.0%",
+      "value_numeric": 1.395324494068388
     },
     "kpi.total-policies.yoy": {
       "metric_id": "kpi.total-policies.yoy",
       "label": "Total Policies YoY",
       "report_area": "kpi",
-      "numerator": "-11653",
+      "numerator": "-11640",
       "denominator": "13993",
-      "value": "-0.8327735296219538340598870864",
-      "display": "-83.3%",
+      "value": "-0.8318444936754091331379975702",
+      "display": "-83.2%",
       "decimals": 1,
       "source_rate": "-0.83",
       "source_display": "-83.0%",
-      "value_numeric": -0.8327735296219538
+      "value_numeric": -0.8318444936754091
     },
     "kpi.total-approved-policies.yoy": {
       "metric_id": "kpi.total-approved-policies.yoy",
       "label": "Total Approved Policies YoY",
       "report_area": "kpi",
-      "numerator": "-11774",
+      "numerator": "-11771",
       "denominator": "13993",
-      "value": "-0.8414207103551775887943971986",
+      "value": "-0.8412063174444365039662688487",
       "display": "-84.1%",
       "decimals": 1,
       "source_rate": "-0.84",
       "source_display": "-84.0%",
-      "value_numeric": -0.8414207103551776
+      "value_numeric": -0.8412063174444365
     },
     "kpi.new-policies.yoy": {
       "metric_id": "kpi.new-policies.yoy",
       "label": "New Policies YoY",
       "report_area": "kpi",
-      "numerator": "-9140",
+      "numerator": "-9131",
       "denominator": "10981",
-      "value": "-0.8323467808032055368363537018",
+      "value": "-0.8315271833166378289773244695",
       "display": "-83.2%",
       "decimals": 1,
       "source_rate": "-0.83",
       "source_display": "-83.0%",
-      "value_numeric": -0.8323467808032056
+      "value_numeric": -0.8315271833166378
     },
     "kpi.renewal-policies.yoy": {
       "metric_id": "kpi.renewal-policies.yoy",
       "label": "Renewal Policies YoY",
       "report_area": "kpi",
-      "numerator": "-2391",
+      "numerator": "-2389",
       "denominator": "2814",
-      "value": "-0.8496801705756929637526652452",
-      "display": "-85.0%",
+      "value": "-0.8489694385216773276474769012",
+      "display": "-84.9%",
       "decimals": 1,
       "source_rate": "-0.85",
       "source_display": "-85.0%",
-      "value_numeric": -0.849680170575693
+      "value_numeric": -0.8489694385216773
     },
     "kpi.retail-approved-gross.yoy": {
       "metric_id": "kpi.retail-approved-gross.yoy",
       "label": "Retail Approved Gross YoY",
       "report_area": "kpi",
-      "numerator": "-24265422",
+      "numerator": "-24153306",
       "denominator": "38801466",
-      "value": "-0.6253738454108924647331624016",
-      "display": "-62.5%",
+      "value": "-0.622484366956650555419735945",
+      "display": "-62.2%",
       "decimals": 1,
-      "source_rate": "-0.63",
-      "source_display": "-63.0%",
-      "value_numeric": -0.6253738454108925
+      "source_rate": "-0.62",
+      "source_display": "-62.0%",
+      "value_numeric": -0.6224843669566505
     },
     "kpi.corporate-approved-gross.yoy": {
       "metric_id": "kpi.corporate-approved-gross.yoy",
@@ -24372,53 +24766,53 @@ window.REPORT_DATA = {
       "metric_id": "monthly.August.target_achievement",
       "label": "August Target Achievement",
       "report_area": "monthly",
-      "numerator": "451859",
+      "numerator": "563975",
       "denominator": "6008767.456",
-      "value": "0.07519994796084183824337368399",
-      "display": "7.5%",
+      "value": "0.09385868302106580974000002972",
+      "display": "9.4%",
       "decimals": 1,
-      "source_rate": "0.08",
-      "source_display": "8.0%",
-      "value_numeric": 0.07519994796084184
+      "source_rate": "0.09",
+      "source_display": "9.0%",
+      "value_numeric": 0.09385868302106581
     },
     "monthly.August.yoy": {
       "metric_id": "monthly.August.yoy",
       "label": "August YoY",
       "report_area": "monthly",
-      "numerator": "-4355155",
+      "numerator": "-4243039",
       "denominator": "4807014",
-      "value": "-0.9060000657372747406186043977",
-      "display": "-90.6%",
+      "value": "-0.8826766470827836157747824325",
+      "display": "-88.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": -0.9060000657372748
+      "value_numeric": -0.8826766470827836
     },
     "monthly.Grand Total.target_achievement": {
       "metric_id": "monthly.Grand Total.target_achievement",
       "label": "Grand Total Target Achievement",
       "report_area": "monthly",
-      "numerator": "15142975",
+      "numerator": "15255091",
       "denominator": "50130691",
-      "value": "0.3020699435401758176443249107",
-      "display": "30.2%",
+      "value": "0.3043064177990285432131785297",
+      "display": "30.4%",
       "decimals": 1,
-      "source_rate": "0.302",
-      "source_display": "30.2%",
-      "value_numeric": 0.3020699435401758
+      "source_rate": "0.304",
+      "source_display": "30.4%",
+      "value_numeric": 0.30430641779902856
     },
     "monthly.Grand Total.yoy": {
       "metric_id": "monthly.Grand Total.yoy",
       "label": "Grand Total YoY",
       "report_area": "monthly",
-      "numerator": "-24961578",
+      "numerator": "-24849462",
       "denominator": "40104553",
-      "value": "-0.6224125724577955026702329783",
-      "display": "-62.2%",
+      "value": "-0.619616979648171119124554262",
+      "display": "-62.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": -0.6224125724577955
+      "value_numeric": -0.6196169796481711
     },
     "monthly-count.January.motor_average_rate_2025": {
       "metric_id": "monthly-count.January.motor_average_rate_2025",
@@ -24658,53 +25052,53 @@ window.REPORT_DATA = {
       "metric_id": "branch.giza.yoy",
       "label": "Giza YoY",
       "report_area": "branch",
-      "numerator": "-1856224",
+      "numerator": "-1767985",
       "denominator": "3962497",
-      "value": "-0.4684480518218688872193467907",
-      "display": "-46.8%",
+      "value": "-0.446179517612253081831986245",
+      "display": "-44.6%",
       "decimals": 1,
-      "source_rate": "-0.468",
-      "source_display": "-46.8%",
-      "value_numeric": -0.4684480518218689
+      "source_rate": "-0.446",
+      "source_display": "-44.6%",
+      "value_numeric": -0.4461795176122531
     },
     "branch.giza.contribution": {
       "metric_id": "branch.giza.contribution",
       "label": "Giza Contribution",
       "report_area": "branch",
-      "numerator": "2106273",
-      "denominator": "15142975",
-      "value": "0.1390924174410906707565719418",
-      "display": "13.9%",
+      "numerator": "2194512",
+      "denominator": "15255091",
+      "value": "0.14385440244178156656030436",
+      "display": "14.4%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.13909241744109066
+      "value_numeric": 0.14385440244178158
     },
     "branch.giza.renewal_mix": {
       "metric_id": "branch.giza.renewal_mix",
       "label": "Giza Renewal Mix",
       "report_area": "branch",
       "numerator": "1013469",
-      "denominator": "2106273",
-      "value": "0.4811669712330737753368153131",
-      "display": "48.1%",
+      "denominator": "2194512",
+      "value": "0.4618197576499923445394693672",
+      "display": "46.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.4811669712330738
+      "value_numeric": 0.46181975764999234
     },
     "branch.giza.motor_mix": {
       "metric_id": "branch.giza.motor_mix",
       "label": "Giza Motor Mix",
       "report_area": "branch",
-      "numerator": "2018274",
-      "denominator": "2106273",
-      "value": "0.9582205155741919494766347952",
-      "display": "95.8%",
+      "numerator": "2106513",
+      "denominator": "2194512",
+      "value": "0.9599004243312408407882937072",
+      "display": "96.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.958220515574192
+      "value_numeric": 0.9599004243312408
     },
     "branch.downtown-5th-settlement.yoy": {
       "metric_id": "branch.downtown-5th-settlement.yoy",
@@ -24724,13 +25118,13 @@ window.REPORT_DATA = {
       "label": "DownTown - 5th Settlement Contribution",
       "report_area": "branch",
       "numerator": "1495796",
-      "denominator": "15142975",
-      "value": "0.09877821233938509440846333036",
-      "display": "9.9%",
+      "denominator": "15255091",
+      "value": "0.0980522502291202327144426736",
+      "display": "9.8%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0987782123393851
+      "value_numeric": 0.09805225022912023
     },
     "branch.downtown-5th-settlement.renewal_mix": {
       "metric_id": "branch.downtown-5th-settlement.renewal_mix",
@@ -24762,53 +25156,53 @@ window.REPORT_DATA = {
       "metric_id": "branch.zamalek.yoy",
       "label": "Zamalek YoY",
       "report_area": "branch",
-      "numerator": "-2355379",
+      "numerator": "-2387782",
       "denominator": "3809854",
-      "value": "-0.6182334021198712601585257598",
-      "display": "-61.8%",
+      "value": "-0.6267384524446343613167328722",
+      "display": "-62.7%",
       "decimals": 1,
-      "source_rate": "-0.618",
-      "source_display": "-61.8%",
-      "value_numeric": -0.6182334021198712
+      "source_rate": "-0.627",
+      "source_display": "-62.7%",
+      "value_numeric": -0.6267384524446343
     },
     "branch.zamalek.contribution": {
       "metric_id": "branch.zamalek.contribution",
       "label": "Zamalek Contribution",
       "report_area": "branch",
-      "numerator": "1454475",
-      "denominator": "15142975",
-      "value": "0.09604948829407695647651798936",
-      "display": "9.6%",
+      "numerator": "1422072",
+      "denominator": "15255091",
+      "value": "0.09321950291873054051267213024",
+      "display": "9.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.09604948829407696
+      "value_numeric": 0.09321950291873055
     },
     "branch.zamalek.renewal_mix": {
       "metric_id": "branch.zamalek.renewal_mix",
       "label": "Zamalek Renewal Mix",
       "report_area": "branch",
       "numerator": "920320",
-      "denominator": "1454475",
-      "value": "0.6327506488595541346533972739",
-      "display": "63.3%",
+      "denominator": "1422072",
+      "value": "0.6471683571577247846803818653",
+      "display": "64.7%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.6327506488595541
+      "value_numeric": 0.6471683571577248
     },
     "branch.zamalek.motor_mix": {
       "metric_id": "branch.zamalek.motor_mix",
       "label": "Zamalek Motor Mix",
       "report_area": "branch",
-      "numerator": "1146497",
-      "denominator": "1454475",
-      "value": "0.7882548685951975798827755719",
-      "display": "78.8%",
+      "numerator": "1114094",
+      "denominator": "1422072",
+      "value": "0.7834300935536316023379969509",
+      "display": "78.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.7882548685951976
+      "value_numeric": 0.7834300935536316
     },
     "branch.maadi.yoy": {
       "metric_id": "branch.maadi.yoy",
@@ -24828,13 +25222,13 @@ window.REPORT_DATA = {
       "label": "Maadi Contribution",
       "report_area": "branch",
       "numerator": "844457",
-      "denominator": "15142975",
-      "value": "0.0557655942772143518694312049",
-      "display": "5.6%",
+      "denominator": "15255091",
+      "value": "0.05535574976248912576136058448",
+      "display": "5.5%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.05576559427721435
+      "value_numeric": 0.05535574976248912
     },
     "branch.maadi.renewal_mix": {
       "metric_id": "branch.maadi.renewal_mix",
@@ -24880,13 +25274,13 @@ window.REPORT_DATA = {
       "label": "October Contribution",
       "report_area": "branch",
       "numerator": "813327",
-      "denominator": "15142975",
-      "value": "0.05370985556008644272344106756",
-      "display": "5.4%",
+      "denominator": "15255091",
+      "value": "0.05331511952304971500989407405",
+      "display": "5.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.05370985556008644
+      "value_numeric": 0.053315119523049716
     },
     "branch.october.renewal_mix": {
       "metric_id": "branch.october.renewal_mix",
@@ -24932,13 +25326,13 @@ window.REPORT_DATA = {
       "label": "Asyut Contribution",
       "report_area": "branch",
       "numerator": "732256",
-      "denominator": "15142975",
-      "value": "0.04835615194504382395137018981",
+      "denominator": "15255091",
+      "value": "0.04800076249954851137892261672",
       "display": "4.8%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.04835615194504382
+      "value_numeric": 0.04800076249954851
     },
     "branch.asyut.renewal_mix": {
       "metric_id": "branch.asyut.renewal_mix",
@@ -24984,13 +25378,13 @@ window.REPORT_DATA = {
       "label": "Misr El-Gedida Contribution",
       "report_area": "branch",
       "numerator": "618515",
-      "denominator": "15142975",
-      "value": "0.04084501229117792243598104071",
+      "denominator": "15255091",
+      "value": "0.04054482533076990494517535163",
       "display": "4.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.04084501229117792
+      "value_numeric": 0.040544825330769904
     },
     "branch.misr-el-gedida.renewal_mix": {
       "metric_id": "branch.misr-el-gedida.renewal_mix",
@@ -25018,6 +25412,58 @@ window.REPORT_DATA = {
       "source_display": null,
       "value_numeric": 0.9336814790263777
     },
+    "branch.tanta.yoy": {
+      "metric_id": "branch.tanta.yoy",
+      "label": "Tanta YoY",
+      "report_area": "branch",
+      "numerator": "-958617",
+      "denominator": "1574543",
+      "value": "-0.6088223694113149021652631907",
+      "display": "-60.9%",
+      "decimals": 1,
+      "source_rate": "-0.609",
+      "source_display": "-60.9%",
+      "value_numeric": -0.608822369411315
+    },
+    "branch.tanta.contribution": {
+      "metric_id": "branch.tanta.contribution",
+      "label": "Tanta Contribution",
+      "report_area": "branch",
+      "numerator": "615926",
+      "denominator": "15255091",
+      "value": "0.04037511149556564428229238357",
+      "display": "4.0%",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": 0.04037511149556564
+    },
+    "branch.tanta.renewal_mix": {
+      "metric_id": "branch.tanta.renewal_mix",
+      "label": "Tanta Renewal Mix",
+      "report_area": "branch",
+      "numerator": "95325",
+      "denominator": "615926",
+      "value": "0.1547669687592340638323434958",
+      "display": "15.5%",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": 0.15476696875923407
+    },
+    "branch.tanta.motor_mix": {
+      "metric_id": "branch.tanta.motor_mix",
+      "label": "Tanta Motor Mix",
+      "report_area": "branch",
+      "numerator": "527826",
+      "denominator": "615926",
+      "value": "0.856963336504709981393868744",
+      "display": "85.7%",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": 0.85696333650471
+    },
     "branch.nasr-city.yoy": {
       "metric_id": "branch.nasr-city.yoy",
       "label": "Nasr City YoY",
@@ -25036,13 +25482,13 @@ window.REPORT_DATA = {
       "label": "Nasr City Contribution",
       "report_area": "branch",
       "numerator": "579024",
-      "denominator": "15142975",
-      "value": "0.03823713636191039079176978104",
+      "denominator": "15255091",
+      "value": "0.03795611576489448669955492235",
       "display": "3.8%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.03823713636191039
+      "value_numeric": 0.03795611576489449
     },
     "branch.nasr-city.renewal_mix": {
       "metric_id": "branch.nasr-city.renewal_mix",
@@ -25070,58 +25516,6 @@ window.REPORT_DATA = {
       "source_display": null,
       "value_numeric": 0.7404632623172788
     },
-    "branch.tanta.yoy": {
-      "metric_id": "branch.tanta.yoy",
-      "label": "Tanta YoY",
-      "report_area": "branch",
-      "numerator": "-1014897",
-      "denominator": "1574543",
-      "value": "-0.6445660740926097286641266704",
-      "display": "-64.5%",
-      "decimals": 1,
-      "source_rate": "-0.645",
-      "source_display": "-64.5%",
-      "value_numeric": -0.6445660740926097
-    },
-    "branch.tanta.contribution": {
-      "metric_id": "branch.tanta.contribution",
-      "label": "Tanta Contribution",
-      "report_area": "branch",
-      "numerator": "559646",
-      "denominator": "15142975",
-      "value": "0.03695746707631756639629927409",
-      "display": "3.7%",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": 0.036957467076317564
-    },
-    "branch.tanta.renewal_mix": {
-      "metric_id": "branch.tanta.renewal_mix",
-      "label": "Tanta Renewal Mix",
-      "report_area": "branch",
-      "numerator": "95325",
-      "denominator": "559646",
-      "value": "0.1703308877397497703905683235",
-      "display": "17.0%",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": 0.17033088773974978
-    },
-    "branch.tanta.motor_mix": {
-      "metric_id": "branch.tanta.motor_mix",
-      "label": "Tanta Motor Mix",
-      "report_area": "branch",
-      "numerator": "471546",
-      "denominator": "559646",
-      "value": "0.8425790589050935770111820687",
-      "display": "84.3%",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": 0.8425790589050935
-    },
     "branch.dokki.yoy": {
       "metric_id": "branch.dokki.yoy",
       "label": "Dokki YoY",
@@ -25140,13 +25534,13 @@ window.REPORT_DATA = {
       "label": "Dokki Contribution",
       "report_area": "branch",
       "numerator": "490943",
-      "denominator": "15142975",
-      "value": "0.03242051182148818181367928033",
+      "denominator": "15255091",
+      "value": "0.03218224001416969587398724793",
       "display": "3.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.03242051182148818
+      "value_numeric": 0.032182240014169694
     },
     "branch.dokki.renewal_mix": {
       "metric_id": "branch.dokki.renewal_mix",
@@ -25192,13 +25586,13 @@ window.REPORT_DATA = {
       "label": "Alexandria Roshdy Contribution",
       "report_area": "branch",
       "numerator": "454004",
-      "denominator": "15142975",
-      "value": "0.029981162882458697845040357",
+      "denominator": "15255091",
+      "value": "0.02976081886368295017053651138",
       "display": "3.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0299811628824587
+      "value_numeric": 0.02976081886368295
     },
     "branch.alexandria-roshdy.renewal_mix": {
       "metric_id": "branch.alexandria-roshdy.renewal_mix",
@@ -25244,13 +25638,13 @@ window.REPORT_DATA = {
       "label": "El Mokattam Contribution",
       "report_area": "branch",
       "numerator": "446835",
-      "denominator": "15142975",
-      "value": "0.02950774203880016971566023189",
-      "display": "3.0%",
+      "denominator": "15255091",
+      "value": "0.02929087738644102483557784087",
+      "display": "2.9%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.02950774203880017
+      "value_numeric": 0.029290877386441025
     },
     "branch.el-mokattam.renewal_mix": {
       "metric_id": "branch.el-mokattam.renewal_mix",
@@ -25296,13 +25690,13 @@ window.REPORT_DATA = {
       "label": "Heliopolis Contribution",
       "report_area": "branch",
       "numerator": "362914",
-      "denominator": "15142975",
-      "value": "0.02396583234139922967580676849",
+      "denominator": "15255091",
+      "value": "0.02378969748525262812263787873",
       "display": "2.4%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.02396583234139923
+      "value_numeric": 0.02378969748525263
     },
     "branch.heliopolis.renewal_mix": {
       "metric_id": "branch.heliopolis.renewal_mix",
@@ -25348,13 +25742,13 @@ window.REPORT_DATA = {
       "label": "Sohag Contribution",
       "report_area": "branch",
       "numerator": "354757",
-      "denominator": "15142975",
-      "value": "0.02342716672252315017359534702",
+      "denominator": "15255091",
+      "value": "0.02325499074374580918593012654",
       "display": "2.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.02342716672252315
+      "value_numeric": 0.023254990743745808
     },
     "branch.sohag.renewal_mix": {
       "metric_id": "branch.sohag.renewal_mix",
@@ -25400,13 +25794,13 @@ window.REPORT_DATA = {
       "label": "Luxor Contribution",
       "report_area": "branch",
       "numerator": "324731",
-      "denominator": "15142975",
-      "value": "0.02144433309835088547659888496",
+      "denominator": "15255091",
+      "value": "0.02128672978745259533358404745",
       "display": "2.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.021444333098350886
+      "value_numeric": 0.021286729787452597
     },
     "branch.luxor.renewal_mix": {
       "metric_id": "branch.luxor.renewal_mix",
@@ -25452,13 +25846,13 @@ window.REPORT_DATA = {
       "label": "Mansoura Contribution",
       "report_area": "branch",
       "numerator": "296548",
-      "denominator": "15142975",
-      "value": "0.01958320607410366853276849496",
-      "display": "2.0%",
+      "denominator": "15255091",
+      "value": "0.01943928095873043300757760147",
+      "display": "1.9%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.01958320607410367
+      "value_numeric": 0.01943928095873043
     },
     "branch.mansoura.renewal_mix": {
       "metric_id": "branch.mansoura.renewal_mix",
@@ -25504,13 +25898,13 @@ window.REPORT_DATA = {
       "label": "Beni Suef Contribution",
       "report_area": "branch",
       "numerator": "281060",
-      "denominator": "15142975",
-      "value": "0.01856042158162448263963983299",
-      "display": "1.9%",
+      "denominator": "15255091",
+      "value": "0.01842401333430262723440981112",
+      "display": "1.8%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.018560421581624482
+      "value_numeric": 0.018424013334302627
     },
     "branch.beni-suef.renewal_mix": {
       "metric_id": "branch.beni-suef.renewal_mix",
@@ -25556,13 +25950,13 @@ window.REPORT_DATA = {
       "label": "Hurghada Contribution",
       "report_area": "branch",
       "numerator": "252130",
-      "denominator": "15142975",
-      "value": "0.01664996475263282148983274423",
+      "denominator": "15255091",
+      "value": "0.01652759724606034798481372546",
       "display": "1.7%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.01664996475263282
+      "value_numeric": 0.016527597246060347
     },
     "branch.hurghada.renewal_mix": {
       "metric_id": "branch.hurghada.renewal_mix",
@@ -25608,13 +26002,13 @@ window.REPORT_DATA = {
       "label": "Al Minufya Contribution",
       "report_area": "branch",
       "numerator": "235341",
-      "denominator": "15142975",
-      "value": "0.01554126583448760894077947035",
-      "display": "1.6%",
+      "denominator": "15255091",
+      "value": "0.01542704661676551126440347029",
+      "display": "1.5%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.01554126583448761
+      "value_numeric": 0.015427046616765512
     },
     "branch.al-minufya.renewal_mix": {
       "metric_id": "branch.al-minufya.renewal_mix",
@@ -25660,13 +26054,13 @@ window.REPORT_DATA = {
       "label": "Obour Contribution",
       "report_area": "branch",
       "numerator": "205666",
-      "denominator": "15142975",
-      "value": "0.01358161127519526381044675832",
-      "display": "1.4%",
+      "denominator": "15255091",
+      "value": "0.01348179437277693066531035443",
+      "display": "1.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.013581611275195265
+      "value_numeric": 0.013481794372776931
     },
     "branch.obour.renewal_mix": {
       "metric_id": "branch.obour.renewal_mix",
@@ -25712,13 +26106,13 @@ window.REPORT_DATA = {
       "label": "El-Abaseya Contribution",
       "report_area": "branch",
       "numerator": "189740",
-      "denominator": "15142975",
-      "value": "0.01252990247953258854353256213",
-      "display": "1.3%",
+      "denominator": "15255091",
+      "value": "0.0124378150218835141658610886",
+      "display": "1.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.012529902479532588
+      "value_numeric": 0.012437815021883514
     },
     "branch.el-abaseya.renewal_mix": {
       "metric_id": "branch.el-abaseya.renewal_mix",
@@ -25764,13 +26158,13 @@ window.REPORT_DATA = {
       "label": "Aswan Contribution",
       "report_area": "branch",
       "numerator": "187645",
-      "denominator": "15142975",
-      "value": "0.01239155449969375238353097724",
+      "denominator": "15255091",
+      "value": "0.01230048381881170030385266138",
       "display": "1.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.012391554499693752
+      "value_numeric": 0.0123004838188117
     },
     "branch.aswan.renewal_mix": {
       "metric_id": "branch.aswan.renewal_mix",
@@ -25816,13 +26210,13 @@ window.REPORT_DATA = {
       "label": "Madinaty Contribution",
       "report_area": "branch",
       "numerator": "181019",
-      "denominator": "15142975",
-      "value": "0.01195399186751612546411785003",
+      "denominator": "15255091",
+      "value": "0.01186613701616070333503746389",
       "display": "1.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.011953991867516126
+      "value_numeric": 0.011866137016160704
     },
     "branch.madinaty.renewal_mix": {
       "metric_id": "branch.madinaty.renewal_mix",
@@ -25868,13 +26262,13 @@ window.REPORT_DATA = {
       "label": "Zahraa Al-Maadi Contribution",
       "report_area": "branch",
       "numerator": "165552",
-      "denominator": "15142975",
-      "value": "0.01093259415669642193822548079",
+      "denominator": "15255091",
+      "value": "0.01085224598135796108984207305",
       "display": "1.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.010932594156696422
+      "value_numeric": 0.010852245981357962
     },
     "branch.zahraa-al-maadi.renewal_mix": {
       "metric_id": "branch.zahraa-al-maadi.renewal_mix",
@@ -25920,13 +26314,13 @@ window.REPORT_DATA = {
       "label": "Dubai Contribution",
       "report_area": "branch",
       "numerator": "149016",
-      "denominator": "15142975",
-      "value": "0.009840602655686877908733257501",
+      "denominator": "15255091",
+      "value": "0.009768279979450794492146916724",
       "display": "1.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.009840602655686878
+      "value_numeric": 0.009768279979450794
     },
     "branch.dubai.renewal_mix": {
       "metric_id": "branch.dubai.renewal_mix",
@@ -25972,13 +26366,13 @@ window.REPORT_DATA = {
       "label": "Sadat City Contribution",
       "report_area": "branch",
       "numerator": "121690",
-      "denominator": "15142975",
-      "value": "0.008036069530590917570688718696",
+      "denominator": "15255091",
+      "value": "0.007977009117808605664823631665",
       "display": "0.8%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.008036069530590918
+      "value_numeric": 0.007977009117808605
     },
     "branch.sadat-city.renewal_mix": {
       "metric_id": "branch.sadat-city.renewal_mix",
@@ -26024,13 +26418,13 @@ window.REPORT_DATA = {
       "label": "Kafr el Sheikh Contribution",
       "report_area": "branch",
       "numerator": "120765",
-      "denominator": "15142975",
-      "value": "0.007974985100351813299566300545",
+      "denominator": "15255091",
+      "value": "0.007916373622418902646991748525",
       "display": "0.8%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.007974985100351814
+      "value_numeric": 0.007916373622418902
     },
     "branch.kafr-el-sheikh.renewal_mix": {
       "metric_id": "branch.kafr-el-sheikh.renewal_mix",
@@ -26076,13 +26470,13 @@ window.REPORT_DATA = {
       "label": "Port Said Contribution",
       "report_area": "branch",
       "numerator": "107432",
-      "denominator": "15142975",
-      "value": "0.007094510821024270329971488429",
+      "denominator": "15255091",
+      "value": "0.00704237031427737795861066971",
       "display": "0.7%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.00709451082102427
+      "value_numeric": 0.007042370314277378
     },
     "branch.port-said.renewal_mix": {
       "metric_id": "branch.port-said.renewal_mix",
@@ -26128,13 +26522,13 @@ window.REPORT_DATA = {
       "label": "Alexandria - Ring Road Contribution",
       "report_area": "branch",
       "numerator": "100368",
-      "denominator": "15142975",
-      "value": "0.006628023885663154036772827004",
+      "denominator": "15255091",
+      "value": "0.006579311785160770263513996737",
       "display": "0.7%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.006628023885663154
+      "value_numeric": 0.006579311785160771
     },
     "branch.alexandria-ring-road.renewal_mix": {
       "metric_id": "branch.alexandria-ring-road.renewal_mix",
@@ -26180,13 +26574,13 @@ window.REPORT_DATA = {
       "label": "Rehab Contribution",
       "report_area": "branch",
       "numerator": "93628",
-      "denominator": "15142975",
-      "value": "0.006182933010191194266648396369",
+      "denominator": "15255091",
+      "value": "0.006137492067402285571420059048",
       "display": "0.6%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.006182933010191194
+      "value_numeric": 0.006137492067402286
     },
     "branch.rehab.renewal_mix": {
       "metric_id": "branch.rehab.renewal_mix",
@@ -26232,13 +26626,13 @@ window.REPORT_DATA = {
       "label": "Zagazig Contribution",
       "report_area": "branch",
       "numerator": "89878",
-      "denominator": "15142975",
-      "value": "0.005935293428140771545881836297",
+      "denominator": "15255091",
+      "value": "0.005891672491498084147777289562",
       "display": "0.6%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0059352934281407714
+      "value_numeric": 0.005891672491498084
     },
     "branch.zagazig.renewal_mix": {
       "metric_id": "branch.zagazig.renewal_mix",
@@ -26284,13 +26678,13 @@ window.REPORT_DATA = {
       "label": "Qena Contribution",
       "report_area": "branch",
       "numerator": "85849",
-      "denominator": "15142975",
-      "value": "0.005669229461185797374690244156",
+      "denominator": "15255091",
+      "value": "0.005627563939146610138215498026",
       "display": "0.6%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0056692294611857975
+      "value_numeric": 0.00562756393914661
     },
     "branch.qena.renewal_mix": {
       "metric_id": "branch.qena.renewal_mix",
@@ -26336,13 +26730,13 @@ window.REPORT_DATA = {
       "label": "Alexandria Corniche Contribution",
       "report_area": "branch",
       "numerator": "69920",
-      "denominator": "15142975",
-      "value": "0.004617322553857481769599434721",
+      "denominator": "15255091",
+      "value": "0.004583387932592470277627317988",
       "display": "0.5%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.004617322553857482
+      "value_numeric": 0.004583387932592471
     },
     "branch.alexandria-corniche.renewal_mix": {
       "metric_id": "branch.alexandria-corniche.renewal_mix",
@@ -26388,13 +26782,13 @@ window.REPORT_DATA = {
       "label": "Benha Contribution",
       "report_area": "branch",
       "numerator": "65444",
-      "denominator": "15142975",
-      "value": "0.00432173994872209721009246862",
+      "denominator": "15255091",
+      "value": "0.00428997768679321545836730833",
       "display": "0.4%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.004321739948722097
+      "value_numeric": 0.0042899776867932156
     },
     "branch.benha.renewal_mix": {
       "metric_id": "branch.benha.renewal_mix",
@@ -26440,13 +26834,13 @@ window.REPORT_DATA = {
       "label": "Minya Contribution",
       "report_area": "branch",
       "numerator": "55050",
-      "denominator": "15142975",
-      "value": "0.003635349064500205540853101851",
+      "denominator": "15255091",
+      "value": "0.003608631374273676899075856054",
       "display": "0.4%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0036353490645002055
+      "value_numeric": 0.003608631374273677
     },
     "branch.minya.renewal_mix": {
       "metric_id": "branch.minya.renewal_mix",
@@ -26492,13 +26886,13 @@ window.REPORT_DATA = {
       "label": "Suez Contribution",
       "report_area": "branch",
       "numerator": "52826",
-      "denominator": "15142975",
-      "value": "0.003488482283038834839257147291",
+      "denominator": "15255091",
+      "value": "0.003462843977790758508094117564",
       "display": "0.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0034884822830388348
+      "value_numeric": 0.0034628439777907587
     },
     "branch.suez.renewal_mix": {
       "metric_id": "branch.suez.renewal_mix",
@@ -26544,13 +26938,13 @@ window.REPORT_DATA = {
       "label": "El-Mahalla El-Kubra Contribution",
       "report_area": "branch",
       "numerator": "46400",
-      "denominator": "15142975",
-      "value": "0.003064127095237230464951569952",
+      "denominator": "15255091",
+      "value": "0.003041607552521318948539867773",
       "display": "0.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0030641270952372303
+      "value_numeric": 0.003041607552521319
     },
     "branch.el-mahalla-el-kubra.renewal_mix": {
       "metric_id": "branch.el-mahalla-el-kubra.renewal_mix",
@@ -26596,13 +26990,13 @@ window.REPORT_DATA = {
       "label": "Sharm El Sheikh Contribution",
       "report_area": "branch",
       "numerator": "44200",
-      "denominator": "15142975",
-      "value": "0.002918845207100982468768521377",
+      "denominator": "15255091",
+      "value": "0.002897393401324187446669443008",
       "display": "0.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0029188452071009824
+      "value_numeric": 0.0028973934013241873
     },
     "branch.sharm-el-sheikh.renewal_mix": {
       "metric_id": "branch.sharm-el-sheikh.renewal_mix",
@@ -26648,13 +27042,13 @@ window.REPORT_DATA = {
       "label": "Shubra Contribution",
       "report_area": "branch",
       "numerator": "41800",
-      "denominator": "15142975",
-      "value": "0.002760355874588711927477922931",
+      "denominator": "15255091",
+      "value": "0.002740068872745498535538070537",
       "display": "0.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.002760355874588712
+      "value_numeric": 0.0027400688727454987
     },
     "branch.shubra.renewal_mix": {
       "metric_id": "branch.shubra.renewal_mix",
@@ -26700,13 +27094,13 @@ window.REPORT_DATA = {
       "label": "City Stars Mall Contribution",
       "report_area": "branch",
       "numerator": "41604",
-      "denominator": "15142975",
-      "value": "0.002747412579100209833272524058",
+      "denominator": "15255091",
+      "value": "0.002727220702911572274462341785",
       "display": "0.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.00274741257910021
+      "value_numeric": 0.002727220702911572
     },
     "branch.city-stars-mall.renewal_mix": {
       "metric_id": "branch.city-stars-mall.renewal_mix",
@@ -26752,13 +27146,13 @@ window.REPORT_DATA = {
       "label": "Damanhur Contribution",
       "report_area": "branch",
       "numerator": "35758",
-      "denominator": "15142975",
-      "value": "0.002361358979989070839778841344",
+      "denominator": "15255091",
+      "value": "0.002344004372048649201764840341",
       "display": "0.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.002361358979989071
+      "value_numeric": 0.002344004372048649
     },
     "branch.damanhur.renewal_mix": {
       "metric_id": "branch.damanhur.renewal_mix",
@@ -26804,13 +27198,13 @@ window.REPORT_DATA = {
       "label": "Abu Kibir Contribution",
       "report_area": "branch",
       "numerator": "31300",
-      "denominator": "15142975",
-      "value": "0.002066965044847528309331554731",
+      "denominator": "15255091",
+      "value": "0.002051774060213734549338315976",
       "display": "0.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0020669650448475285
+      "value_numeric": 0.0020517740602137347
     },
     "branch.abu-kibir.renewal_mix": {
       "metric_id": "branch.abu-kibir.renewal_mix",
@@ -26856,13 +27250,13 @@ window.REPORT_DATA = {
       "label": "Haram Contribution",
       "report_area": "branch",
       "numerator": "29400",
-      "denominator": "15142975",
-      "value": "0.001941494323275314130809830961",
+      "denominator": "15255091",
+      "value": "0.00192722547508893916135931277",
       "display": "0.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.001941494323275314
+      "value_numeric": 0.0019272254750889392
     },
     "branch.haram.renewal_mix": {
       "metric_id": "branch.haram.renewal_mix",
@@ -26908,13 +27302,13 @@ window.REPORT_DATA = {
       "label": "Alex-El-Agamy Contribution",
       "report_area": "branch",
       "numerator": "28850",
-      "denominator": "15142975",
-      "value": "0.001905173851241252131764068817",
+      "denominator": "15255091",
+      "value": "0.001891171937289656285891706578",
       "display": "0.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0019051738512412522
+      "value_numeric": 0.0018911719372896563
     },
     "branch.alex-el-agamy.renewal_mix": {
       "metric_id": "branch.alex-el-agamy.renewal_mix",
@@ -26960,13 +27354,13 @@ window.REPORT_DATA = {
       "label": "El-Bahr El-Aazam Contribution",
       "report_area": "branch",
       "numerator": "25910",
-      "denominator": "15142975",
-      "value": "0.001711024418913720718683085721",
+      "denominator": "15255091",
+      "value": "0.001698449389780762369755775302",
       "display": "0.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0017110244189137208
+      "value_numeric": 0.0016984493897807624
     },
     "branch.el-bahr-el-aazam.renewal_mix": {
       "metric_id": "branch.el-bahr-el-aazam.renewal_mix",
@@ -27012,13 +27406,13 @@ window.REPORT_DATA = {
       "label": "Shubra Al-Khaymah Contribution",
       "report_area": "branch",
       "numerator": "18300",
-      "denominator": "15142975",
-      "value": "0.001208481160406062877340813149",
+      "denominator": "15255091",
+      "value": "0.001199599530412502947376715091",
       "display": "0.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.001208481160406063
+      "value_numeric": 0.001199599530412503
     },
     "branch.shubra-al-khaymah.renewal_mix": {
       "metric_id": "branch.shubra-al-khaymah.renewal_mix",
@@ -27064,13 +27458,13 @@ window.REPORT_DATA = {
       "label": "Faiyum Contribution",
       "report_area": "branch",
       "numerator": "16981",
-      "denominator": "15142975",
-      "value": "0.001121378064746194192356521753",
+      "denominator": "15255091",
+      "value": "0.001113136591581131833300764971",
       "display": "0.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0011213780647461942
+      "value_numeric": 0.0011131365915811318
     },
     "branch.faiyum.renewal_mix": {
       "metric_id": "branch.faiyum.renewal_mix",
@@ -27116,13 +27510,13 @@ window.REPORT_DATA = {
       "label": "Ismailia Contribution",
       "report_area": "branch",
       "numerator": "14303",
-      "denominator": "15142975",
-      "value": "0.0009445303845512523133664289877",
+      "denominator": "15255091",
+      "value": "0.0009375886384420781232966751886",
       "display": "0.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0009445303845512523
+      "value_numeric": 0.0009375886384420781
     },
     "branch.ismailia.renewal_mix": {
       "metric_id": "branch.ismailia.renewal_mix",
@@ -27168,13 +27562,13 @@ window.REPORT_DATA = {
       "label": "El-Zaytoun Contribution",
       "report_area": "branch",
       "numerator": "7600",
-      "denominator": "15142975",
-      "value": "0.0005018828862888567140868950784",
-      "display": "0.1%",
+      "denominator": "15255091",
+      "value": "0.0004981943404991815519160128248",
+      "display": "0.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0005018828862888567
+      "value_numeric": 0.0004981943404991816
     },
     "branch.el-zaytoun.renewal_mix": {
       "metric_id": "branch.el-zaytoun.renewal_mix",
@@ -27220,13 +27614,13 @@ window.REPORT_DATA = {
       "label": "New Damietta Contribution",
       "report_area": "branch",
       "numerator": "6700",
-      "denominator": "15142975",
-      "value": "0.0004424493865967552611029206612",
+      "denominator": "15255091",
+      "value": "0.0004391976422821732102417481482",
       "display": "0.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.00044244938659675524
+      "value_numeric": 0.0004391976422821732
     },
     "branch.new-damietta.renewal_mix": {
       "metric_id": "branch.new-damietta.renewal_mix",
@@ -27272,13 +27666,13 @@ window.REPORT_DATA = {
       "label": "6 October - Low Income Contribution",
       "report_area": "branch",
       "numerator": "4400",
-      "denominator": "15142975",
-      "value": "0.0002905637762724959923660971507",
+      "denominator": "15255091",
+      "value": "0.0002884283023942630037408495302",
       "display": "0.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.00029056377627249597
+      "value_numeric": 0.00028842830239426303
     },
     "branch.6-october-low-income.renewal_mix": {
       "metric_id": "branch.6-october-low-income.renewal_mix",
@@ -27324,13 +27718,13 @@ window.REPORT_DATA = {
       "label": "Damietta Contribution",
       "report_area": "branch",
       "numerator": "2150",
-      "denominator": "15142975",
-      "value": "0.0001419800270422423599061611077",
+      "denominator": "15255091",
+      "value": "0.0001409365568517421495551878386",
       "display": "0.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.00014198002704224235
+      "value_numeric": 0.00014093655685174216
     },
     "branch.damietta.renewal_mix": {
       "metric_id": "branch.damietta.renewal_mix",
@@ -27376,13 +27770,13 @@ window.REPORT_DATA = {
       "label": "Talaat Harb Contribution",
       "report_area": "branch",
       "numerator": "2100",
-      "denominator": "15142975",
-      "value": "0.0001386781659482367236292736401",
+      "denominator": "15255091",
+      "value": "0.0001376589625063527972399509121",
       "display": "0.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.00013867816594823672
+      "value_numeric": 0.0001376589625063528
     },
     "branch.talaat-harb.renewal_mix": {
       "metric_id": "branch.talaat-harb.renewal_mix",
@@ -27428,13 +27822,13 @@ window.REPORT_DATA = {
       "label": "Minouf Contribution",
       "report_area": "branch",
       "numerator": "700",
-      "denominator": "15142975",
-      "value": "0.0000462260553160789078764245467",
+      "denominator": "15255091",
+      "value": "0.00004588632083545093241331697071",
       "display": "0.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 4.622605531607891e-05
+      "value_numeric": 4.588632083545093e-05
     },
     "branch.minouf.renewal_mix": {
       "metric_id": "branch.minouf.renewal_mix",
@@ -27480,7 +27874,7 @@ window.REPORT_DATA = {
       "label": "Wadi Degla Sales Contribution",
       "report_area": "branch",
       "numerator": null,
-      "denominator": "15142975",
+      "denominator": "15255091",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -27532,7 +27926,7 @@ window.REPORT_DATA = {
       "label": "El Gouna Contribution",
       "report_area": "branch",
       "numerator": null,
-      "denominator": "15142975",
+      "denominator": "15255091",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -27584,7 +27978,7 @@ window.REPORT_DATA = {
       "label": "Nasr City - Low Income Contribution",
       "report_area": "branch",
       "numerator": null,
-      "denominator": "15142975",
+      "denominator": "15255091",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -27636,7 +28030,7 @@ window.REPORT_DATA = {
       "label": "Imbabah Contribution",
       "report_area": "branch",
       "numerator": null,
-      "denominator": "15142975",
+      "denominator": "15255091",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -27688,7 +28082,7 @@ window.REPORT_DATA = {
       "label": "Mit Ghamr Contribution",
       "report_area": "branch",
       "numerator": null,
-      "denominator": "15142975",
+      "denominator": "15255091",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -27740,7 +28134,7 @@ window.REPORT_DATA = {
       "label": "Helwan Contribution",
       "report_area": "branch",
       "numerator": null,
-      "denominator": "15142975",
+      "denominator": "15255091",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -27792,7 +28186,7 @@ window.REPORT_DATA = {
       "label": "Tahta Contribution",
       "report_area": "branch",
       "numerator": null,
-      "denominator": "15142975",
+      "denominator": "15255091",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -28103,21 +28497,21 @@ window.REPORT_DATA = {
       "metric_id": "branch-monthly.giza-august.yoy",
       "label": "Giza August YoY",
       "report_area": "branch-monthly",
-      "numerator": "-242467",
+      "numerator": "-154228",
       "denominator": "359510",
-      "value": "-0.6744374287224277488804205724",
-      "display": "-67.4%",
+      "value": "-0.4289950210008066535005980362",
+      "display": "-42.9%",
       "decimals": 1,
-      "source_rate": "-0.674",
-      "source_display": "-67.4%",
-      "value_numeric": -0.6744374287224277
+      "source_rate": "-0.429",
+      "source_display": "-42.9%",
+      "value_numeric": -0.42899502100080666
     },
     "branch-monthly.giza-august.renewal_mix": {
       "metric_id": "branch-monthly.giza-august.renewal_mix",
       "label": "Giza August Renewal Mix",
       "report_area": "branch-monthly",
       "numerator": null,
-      "denominator": "117043",
+      "denominator": "205282",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -28129,8 +28523,8 @@ window.REPORT_DATA = {
       "metric_id": "branch-monthly.giza-august.motor_mix",
       "label": "Giza August Motor Mix",
       "report_area": "branch-monthly",
-      "numerator": "117043",
-      "denominator": "117043",
+      "numerator": "205282",
+      "denominator": "205282",
       "value": "1",
       "display": "100.0%",
       "decimals": 1,
@@ -28727,21 +29121,21 @@ window.REPORT_DATA = {
       "metric_id": "branch-monthly.zamalek-august.yoy",
       "label": "Zamalek August YoY",
       "report_area": "branch-monthly",
-      "numerator": null,
+      "numerator": "-398511",
       "denominator": "366108",
-      "value": null,
-      "display": "N/A",
+      "value": "-1.088506670162902750008194303",
+      "display": "-108.9%",
       "decimals": 1,
-      "source_rate": "-1",
-      "source_display": "-100.0%",
-      "value_numeric": null
+      "source_rate": "-1.089",
+      "source_display": "-108.9%",
+      "value_numeric": -1.0885066701629027
     },
     "branch-monthly.zamalek-august.renewal_mix": {
       "metric_id": "branch-monthly.zamalek-august.renewal_mix",
       "label": "Zamalek August Renewal Mix",
       "report_area": "branch-monthly",
       "numerator": null,
-      "denominator": null,
+      "denominator": "-32403",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -28753,14 +29147,14 @@ window.REPORT_DATA = {
       "metric_id": "branch-monthly.zamalek-august.motor_mix",
       "label": "Zamalek August Motor Mix",
       "report_area": "branch-monthly",
-      "numerator": null,
-      "denominator": null,
-      "value": null,
-      "display": "N/A",
+      "numerator": "-32403",
+      "denominator": "-32403",
+      "value": "1",
+      "display": "100.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": null
+      "value_numeric": 1.0
     },
     "branch-monthly.maadi-january.yoy": {
       "metric_id": "branch-monthly.maadi-january.yoy",
@@ -30010,6 +30404,318 @@ window.REPORT_DATA = {
       "source_display": null,
       "value_numeric": 1.0
     },
+    "branch-monthly.tanta-january.yoy": {
+      "metric_id": "branch-monthly.tanta-january.yoy",
+      "label": "Tanta January YoY",
+      "report_area": "branch-monthly",
+      "numerator": "-228804",
+      "denominator": "313504",
+      "value": "-0.729828008574053281616821476",
+      "display": "-73.0%",
+      "decimals": 1,
+      "source_rate": "-0.73",
+      "source_display": "-73.0%",
+      "value_numeric": -0.7298280085740533
+    },
+    "branch-monthly.tanta-january.renewal_mix": {
+      "metric_id": "branch-monthly.tanta-january.renewal_mix",
+      "label": "Tanta January Renewal Mix",
+      "report_area": "branch-monthly",
+      "numerator": "39200",
+      "denominator": "84700",
+      "value": "0.462809917355371900826446281",
+      "display": "46.3%",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": 0.4628099173553719
+    },
+    "branch-monthly.tanta-january.motor_mix": {
+      "metric_id": "branch-monthly.tanta-january.motor_mix",
+      "label": "Tanta January Motor Mix",
+      "report_area": "branch-monthly",
+      "numerator": "75000",
+      "denominator": "84700",
+      "value": "0.8854781582054309327036599764",
+      "display": "88.5%",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": 0.885478158205431
+    },
+    "branch-monthly.tanta-february.yoy": {
+      "metric_id": "branch-monthly.tanta-february.yoy",
+      "label": "Tanta February YoY",
+      "report_area": "branch-monthly",
+      "numerator": "-288676",
+      "denominator": "362556",
+      "value": "-0.7962245832367965224682531802",
+      "display": "-79.6%",
+      "decimals": 1,
+      "source_rate": "-0.796",
+      "source_display": "-79.6%",
+      "value_numeric": -0.7962245832367966
+    },
+    "branch-monthly.tanta-february.renewal_mix": {
+      "metric_id": "branch-monthly.tanta-february.renewal_mix",
+      "label": "Tanta February Renewal Mix",
+      "report_area": "branch-monthly",
+      "numerator": null,
+      "denominator": "73880",
+      "value": null,
+      "display": "N/A",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": null
+    },
+    "branch-monthly.tanta-february.motor_mix": {
+      "metric_id": "branch-monthly.tanta-february.motor_mix",
+      "label": "Tanta February Motor Mix",
+      "report_area": "branch-monthly",
+      "numerator": "58680",
+      "denominator": "73880",
+      "value": "0.7942609637249593936112615051",
+      "display": "79.4%",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": 0.7942609637249594
+    },
+    "branch-monthly.tanta-march.yoy": {
+      "metric_id": "branch-monthly.tanta-march.yoy",
+      "label": "Tanta March YoY",
+      "report_area": "branch-monthly",
+      "numerator": "-43299",
+      "denominator": "88899",
+      "value": "-0.4870583471130158944420072217",
+      "display": "-48.7%",
+      "decimals": 1,
+      "source_rate": "-0.487",
+      "source_display": "-48.7%",
+      "value_numeric": -0.4870583471130159
+    },
+    "branch-monthly.tanta-march.renewal_mix": {
+      "metric_id": "branch-monthly.tanta-march.renewal_mix",
+      "label": "Tanta March Renewal Mix",
+      "report_area": "branch-monthly",
+      "numerator": null,
+      "denominator": "45600",
+      "value": null,
+      "display": "N/A",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": null
+    },
+    "branch-monthly.tanta-march.motor_mix": {
+      "metric_id": "branch-monthly.tanta-march.motor_mix",
+      "label": "Tanta March Motor Mix",
+      "report_area": "branch-monthly",
+      "numerator": "41450",
+      "denominator": "45600",
+      "value": "0.9089912280701754385964912281",
+      "display": "90.9%",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": 0.9089912280701754
+    },
+    "branch-monthly.tanta-april.yoy": {
+      "metric_id": "branch-monthly.tanta-april.yoy",
+      "label": "Tanta April YoY",
+      "report_area": "branch-monthly",
+      "numerator": "85030",
+      "denominator": "39970",
+      "value": "2.127345509131848886664998749",
+      "display": "212.7%",
+      "decimals": 1,
+      "source_rate": "2.127",
+      "source_display": "212.7%",
+      "value_numeric": 2.1273455091318487
+    },
+    "branch-monthly.tanta-april.renewal_mix": {
+      "metric_id": "branch-monthly.tanta-april.renewal_mix",
+      "label": "Tanta April Renewal Mix",
+      "report_area": "branch-monthly",
+      "numerator": null,
+      "denominator": "125000",
+      "value": null,
+      "display": "N/A",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": null
+    },
+    "branch-monthly.tanta-april.motor_mix": {
+      "metric_id": "branch-monthly.tanta-april.motor_mix",
+      "label": "Tanta April Motor Mix",
+      "report_area": "branch-monthly",
+      "numerator": "120650",
+      "denominator": "125000",
+      "value": "0.9652",
+      "display": "96.5%",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": 0.9652
+    },
+    "branch-monthly.tanta-may.yoy": {
+      "metric_id": "branch-monthly.tanta-may.yoy",
+      "label": "Tanta May YoY",
+      "report_area": "branch-monthly",
+      "numerator": "-42829",
+      "denominator": "205274",
+      "value": "-0.208643081929518594658846225",
+      "display": "-20.9%",
+      "decimals": 1,
+      "source_rate": "-0.209",
+      "source_display": "-20.9%",
+      "value_numeric": -0.20864308192951858
+    },
+    "branch-monthly.tanta-may.renewal_mix": {
+      "metric_id": "branch-monthly.tanta-may.renewal_mix",
+      "label": "Tanta May Renewal Mix",
+      "report_area": "branch-monthly",
+      "numerator": "56125",
+      "denominator": "162445",
+      "value": "0.3455015543722490689156329835",
+      "display": "34.6%",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": 0.34550155437224905
+    },
+    "branch-monthly.tanta-may.motor_mix": {
+      "metric_id": "branch-monthly.tanta-may.motor_mix",
+      "label": "Tanta May Motor Mix",
+      "report_area": "branch-monthly",
+      "numerator": "109845",
+      "denominator": "162445",
+      "value": "0.6761980978177229216042352796",
+      "display": "67.6%",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": 0.6761980978177229
+    },
+    "branch-monthly.tanta-june.yoy": {
+      "metric_id": "branch-monthly.tanta-june.yoy",
+      "label": "Tanta June YoY",
+      "report_area": "branch-monthly",
+      "numerator": "-118809",
+      "denominator": "129050",
+      "value": "-0.920643161565284773343665246",
+      "display": "-92.1%",
+      "decimals": 1,
+      "source_rate": "-0.921",
+      "source_display": "-92.1%",
+      "value_numeric": -0.9206431615652848
+    },
+    "branch-monthly.tanta-june.renewal_mix": {
+      "metric_id": "branch-monthly.tanta-june.renewal_mix",
+      "label": "Tanta June Renewal Mix",
+      "report_area": "branch-monthly",
+      "numerator": null,
+      "denominator": "10241",
+      "value": null,
+      "display": "N/A",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": null
+    },
+    "branch-monthly.tanta-june.motor_mix": {
+      "metric_id": "branch-monthly.tanta-june.motor_mix",
+      "label": "Tanta June Motor Mix",
+      "report_area": "branch-monthly",
+      "numerator": "9541",
+      "denominator": "10241",
+      "value": "0.9316473000683526999316473001",
+      "display": "93.2%",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": 0.9316473000683527
+    },
+    "branch-monthly.tanta-july.yoy": {
+      "metric_id": "branch-monthly.tanta-july.yoy",
+      "label": "Tanta July YoY",
+      "report_area": "branch-monthly",
+      "numerator": "-245595",
+      "denominator": "246995",
+      "value": "-0.9943318690661754286524018705",
+      "display": "-99.4%",
+      "decimals": 1,
+      "source_rate": "-0.994",
+      "source_display": "-99.4%",
+      "value_numeric": -0.9943318690661754
+    },
+    "branch-monthly.tanta-july.renewal_mix": {
+      "metric_id": "branch-monthly.tanta-july.renewal_mix",
+      "label": "Tanta July Renewal Mix",
+      "report_area": "branch-monthly",
+      "numerator": null,
+      "denominator": "1400",
+      "value": null,
+      "display": "N/A",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": null
+    },
+    "branch-monthly.tanta-july.motor_mix": {
+      "metric_id": "branch-monthly.tanta-july.motor_mix",
+      "label": "Tanta July Motor Mix",
+      "report_area": "branch-monthly",
+      "numerator": null,
+      "denominator": "1400",
+      "value": null,
+      "display": "N/A",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": null
+    },
+    "branch-monthly.tanta-august.yoy": {
+      "metric_id": "branch-monthly.tanta-august.yoy",
+      "label": "Tanta August YoY",
+      "report_area": "branch-monthly",
+      "numerator": "-75635",
+      "denominator": "188295",
+      "value": "-0.4016835285058020659072200536",
+      "display": "-40.2%",
+      "decimals": 1,
+      "source_rate": "-0.402",
+      "source_display": "-40.2%",
+      "value_numeric": -0.4016835285058021
+    },
+    "branch-monthly.tanta-august.renewal_mix": {
+      "metric_id": "branch-monthly.tanta-august.renewal_mix",
+      "label": "Tanta August Renewal Mix",
+      "report_area": "branch-monthly",
+      "numerator": null,
+      "denominator": "112660",
+      "value": null,
+      "display": "N/A",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": null
+    },
+    "branch-monthly.tanta-august.motor_mix": {
+      "metric_id": "branch-monthly.tanta-august.motor_mix",
+      "label": "Tanta August Motor Mix",
+      "report_area": "branch-monthly",
+      "numerator": "112660",
+      "denominator": "112660",
+      "value": "1",
+      "display": "100.0%",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": 1.0
+    },
     "branch-monthly.nasr-city-january.yoy": {
       "metric_id": "branch-monthly.nasr-city-january.yoy",
       "label": "Nasr City January YoY",
@@ -30321,318 +31027,6 @@ window.REPORT_DATA = {
       "source_rate": null,
       "source_display": null,
       "value_numeric": null
-    },
-    "branch-monthly.tanta-january.yoy": {
-      "metric_id": "branch-monthly.tanta-january.yoy",
-      "label": "Tanta January YoY",
-      "report_area": "branch-monthly",
-      "numerator": "-228804",
-      "denominator": "313504",
-      "value": "-0.729828008574053281616821476",
-      "display": "-73.0%",
-      "decimals": 1,
-      "source_rate": "-0.73",
-      "source_display": "-73.0%",
-      "value_numeric": -0.7298280085740533
-    },
-    "branch-monthly.tanta-january.renewal_mix": {
-      "metric_id": "branch-monthly.tanta-january.renewal_mix",
-      "label": "Tanta January Renewal Mix",
-      "report_area": "branch-monthly",
-      "numerator": "39200",
-      "denominator": "84700",
-      "value": "0.462809917355371900826446281",
-      "display": "46.3%",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": 0.4628099173553719
-    },
-    "branch-monthly.tanta-january.motor_mix": {
-      "metric_id": "branch-monthly.tanta-january.motor_mix",
-      "label": "Tanta January Motor Mix",
-      "report_area": "branch-monthly",
-      "numerator": "75000",
-      "denominator": "84700",
-      "value": "0.8854781582054309327036599764",
-      "display": "88.5%",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": 0.885478158205431
-    },
-    "branch-monthly.tanta-february.yoy": {
-      "metric_id": "branch-monthly.tanta-february.yoy",
-      "label": "Tanta February YoY",
-      "report_area": "branch-monthly",
-      "numerator": "-288676",
-      "denominator": "362556",
-      "value": "-0.7962245832367965224682531802",
-      "display": "-79.6%",
-      "decimals": 1,
-      "source_rate": "-0.796",
-      "source_display": "-79.6%",
-      "value_numeric": -0.7962245832367966
-    },
-    "branch-monthly.tanta-february.renewal_mix": {
-      "metric_id": "branch-monthly.tanta-february.renewal_mix",
-      "label": "Tanta February Renewal Mix",
-      "report_area": "branch-monthly",
-      "numerator": null,
-      "denominator": "73880",
-      "value": null,
-      "display": "N/A",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": null
-    },
-    "branch-monthly.tanta-february.motor_mix": {
-      "metric_id": "branch-monthly.tanta-february.motor_mix",
-      "label": "Tanta February Motor Mix",
-      "report_area": "branch-monthly",
-      "numerator": "58680",
-      "denominator": "73880",
-      "value": "0.7942609637249593936112615051",
-      "display": "79.4%",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": 0.7942609637249594
-    },
-    "branch-monthly.tanta-march.yoy": {
-      "metric_id": "branch-monthly.tanta-march.yoy",
-      "label": "Tanta March YoY",
-      "report_area": "branch-monthly",
-      "numerator": "-43299",
-      "denominator": "88899",
-      "value": "-0.4870583471130158944420072217",
-      "display": "-48.7%",
-      "decimals": 1,
-      "source_rate": "-0.487",
-      "source_display": "-48.7%",
-      "value_numeric": -0.4870583471130159
-    },
-    "branch-monthly.tanta-march.renewal_mix": {
-      "metric_id": "branch-monthly.tanta-march.renewal_mix",
-      "label": "Tanta March Renewal Mix",
-      "report_area": "branch-monthly",
-      "numerator": null,
-      "denominator": "45600",
-      "value": null,
-      "display": "N/A",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": null
-    },
-    "branch-monthly.tanta-march.motor_mix": {
-      "metric_id": "branch-monthly.tanta-march.motor_mix",
-      "label": "Tanta March Motor Mix",
-      "report_area": "branch-monthly",
-      "numerator": "41450",
-      "denominator": "45600",
-      "value": "0.9089912280701754385964912281",
-      "display": "90.9%",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": 0.9089912280701754
-    },
-    "branch-monthly.tanta-april.yoy": {
-      "metric_id": "branch-monthly.tanta-april.yoy",
-      "label": "Tanta April YoY",
-      "report_area": "branch-monthly",
-      "numerator": "85030",
-      "denominator": "39970",
-      "value": "2.127345509131848886664998749",
-      "display": "212.7%",
-      "decimals": 1,
-      "source_rate": "2.127",
-      "source_display": "212.7%",
-      "value_numeric": 2.1273455091318487
-    },
-    "branch-monthly.tanta-april.renewal_mix": {
-      "metric_id": "branch-monthly.tanta-april.renewal_mix",
-      "label": "Tanta April Renewal Mix",
-      "report_area": "branch-monthly",
-      "numerator": null,
-      "denominator": "125000",
-      "value": null,
-      "display": "N/A",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": null
-    },
-    "branch-monthly.tanta-april.motor_mix": {
-      "metric_id": "branch-monthly.tanta-april.motor_mix",
-      "label": "Tanta April Motor Mix",
-      "report_area": "branch-monthly",
-      "numerator": "120650",
-      "denominator": "125000",
-      "value": "0.9652",
-      "display": "96.5%",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": 0.9652
-    },
-    "branch-monthly.tanta-may.yoy": {
-      "metric_id": "branch-monthly.tanta-may.yoy",
-      "label": "Tanta May YoY",
-      "report_area": "branch-monthly",
-      "numerator": "-42829",
-      "denominator": "205274",
-      "value": "-0.208643081929518594658846225",
-      "display": "-20.9%",
-      "decimals": 1,
-      "source_rate": "-0.209",
-      "source_display": "-20.9%",
-      "value_numeric": -0.20864308192951858
-    },
-    "branch-monthly.tanta-may.renewal_mix": {
-      "metric_id": "branch-monthly.tanta-may.renewal_mix",
-      "label": "Tanta May Renewal Mix",
-      "report_area": "branch-monthly",
-      "numerator": "56125",
-      "denominator": "162445",
-      "value": "0.3455015543722490689156329835",
-      "display": "34.6%",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": 0.34550155437224905
-    },
-    "branch-monthly.tanta-may.motor_mix": {
-      "metric_id": "branch-monthly.tanta-may.motor_mix",
-      "label": "Tanta May Motor Mix",
-      "report_area": "branch-monthly",
-      "numerator": "109845",
-      "denominator": "162445",
-      "value": "0.6761980978177229216042352796",
-      "display": "67.6%",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": 0.6761980978177229
-    },
-    "branch-monthly.tanta-june.yoy": {
-      "metric_id": "branch-monthly.tanta-june.yoy",
-      "label": "Tanta June YoY",
-      "report_area": "branch-monthly",
-      "numerator": "-118809",
-      "denominator": "129050",
-      "value": "-0.920643161565284773343665246",
-      "display": "-92.1%",
-      "decimals": 1,
-      "source_rate": "-0.921",
-      "source_display": "-92.1%",
-      "value_numeric": -0.9206431615652848
-    },
-    "branch-monthly.tanta-june.renewal_mix": {
-      "metric_id": "branch-monthly.tanta-june.renewal_mix",
-      "label": "Tanta June Renewal Mix",
-      "report_area": "branch-monthly",
-      "numerator": null,
-      "denominator": "10241",
-      "value": null,
-      "display": "N/A",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": null
-    },
-    "branch-monthly.tanta-june.motor_mix": {
-      "metric_id": "branch-monthly.tanta-june.motor_mix",
-      "label": "Tanta June Motor Mix",
-      "report_area": "branch-monthly",
-      "numerator": "9541",
-      "denominator": "10241",
-      "value": "0.9316473000683526999316473001",
-      "display": "93.2%",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": 0.9316473000683527
-    },
-    "branch-monthly.tanta-july.yoy": {
-      "metric_id": "branch-monthly.tanta-july.yoy",
-      "label": "Tanta July YoY",
-      "report_area": "branch-monthly",
-      "numerator": "-245595",
-      "denominator": "246995",
-      "value": "-0.9943318690661754286524018705",
-      "display": "-99.4%",
-      "decimals": 1,
-      "source_rate": "-0.994",
-      "source_display": "-99.4%",
-      "value_numeric": -0.9943318690661754
-    },
-    "branch-monthly.tanta-july.renewal_mix": {
-      "metric_id": "branch-monthly.tanta-july.renewal_mix",
-      "label": "Tanta July Renewal Mix",
-      "report_area": "branch-monthly",
-      "numerator": null,
-      "denominator": "1400",
-      "value": null,
-      "display": "N/A",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": null
-    },
-    "branch-monthly.tanta-july.motor_mix": {
-      "metric_id": "branch-monthly.tanta-july.motor_mix",
-      "label": "Tanta July Motor Mix",
-      "report_area": "branch-monthly",
-      "numerator": null,
-      "denominator": "1400",
-      "value": null,
-      "display": "N/A",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": null
-    },
-    "branch-monthly.tanta-august.yoy": {
-      "metric_id": "branch-monthly.tanta-august.yoy",
-      "label": "Tanta August YoY",
-      "report_area": "branch-monthly",
-      "numerator": "-131915",
-      "denominator": "188295",
-      "value": "-0.700576223479115218141745665",
-      "display": "-70.1%",
-      "decimals": 1,
-      "source_rate": "-0.701",
-      "source_display": "-70.1%",
-      "value_numeric": -0.7005762234791152
-    },
-    "branch-monthly.tanta-august.renewal_mix": {
-      "metric_id": "branch-monthly.tanta-august.renewal_mix",
-      "label": "Tanta August Renewal Mix",
-      "report_area": "branch-monthly",
-      "numerator": null,
-      "denominator": "56380",
-      "value": null,
-      "display": "N/A",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": null
-    },
-    "branch-monthly.tanta-august.motor_mix": {
-      "metric_id": "branch-monthly.tanta-august.motor_mix",
-      "label": "Tanta August Motor Mix",
-      "report_area": "branch-monthly",
-      "numerator": "56380",
-      "denominator": "56380",
-      "value": "1",
-      "display": "100.0%",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": 1.0
     },
     "branch-monthly.dokki-january.yoy": {
       "metric_id": "branch-monthly.dokki-january.yoy",
@@ -44536,13 +44930,13 @@ window.REPORT_DATA = {
       "label": "Hisham Farag Amer Ismail Fayed Contribution",
       "report_area": "seller",
       "numerator": "539553",
-      "denominator": "15142975",
-      "value": "0.03563058117708046140206927635",
-      "display": "3.6%",
+      "denominator": "15255091",
+      "value": "0.03536871723675722419486058785",
+      "display": "3.5%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.03563058117708046
+      "value_numeric": 0.035368717236757226
     },
     "seller.hisham-farag-amer-ismail-fayed.renewal_mix": {
       "metric_id": "seller.hisham-farag-amer-ismail-fayed.renewal_mix",
@@ -44588,13 +44982,13 @@ window.REPORT_DATA = {
       "label": "Nourhan Sabry Mahrous Contribution",
       "report_area": "seller",
       "numerator": "2211776",
-      "denominator": "15142975",
-      "value": "0.1460595424611082036389811117",
-      "display": "14.6%",
+      "denominator": "15255091",
+      "value": "0.144986090217357602127709366",
+      "display": "14.5%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.1460595424611082
+      "value_numeric": 0.1449860902173576
     },
     "seller.nourhan-sabry-mahrous.renewal_mix": {
       "metric_id": "seller.nourhan-sabry-mahrous.renewal_mix",
@@ -44640,13 +45034,13 @@ window.REPORT_DATA = {
       "label": "Ashraqat Mahmuod Hosny Qurashi Contribution",
       "report_area": "seller",
       "numerator": "358861",
-      "denominator": "15142975",
-      "value": "0.02369818348111913279920227036",
+      "denominator": "15255091",
+      "value": "0.02352401568761536722396477346",
       "display": "2.4%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.023698183481119132
+      "value_numeric": 0.023524015687615366
     },
     "seller.ashraqat-mahmuod-hosny-qurashi.renewal_mix": {
       "metric_id": "seller.ashraqat-mahmuod-hosny-qurashi.renewal_mix",
@@ -44692,13 +45086,13 @@ window.REPORT_DATA = {
       "label": "Tahany Mohamed Hashem Ahmed Abdel Rahim Contribution",
       "report_area": "seller",
       "numerator": "615198",
-      "denominator": "15142975",
-      "value": "0.04062596682620158852537232611",
-      "display": "4.1%",
+      "denominator": "15255091",
+      "value": "0.04032738972189677531258253392",
+      "display": "4.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.040625966826201586
+      "value_numeric": 0.04032738972189678
     },
     "seller.tahany-mohamed-hashem-ahmed-abdel-rahim.renewal_mix": {
       "metric_id": "seller.tahany-mohamed-hashem-ahmed-abdel-rahim.renewal_mix",
@@ -44730,53 +45124,53 @@ window.REPORT_DATA = {
       "metric_id": "seller.zizi-samir-el-sayed-mohamed-ismail.yoy",
       "label": "Zizi Samir El Sayed Mohamed Ismail YoY",
       "report_area": "seller",
-      "numerator": "-688051",
+      "numerator": "-631771",
       "denominator": "1566324",
-      "value": "-0.4392775696471483550019025438",
-      "display": "-43.9%",
+      "value": "-0.4033463063836090106516914763",
+      "display": "-40.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": -0.43927756964714837
+      "value_numeric": -0.403346306383609
     },
     "seller.zizi-samir-el-sayed-mohamed-ismail.contribution": {
       "metric_id": "seller.zizi-samir-el-sayed-mohamed-ismail.contribution",
       "label": "Zizi Samir El Sayed Mohamed Ismail Contribution",
       "report_area": "seller",
-      "numerator": "878273",
-      "denominator": "15142975",
-      "value": "0.057998708972312243796215737",
-      "display": "5.8%",
+      "numerator": "934553",
+      "denominator": "15255091",
+      "value": "0.06126171256533310748523230704",
+      "display": "6.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.05799870897231224
+      "value_numeric": 0.06126171256533311
     },
     "seller.zizi-samir-el-sayed-mohamed-ismail.renewal_mix": {
       "metric_id": "seller.zizi-samir-el-sayed-mohamed-ismail.renewal_mix",
       "label": "Zizi Samir El Sayed Mohamed Ismail Renewal Mix",
       "report_area": "seller",
       "numerator": "491193",
-      "denominator": "878273",
-      "value": "0.5592714338252456810126236375",
-      "display": "55.9%",
+      "denominator": "934553",
+      "value": "0.525591378980111347350016532",
+      "display": "52.6%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.5592714338252457
+      "value_numeric": 0.5255913789801113
     },
     "seller.zizi-samir-el-sayed-mohamed-ismail.motor_mix": {
       "metric_id": "seller.zizi-samir-el-sayed-mohamed-ismail.motor_mix",
       "label": "Zizi Samir El Sayed Mohamed Ismail Motor Mix",
       "report_area": "seller",
-      "numerator": "795523",
-      "denominator": "878273",
-      "value": "0.905781004311871138017450155",
-      "display": "90.6%",
+      "numerator": "851803",
+      "denominator": "934553",
+      "value": "0.9114549950618102986133477716",
+      "display": "91.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.9057810043118711
+      "value_numeric": 0.9114549950618103
     },
     "seller.seham-kamal-hussein-el-sayed.yoy": {
       "metric_id": "seller.seham-kamal-hussein-el-sayed.yoy",
@@ -44796,13 +45190,13 @@ window.REPORT_DATA = {
       "label": "Seham Kamal Hussein El sayed Contribution",
       "report_area": "seller",
       "numerator": "286761",
-      "denominator": "15142975",
-      "value": "0.01893689978356300528793054205",
+      "denominator": "15255091",
+      "value": "0.01879772464156392118539312548",
       "display": "1.9%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.018936899783563006
+      "value_numeric": 0.018797724641563922
     },
     "seller.seham-kamal-hussein-el-sayed.renewal_mix": {
       "metric_id": "seller.seham-kamal-hussein-el-sayed.renewal_mix",
@@ -44848,13 +45242,13 @@ window.REPORT_DATA = {
       "label": "Hager Ali Ali Hassan Contribution",
       "report_area": "seller",
       "numerator": "186565",
-      "denominator": "15142975",
-      "value": "0.01232023430006323063995020793",
+      "denominator": "15255091",
+      "value": "0.01222968778095129029384354377",
       "display": "1.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.01232023430006323
+      "value_numeric": 0.012229687780951291
     },
     "seller.hager-ali-ali-hassan.renewal_mix": {
       "metric_id": "seller.hager-ali-ali-hassan.renewal_mix",
@@ -44900,13 +45294,13 @@ window.REPORT_DATA = {
       "label": "Ashrakat Ali Hammad Mahmoud Contribution",
       "report_area": "seller",
       "numerator": "588917",
-      "denominator": "15142975",
-      "value": "0.03889044259797034598551473538",
+      "denominator": "15255091",
+      "value": "0.03860462058207322394864770063",
       "display": "3.9%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.038890442597970344
+      "value_numeric": 0.03860462058207322
     },
     "seller.ashrakat-ali-hammad-mahmoud.renewal_mix": {
       "metric_id": "seller.ashrakat-ali-hammad-mahmoud.renewal_mix",
@@ -44952,13 +45346,13 @@ window.REPORT_DATA = {
       "label": "Nouran Khaled Ahmed Kamal Amin Contribution",
       "report_area": "seller",
       "numerator": "1418364",
-      "denominator": "15142975",
-      "value": "0.0936648181747642058446243225",
-      "display": "9.4%",
+      "denominator": "15255091",
+      "value": "0.09297643652207646614497415977",
+      "display": "9.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0936648181747642
+      "value_numeric": 0.09297643652207646
     },
     "seller.nouran-khaled-ahmed-kamal-amin.renewal_mix": {
       "metric_id": "seller.nouran-khaled-ahmed-kamal-amin.renewal_mix",
@@ -45004,13 +45398,13 @@ window.REPORT_DATA = {
       "label": "Nada Ahmed Ibrahim Abo Seriea Contribution",
       "report_area": "seller",
       "numerator": "479026",
-      "denominator": "15142975",
-      "value": "0.03163354624834287846344592129",
-      "display": "3.2%",
+      "denominator": "15255091",
+      "value": "0.03140105817788959764317367887",
+      "display": "3.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.03163354624834288
+      "value_numeric": 0.031401058177889594
     },
     "seller.nada-ahmed-ibrahim-abo-seriea.renewal_mix": {
       "metric_id": "seller.nada-ahmed-ibrahim-abo-seriea.renewal_mix",
@@ -45056,13 +45450,13 @@ window.REPORT_DATA = {
       "label": "Amira Mostafa Abdelmoniem Mohamed Elyounsi Contribution",
       "report_area": "seller",
       "numerator": "496291",
-      "denominator": "15142975",
-      "value": "0.03277367888410302466985516386",
+      "denominator": "15255091",
+      "value": "0.03253281150535254099762498959",
       "display": "3.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.03277367888410303
+      "value_numeric": 0.03253281150535254
     },
     "seller.amira-mostafa-abdelmoniem-mohamed-elyounsi.renewal_mix": {
       "metric_id": "seller.amira-mostafa-abdelmoniem-mohamed-elyounsi.renewal_mix",
@@ -45108,13 +45502,13 @@ window.REPORT_DATA = {
       "label": "Gihaad Zarea Tolba Abdel Karim Contribution",
       "report_area": "seller",
       "numerator": "281060",
-      "denominator": "15142975",
-      "value": "0.01856042158162448263963983299",
-      "display": "1.9%",
+      "denominator": "15255091",
+      "value": "0.01842401333430262723440981112",
+      "display": "1.8%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.018560421581624482
+      "value_numeric": 0.018424013334302627
     },
     "seller.gihaad-zarea-tolba-abdel-karim.renewal_mix": {
       "metric_id": "seller.gihaad-zarea-tolba-abdel-karim.renewal_mix",
@@ -45146,34 +45540,34 @@ window.REPORT_DATA = {
       "metric_id": "seller.ali-mabrouk-ali.yoy",
       "label": "Ali Mabrouk Ali YoY",
       "report_area": "seller",
-      "numerator": "-193180",
+      "numerator": "-104941",
       "denominator": "593180",
-      "value": "-0.3256684311676051114332917496",
-      "display": "-32.6%",
+      "value": "-0.1769125729121008800026973263",
+      "display": "-17.7%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": -0.32566843116760513
+      "value_numeric": -0.17691257291210088
     },
     "seller.ali-mabrouk-ali.contribution": {
       "metric_id": "seller.ali-mabrouk-ali.contribution",
       "label": "Ali Mabrouk Ali Contribution",
       "report_area": "seller",
-      "numerator": "400000",
-      "denominator": "15142975",
-      "value": "0.02641488875204509021509974097",
-      "display": "2.6%",
+      "numerator": "488239",
+      "denominator": "15255091",
+      "value": "0.03200498771197103970077923495",
+      "display": "3.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.02641488875204509
+      "value_numeric": 0.032004987711971036
     },
     "seller.ali-mabrouk-ali.renewal_mix": {
       "metric_id": "seller.ali-mabrouk-ali.renewal_mix",
       "label": "Ali Mabrouk Ali Renewal Mix",
       "report_area": "seller",
       "numerator": null,
-      "denominator": "400000",
+      "denominator": "488239",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -45185,14 +45579,14 @@ window.REPORT_DATA = {
       "metric_id": "seller.ali-mabrouk-ali.motor_mix",
       "label": "Ali Mabrouk Ali Motor Mix",
       "report_area": "seller",
-      "numerator": "394400",
-      "denominator": "400000",
-      "value": "0.986",
-      "display": "98.6%",
+      "numerator": "482639",
+      "denominator": "488239",
+      "value": "0.9885302075417981767126345908",
+      "display": "98.9%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.986
+      "value_numeric": 0.9885302075417982
     },
     "seller.amr-hassan-mohamed-hassab-allah-ewis.yoy": {
       "metric_id": "seller.amr-hassan-mohamed-hassab-allah-ewis.yoy",
@@ -45212,13 +45606,13 @@ window.REPORT_DATA = {
       "label": "Amr Hassan Mohamed Hassab-allah Ewis Contribution",
       "report_area": "seller",
       "numerator": "261952",
-      "denominator": "15142975",
-      "value": "0.01729858234593928868006451837",
+      "denominator": "15255091",
+      "value": "0.0171714478792686323536188673",
       "display": "1.7%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.017298582345939287
+      "value_numeric": 0.017171447879268633
     },
     "seller.amr-hassan-mohamed-hassab-allah-ewis.renewal_mix": {
       "metric_id": "seller.amr-hassan-mohamed-hassab-allah-ewis.renewal_mix",
@@ -45264,13 +45658,13 @@ window.REPORT_DATA = {
       "label": "Mohiee Eldin Ashraf Farouk Mohamed Contribution",
       "report_area": "seller",
       "numerator": "332749",
-      "denominator": "15142975",
-      "value": "0.02197381954338562930996055927",
+      "denominator": "15255091",
+      "value": "0.02181232481667923187085544098",
       "display": "2.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.02197381954338563
+      "value_numeric": 0.021812324816679232
     },
     "seller.mohiee-eldin-ashraf-farouk-mohamed.renewal_mix": {
       "metric_id": "seller.mohiee-eldin-ashraf-farouk-mohamed.renewal_mix",
@@ -45316,13 +45710,13 @@ window.REPORT_DATA = {
       "label": "Salma Hosny Ahmed Gad Contribution",
       "report_area": "seller",
       "numerator": "924444",
-      "denominator": "15142975",
-      "value": "0.06104771354373892844701916235",
+      "denominator": "15255091",
+      "value": "0.06059904854058228823413770524",
       "display": "6.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.061047713543738925
+      "value_numeric": 0.06059904854058229
     },
     "seller.salma-hosny-ahmed-gad.renewal_mix": {
       "metric_id": "seller.salma-hosny-ahmed-gad.renewal_mix",
@@ -45368,13 +45762,13 @@ window.REPORT_DATA = {
       "label": "Doaa Fadel Mohamed Ahmed Contribution",
       "report_area": "seller",
       "numerator": "180000",
-      "denominator": "15142975",
-      "value": "0.01188669993842029059679488344",
+      "denominator": "15255091",
+      "value": "0.01179933964340166833485293533",
       "display": "1.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.01188669993842029
+      "value_numeric": 0.011799339643401668
     },
     "seller.doaa-fadel-mohamed-ahmed.renewal_mix": {
       "metric_id": "seller.doaa-fadel-mohamed-ahmed.renewal_mix",
@@ -45420,13 +45814,13 @@ window.REPORT_DATA = {
       "label": "Mohamed Gamal Mohamed Madbouly Contribution",
       "report_area": "seller",
       "numerator": "157720",
-      "denominator": "15142975",
-      "value": "0.01041539063493137907181382786",
+      "denominator": "15255091",
+      "value": "0.01033884360309617294318336089",
       "display": "1.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.010415390634931378
+      "value_numeric": 0.010338843603096172
     },
     "seller.mohamed-gamal-mohamed-madbouly.renewal_mix": {
       "metric_id": "seller.mohamed-gamal-mohamed-madbouly.renewal_mix",
@@ -45472,13 +45866,13 @@ window.REPORT_DATA = {
       "label": "Ali Khaled Mohamed Mohamed Contribution",
       "report_area": "seller",
       "numerator": "160600",
-      "denominator": "15142975",
-      "value": "0.010605577833946103721362546",
+      "denominator": "15255091",
+      "value": "0.01052763303739059963654100785",
       "display": "1.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.010605577833946103
+      "value_numeric": 0.010527633037390599
     },
     "seller.ali-khaled-mohamed-mohamed.renewal_mix": {
       "metric_id": "seller.ali-khaled-mohamed-mohamed.renewal_mix",
@@ -45524,13 +45918,13 @@ window.REPORT_DATA = {
       "label": "Menna allah ayman mostafa abdelzaher Contribution",
       "report_area": "seller",
       "numerator": "205666",
-      "denominator": "15142975",
-      "value": "0.01358161127519526381044675832",
-      "display": "1.4%",
+      "denominator": "15255091",
+      "value": "0.01348179437277693066531035443",
+      "display": "1.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.013581611275195265
+      "value_numeric": 0.013481794372776931
     },
     "seller.menna-allah-ayman-mostafa-abdelzaher.renewal_mix": {
       "metric_id": "seller.menna-allah-ayman-mostafa-abdelzaher.renewal_mix",
@@ -46927,21 +47321,21 @@ window.REPORT_DATA = {
       "metric_id": "seller-monthly.zizi-samir-el-sayed-mohamed-ismail-august.yoy",
       "label": "Zizi Samir El Sayed Mohamed Ismail August YoY",
       "report_area": "seller-monthly",
-      "numerator": "-131315",
+      "numerator": "-75035",
       "denominator": "187595",
-      "value": "-0.6999920040512806844532103734",
-      "display": "-70.0%",
+      "value": "-0.3999840081025613689064207468",
+      "display": "-40.0%",
       "decimals": 1,
-      "source_rate": "-0.7",
-      "source_display": "-70.0%",
-      "value_numeric": -0.6999920040512807
+      "source_rate": "-0.4",
+      "source_display": "-40.0%",
+      "value_numeric": -0.39998400810256135
     },
     "seller-monthly.zizi-samir-el-sayed-mohamed-ismail-august.renewal_mix": {
       "metric_id": "seller-monthly.zizi-samir-el-sayed-mohamed-ismail-august.renewal_mix",
       "label": "Zizi Samir El Sayed Mohamed Ismail August Renewal Mix",
       "report_area": "seller-monthly",
       "numerator": null,
-      "denominator": "56280",
+      "denominator": "112560",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -46953,8 +47347,8 @@ window.REPORT_DATA = {
       "metric_id": "seller-monthly.zizi-samir-el-sayed-mohamed-ismail-august.motor_mix",
       "label": "Zizi Samir El Sayed Mohamed Ismail August Motor Mix",
       "report_area": "seller-monthly",
-      "numerator": "56280",
-      "denominator": "56280",
+      "numerator": "112560",
+      "denominator": "112560",
       "value": "1",
       "display": "100.0%",
       "decimals": 1,
@@ -49150,21 +49544,21 @@ window.REPORT_DATA = {
       "metric_id": "seller-monthly.ali-mabrouk-ali-august.yoy",
       "label": "Ali Mabrouk Ali August YoY",
       "report_area": "seller-monthly",
-      "numerator": null,
+      "numerator": "-24381",
       "denominator": "112620",
-      "value": null,
-      "display": "N/A",
+      "value": "-0.2164890783164624400639318061",
+      "display": "-21.6%",
       "decimals": 1,
-      "source_rate": "-1",
-      "source_display": "-100.0%",
-      "value_numeric": null
+      "source_rate": "-0.216",
+      "source_display": "-21.6%",
+      "value_numeric": -0.21648907831646244
     },
     "seller-monthly.ali-mabrouk-ali-august.renewal_mix": {
       "metric_id": "seller-monthly.ali-mabrouk-ali-august.renewal_mix",
       "label": "Ali Mabrouk Ali August Renewal Mix",
       "report_area": "seller-monthly",
       "numerator": null,
-      "denominator": null,
+      "denominator": "88239",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -49176,14 +49570,14 @@ window.REPORT_DATA = {
       "metric_id": "seller-monthly.ali-mabrouk-ali-august.motor_mix",
       "label": "Ali Mabrouk Ali August Motor Mix",
       "report_area": "seller-monthly",
-      "numerator": null,
-      "denominator": null,
-      "value": null,
-      "display": "N/A",
+      "numerator": "88239",
+      "denominator": "88239",
+      "value": "1",
+      "display": "100.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": null
+      "value_numeric": 1.0
     },
     "seller-monthly.ali-mabrouk-ali-july.yoy": {
       "metric_id": "seller-monthly.ali-mabrouk-ali-july.yoy",
@@ -51139,27 +51533,27 @@ window.REPORT_DATA = {
       "metric_id": "insurer.sarwa-insurance-company.yoy",
       "label": "Sarwa Insurance Company YoY",
       "report_area": "insurer",
-      "numerator": "-9415328",
+      "numerator": "-9270809",
       "denominator": "17853207",
-      "value": "-0.5273746055820671322524855058",
-      "display": "-52.7%",
+      "value": "-0.5192797574127718342144355353",
+      "display": "-51.9%",
       "decimals": 1,
-      "source_rate": "-0.527",
-      "source_display": "-52.7%",
-      "value_numeric": -0.5273746055820672
+      "source_rate": "-0.519",
+      "source_display": "-51.9%",
+      "value_numeric": -0.5192797574127719
     },
     "insurer.sarwa-insurance-company.share": {
       "metric_id": "insurer.sarwa-insurance-company.share",
       "label": "Sarwa Insurance Company 2026 Share",
       "report_area": "insurer",
-      "numerator": "8437879",
-      "denominator": "15142977",
-      "value": "0.5572140141268127132465432656",
-      "display": "55.7%",
+      "numerator": "8582398",
+      "denominator": "15255093",
+      "value": "0.5625923093356428571100812037",
+      "display": "56.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.5572140141268127
+      "value_numeric": 0.5625923093356429
     },
     "insurer.al-wataniya-insurance.yoy": {
       "metric_id": "insurer.al-wataniya-insurance.yoy",
@@ -51179,13 +51573,13 @@ window.REPORT_DATA = {
       "label": "Al Wataniya Insurance 2026 Share",
       "report_area": "insurer",
       "numerator": "1346098",
-      "denominator": "15142977",
-      "value": "0.08889256055794048950876700136",
-      "display": "8.9%",
+      "denominator": "15255093",
+      "value": "0.08823925229429935300951623173",
+      "display": "8.8%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0888925605579405
+      "value_numeric": 0.08823925229429935
     },
     "insurer.mohandes-insurance-co.yoy": {
       "metric_id": "insurer.mohandes-insurance-co.yoy",
@@ -51205,13 +51599,13 @@ window.REPORT_DATA = {
       "label": "Mohandes Insurance Co. 2026 Share",
       "report_area": "insurer",
       "numerator": "1017765",
-      "denominator": "15142977",
-      "value": "0.06721036425004145486056011311",
+      "denominator": "15255093",
+      "value": "0.06671640743193109343876173026",
       "display": "6.7%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.06721036425004145
+      "value_numeric": 0.0667164074319311
     },
     "insurer.misr-takaful-insurance.yoy": {
       "metric_id": "insurer.misr-takaful-insurance.yoy",
@@ -51231,39 +51625,13 @@ window.REPORT_DATA = {
       "label": "Misr Takaful Insurance 2026 Share",
       "report_area": "insurer",
       "numerator": "987291",
-      "denominator": "15142977",
-      "value": "0.06519794621625589208779753149",
+      "denominator": "15255093",
+      "value": "0.06471877949219975256788011715",
       "display": "6.5%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0651979462162559
-    },
-    "insurer.arab-misr-insurance-group-gig.yoy": {
-      "metric_id": "insurer.arab-misr-insurance-group-gig.yoy",
-      "label": "Arab Misr Insurance Group (GIG) YoY",
-      "report_area": "insurer",
-      "numerator": "-938868",
-      "denominator": "1828562",
-      "value": "-0.513446084956375556311462231",
-      "display": "-51.3%",
-      "decimals": 1,
-      "source_rate": "-0.513",
-      "source_display": "-51.3%",
-      "value_numeric": -0.5134460849563756
-    },
-    "insurer.arab-misr-insurance-group-gig.share": {
-      "metric_id": "insurer.arab-misr-insurance-group-gig.share",
-      "label": "Arab Misr Insurance Group (GIG) 2026 Share",
-      "report_area": "insurer",
-      "numerator": "889694",
-      "denominator": "15142977",
-      "value": "0.05875291232364679679563668359",
-      "display": "5.9%",
-      "decimals": 1,
-      "source_rate": null,
-      "source_display": null,
-      "value_numeric": 0.058752912323646794
+      "value_numeric": 0.06471877949219976
     },
     "insurer.salama-takaful-insurance-egypt.yoy": {
       "metric_id": "insurer.salama-takaful-insurance-egypt.yoy",
@@ -51283,13 +51651,39 @@ window.REPORT_DATA = {
       "label": "Salama Takaful Insurance Egypt 2026 Share",
       "report_area": "insurer",
       "numerator": "857968",
-      "denominator": "15142977",
-      "value": "0.05665781569898706179108638942",
-      "display": "5.7%",
+      "denominator": "15255093",
+      "value": "0.05624141393303862519881065294",
+      "display": "5.6%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.05665781569898706
+      "value_numeric": 0.05624141393303862
+    },
+    "insurer.arab-misr-insurance-group-gig.yoy": {
+      "metric_id": "insurer.arab-misr-insurance-group-gig.yoy",
+      "label": "Arab Misr Insurance Group (GIG) YoY",
+      "report_area": "insurer",
+      "numerator": "-971271",
+      "denominator": "1828562",
+      "value": "-0.5311665669526108493996922172",
+      "display": "-53.1%",
+      "decimals": 1,
+      "source_rate": "-0.531",
+      "source_display": "-53.1%",
+      "value_numeric": -0.5311665669526109
+    },
+    "insurer.arab-misr-insurance-group-gig.share": {
+      "metric_id": "insurer.arab-misr-insurance-group-gig.share",
+      "label": "Arab Misr Insurance Group (GIG) 2026 Share",
+      "report_area": "insurer",
+      "numerator": "857291",
+      "denominator": "15255093",
+      "value": "0.05619703531142025813936368661",
+      "display": "5.6%",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": 0.05619703531142026
     },
     "insurer.orient-takaful-insurance-company-egypt.yoy": {
       "metric_id": "insurer.orient-takaful-insurance-company-egypt.yoy",
@@ -51309,13 +51703,13 @@ window.REPORT_DATA = {
       "label": "Orient Takaful Insurance Company - Egypt 2026 Share",
       "report_area": "insurer",
       "numerator": "814381",
-      "denominator": "15142977",
-      "value": "0.05377945168905691397404882805",
-      "display": "5.4%",
+      "denominator": "15255093",
+      "value": "0.05338420421297988809376645557",
+      "display": "5.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.053779451689056915
+      "value_numeric": 0.05338420421297989
     },
     "insurer.sarwa-life-insurance-company.yoy": {
       "metric_id": "insurer.sarwa-life-insurance-company.yoy",
@@ -51335,13 +51729,13 @@ window.REPORT_DATA = {
       "label": "Sarwa Life Insurance Company 2026 Share",
       "report_area": "insurer",
       "numerator": "474878",
-      "denominator": "15142977",
-      "value": "0.03135961971017984112371035101",
+      "denominator": "15255093",
+      "value": "0.03112914486984772888634635004",
       "display": "3.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.031359619710179844
+      "value_numeric": 0.03112914486984773
     },
     "insurer.allianz-egypt.yoy": {
       "metric_id": "insurer.allianz-egypt.yoy",
@@ -51361,13 +51755,13 @@ window.REPORT_DATA = {
       "label": "Allianz Egypt 2026 Share",
       "report_area": "insurer",
       "numerator": "151615",
-      "denominator": "15142977",
-      "value": "0.01001223207299330904352558945",
+      "denominator": "15255093",
+      "value": "0.009938648030529869598303989363",
       "display": "1.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.010012232072993309
+      "value_numeric": 0.00993864803052987
     },
     "insurer.royal-insurance-egypt.yoy": {
       "metric_id": "insurer.royal-insurance-egypt.yoy",
@@ -51387,13 +51781,13 @@ window.REPORT_DATA = {
       "label": "Royal Insurance Egypt 2026 Share",
       "report_area": "insurer",
       "numerator": "134300",
-      "denominator": "15142977",
-      "value": "0.008868797727157612403426354012",
+      "denominator": "15255093",
+      "value": "0.00880361725752835462884428171",
       "display": "0.9%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.008868797727157613
+      "value_numeric": 0.008803617257528354
     },
     "insurer.axa-egypt-life-insurance.yoy": {
       "metric_id": "insurer.axa-egypt-life-insurance.yoy",
@@ -51413,13 +51807,13 @@ window.REPORT_DATA = {
       "label": "AXA Egypt Life Insurance 2026 Share",
       "report_area": "insurer",
       "numerator": "15620",
-      "denominator": "15142977",
-      "value": "0.001031501269532404361440950482",
+      "denominator": "15255093",
+      "value": "0.001023920339259813099795589578",
       "display": "0.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0010315012695324044
+      "value_numeric": 0.0010239203392598132
     },
     "insurer.libano-suisse-takaful-egypt.yoy": {
       "metric_id": "insurer.libano-suisse-takaful-egypt.yoy",
@@ -51439,13 +51833,13 @@ window.REPORT_DATA = {
       "label": "Libano Suisse Takaful Egypt 2026 Share",
       "report_area": "insurer",
       "numerator": "9999",
-      "denominator": "15142977",
-      "value": "0.0006603060943696870172886084421",
+      "denominator": "15255093",
+      "value": "0.0006554532312585704983902753002",
       "display": "0.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.000660306094369687
+      "value_numeric": 0.0006554532312585705
     },
     "insurer.mohandes-life-insurance-co.yoy": {
       "metric_id": "insurer.mohandes-life-insurance-co.yoy",
@@ -51465,13 +51859,13 @@ window.REPORT_DATA = {
       "label": "Mohandes Life Insurance Co. 2026 Share",
       "report_area": "insurer",
       "numerator": "5489",
-      "denominator": "15142977",
-      "value": "0.0003624782630258237861683340072",
+      "denominator": "15255093",
+      "value": "0.0003598142600638357301394360559",
       "display": "0.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0003624782630258238
+      "value_numeric": 0.0003598142600638357
     },
     "insurer.egyptian-takaful.yoy": {
       "metric_id": "insurer.egyptian-takaful.yoy",
@@ -51491,7 +51885,7 @@ window.REPORT_DATA = {
       "label": "Egyptian Takaful 2026 Share",
       "report_area": "insurer",
       "numerator": null,
-      "denominator": "15142977",
+      "denominator": "15255093",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -51503,40 +51897,40 @@ window.REPORT_DATA = {
       "metric_id": "lob.motor-vehicle-private-company-comprehensive.target_achievement",
       "label": "Motor Vehicle Private Company Comprehensive Target Achievement",
       "report_area": "lob",
-      "numerator": "12481282",
+      "numerator": "12593398",
       "denominator": "36932925",
-      "value": "0.337944584676139244319262555",
-      "display": "33.8%",
+      "value": "0.3409802500072767049996717021",
+      "display": "34.1%",
       "decimals": 1,
       "source_rate": "0.34",
       "source_display": "34.0%",
-      "value_numeric": 0.33794458467613925
+      "value_numeric": 0.3409802500072767
     },
     "lob.motor-vehicle-private-company-comprehensive.yoy": {
       "metric_id": "lob.motor-vehicle-private-company-comprehensive.yoy",
       "label": "Motor Vehicle Private Company Comprehensive YoY",
       "report_area": "lob",
-      "numerator": "-17065058",
+      "numerator": "-16952942",
       "denominator": "29546340",
-      "value": "-0.5775692691548259446009218062",
-      "display": "-57.8%",
+      "value": "-0.5737746874909041187504103723",
+      "display": "-57.4%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": -0.577569269154826
+      "value_numeric": -0.5737746874909041
     },
     "lob.motor-vehicle-private-company-comprehensive.share": {
       "metric_id": "lob.motor-vehicle-private-company-comprehensive.share",
       "label": "Motor Vehicle Private Company Comprehensive 2026 Share",
       "report_area": "lob",
-      "numerator": "12481282",
-      "denominator": "15142975",
-      "value": "0.8242291887822571192252513129",
-      "display": "82.4%",
+      "numerator": "12593398",
+      "denominator": "15255091",
+      "value": "0.825521001480751573360001589",
+      "display": "82.6%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.8242291887822571
+      "value_numeric": 0.8255210014807516
     },
     "lob.personal-accident.target_achievement": {
       "metric_id": "lob.personal-accident.target_achievement",
@@ -51569,13 +51963,13 @@ window.REPORT_DATA = {
       "label": "Personal Accident 2026 Share",
       "report_area": "lob",
       "numerator": "443450",
-      "denominator": "15142975",
-      "value": "0.02928420604273598813971495033",
+      "denominator": "15255091",
+      "value": "0.02906898424925816568383630094",
       "display": "2.9%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.02928420604273599
+      "value_numeric": 0.029068984249258165
     },
     "lob.global-auto-vehicle-private-company-comprehensive.target_achievement": {
       "metric_id": "lob.global-auto-vehicle-private-company-comprehensive.target_achievement",
@@ -51608,13 +52002,13 @@ window.REPORT_DATA = {
       "label": "Global Auto Vehicle Private Company Comprehensive 2026 Share",
       "report_area": "lob",
       "numerator": "611708",
-      "denominator": "15142975",
-      "value": "0.04039549692183999511324558087",
+      "denominator": "15255091",
+      "value": "0.04009861363658859852097899645",
       "display": "4.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.040395496921839996
+      "value_numeric": 0.0400986136365886
     },
     "lob.sarwa-hayah-unit-link.target_achievement": {
       "metric_id": "lob.sarwa-hayah-unit-link.target_achievement",
@@ -51647,13 +52041,13 @@ window.REPORT_DATA = {
       "label": "Sarwa Hayah Unit link 2026 Share",
       "report_area": "lob",
       "numerator": "2800",
-      "denominator": "15142975",
-      "value": "0.0001849042212643156315056981868",
+      "denominator": "15255091",
+      "value": "0.0001835452833418037296532678828",
       "display": "0.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.00018490422126431563
+      "value_numeric": 0.00018354528334180373
     },
     "lob.group-medical-smes.target_achievement": {
       "metric_id": "lob.group-medical-smes.target_achievement",
@@ -51686,13 +52080,13 @@ window.REPORT_DATA = {
       "label": "Group Medical - SMEs 2026 Share",
       "report_area": "lob",
       "numerator": "93128",
-      "denominator": "15142975",
-      "value": "0.006149914399251137903879521692",
+      "denominator": "15255091",
+      "value": "0.006104716123948392048267689783",
       "display": "0.6%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.006149914399251138
+      "value_numeric": 0.006104716123948392
     },
     "lob.insurance-bundle-w-finance.target_achievement": {
       "metric_id": "lob.insurance-bundle-w-finance.target_achievement",
@@ -51725,13 +52119,13 @@ window.REPORT_DATA = {
       "label": "Insurance Bundle W/Finance 2026 Share",
       "report_area": "lob",
       "numerator": "120400",
-      "denominator": "15142975",
-      "value": "0.007950881514365572154745022032",
+      "denominator": "15255091",
+      "value": "0.007892447183697560375090518962",
       "display": "0.8%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.007950881514365573
+      "value_numeric": 0.007892447183697561
     },
     "lob.contact-home-plus.target_achievement": {
       "metric_id": "lob.contact-home-plus.target_achievement",
@@ -51764,13 +52158,13 @@ window.REPORT_DATA = {
       "label": "Contact - Home Plus 2026 Share",
       "report_area": "lob",
       "numerator": "904",
-      "denominator": "15142975",
-      "value": "0.00005969764857962190388612541459",
+      "denominator": "15255091",
+      "value": "0.00005925890576463948985948363074",
       "display": "0.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 5.96976485796219e-05
+      "value_numeric": 5.925890576463949e-05
     },
     "lob.p-a-family-support.target_achievement": {
       "metric_id": "lob.p-a-family-support.target_achievement",
@@ -51803,13 +52197,13 @@ window.REPORT_DATA = {
       "label": "P.A - Family Support 2026 Share",
       "report_area": "lob",
       "numerator": "85250",
-      "denominator": "15142975",
-      "value": "0.005629673165279609852093132294",
+      "denominator": "15255091",
+      "value": "0.005588298358888845697478959647",
       "display": "0.6%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.00562967316527961
+      "value_numeric": 0.005588298358888846
     },
     "lob.contact-replacement-key.target_achievement": {
       "metric_id": "lob.contact-replacement-key.target_achievement",
@@ -51842,13 +52236,13 @@ window.REPORT_DATA = {
       "label": "Contact – Replacement Key 2026 Share",
       "report_area": "lob",
       "numerator": "600",
-      "denominator": "15142975",
-      "value": "0.00003962233312806763532264961145",
+      "denominator": "15255091",
+      "value": "0.00003933113214467222778284311775",
       "display": "0.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 3.962233312806763e-05
+      "value_numeric": 3.9331132144672226e-05
     },
     "lob.road-assist.target_achievement": {
       "metric_id": "lob.road-assist.target_achievement",
@@ -51881,13 +52275,13 @@ window.REPORT_DATA = {
       "label": "Road Assist 2026 Share",
       "report_area": "lob",
       "numerator": "96000",
-      "denominator": "15142975",
-      "value": "0.006339573300490821651623937833",
+      "denominator": "15255091",
+      "value": "0.00629298114314755644525489884",
       "display": "0.6%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.006339573300490822
+      "value_numeric": 0.006292981143147557
     },
     "lob.p-a-fawatery.target_achievement": {
       "metric_id": "lob.p-a-fawatery.target_achievement",
@@ -51920,13 +52314,13 @@ window.REPORT_DATA = {
       "label": "P.A- Fawatery 2026 Share",
       "report_area": "lob",
       "numerator": "57850",
-      "denominator": "15142975",
-      "value": "0.003820253285764521172358800038",
+      "denominator": "15255091",
+      "value": "0.003792176657615480628729123936",
       "display": "0.4%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.003820253285764521
+      "value_numeric": 0.0037921766576154807
     },
     "lob.motor-vehicle-trucks-commercial-comprehensive.target_achievement": {
       "metric_id": "lob.motor-vehicle-trucks-commercial-comprehensive.target_achievement",
@@ -51959,13 +52353,13 @@ window.REPORT_DATA = {
       "label": "Motor Vehicle Trucks Commercial Comprehensive 2026 Share",
       "report_area": "lob",
       "numerator": "5550",
-      "denominator": "15142975",
-      "value": "0.0003665065814346256267345089059",
+      "denominator": "15255091",
+      "value": "0.0003638129723382181069912988392",
       "display": "0.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0003665065814346256
+      "value_numeric": 0.0003638129723382181
     },
     "lob.motor-vehicle-commercial-comprehensive.target_achievement": {
       "metric_id": "lob.motor-vehicle-commercial-comprehensive.target_achievement",
@@ -51998,13 +52392,13 @@ window.REPORT_DATA = {
       "label": "Motor Vehicle Commercial Comprehensive 2026 Share",
       "report_area": "lob",
       "numerator": "30000",
-      "denominator": "15142975",
-      "value": "0.001981116656403381766132480573",
+      "denominator": "15255091",
+      "value": "0.001966556607233611389142155888",
       "display": "0.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.001981116656403382
+      "value_numeric": 0.0019665566072336114
     },
     "lob.medical-retail.target_achievement": {
       "metric_id": "lob.medical-retail.target_achievement",
@@ -52037,13 +52431,13 @@ window.REPORT_DATA = {
       "label": "Medical - Retail 2026 Share",
       "report_area": "lob",
       "numerator": "25618",
-      "denominator": "15142975",
-      "value": "0.00169174155012472780282606291",
+      "denominator": "15255091",
+      "value": "0.001679308238803688552234791651",
       "display": "0.2%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0016917415501247278
+      "value_numeric": 0.0016793082388036886
     },
     "lob.motor-vehicle-external-total-loss.target_achievement": {
       "metric_id": "lob.motor-vehicle-external-total-loss.target_achievement",
@@ -52076,13 +52470,13 @@ window.REPORT_DATA = {
       "label": "Motor Vehicle EXTERNAL - TOTAL LOSS 2026 Share",
       "report_area": "lob",
       "numerator": "18896",
-      "denominator": "15142975",
-      "value": "0.001247839344646610061761311763",
+      "denominator": "15255091",
+      "value": "0.001238668455009544026974339255",
       "display": "0.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.00124783934464661
+      "value_numeric": 0.001238668455009544
     },
     "lob.auto-mobility-vehicle-private-company-comprehensive.target_achievement": {
       "metric_id": "lob.auto-mobility-vehicle-private-company-comprehensive.target_achievement",
@@ -52115,13 +52509,13 @@ window.REPORT_DATA = {
       "label": "Auto Mobility Vehicle Private Company Comprehensive 2026 Share",
       "report_area": "lob",
       "numerator": "87419",
-      "denominator": "15142975",
-      "value": "0.005772907899537574353784510639",
+      "denominator": "15255091",
+      "value": "0.005730480401591835800913937518",
       "display": "0.6%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0057729078995375745
+      "value_numeric": 0.005730480401591836
     },
     "lob.fire-allied-perils.target_achievement": {
       "metric_id": "lob.fire-allied-perils.target_achievement",
@@ -52154,7 +52548,7 @@ window.REPORT_DATA = {
       "label": "Fire & Allied Perils 2026 Share",
       "report_area": "lob",
       "numerator": null,
-      "denominator": "15142975",
+      "denominator": "15255091",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -52193,13 +52587,13 @@ window.REPORT_DATA = {
       "label": "Appliances Breakadge & EW 2026 Share",
       "report_area": "lob",
       "numerator": "550",
-      "denominator": "15142975",
-      "value": "0.00003632047203406199904576214383",
+      "denominator": "15255091",
+      "value": "0.00003605353779928287546760619127",
       "display": "0.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 3.6320472034061996e-05
+      "value_numeric": 3.605353779928288e-05
     },
     "lob.group-life-smes.target_achievement": {
       "metric_id": "lob.group-life-smes.target_achievement",
@@ -52232,7 +52626,7 @@ window.REPORT_DATA = {
       "label": "Group Life - SMEs 2026 Share",
       "report_area": "lob",
       "numerator": null,
-      "denominator": "15142975",
+      "denominator": "15255091",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -52271,13 +52665,13 @@ window.REPORT_DATA = {
       "label": "Home Plus 2026 Share",
       "report_area": "lob",
       "numerator": "18400",
-      "denominator": "15142975",
-      "value": "0.001215084882594074149894588085",
+      "denominator": "15255091",
+      "value": "0.001206154719103281652007188944",
       "display": "0.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0012150848825940742
+      "value_numeric": 0.0012061547191032816
     },
     "lob.heavy-truck-total-loss.target_achievement": {
       "metric_id": "lob.heavy-truck-total-loss.target_achievement",
@@ -52310,7 +52704,7 @@ window.REPORT_DATA = {
       "label": "HEAVY TRUCK TOTAL LOSS 2026 Share",
       "report_area": "lob",
       "numerator": null,
-      "denominator": "15142975",
+      "denominator": "15255091",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -52349,7 +52743,7 @@ window.REPORT_DATA = {
       "label": "Motorcycle Total Loss W/F 2026 Share",
       "report_area": "lob",
       "numerator": null,
-      "denominator": "15142975",
+      "denominator": "15255091",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -52388,13 +52782,13 @@ window.REPORT_DATA = {
       "label": "Small & Medium Business Projects 2026 Share",
       "report_area": "lob",
       "numerator": "1800",
-      "denominator": "15142975",
-      "value": "0.0001188669993842029059679488344",
+      "denominator": "15255091",
+      "value": "0.0001179933964340166833485293533",
       "display": "0.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.00011886699938420291
+      "value_numeric": 0.00011799339643401668
     },
     "lob.life-retail-with-investment.target_achievement": {
       "metric_id": "lob.life-retail-with-investment.target_achievement",
@@ -52427,7 +52821,7 @@ window.REPORT_DATA = {
       "label": "Life retail with investment 2026 Share",
       "report_area": "lob",
       "numerator": null,
-      "denominator": "15142975",
+      "denominator": "15255091",
       "value": null,
       "display": "N/A",
       "decimals": 1,
@@ -52466,13 +52860,13 @@ window.REPORT_DATA = {
       "label": "Marine Cargo 2026 Share",
       "report_area": "lob",
       "numerator": "4400",
-      "denominator": "15142975",
-      "value": "0.0002905637762724959923660971507",
+      "denominator": "15255091",
+      "value": "0.0002884283023942630037408495302",
       "display": "0.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.00029056377627249597
+      "value_numeric": 0.00028842830239426303
     },
     "lob.life-retail.target_achievement": {
       "metric_id": "lob.life-retail.target_achievement",
@@ -52505,13 +52899,13 @@ window.REPORT_DATA = {
       "label": "Life - Retail 2026 Share",
       "report_area": "lob",
       "numerator": "115874",
-      "denominator": "15142975",
-      "value": "0.007651997048136181958961168463",
+      "denominator": "15255091",
+      "value": "0.007595759343552916203515272377",
       "display": "0.8%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.007651997048136182
+      "value_numeric": 0.007595759343552916
     },
     "lob.all-risk-pd-bi.target_achievement": {
       "metric_id": "lob.all-risk-pd-bi.target_achievement",
@@ -52544,13 +52938,13 @@ window.REPORT_DATA = {
       "label": "All Risk PD / BI 2026 Share",
       "report_area": "lob",
       "numerator": "55000",
-      "denominator": "15142975",
-      "value": "0.003632047203406199904576214383",
+      "denominator": "15255091",
+      "value": "0.003605353779928287546760619127",
       "display": "0.4%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0036320472034062
+      "value_numeric": 0.0036053537799282877
     },
     "lob.term-yrt.target_achievement": {
       "metric_id": "lob.term-yrt.target_achievement",
@@ -52583,13 +52977,13 @@ window.REPORT_DATA = {
       "label": "Term (YRT) 2026 Share",
       "report_area": "lob",
       "numerator": "361693",
-      "denominator": "15142975",
-      "value": "0.02388520089348361203792517653",
+      "denominator": "15255091",
+      "value": "0.02370965863133822013909979298",
       "display": "2.4%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.023885200893483612
+      "value_numeric": 0.02370965863133822
     },
     "lob.group-medical.target_achievement": {
       "metric_id": "lob.group-medical.target_achievement",
@@ -52622,33 +53016,33 @@ window.REPORT_DATA = {
       "label": "Group Medical 2026 Share",
       "report_area": "lob",
       "numerator": "424403",
-      "denominator": "15142975",
-      "value": "0.02802639507758548105639743842",
+      "denominator": "15255091",
+      "value": "0.02782041745932554581286994617",
       "display": "2.8%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.028026395077585482
+      "value_numeric": 0.027820417459325546
     },
     "table-total.branches.yoy": {
       "metric_id": "table-total.branches.yoy",
       "label": "Branches Grand Total YoY",
       "report_area": "table-total",
-      "numerator": "-24961578",
+      "numerator": "-24849462",
       "denominator": "40104553",
-      "value": "-0.6224125724577955026702329783",
-      "display": "-62.2%",
+      "value": "-0.619616979648171119124554262",
+      "display": "-62.0%",
       "decimals": 1,
-      "source_rate": "-0.622",
-      "source_display": "-62.2%",
-      "value_numeric": -0.6224125724577955
+      "source_rate": "-0.62",
+      "source_display": "-62.0%",
+      "value_numeric": -0.6196169796481711
     },
     "table-total.branches.contribution": {
       "metric_id": "table-total.branches.contribution",
       "label": "Branches Grand Total Contribution",
       "report_area": "table-total",
-      "numerator": "15142975",
-      "denominator": "15142975",
+      "numerator": "15255091",
+      "denominator": "15255091",
       "value": "1",
       "display": "100.0%",
       "decimals": 1,
@@ -52661,98 +53055,98 @@ window.REPORT_DATA = {
       "label": "Branches Grand Total Renewal Mix",
       "report_area": "table-total",
       "numerator": "8238668",
-      "denominator": "15142975",
-      "value": "0.5440587467125845482806383818",
-      "display": "54.4%",
+      "denominator": "15255091",
+      "value": "0.540060233006804089205367572",
+      "display": "54.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.5440587467125846
+      "value_numeric": 0.5400602330068041
     },
     "table-total.branches.motor_mix": {
       "metric_id": "table-total.branches.motor_mix",
       "label": "Branches Grand Total Motor Mix",
       "report_area": "table-total",
-      "numerator": "13234854",
-      "denominator": "15142975",
-      "value": "0.8739929901488974260341841679",
-      "display": "87.4%",
+      "numerator": "13346970",
+      "denominator": "15255091",
+      "value": "0.8749190680016264734179560122",
+      "display": "87.5%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.8739929901488974
+      "value_numeric": 0.8749190680016264
     },
     "table-total.sellers.yoy": {
       "metric_id": "table-total.sellers.yoy",
       "label": "Sellers Grand Total YoY",
       "report_area": "table-total",
-      "numerator": "-8914869",
+      "numerator": "-8770350",
       "denominator": "19878642",
-      "value": "-0.4484646888856894751663619678",
-      "display": "-44.8%",
+      "value": "-0.4411946248642135614696416385",
+      "display": "-44.1%",
       "decimals": 1,
-      "source_rate": "-0.448",
-      "source_display": "-44.8%",
-      "value_numeric": -0.44846468888568947
+      "source_rate": "-0.441",
+      "source_display": "-44.1%",
+      "value_numeric": -0.44119462486421357
     },
     "table-total.sellers.contribution": {
       "metric_id": "table-total.sellers.contribution",
       "label": "Sellers Grand Total Contribution",
       "report_area": "table-total",
-      "numerator": "10963773",
-      "denominator": "15142975",
-      "value": "0.7240171102441891372071868309",
-      "display": "72.4%",
+      "numerator": "11108292",
+      "denominator": "15255091",
+      "value": "0.7281695009226755841705565703",
+      "display": "72.8%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.7240171102441891
+      "value_numeric": 0.7281695009226756
     },
     "table-total.sellers.renewal_mix": {
       "metric_id": "table-total.sellers.renewal_mix",
       "label": "Sellers Grand Total Renewal Mix",
       "report_area": "table-total",
       "numerator": "7345239",
-      "denominator": "10963773",
-      "value": "0.6699554067746568631072533151",
-      "display": "67.0%",
+      "denominator": "11108292",
+      "value": "0.6612392796300277306358169195",
+      "display": "66.1%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.6699554067746568
+      "value_numeric": 0.6612392796300277
     },
     "table-total.sellers.motor_mix": {
       "metric_id": "table-total.sellers.motor_mix",
       "label": "Sellers Grand Total Motor Mix",
       "report_area": "table-total",
-      "numerator": "9550365",
-      "denominator": "10963773",
-      "value": "0.8710837956969740252739636255",
-      "display": "87.1%",
+      "numerator": "9694884",
+      "denominator": "11108292",
+      "value": "0.8727609969201385775598984974",
+      "display": "87.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.871083795696974
+      "value_numeric": 0.8727609969201385
     },
     "table-total.insurers.yoy": {
       "metric_id": "table-total.insurers.yoy",
       "label": "Insurers Grand Total YoY",
       "report_area": "table-total",
-      "numerator": "-24961578",
+      "numerator": "-24849462",
       "denominator": "40104553",
-      "value": "-0.6224125724577955026702329783",
-      "display": "-62.2%",
+      "value": "-0.619616979648171119124554262",
+      "display": "-62.0%",
       "decimals": 1,
-      "source_rate": "-0.6224",
-      "source_display": "-62.2%",
-      "value_numeric": -0.6224125724577955
+      "source_rate": "-0.6196",
+      "source_display": "-62.0%",
+      "value_numeric": -0.6196169796481711
     },
     "table-total.insurers.share": {
       "metric_id": "table-total.insurers.share",
       "label": "Insurers Grand Total Share",
       "report_area": "table-total",
-      "numerator": "15142975",
-      "denominator": "15142975",
+      "numerator": "15255091",
+      "denominator": "15255091",
       "value": "1",
       "display": "100.0%",
       "decimals": 1,
@@ -52764,21 +53158,21 @@ window.REPORT_DATA = {
       "metric_id": "table-total.lines-of-business.yoy",
       "label": "Lines Of Business Grand Total YoY",
       "report_area": "table-total",
-      "numerator": "-24961578",
+      "numerator": "-24849462",
       "denominator": "40104553",
-      "value": "-0.6224125724577955026702329783",
-      "display": "-62.2%",
+      "value": "-0.619616979648171119124554262",
+      "display": "-62.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": -0.6224125724577955
+      "value_numeric": -0.6196169796481711
     },
     "table-total.lines-of-business.share": {
       "metric_id": "table-total.lines-of-business.share",
       "label": "Lines Of Business Grand Total Share",
       "report_area": "table-total",
-      "numerator": "15142975",
-      "denominator": "15142975",
+      "numerator": "15255091",
+      "denominator": "15255091",
       "value": "1",
       "display": "100.0%",
       "decimals": 1,
@@ -52791,232 +53185,232 @@ window.REPORT_DATA = {
       "label": "Lines_Of_Business Grand Total Renewal Mix",
       "report_area": "table-total",
       "numerator": "8238668",
-      "denominator": "15142975",
-      "value": "0.5440587467125845482806383818",
-      "display": "54.4%",
+      "denominator": "15255091",
+      "value": "0.540060233006804089205367572",
+      "display": "54.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.5440587467125846
+      "value_numeric": 0.5400602330068041
     },
     "table-total.lines-of-business.motor_mix": {
       "metric_id": "table-total.lines-of-business.motor_mix",
       "label": "Lines_Of_Business Grand Total Motor Mix",
       "report_area": "table-total",
-      "numerator": "13234854",
-      "denominator": "15142975",
-      "value": "0.8739929901488974260341841679",
-      "display": "87.4%",
+      "numerator": "13346970",
+      "denominator": "15255091",
+      "value": "0.8749190680016264734179560122",
+      "display": "87.5%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.8739929901488974
+      "value_numeric": 0.8749190680016264
     },
     "table-total.lines-of-business.target_achievement": {
       "metric_id": "table-total.lines-of-business.target_achievement",
       "label": "Lines Of Business Grand Total Target Achievement",
       "report_area": "table-total",
-      "numerator": "15142975",
+      "numerator": "15255091",
       "denominator": "50130691",
-      "value": "0.3020699435401758176443249107",
-      "display": "30.2%",
+      "value": "0.3043064177990285432131785297",
+      "display": "30.4%",
       "decimals": 1,
-      "source_rate": "0.302",
-      "source_display": "30.2%",
-      "value_numeric": 0.3020699435401758
+      "source_rate": "0.304",
+      "source_display": "30.4%",
+      "value_numeric": 0.30430641779902856
     },
     "totals.target_achievement": {
       "metric_id": "totals.target_achievement",
       "label": "Overall Target Achievement",
       "report_area": "totals",
-      "numerator": "15142975",
+      "numerator": "15255091",
       "denominator": "50130691",
-      "value": "0.3020699435401758176443249107",
-      "display": "30.2%",
+      "value": "0.3043064177990285432131785297",
+      "display": "30.4%",
       "decimals": 1,
-      "source_rate": "0.302",
-      "source_display": "30.2%",
-      "value_numeric": 0.3020699435401758
+      "source_rate": "0.304",
+      "source_display": "30.4%",
+      "value_numeric": 0.30430641779902856
     },
     "totals.target_variance": {
       "metric_id": "totals.target_variance",
       "label": "Target Variance",
       "report_area": "totals",
-      "numerator": "-34987716",
+      "numerator": "-34875600",
       "denominator": "50130691",
-      "value": "-0.6979300564598241823556750893",
-      "display": "-69.8%",
+      "value": "-0.6956935822009714567868214703",
+      "display": "-69.6%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": -0.6979300564598242
+      "value_numeric": -0.6956935822009714
     },
     "totals.pending_share": {
       "metric_id": "totals.pending_share",
       "label": "Pending as Share of Approved Premium",
       "report_area": "totals",
-      "numerator": "462471",
-      "denominator": "15142975",
-      "value": "0.03054030004011761229216848076",
-      "display": "3.1%",
+      "numerator": "398359",
+      "denominator": "15255091",
+      "value": "0.02611318411669913997890933591",
+      "display": "2.6%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.030540300040117613
+      "value_numeric": 0.02611318411669914
     },
     "totals.new_premium_mix": {
       "metric_id": "totals.new_premium_mix",
       "label": "New Premium Mix",
       "report_area": "totals",
-      "numerator": "6820327",
-      "denominator": "15142975",
-      "value": "0.4503954473939235850287014276",
-      "display": "45.0%",
+      "numerator": "6964846",
+      "denominator": "15255091",
+      "value": "0.4565587973221529783073729288",
+      "display": "45.7%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.45039544739392356
+      "value_numeric": 0.456558797322153
     },
     "totals.renewal_premium_mix": {
       "metric_id": "totals.renewal_premium_mix",
       "label": "Renewal Premium Mix",
       "report_area": "totals",
       "numerator": "8238668",
-      "denominator": "15142975",
-      "value": "0.5440587467125845482806383818",
-      "display": "54.4%",
+      "denominator": "15255091",
+      "value": "0.540060233006804089205367572",
+      "display": "54.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.5440587467125846
+      "value_numeric": 0.5400602330068041
     },
     "totals.other_policy_types_premium_mix": {
       "metric_id": "totals.other_policy_types_premium_mix",
       "label": "Other Policy Types Mix",
       "report_area": "totals",
-      "numerator": "83980",
-      "denominator": "15142975",
-      "value": "0.005545805893491866690660190616",
-      "display": "0.6%",
+      "numerator": "51577",
+      "denominator": "15255091",
+      "value": "0.00338096967104293248725949914",
+      "display": "0.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0055458058934918664
+      "value_numeric": 0.0033809696710429323
     },
     "totals.motor_mix_pct": {
       "metric_id": "totals.motor_mix_pct",
       "label": "Motor Premium Mix",
       "report_area": "totals",
-      "numerator": "13234854",
-      "denominator": "15142975",
-      "value": "0.8739929901488974260341841679",
-      "display": "87.4%",
+      "numerator": "13346970",
+      "denominator": "15255091",
+      "value": "0.8749190680016264734179560122",
+      "display": "87.5%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.8739929901488974
+      "value_numeric": 0.8749190680016264
     },
     "totals.non_motor_mix_pct": {
       "metric_id": "totals.non_motor_mix_pct",
       "label": "Non-Motor Premium Mix",
       "report_area": "totals",
       "numerator": "1908121",
-      "denominator": "15142975",
-      "value": "0.1260070098511025739658158321",
-      "display": "12.6%",
+      "denominator": "15255091",
+      "value": "0.1250809319983735265820439878",
+      "display": "12.5%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.12600700985110258
+      "value_numeric": 0.12508093199837353
     },
     "totals.retail_mix_pct": {
       "metric_id": "totals.retail_mix_pct",
       "label": "Retail Premium Mix",
       "report_area": "totals",
-      "numerator": "14536044",
-      "denominator": "15142975",
-      "value": "0.9599199628870813033766482478",
+      "numerator": "14648160",
+      "denominator": "15255091",
+      "value": "0.9602145277271699001992187395",
       "display": "96.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.9599199628870813
+      "value_numeric": 0.9602145277271699
     },
     "totals.corporate_mix_pct": {
       "metric_id": "totals.corporate_mix_pct",
       "label": "Corporate Premium Mix",
       "report_area": "totals",
       "numerator": "606931",
-      "denominator": "15142975",
-      "value": "0.04008003711291869662335175222",
+      "denominator": "15255091",
+      "value": "0.0397854722728300998007812605",
       "display": "4.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.040080037112918694
+      "value_numeric": 0.0397854722728301
     },
     "policy-type.new-premium.share": {
       "metric_id": "policy-type.new-premium.share",
       "label": "New Premium Share",
       "report_area": "policy-type",
-      "numerator": "6820327",
-      "denominator": "15142975",
-      "value": "0.4503954473939235850287014276",
-      "display": "45.0%",
+      "numerator": "6964846",
+      "denominator": "15255091",
+      "value": "0.4565587973221529783073729288",
+      "display": "45.7%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.45039544739392356
+      "value_numeric": 0.456558797322153
     },
     "policy-type.renewal-premium.share": {
       "metric_id": "policy-type.renewal-premium.share",
       "label": "Renewal Premium Share",
       "report_area": "policy-type",
       "numerator": "8238668",
-      "denominator": "15142975",
-      "value": "0.5440587467125845482806383818",
-      "display": "54.4%",
+      "denominator": "15255091",
+      "value": "0.540060233006804089205367572",
+      "display": "54.0%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.5440587467125846
+      "value_numeric": 0.5400602330068041
     },
     "policy-type.other-policy-types.share": {
       "metric_id": "policy-type.other-policy-types.share",
       "label": "Other Policy Types Share",
       "report_area": "policy-type",
-      "numerator": "83980",
-      "denominator": "15142975",
-      "value": "0.005545805893491866690660190616",
-      "display": "0.6%",
+      "numerator": "51577",
+      "denominator": "15255091",
+      "value": "0.00338096967104293248725949914",
+      "display": "0.3%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.0055458058934918664
+      "value_numeric": 0.0033809696710429323
     },
     "insurers.top3_share": {
       "metric_id": "insurers.top3_share",
       "label": "Top 3 Insurer Share",
       "report_area": "insurers",
-      "numerator": "10801742",
-      "denominator": "15142975",
-      "value": "0.7133170331457325921755797655",
-      "display": "71.3%",
+      "numerator": "10946261",
+      "denominator": "15255091",
+      "value": "0.7175480631351199412707534816",
+      "display": "71.8%",
       "decimals": 1,
       "source_rate": null,
       "source_display": null,
-      "value_numeric": 0.7133170331457326
+      "value_numeric": 0.71754806313512
     }
   },
   "reconciliation": {
-    "approved_gross_premium": 15142975.0,
-    "monthly_sum_2026": 15142975.0,
+    "approved_gross_premium": 15255091.0,
+    "monthly_sum_2026": 15255091.0,
     "monthly_difference": 0.0,
-    "branch_sum_2026": 15142976.0,
+    "branch_sum_2026": 15255092.0,
     "branch_difference": 1.0,
-    "line_of_business_sum_2026": 15142975.0,
+    "line_of_business_sum_2026": 15255091.0,
     "line_of_business_difference": 0.0,
-    "insurer_sum_2026": 15142977.0,
+    "insurer_sum_2026": 15255093.0,
     "insurer_difference": 2.0
   },
   "validation": {
@@ -53025,8 +53419,8 @@ window.REPORT_DATA = {
       {
         "name": "Monthly totals = overall total",
         "status": "pass",
-        "expected": 15142975.0,
-        "actual": 15142975.0,
+        "expected": 15255091.0,
+        "actual": 15255091.0,
         "difference": 0.0,
         "tolerance": 1,
         "severity": "warning",
@@ -53035,8 +53429,8 @@ window.REPORT_DATA = {
       {
         "name": "Monthly amount rows = workbook grand total",
         "status": "pass",
-        "expected": 15142975.0,
-        "actual": 15142975.0,
+        "expected": 15255091.0,
+        "actual": 15255091.0,
         "difference": 0.0,
         "tolerance": 1,
         "severity": "warning",
@@ -53045,8 +53439,8 @@ window.REPORT_DATA = {
       {
         "name": "Monthly count rows = workbook grand total",
         "status": "pass",
-        "expected": 2219.0,
-        "actual": 2219.0,
+        "expected": 2222.0,
+        "actual": 2222.0,
         "difference": 0.0,
         "tolerance": 0,
         "severity": "warning",
@@ -53055,8 +53449,8 @@ window.REPORT_DATA = {
       {
         "name": "Branch totals = overall total",
         "status": "pass",
-        "expected": 15142975.0,
-        "actual": 15142976.0,
+        "expected": 15255091.0,
+        "actual": 15255092.0,
         "difference": 1.0,
         "tolerance": 1,
         "severity": "warning",
@@ -53065,8 +53459,8 @@ window.REPORT_DATA = {
       {
         "name": "Line-of-business totals = overall total",
         "status": "pass",
-        "expected": 15142975.0,
-        "actual": 15142975.0,
+        "expected": 15255091.0,
+        "actual": 15255091.0,
         "difference": 0.0,
         "tolerance": 1,
         "severity": "warning",
@@ -53075,8 +53469,8 @@ window.REPORT_DATA = {
       {
         "name": "Insurer totals = overall total",
         "status": "warning",
-        "expected": 15142975.0,
-        "actual": 15142977.0,
+        "expected": 15255091.0,
+        "actual": 15255093.0,
         "difference": 2.0,
         "tolerance": 1,
         "severity": "warning",
@@ -53085,8 +53479,8 @@ window.REPORT_DATA = {
       {
         "name": "Pending category totals = total pending",
         "status": "pass",
-        "expected": 462471.0,
-        "actual": 462471.0,
+        "expected": 398359.0,
+        "actual": 398359.0,
         "difference": 0.0,
         "tolerance": 1,
         "severity": "error",
@@ -53095,8 +53489,8 @@ window.REPORT_DATA = {
       {
         "name": "Policy-type premium totals = approved gross premium",
         "status": "pass",
-        "expected": 15142975.0,
-        "actual": 15142975.0,
+        "expected": 15255091.0,
+        "actual": 15255091.0,
         "difference": 0.0,
         "tolerance": 1,
         "severity": "error",
@@ -53115,8 +53509,8 @@ window.REPORT_DATA = {
       {
         "name": "Branches per day approved total",
         "status": "pass",
-        "expected": 451859.0,
-        "actual": 451859.0,
+        "expected": 563975.0,
+        "actual": 563975.0,
         "difference": 0.0,
         "tolerance": 1,
         "severity": "warning",
@@ -53125,8 +53519,8 @@ window.REPORT_DATA = {
       {
         "name": "Branches per day pending operation paid total",
         "status": "pass",
-        "expected": 168719.0,
-        "actual": 168719.0,
+        "expected": 12600.0,
+        "actual": 12600.0,
         "difference": 0.0,
         "tolerance": 1,
         "severity": "warning",
@@ -53135,8 +53529,8 @@ window.REPORT_DATA = {
       {
         "name": "Branches per day pending not paid total",
         "status": "pass",
-        "expected": 95252.0,
-        "actual": 95252.0,
+        "expected": 129466.0,
+        "actual": 129466.0,
         "difference": 0.0,
         "tolerance": 1,
         "severity": "warning",
@@ -53145,8 +53539,8 @@ window.REPORT_DATA = {
       {
         "name": "Branches per day pending finance total",
         "status": "pass",
-        "expected": 21997.0,
-        "actual": 21997.0,
+        "expected": 79790.0,
+        "actual": 79790.0,
         "difference": 0.0,
         "tolerance": 1,
         "severity": "warning",
@@ -53156,8 +53550,8 @@ window.REPORT_DATA = {
         "name": "Branch contribution shares total 100%",
         "status": "pass",
         "expected": 1,
-        "actual": 1.000000066037222,
-        "difference": 6.603722191300676e-08,
+        "actual": 1.0000000655518868,
+        "difference": 6.555188680756885e-08,
         "tolerance": 0.0001,
         "severity": "error",
         "source": "report"
@@ -53192,8 +53586,8 @@ window.REPORT_DATA = {
       {
         "name": "Insurer totals = overall total",
         "status": "warning",
-        "expected": 15142975.0,
-        "actual": 15142977.0,
+        "expected": 15255091.0,
+        "actual": 15255093.0,
         "difference": 2.0,
         "tolerance": 1,
         "severity": "warning",
@@ -53204,8 +53598,8 @@ window.REPORT_DATA = {
       {
         "name": "Insurer totals = overall total",
         "status": "warning",
-        "expected": 15142975.0,
-        "actual": 15142977.0,
+        "expected": 15255091.0,
+        "actual": 15255093.0,
         "difference": 2.0,
         "tolerance": 1,
         "severity": "warning",
