@@ -150,7 +150,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "110075"
+    "denominator": "110074.95999999999"
   },
   {
     "metric_id": "branch-monthly.alexandria-ring-road-july.yoy",
@@ -159,7 +159,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "31238"
+    "denominator": "31237.617"
   },
   {
     "metric_id": "branch-monthly.alexandria-ring-road-june.yoy",
@@ -204,16 +204,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "44536"
-  },
-  {
-    "metric_id": "branch-monthly.aswan-june.yoy",
-    "report_area": "branch-monthly",
-    "label": "Aswan June YoY",
-    "previous_display": "-15.9%",
-    "corrected_display": "-15.8%",
-    "numerator": "-8225",
-    "denominator": "51895"
+    "denominator": "44535.5"
   },
   {
     "metric_id": "branch-monthly.asyut-august.yoy",
@@ -285,7 +276,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "59863"
+    "denominator": "59862.5"
   },
   {
     "metric_id": "branch-monthly.city-stars-mall-august.yoy",
@@ -348,7 +339,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "60790"
+    "denominator": "60790.4"
   },
   {
     "metric_id": "branch-monthly.damietta-april.yoy",
@@ -366,7 +357,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "38367"
+    "denominator": "38366.5"
   },
   {
     "metric_id": "branch-monthly.damietta-january.yoy",
@@ -384,7 +375,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "55022"
+    "denominator": "55021.5"
   },
   {
     "metric_id": "branch-monthly.damietta-may.yoy",
@@ -457,15 +448,6 @@
     "corrected_display": "N/A",
     "numerator": null,
     "denominator": "59100"
-  },
-  {
-    "metric_id": "branch-monthly.el-mokattam-july.yoy",
-    "report_area": "branch-monthly",
-    "label": "El Mokattam July YoY",
-    "previous_display": "3409.9%",
-    "corrected_display": "3409.8%",
-    "numerator": "25642",
-    "denominator": "752"
   },
   {
     "metric_id": "branch-monthly.el-abaseya-april.yoy",
@@ -636,7 +618,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "12218"
+    "denominator": "12217.92"
   },
   {
     "metric_id": "branch-monthly.faiyum-january.yoy",
@@ -654,7 +636,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "35299"
+    "denominator": "35298.92"
   },
   {
     "metric_id": "branch-monthly.faiyum-june.yoy",
@@ -843,7 +825,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "139954"
+    "denominator": "139953.75"
   },
   {
     "metric_id": "branch-monthly.imbabah-january.yoy",
@@ -888,7 +870,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "57588"
+    "denominator": "57587.5"
   },
   {
     "metric_id": "branch-monthly.kafr-el-sheikh-july.yoy",
@@ -897,7 +879,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "127842"
+    "denominator": "127842.4"
   },
   {
     "metric_id": "branch-monthly.luxor-june.yoy",
@@ -942,7 +924,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "80891"
+    "denominator": "80890.95"
   },
   {
     "metric_id": "branch-monthly.mansoura-june.yoy",
@@ -951,7 +933,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "93336"
+    "denominator": "93336.45"
   },
   {
     "metric_id": "branch-monthly.mansoura-march.yoy",
@@ -960,7 +942,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "143155"
+    "denominator": "143154.75"
   },
   {
     "metric_id": "branch-monthly.minya-august.yoy",
@@ -969,7 +951,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "42411"
+    "denominator": "42411.3"
   },
   {
     "metric_id": "branch-monthly.minya-july.yoy",
@@ -996,7 +978,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "50043"
+    "denominator": "50042.5"
   },
   {
     "metric_id": "branch-monthly.mit-ghamr-april.yoy",
@@ -1185,7 +1167,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "144872"
+    "denominator": "144871.875"
   },
   {
     "metric_id": "branch-monthly.october-august.yoy",
@@ -1410,7 +1392,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "36485"
+    "denominator": "36484.520000000004"
   },
   {
     "metric_id": "branch-monthly.shubra-al-khaymah-june.yoy",
@@ -1465,15 +1447,6 @@
     "corrected_display": "N/A",
     "numerator": null,
     "denominator": "5175"
-  },
-  {
-    "metric_id": "branch-monthly.sohag-august.yoy",
-    "report_area": "branch-monthly",
-    "label": "Sohag August YoY",
-    "previous_display": "68.2%",
-    "corrected_display": "68.1%",
-    "numerator": "31902",
-    "denominator": "46812"
   },
   {
     "metric_id": "branch-monthly.suez-august.yoy",
@@ -1638,258 +1611,6 @@
     "denominator": "102015"
   },
   {
-    "metric_id": "kpi.avg-premium-per-policy.yoy",
-    "report_area": "kpi",
-    "label": "Avg Premium per policy YoY",
-    "previous_display": "140.0%",
-    "corrected_display": "139.5%",
-    "numerator": "3999",
-    "denominator": "2866"
-  },
-  {
-    "metric_id": "kpi.corporate-approved-gross.yoy",
-    "report_area": "kpi",
-    "label": "Corporate Approved Gross YoY",
-    "previous_display": "-53.0%",
-    "corrected_display": "-53.4%",
-    "numerator": "-696156",
-    "denominator": "1303087"
-  },
-  {
-    "metric_id": "kpi.new-policies.yoy",
-    "report_area": "kpi",
-    "label": "New Policies YoY",
-    "previous_display": "-84.0%",
-    "corrected_display": "-84.3%",
-    "numerator": "-9257",
-    "denominator": "10981"
-  },
-  {
-    "metric_id": "kpi.renewal-policies.yoy",
-    "report_area": "kpi",
-    "label": "Renewal Policies YoY",
-    "previous_display": "-85.0%",
-    "corrected_display": "-84.9%",
-    "numerator": "-2389",
-    "denominator": "2814"
-  },
-  {
-    "metric_id": "kpi.retail-approved-gross.yoy",
-    "report_area": "kpi",
-    "label": "Retail Approved Gross YoY",
-    "previous_display": "-62.0%",
-    "corrected_display": "-62.2%",
-    "numerator": "-24153306",
-    "denominator": "38801466"
-  },
-  {
-    "metric_id": "kpi.total-approved-policies.yoy",
-    "report_area": "kpi",
-    "label": "Total Approved Policies YoY",
-    "previous_display": "-84.0%",
-    "corrected_display": "-84.1%",
-    "numerator": "-11771",
-    "denominator": "13993"
-  },
-  {
-    "metric_id": "kpi.total-policies.yoy",
-    "report_area": "kpi",
-    "label": "Total Policies YoY",
-    "previous_display": "-83.0%",
-    "corrected_display": "-83.2%",
-    "numerator": "-11640",
-    "denominator": "13993"
-  },
-  {
-    "metric_id": "lob.auto-mobility-vehicle-private-company-comprehensive.target_achievement",
-    "report_area": "lob",
-    "label": "Auto Mobility Vehicle Private Company Comprehensive Target Achievement",
-    "previous_display": "43.0%",
-    "corrected_display": "42.9%",
-    "numerator": "87419",
-    "denominator": "203963"
-  },
-  {
-    "metric_id": "lob.contact-home-plus.target_achievement",
-    "report_area": "lob",
-    "label": "Contact - Home Plus Target Achievement",
-    "previous_display": "0.0%",
-    "corrected_display": "0.2%",
-    "numerator": "904",
-    "denominator": "514150"
-  },
-  {
-    "metric_id": "lob.contact-replacement-key.target_achievement",
-    "report_area": "lob",
-    "label": "Contact – Replacement Key Target Achievement",
-    "previous_display": "0.0%",
-    "corrected_display": "0.1%",
-    "numerator": "600",
-    "denominator": "418875"
-  },
-  {
-    "metric_id": "lob.global-auto-vehicle-private-company-comprehensive.target_achievement",
-    "report_area": "lob",
-    "label": "Global Auto Vehicle Private Company Comprehensive Target Achievement",
-    "previous_display": "26.0%",
-    "corrected_display": "25.5%",
-    "numerator": "611708",
-    "denominator": "2395999"
-  },
-  {
-    "metric_id": "lob.group-medical-smes.target_achievement",
-    "report_area": "lob",
-    "label": "Group Medical - SMEs Target Achievement",
-    "previous_display": "8.0%",
-    "corrected_display": "7.6%",
-    "numerator": "93128",
-    "denominator": "1222525"
-  },
-  {
-    "metric_id": "lob.home-plus.target_achievement",
-    "report_area": "lob",
-    "label": "Home Plus Target Achievement",
-    "previous_display": "26.0%",
-    "corrected_display": "26.5%",
-    "numerator": "18400",
-    "denominator": "69563"
-  },
-  {
-    "metric_id": "lob.life-retail.target_achievement",
-    "report_area": "lob",
-    "label": "Life - Retail Target Achievement",
-    "previous_display": "123.0%",
-    "corrected_display": "122.9%",
-    "numerator": "115874",
-    "denominator": "94319"
-  },
-  {
-    "metric_id": "lob.medical-retail.target_achievement",
-    "report_area": "lob",
-    "label": "Medical - Retail Target Achievement",
-    "previous_display": "13.0%",
-    "corrected_display": "13.4%",
-    "numerator": "25618",
-    "denominator": "191105"
-  },
-  {
-    "metric_id": "lob.motor-vehicle-commercial-comprehensive.target_achievement",
-    "report_area": "lob",
-    "label": "Motor Vehicle Commercial Comprehensive Target Achievement",
-    "previous_display": "10.0%",
-    "corrected_display": "9.8%",
-    "numerator": "30000",
-    "denominator": "305469"
-  },
-  {
-    "metric_id": "lob.motor-vehicle-external-total-loss.target_achievement",
-    "report_area": "lob",
-    "label": "Motor Vehicle EXTERNAL - TOTAL LOSS Target Achievement",
-    "previous_display": "15.0%",
-    "corrected_display": "15.1%",
-    "numerator": "18896",
-    "denominator": "124991"
-  },
-  {
-    "metric_id": "lob.motor-vehicle-private-company-comprehensive.target_achievement",
-    "report_area": "lob",
-    "label": "Motor Vehicle Private Company Comprehensive Target Achievement",
-    "previous_display": "34.0%",
-    "corrected_display": "34.1%",
-    "numerator": "12593398",
-    "denominator": "36932925"
-  },
-  {
-    "metric_id": "lob.motor-vehicle-trucks-commercial-comprehensive.target_achievement",
-    "report_area": "lob",
-    "label": "Motor Vehicle Trucks Commercial Comprehensive Target Achievement",
-    "previous_display": "1.0%",
-    "corrected_display": "1.4%",
-    "numerator": "5550",
-    "denominator": "393693"
-  },
-  {
-    "metric_id": "lob.p-a-family-support.target_achievement",
-    "report_area": "lob",
-    "label": "P.A - Family Support Target Achievement",
-    "previous_display": "15.0%",
-    "corrected_display": "14.7%",
-    "numerator": "85250",
-    "denominator": "578500"
-  },
-  {
-    "metric_id": "lob.p-a-fawatery.target_achievement",
-    "report_area": "lob",
-    "label": "P.A- Fawatery Target Achievement",
-    "previous_display": "12.0%",
-    "corrected_display": "12.5%",
-    "numerator": "57850",
-    "denominator": "464063"
-  },
-  {
-    "metric_id": "lob.personal-accident.target_achievement",
-    "report_area": "lob",
-    "label": "Personal Accident Target Achievement",
-    "previous_display": "15.0%",
-    "corrected_display": "15.2%",
-    "numerator": "443450",
-    "denominator": "2912238"
-  },
-  {
-    "metric_id": "lob.road-assist.target_achievement",
-    "report_area": "lob",
-    "label": "Road Assist Target Achievement",
-    "previous_display": "18.0%",
-    "corrected_display": "17.9%",
-    "numerator": "96000",
-    "denominator": "536125"
-  },
-  {
-    "metric_id": "lob.sarwa-hayah-unit-link.target_achievement",
-    "report_area": "lob",
-    "label": "Sarwa Hayah Unit link Target Achievement",
-    "previous_display": "0.0%",
-    "corrected_display": "0.2%",
-    "numerator": "2800",
-    "denominator": "1414000"
-  },
-  {
-    "metric_id": "lob.small-medium-business-projects.target_achievement",
-    "report_area": "lob",
-    "label": "Small & Medium Business Projects Target Achievement",
-    "previous_display": "29.0%",
-    "corrected_display": "29.4%",
-    "numerator": "1800",
-    "denominator": "6125"
-  },
-  {
-    "metric_id": "lob.term-yrt.target_achievement",
-    "report_area": "lob",
-    "label": "Term (YRT) Target Achievement",
-    "previous_display": "162.0%",
-    "corrected_display": "162.4%",
-    "numerator": "361693",
-    "denominator": "222769"
-  },
-  {
-    "metric_id": "monthly.August.target_achievement",
-    "report_area": "monthly",
-    "label": "August Target Achievement",
-    "previous_display": "9.0%",
-    "corrected_display": "9.4%",
-    "numerator": "563975",
-    "denominator": "6008767.456"
-  },
-  {
-    "metric_id": "monthly.July.target_achievement",
-    "report_area": "monthly",
-    "label": "July Target Achievement",
-    "previous_display": "7.0%",
-    "corrected_display": "6.7%",
-    "numerator": "454981",
-    "denominator": "6810580.603"
-  },
-  {
     "metric_id": "seller-monthly.ali-mabrouk-ali-april.yoy",
     "report_area": "seller-monthly",
     "label": "Ali Mabrouk Ali April YoY",
@@ -1941,7 +1662,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "223283"
+    "denominator": "223282.715"
   },
   {
     "metric_id": "seller-monthly.ashraqat-mahmuod-hosny-qurashi-june.yoy",
@@ -2013,7 +1734,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "50863"
+    "denominator": "50862.5"
   },
   {
     "metric_id": "seller-monthly.hager-ali-ali-hassan-january.yoy",
@@ -2022,7 +1743,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "81888"
+    "denominator": "81887.5"
   },
   {
     "metric_id": "seller-monthly.hager-ali-ali-hassan-march.yoy",
@@ -2220,7 +1941,7 @@
     "previous_display": "-100.0%",
     "corrected_display": "N/A",
     "numerator": null,
-    "denominator": "361848"
+    "denominator": "361847.5"
   },
   {
     "metric_id": "seller-monthly.seham-kamal-hussein-el-sayed-april.yoy",
@@ -2239,15 +1960,6 @@
     "corrected_display": "N/A",
     "numerator": null,
     "denominator": "45712"
-  },
-  {
-    "metric_id": "seller-monthly.seham-kamal-hussein-el-sayed-january.yoy",
-    "report_area": "seller-monthly",
-    "label": "Seham Kamal Hussein El sayed January YoY",
-    "previous_display": "-2.9%",
-    "corrected_display": "-2.8%",
-    "numerator": "-3283",
-    "denominator": "115196"
   },
   {
     "metric_id": "seller-monthly.seham-kamal-hussein-el-sayed-july.yoy",

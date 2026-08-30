@@ -486,14 +486,14 @@ class MonthlySummaryWorkbookTests(unittest.TestCase):
         self.assertEqual(
             result["totals"],
             {
-                "premium_2026": 563975.0,
+                "premium_2026": 563975.49,
                 "pending_operation_paid": 12600.0,
-                "pending_not_paid": 129466.0,
+                "pending_not_paid": 129465.91,
                 "pending_finance": 79790.0,
             },
         )
         self.assertEqual(len(result["daily_rows"]), 16)
-        self.assertEqual(result["daily_rows"][0]["premium_2026"], 51600.0)
+        self.assertEqual(result["daily_rows"][0]["premium_2026"], 51599.91)
         self.assertEqual(result["daily_rows"][-1]["label"], "Aug 26")
         self.assertEqual(result["daily_rows"][-1]["pending_finance"], 0.0)
 
@@ -594,6 +594,12 @@ class DashboardTableTotalTests(unittest.TestCase):
             if months:
                 self.assertEqual(seller["new_policies"], sum((row["new_policies"] or 0) for row in months))
                 self.assertEqual(seller["renewal_policies"], sum((row["renewal_policies"] or 0) for row in months))
+
+    def test_renewal_policy_totals_reconcile_across_summary_tables(self):
+        expected = self.data["monthly_count_total"]["renewal_policies_2026"]
+
+        self.assertEqual(self.data["table_totals"]["insurers"]["renewal_policies_2026"], expected)
+        self.assertEqual(self.data["table_totals"]["lines_of_business"]["renewal_policies_2026"], expected)
 
     def test_missing_renewal_table_has_unavailable_data_quality_note(self):
         self.assertEqual(self.data["renewals"], [])
