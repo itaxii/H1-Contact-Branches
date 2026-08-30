@@ -14,7 +14,7 @@ window.REPORT_DATA = {
       "August"
     ],
     "latest_reporting_month": "August",
-    "last_updated": "2026-08-28",
+    "last_updated": "2026-08-30",
     "source": "Branch Report.xlsx",
     "generated_by": "analysis.py"
   },
@@ -58,11 +58,11 @@ window.REPORT_DATA = {
     "New Policies": {
       "label": "New Policies",
       "value_2025": 10981.0,
-      "value_2026": 1850.0,
-      "change": -9131.0,
-      "change_pct": -0.8315271833166378,
-      "source_change": -9131.0,
-      "source_change_pct": -0.83
+      "value_2026": 1724.0,
+      "change": -9257.0,
+      "change_pct": -0.8430015481285857,
+      "source_change": -9257.0,
+      "source_change_pct": -0.84
     },
     "Renewal Policies": {
       "label": "Renewal Policies",
@@ -15139,9 +15139,39 @@ window.REPORT_DATA = {
       "premium_2026": 1400.0
     },
     {
-      "branch": "Giza",
-      "month": "August",
-      "premium_2026": 205282.0
+      "branch": "Zamalek",
+      "month": "January",
+      "premium_2026": 355053.0
+    },
+    {
+      "branch": "Zamalek",
+      "month": "February",
+      "premium_2026": 28000.0
+    },
+    {
+      "branch": "Zamalek",
+      "month": "March",
+      "premium_2026": 205498.0
+    },
+    {
+      "branch": "Zamalek",
+      "month": "April",
+      "premium_2026": 463603.0
+    },
+    {
+      "branch": "Zamalek",
+      "month": "May",
+      "premium_2026": 222261.0
+    },
+    {
+      "branch": "Zamalek",
+      "month": "June",
+      "premium_2026": 178260.0
+    },
+    {
+      "branch": "Zamalek",
+      "month": "July",
+      "premium_2026": 1800.0
     },
     {
       "branch": "DownTown - 5th Settlement",
@@ -15179,51 +15209,6 @@ window.REPORT_DATA = {
       "premium_2026": 18520.0
     },
     {
-      "branch": "DownTown - 5th Settlement",
-      "month": "August",
-      "premium_2026": 75500.0
-    },
-    {
-      "branch": "Zamalek",
-      "month": "January",
-      "premium_2026": 355053.0
-    },
-    {
-      "branch": "Zamalek",
-      "month": "February",
-      "premium_2026": 28000.0
-    },
-    {
-      "branch": "Zamalek",
-      "month": "March",
-      "premium_2026": 205498.0
-    },
-    {
-      "branch": "Zamalek",
-      "month": "April",
-      "premium_2026": 463603.0
-    },
-    {
-      "branch": "Zamalek",
-      "month": "May",
-      "premium_2026": 222261.0
-    },
-    {
-      "branch": "Zamalek",
-      "month": "June",
-      "premium_2026": 178260.0
-    },
-    {
-      "branch": "Zamalek",
-      "month": "July",
-      "premium_2026": 1800.0
-    },
-    {
-      "branch": "Zamalek",
-      "month": "August",
-      "premium_2026": -32403.0
-    },
-    {
       "branch": "Maadi",
       "month": "January",
       "premium_2026": 25185.0
@@ -15257,11 +15242,6 @@ window.REPORT_DATA = {
       "branch": "Maadi",
       "month": "July",
       "premium_2026": 83631.0
-    },
-    {
-      "branch": "Maadi",
-      "month": "August",
-      "premium_2026": 4693.0
     },
     {
       "branch": "October",
@@ -15299,11 +15279,6 @@ window.REPORT_DATA = {
       "premium_2026": 15306.0
     },
     {
-      "branch": "October",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Asyut",
       "month": "January",
       "premium_2026": 168115.0
@@ -15337,91 +15312,6 @@ window.REPORT_DATA = {
       "branch": "Asyut",
       "month": "July",
       "premium_2026": 19200.0
-    },
-    {
-      "branch": "Asyut",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
-      "branch": "Misr El-Gedida",
-      "month": "January",
-      "premium_2026": 116300.0
-    },
-    {
-      "branch": "Misr El-Gedida",
-      "month": "February",
-      "premium_2026": 54274.0
-    },
-    {
-      "branch": "Misr El-Gedida",
-      "month": "March",
-      "premium_2026": 141605.0
-    },
-    {
-      "branch": "Misr El-Gedida",
-      "month": "April",
-      "premium_2026": 76846.0
-    },
-    {
-      "branch": "Misr El-Gedida",
-      "month": "May",
-      "premium_2026": 128291.0
-    },
-    {
-      "branch": "Misr El-Gedida",
-      "month": "June",
-      "premium_2026": 20400.0
-    },
-    {
-      "branch": "Misr El-Gedida",
-      "month": "July",
-      "premium_2026": 16500.0
-    },
-    {
-      "branch": "Misr El-Gedida",
-      "month": "August",
-      "premium_2026": 64300.0
-    },
-    {
-      "branch": "Tanta",
-      "month": "January",
-      "premium_2026": 84700.0
-    },
-    {
-      "branch": "Tanta",
-      "month": "February",
-      "premium_2026": 73880.0
-    },
-    {
-      "branch": "Tanta",
-      "month": "March",
-      "premium_2026": 45600.0
-    },
-    {
-      "branch": "Tanta",
-      "month": "April",
-      "premium_2026": 125000.0
-    },
-    {
-      "branch": "Tanta",
-      "month": "May",
-      "premium_2026": 162445.0
-    },
-    {
-      "branch": "Tanta",
-      "month": "June",
-      "premium_2026": 10241.0
-    },
-    {
-      "branch": "Tanta",
-      "month": "July",
-      "premium_2026": 1400.0
-    },
-    {
-      "branch": "Tanta",
-      "month": "August",
-      "premium_2026": 112660.0
     },
     {
       "branch": "Nasr City",
@@ -15459,9 +15349,74 @@ window.REPORT_DATA = {
       "premium_2026": 25420.0
     },
     {
-      "branch": "Nasr City",
-      "month": "August",
-      "premium_2026": null
+      "branch": "Misr El-Gedida",
+      "month": "January",
+      "premium_2026": 116300.0
+    },
+    {
+      "branch": "Misr El-Gedida",
+      "month": "February",
+      "premium_2026": 54274.0
+    },
+    {
+      "branch": "Misr El-Gedida",
+      "month": "March",
+      "premium_2026": 141605.0
+    },
+    {
+      "branch": "Misr El-Gedida",
+      "month": "April",
+      "premium_2026": 76846.0
+    },
+    {
+      "branch": "Misr El-Gedida",
+      "month": "May",
+      "premium_2026": 128291.0
+    },
+    {
+      "branch": "Misr El-Gedida",
+      "month": "June",
+      "premium_2026": 20400.0
+    },
+    {
+      "branch": "Misr El-Gedida",
+      "month": "July",
+      "premium_2026": 16500.0
+    },
+    {
+      "branch": "Tanta",
+      "month": "January",
+      "premium_2026": 84700.0
+    },
+    {
+      "branch": "Tanta",
+      "month": "February",
+      "premium_2026": 73880.0
+    },
+    {
+      "branch": "Tanta",
+      "month": "March",
+      "premium_2026": 45600.0
+    },
+    {
+      "branch": "Tanta",
+      "month": "April",
+      "premium_2026": 125000.0
+    },
+    {
+      "branch": "Tanta",
+      "month": "May",
+      "premium_2026": 162445.0
+    },
+    {
+      "branch": "Tanta",
+      "month": "June",
+      "premium_2026": 10241.0
+    },
+    {
+      "branch": "Tanta",
+      "month": "July",
+      "premium_2026": 1400.0
     },
     {
       "branch": "Dokki",
@@ -15496,11 +15451,6 @@ window.REPORT_DATA = {
     {
       "branch": "Dokki",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "Dokki",
-      "month": "August",
       "premium_2026": null
     },
     {
@@ -15539,11 +15489,6 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Alexandria Roshdy",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "El Mokattam",
       "month": "January",
       "premium_2026": 47041.0
@@ -15577,11 +15522,6 @@ window.REPORT_DATA = {
       "branch": "El Mokattam",
       "month": "July",
       "premium_2026": 26394.0
-    },
-    {
-      "branch": "El Mokattam",
-      "month": "August",
-      "premium_2026": null
     },
     {
       "branch": "Heliopolis",
@@ -15619,8 +15559,108 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Heliopolis",
-      "month": "August",
+      "branch": "Luxor",
+      "month": "January",
+      "premium_2026": 46301.0
+    },
+    {
+      "branch": "Luxor",
+      "month": "February",
+      "premium_2026": 72971.0
+    },
+    {
+      "branch": "Luxor",
+      "month": "March",
+      "premium_2026": 58102.0
+    },
+    {
+      "branch": "Luxor",
+      "month": "April",
+      "premium_2026": 57967.0
+    },
+    {
+      "branch": "Luxor",
+      "month": "May",
+      "premium_2026": 10138.0
+    },
+    {
+      "branch": "Luxor",
+      "month": "June",
+      "premium_2026": null
+    },
+    {
+      "branch": "Luxor",
+      "month": "July",
+      "premium_2026": 63478.0
+    },
+    {
+      "branch": "Mansoura",
+      "month": "January",
+      "premium_2026": 69430.0
+    },
+    {
+      "branch": "Mansoura",
+      "month": "February",
+      "premium_2026": null
+    },
+    {
+      "branch": "Mansoura",
+      "month": "March",
+      "premium_2026": null
+    },
+    {
+      "branch": "Mansoura",
+      "month": "April",
+      "premium_2026": 201101.0
+    },
+    {
+      "branch": "Mansoura",
+      "month": "May",
+      "premium_2026": 22200.0
+    },
+    {
+      "branch": "Mansoura",
+      "month": "June",
+      "premium_2026": null
+    },
+    {
+      "branch": "Mansoura",
+      "month": "July",
+      "premium_2026": 3817.0
+    },
+    {
+      "branch": "Beni Suef",
+      "month": "January",
+      "premium_2026": 197420.0
+    },
+    {
+      "branch": "Beni Suef",
+      "month": "February",
+      "premium_2026": 6750.0
+    },
+    {
+      "branch": "Beni Suef",
+      "month": "March",
+      "premium_2026": null
+    },
+    {
+      "branch": "Beni Suef",
+      "month": "April",
+      "premium_2026": 20600.0
+    },
+    {
+      "branch": "Beni Suef",
+      "month": "May",
+      "premium_2026": 56290.0
+    },
+    {
+      "branch": "Beni Suef",
+      "month": "June",
+      "premium_2026": null
+    },
+    {
+      "branch": "Beni Suef",
+      "month": "July",
       "premium_2026": null
     },
     {
@@ -15659,131 +15699,6 @@ window.REPORT_DATA = {
       "premium_2026": 40110.0
     },
     {
-      "branch": "Sohag",
-      "month": "August",
-      "premium_2026": 78714.0
-    },
-    {
-      "branch": "Luxor",
-      "month": "January",
-      "premium_2026": 46301.0
-    },
-    {
-      "branch": "Luxor",
-      "month": "February",
-      "premium_2026": 72971.0
-    },
-    {
-      "branch": "Luxor",
-      "month": "March",
-      "premium_2026": 58102.0
-    },
-    {
-      "branch": "Luxor",
-      "month": "April",
-      "premium_2026": 57967.0
-    },
-    {
-      "branch": "Luxor",
-      "month": "May",
-      "premium_2026": 10138.0
-    },
-    {
-      "branch": "Luxor",
-      "month": "June",
-      "premium_2026": null
-    },
-    {
-      "branch": "Luxor",
-      "month": "July",
-      "premium_2026": 63478.0
-    },
-    {
-      "branch": "Luxor",
-      "month": "August",
-      "premium_2026": 15774.0
-    },
-    {
-      "branch": "Mansoura",
-      "month": "January",
-      "premium_2026": 69430.0
-    },
-    {
-      "branch": "Mansoura",
-      "month": "February",
-      "premium_2026": null
-    },
-    {
-      "branch": "Mansoura",
-      "month": "March",
-      "premium_2026": null
-    },
-    {
-      "branch": "Mansoura",
-      "month": "April",
-      "premium_2026": 201101.0
-    },
-    {
-      "branch": "Mansoura",
-      "month": "May",
-      "premium_2026": 22200.0
-    },
-    {
-      "branch": "Mansoura",
-      "month": "June",
-      "premium_2026": null
-    },
-    {
-      "branch": "Mansoura",
-      "month": "July",
-      "premium_2026": 3817.0
-    },
-    {
-      "branch": "Mansoura",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
-      "branch": "Beni Suef",
-      "month": "January",
-      "premium_2026": 197420.0
-    },
-    {
-      "branch": "Beni Suef",
-      "month": "February",
-      "premium_2026": 6750.0
-    },
-    {
-      "branch": "Beni Suef",
-      "month": "March",
-      "premium_2026": null
-    },
-    {
-      "branch": "Beni Suef",
-      "month": "April",
-      "premium_2026": 20600.0
-    },
-    {
-      "branch": "Beni Suef",
-      "month": "May",
-      "premium_2026": 56290.0
-    },
-    {
-      "branch": "Beni Suef",
-      "month": "June",
-      "premium_2026": null
-    },
-    {
-      "branch": "Beni Suef",
-      "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "Beni Suef",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Hurghada",
       "month": "January",
       "premium_2026": 46077.0
@@ -15816,11 +15731,6 @@ window.REPORT_DATA = {
     {
       "branch": "Hurghada",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "Hurghada",
-      "month": "August",
       "premium_2026": null
     },
     {
@@ -15859,11 +15769,6 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Al Minufya",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Obour",
       "month": "January",
       "premium_2026": 34200.0
@@ -15896,11 +15801,6 @@ window.REPORT_DATA = {
     {
       "branch": "Obour",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "Obour",
-      "month": "August",
       "premium_2026": null
     },
     {
@@ -15939,9 +15839,39 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "El-Abaseya",
-      "month": "August",
+      "branch": "Madinaty",
+      "month": "January",
+      "premium_2026": 36323.0
+    },
+    {
+      "branch": "Madinaty",
+      "month": "February",
+      "premium_2026": 20703.0
+    },
+    {
+      "branch": "Madinaty",
+      "month": "March",
       "premium_2026": null
+    },
+    {
+      "branch": "Madinaty",
+      "month": "April",
+      "premium_2026": -5898.0
+    },
+    {
+      "branch": "Madinaty",
+      "month": "May",
+      "premium_2026": 77891.0
+    },
+    {
+      "branch": "Madinaty",
+      "month": "June",
+      "premium_2026": 700.0
+    },
+    {
+      "branch": "Madinaty",
+      "month": "July",
+      "premium_2026": 51300.0
     },
     {
       "branch": "Aswan",
@@ -15979,51 +15909,6 @@ window.REPORT_DATA = {
       "premium_2026": 6508.0
     },
     {
-      "branch": "Aswan",
-      "month": "August",
-      "premium_2026": 12455.0
-    },
-    {
-      "branch": "Madinaty",
-      "month": "January",
-      "premium_2026": 36323.0
-    },
-    {
-      "branch": "Madinaty",
-      "month": "February",
-      "premium_2026": 20703.0
-    },
-    {
-      "branch": "Madinaty",
-      "month": "March",
-      "premium_2026": null
-    },
-    {
-      "branch": "Madinaty",
-      "month": "April",
-      "premium_2026": -5898.0
-    },
-    {
-      "branch": "Madinaty",
-      "month": "May",
-      "premium_2026": 77891.0
-    },
-    {
-      "branch": "Madinaty",
-      "month": "June",
-      "premium_2026": 700.0
-    },
-    {
-      "branch": "Madinaty",
-      "month": "July",
-      "premium_2026": 51300.0
-    },
-    {
-      "branch": "Madinaty",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Zahraa Al-Maadi",
       "month": "January",
       "premium_2026": 32864.0
@@ -16056,11 +15941,6 @@ window.REPORT_DATA = {
     {
       "branch": "Zahraa Al-Maadi",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "Zahraa Al-Maadi",
-      "month": "August",
       "premium_2026": null
     },
     {
@@ -16099,11 +15979,6 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Dubai",
-      "month": "August",
-      "premium_2026": 27000.0
-    },
-    {
       "branch": "Sadat City",
       "month": "January",
       "premium_2026": 19340.0
@@ -16136,11 +16011,6 @@ window.REPORT_DATA = {
     {
       "branch": "Sadat City",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "Sadat City",
-      "month": "August",
       "premium_2026": null
     },
     {
@@ -16179,11 +16049,6 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Kafr el Sheikh",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Port Said",
       "month": "January",
       "premium_2026": 27300.0
@@ -16216,11 +16081,6 @@ window.REPORT_DATA = {
     {
       "branch": "Port Said",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "Port Said",
-      "month": "August",
       "premium_2026": null
     },
     {
@@ -16259,11 +16119,6 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Alexandria - Ring Road",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Rehab",
       "month": "January",
       "premium_2026": null
@@ -16297,11 +16152,6 @@ window.REPORT_DATA = {
       "branch": "Rehab",
       "month": "July",
       "premium_2026": 35478.0
-    },
-    {
-      "branch": "Rehab",
-      "month": "August",
-      "premium_2026": null
     },
     {
       "branch": "Zagazig",
@@ -16339,11 +16189,6 @@ window.REPORT_DATA = {
       "premium_2026": 700.0
     },
     {
-      "branch": "Zagazig",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Qena",
       "month": "January",
       "premium_2026": 35633.0
@@ -16376,11 +16221,6 @@ window.REPORT_DATA = {
     {
       "branch": "Qena",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "Qena",
-      "month": "August",
       "premium_2026": null
     },
     {
@@ -16419,11 +16259,6 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Alexandria Corniche",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Benha",
       "month": "January",
       "premium_2026": null
@@ -16459,11 +16294,6 @@ window.REPORT_DATA = {
       "premium_2026": 24009.0
     },
     {
-      "branch": "Benha",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Minya",
       "month": "January",
       "premium_2026": 4200.0
@@ -16496,11 +16326,6 @@ window.REPORT_DATA = {
     {
       "branch": "Minya",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "Minya",
-      "month": "August",
       "premium_2026": null
     },
     {
@@ -16539,11 +16364,6 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Suez",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "El-Mahalla El-Kubra",
       "month": "January",
       "premium_2026": null
@@ -16579,11 +16399,6 @@ window.REPORT_DATA = {
       "premium_2026": 17100.0
     },
     {
-      "branch": "El-Mahalla El-Kubra",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Sharm El Sheikh",
       "month": "January",
       "premium_2026": null
@@ -16616,11 +16431,6 @@ window.REPORT_DATA = {
     {
       "branch": "Sharm El Sheikh",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "Sharm El Sheikh",
-      "month": "August",
       "premium_2026": null
     },
     {
@@ -16659,11 +16469,6 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Shubra",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "City Stars Mall",
       "month": "January",
       "premium_2026": null
@@ -16696,11 +16501,6 @@ window.REPORT_DATA = {
     {
       "branch": "City Stars Mall",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "City Stars Mall",
-      "month": "August",
       "premium_2026": null
     },
     {
@@ -16739,11 +16539,6 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Damanhur",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Abu Kibir",
       "month": "January",
       "premium_2026": null
@@ -16776,11 +16571,6 @@ window.REPORT_DATA = {
     {
       "branch": "Abu Kibir",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "Abu Kibir",
-      "month": "August",
       "premium_2026": null
     },
     {
@@ -16819,11 +16609,6 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Haram",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Alex-El-Agamy",
       "month": "January",
       "premium_2026": 3336.0
@@ -16856,11 +16641,6 @@ window.REPORT_DATA = {
     {
       "branch": "Alex-El-Agamy",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "Alex-El-Agamy",
-      "month": "August",
       "premium_2026": null
     },
     {
@@ -16899,11 +16679,6 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "El-Bahr El-Aazam",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Shubra Al-Khaymah",
       "month": "January",
       "premium_2026": null
@@ -16936,11 +16711,6 @@ window.REPORT_DATA = {
     {
       "branch": "Shubra Al-Khaymah",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "Shubra Al-Khaymah",
-      "month": "August",
       "premium_2026": null
     },
     {
@@ -16979,11 +16749,6 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Faiyum",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Ismailia",
       "month": "January",
       "premium_2026": 7745.0
@@ -17019,11 +16784,6 @@ window.REPORT_DATA = {
       "premium_2026": 2908.0
     },
     {
-      "branch": "Ismailia",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "El-Zaytoun",
       "month": "January",
       "premium_2026": null
@@ -17056,11 +16816,6 @@ window.REPORT_DATA = {
     {
       "branch": "El-Zaytoun",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "El-Zaytoun",
-      "month": "August",
       "premium_2026": null
     },
     {
@@ -17099,11 +16854,6 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "New Damietta",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "6 October - Low Income",
       "month": "January",
       "premium_2026": 4400.0
@@ -17136,11 +16886,6 @@ window.REPORT_DATA = {
     {
       "branch": "6 October - Low Income",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "6 October - Low Income",
-      "month": "August",
       "premium_2026": null
     },
     {
@@ -17179,11 +16924,6 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Damietta",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Talaat Harb",
       "month": "January",
       "premium_2026": null
@@ -17219,11 +16959,6 @@ window.REPORT_DATA = {
       "premium_2026": null
     },
     {
-      "branch": "Talaat Harb",
-      "month": "August",
-      "premium_2026": null
-    },
-    {
       "branch": "Minouf",
       "month": "January",
       "premium_2026": null
@@ -17256,11 +16991,6 @@ window.REPORT_DATA = {
     {
       "branch": "Minouf",
       "month": "July",
-      "premium_2026": null
-    },
-    {
-      "branch": "Minouf",
-      "month": "August",
       "premium_2026": null
     }
   ],
@@ -22666,6 +22396,8 @@ window.REPORT_DATA = {
       "insurance_company": "Sarwa Insurance Company",
       "premium_2025": 17853207.0,
       "premium_2026": 8582398.0,
+      "new_premium": 5134734.0,
+      "renewal_premium": 3428912.0,
       "yoy_change": -9270809.0,
       "yoy_change_pct": -0.5192797574127719,
       "source_yoy_change": -9270809.0,
@@ -22681,6 +22413,8 @@ window.REPORT_DATA = {
       "insurance_company": "Al Wataniya Insurance",
       "premium_2025": 4075988.0,
       "premium_2026": 1346098.0,
+      "new_premium": 361151.0,
+      "renewal_premium": 947512.0,
       "yoy_change": -2729890.0,
       "yoy_change_pct": -0.6697492730596851,
       "source_yoy_change": -2729891.0,
@@ -22696,6 +22430,8 @@ window.REPORT_DATA = {
       "insurance_company": "Mohandes Insurance Co.",
       "premium_2025": 6626919.0,
       "premium_2026": 1017765.0,
+      "new_premium": 28694.0,
+      "renewal_premium": 990042.0,
       "yoy_change": -5609154.0,
       "yoy_change_pct": -0.8464195805018894,
       "source_yoy_change": -5609154.0,
@@ -22711,6 +22447,8 @@ window.REPORT_DATA = {
       "insurance_company": "Misr Takaful Insurance",
       "premium_2025": 3184567.0,
       "premium_2026": 987291.0,
+      "new_premium": 455825.0,
+      "renewal_premium": 493236.0,
       "yoy_change": -2197276.0,
       "yoy_change_pct": -0.6899763766942256,
       "source_yoy_change": -2197276.0,
@@ -22726,6 +22464,8 @@ window.REPORT_DATA = {
       "insurance_company": "Salama Takaful Insurance Egypt",
       "premium_2025": 806376.0,
       "premium_2026": 857968.0,
+      "new_premium": 295446.0,
+      "renewal_premium": 582514.0,
       "yoy_change": 51592.0,
       "yoy_change_pct": 0.06398007877218569,
       "source_yoy_change": 51592.0,
@@ -22741,6 +22481,8 @@ window.REPORT_DATA = {
       "insurance_company": "Arab Misr Insurance Group (GIG)",
       "premium_2025": 1828562.0,
       "premium_2026": 857291.0,
+      "new_premium": 268642.0,
+      "renewal_premium": 610525.0,
       "yoy_change": -971271.0,
       "yoy_change_pct": -0.5311665669526109,
       "source_yoy_change": -971272.0,
@@ -22756,6 +22498,8 @@ window.REPORT_DATA = {
       "insurance_company": "Orient Takaful Insurance Company - Egypt",
       "premium_2025": 2038172.0,
       "premium_2026": 814381.0,
+      "new_premium": null,
+      "renewal_premium": 814381.0,
       "yoy_change": -1223791.0,
       "yoy_change_pct": -0.6004355863980076,
       "source_yoy_change": -1223791.0,
@@ -22771,6 +22515,8 @@ window.REPORT_DATA = {
       "insurance_company": "Sarwa Life Insurance Company",
       "premium_2025": 2406369.0,
       "premium_2026": 474878.0,
+      "new_premium": 152931.0,
+      "renewal_premium": 321948.0,
       "yoy_change": -1931491.0,
       "yoy_change_pct": -0.8026578633617704,
       "source_yoy_change": -1931491.0,
@@ -22786,6 +22532,8 @@ window.REPORT_DATA = {
       "insurance_company": "Allianz Egypt",
       "premium_2025": null,
       "premium_2026": 151615.0,
+      "new_premium": 151615.0,
+      "renewal_premium": null,
       "yoy_change": null,
       "yoy_change_pct": null,
       "source_yoy_change": 151615.0,
@@ -22801,6 +22549,8 @@ window.REPORT_DATA = {
       "insurance_company": "Royal Insurance Egypt",
       "premium_2025": 1029494.0,
       "premium_2026": 134300.0,
+      "new_premium": 94700.0,
+      "renewal_premium": 39600.0,
       "yoy_change": -895194.0,
       "yoy_change_pct": -0.8695475641431616,
       "source_yoy_change": -895194.0,
@@ -22816,6 +22566,8 @@ window.REPORT_DATA = {
       "insurance_company": "AXA Egypt Life Insurance",
       "premium_2025": 145789.0,
       "premium_2026": 15620.0,
+      "new_premium": 15620.0,
+      "renewal_premium": null,
       "yoy_change": -130169.0,
       "yoy_change_pct": -0.8928588576641585,
       "source_yoy_change": -130169.0,
@@ -22831,6 +22583,8 @@ window.REPORT_DATA = {
       "insurance_company": "Libano Suisse Takaful Egypt",
       "premium_2025": 7095.0,
       "premium_2026": 9999.0,
+      "new_premium": null,
+      "renewal_premium": 9999.0,
       "yoy_change": 2904.0,
       "yoy_change_pct": 0.40930232558139534,
       "source_yoy_change": 2904.0,
@@ -22846,6 +22600,8 @@ window.REPORT_DATA = {
       "insurance_company": "Mohandes Life Insurance Co.",
       "premium_2025": null,
       "premium_2026": 5489.0,
+      "new_premium": 5489.0,
+      "renewal_premium": null,
       "yoy_change": null,
       "yoy_change_pct": null,
       "source_yoy_change": 5489.0,
@@ -22861,6 +22617,8 @@ window.REPORT_DATA = {
       "insurance_company": "Egyptian Takaful",
       "premium_2025": 102015.0,
       "premium_2026": null,
+      "new_premium": null,
+      "renewal_premium": null,
       "yoy_change": null,
       "yoy_change_pct": null,
       "source_yoy_change": -102015.0,
@@ -22883,6 +22641,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -16952942.0,
       "new_premium": 5717330.0,
       "renewal_premium": 6826435.0,
+      "new_policies_2026": 160.0,
+      "renewal_policies_2026": 324.0,
       "endorsement_premium": 49633.0,
       "motor_premium": 12593398.0,
       "non_motor_premium": null,
@@ -22903,6 +22663,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -1886340.0,
       "new_premium": 426800.0,
       "renewal_premium": 16650.0,
+      "new_policies_2026": 947.0,
+      "renewal_policies_2026": 36.0,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 443450.0,
@@ -22923,6 +22685,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -1305092.0,
       "new_premium": 144658.0,
       "renewal_premium": 467050.0,
+      "new_policies_2026": 2.0,
+      "renewal_policies_2026": 6.0,
       "endorsement_premium": 0.0,
       "motor_premium": 611708.0,
       "non_motor_premium": null,
@@ -22943,6 +22707,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -1128400.0,
       "new_premium": null,
       "renewal_premium": 2800.0,
+      "new_policies_2026": null,
+      "renewal_policies_2026": 4.0,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 2800.0,
@@ -22963,6 +22729,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -884892.0,
       "new_premium": null,
       "renewal_premium": 93128.0,
+      "new_policies_2026": null,
+      "renewal_policies_2026": 1.0,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 93128.0,
@@ -22983,6 +22751,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -619500.0,
       "new_premium": 120400.0,
       "renewal_premium": null,
+      "new_policies_2026": 172.0,
+      "renewal_policies_2026": null,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 120400.0,
@@ -23003,6 +22773,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -410416.0,
       "new_premium": 904.0,
       "renewal_premium": null,
+      "new_policies_2026": 2.0,
+      "renewal_policies_2026": null,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 904.0,
@@ -23023,6 +22795,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -377550.0,
       "new_premium": 83600.0,
       "renewal_premium": 1650.0,
+      "new_policies_2026": 152.0,
+      "renewal_policies_2026": 3.0,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 85250.0,
@@ -23043,6 +22817,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -334500.0,
       "new_premium": 600.0,
       "renewal_premium": null,
+      "new_policies_2026": 2.0,
+      "renewal_policies_2026": null,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 600.0,
@@ -23063,6 +22839,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -332900.0,
       "new_premium": 88200.0,
       "renewal_premium": 7800.0,
+      "new_policies_2026": 147.0,
+      "renewal_policies_2026": 13.0,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 96000.0,
@@ -23083,6 +22861,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -313400.0,
       "new_premium": 57200.0,
       "renewal_premium": 650.0,
+      "new_policies_2026": 88.0,
+      "renewal_policies_2026": 1.0,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 57850.0,
@@ -23103,6 +22883,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -309404.0,
       "new_premium": 5550.0,
       "renewal_premium": null,
+      "new_policies_2026": 1.0,
+      "renewal_policies_2026": null,
       "endorsement_premium": 0.0,
       "motor_premium": 5550.0,
       "non_motor_premium": null,
@@ -23123,6 +22905,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -214375.0,
       "new_premium": 30000.0,
       "renewal_premium": null,
+      "new_policies_2026": 1.0,
+      "renewal_policies_2026": null,
       "endorsement_premium": null,
       "motor_premium": 30000.0,
       "non_motor_premium": null,
@@ -23143,6 +22927,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -127265.0,
       "new_premium": 15620.0,
       "renewal_premium": 9999.0,
+      "new_policies_2026": 1.0,
+      "renewal_policies_2026": 1.0,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 25618.0,
@@ -23163,6 +22949,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -81097.0,
       "new_premium": null,
       "renewal_premium": 20768.0,
+      "new_policies_2026": null,
+      "renewal_policies_2026": 8.0,
       "endorsement_premium": -1872.0,
       "motor_premium": 18896.0,
       "non_motor_premium": null,
@@ -23183,6 +22971,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -75751.0,
       "new_premium": 37215.0,
       "renewal_premium": 46387.0,
+      "new_policies_2026": 2.0,
+      "renewal_policies_2026": 3.0,
       "endorsement_premium": 3817.0,
       "motor_premium": 87419.0,
       "non_motor_premium": null,
@@ -23203,6 +22993,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -47480.0,
       "new_premium": null,
       "renewal_premium": null,
+      "new_policies_2026": null,
+      "renewal_policies_2026": null,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": null,
@@ -23223,6 +23015,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -43450.0,
       "new_premium": 550.0,
       "renewal_premium": null,
+      "new_policies_2026": 1.0,
+      "renewal_policies_2026": null,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 550.0,
@@ -23243,6 +23037,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -41947.0,
       "new_premium": null,
       "renewal_premium": null,
+      "new_policies_2026": null,
+      "renewal_policies_2026": null,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": null,
@@ -23263,6 +23059,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -37250.0,
       "new_premium": 18400.0,
       "renewal_premium": null,
+      "new_policies_2026": 26.0,
+      "renewal_policies_2026": null,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 18400.0,
@@ -23283,6 +23081,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -20079.0,
       "new_premium": null,
       "renewal_premium": null,
+      "new_policies_2026": null,
+      "renewal_policies_2026": null,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": null,
@@ -23303,6 +23103,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -8500.0,
       "new_premium": null,
       "renewal_premium": null,
+      "new_policies_2026": null,
+      "renewal_policies_2026": null,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": null,
@@ -23323,6 +23125,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -3100.0,
       "new_premium": null,
       "renewal_premium": 1800.0,
+      "new_policies_2026": null,
+      "renewal_policies_2026": 1.0,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 1800.0,
@@ -23343,6 +23147,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -1532.0,
       "new_premium": null,
       "renewal_premium": null,
+      "new_policies_2026": null,
+      "renewal_policies_2026": null,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": null,
@@ -23363,6 +23169,8 @@ window.REPORT_DATA = {
       "source_yoy_change": 4400.0,
       "new_premium": 4400.0,
       "renewal_premium": null,
+      "new_policies_2026": 1.0,
+      "renewal_policies_2026": null,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 4400.0,
@@ -23383,6 +23191,8 @@ window.REPORT_DATA = {
       "source_yoy_change": 40419.0,
       "new_premium": 46412.0,
       "renewal_premium": 69462.0,
+      "new_policies_2026": 6.0,
+      "renewal_policies_2026": 8.0,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 115874.0,
@@ -23403,6 +23213,8 @@ window.REPORT_DATA = {
       "source_yoy_change": 55000.0,
       "new_premium": 55000.0,
       "renewal_premium": null,
+      "new_policies_2026": 1.0,
+      "renewal_policies_2026": null,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 55000.0,
@@ -23423,6 +23235,8 @@ window.REPORT_DATA = {
       "source_yoy_change": 183478.0,
       "new_premium": 112007.0,
       "renewal_premium": 249686.0,
+      "new_policies_2026": 12.0,
+      "renewal_policies_2026": 15.0,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 361693.0,
@@ -23443,6 +23257,8 @@ window.REPORT_DATA = {
       "source_yoy_change": 424403.0,
       "new_premium": null,
       "renewal_premium": 424403.0,
+      "new_policies_2026": null,
+      "renewal_policies_2026": 1.0,
       "endorsement_premium": null,
       "motor_premium": null,
       "non_motor_premium": 424403.0,
@@ -24357,6 +24173,8 @@ window.REPORT_DATA = {
       "insurance_company": "Grand Total",
       "premium_2025": 40104553.0,
       "premium_2026": 15255091.0,
+      "new_premium": 6964846.0,
+      "renewal_premium": 8238668.0,
       "yoy_change": -24849462.0,
       "yoy_change_pct": -0.6196169796481711,
       "source_yoy_change": -24849462.0,
@@ -24366,7 +24184,8 @@ window.REPORT_DATA = {
       "other_policies_2026": 76.0,
       "growth_class": "Grand Total",
       "avg_premium_per_policy": null,
-      "share_2026_pct": 1.0
+      "share_2026_pct": 1.0,
+      "renewal_mix_pct": 0.5400602330068041
     },
     "lines_of_business": {
       "line_of_business": "Grand Total",
@@ -24377,6 +24196,8 @@ window.REPORT_DATA = {
       "source_yoy_change": -24849462.0,
       "new_premium": 6964846.0,
       "renewal_premium": 8238668.0,
+      "new_policies_2026": 1724.0,
+      "renewal_policies_2026": 425.0,
       "endorsement_premium": 51578.0,
       "motor_premium": 13346970.0,
       "non_motor_premium": 1908121.0,
@@ -24532,14 +24353,14 @@ window.REPORT_DATA = {
       "metric_id": "kpi.new-policies.yoy",
       "label": "New Policies YoY",
       "report_area": "kpi",
-      "numerator": "-9131",
+      "numerator": "-9257",
       "denominator": "10981",
-      "value": "-0.8315271833166378289773244695",
-      "display": "-83.2%",
+      "value": "-0.8430015481285857390037337219",
+      "display": "-84.3%",
       "decimals": 1,
-      "source_rate": "-0.83",
-      "source_display": "-83.0%",
-      "value_numeric": -0.8315271833166378
+      "source_rate": "-0.84",
+      "source_display": "-84.0%",
+      "value_numeric": -0.8430015481285857
     },
     "kpi.renewal-policies.yoy": {
       "metric_id": "kpi.renewal-policies.yoy",
@@ -53154,6 +52975,19 @@ window.REPORT_DATA = {
       "source_display": null,
       "value_numeric": 1.0
     },
+    "table-total.insurers.renewal_mix": {
+      "metric_id": "table-total.insurers.renewal_mix",
+      "label": "Insurers Grand Total Renewal Mix",
+      "report_area": "table-total",
+      "numerator": "8238668",
+      "denominator": "15255091",
+      "value": "0.540060233006804089205367572",
+      "display": "54.0%",
+      "decimals": 1,
+      "source_rate": null,
+      "source_display": null,
+      "value_numeric": 0.5400602330068041
+    },
     "table-total.lines-of-business.yoy": {
       "metric_id": "table-total.lines-of-business.yoy",
       "label": "Lines Of Business Grand Total YoY",
@@ -53578,7 +53412,7 @@ window.REPORT_DATA = {
       }
     ],
     "percentage_checks": {
-      "checked": 2225,
+      "checked": 2226,
       "failures": []
     },
     "blocking_failures": [],
