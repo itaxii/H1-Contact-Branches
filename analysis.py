@@ -749,6 +749,8 @@ def extract_insurers(df):
         "insurance_company": ("Insurance Company",),
         "premium_2025": ("2025",),
         "premium_2026": ("2026",),
+        "new_premium": ("New Premiums 2026",),
+        "renewal_premium": ("Renewal Premiums 2026", "Renewal Premuims 2026"),
         "source_yoy_change": ("2025 VS 2026 YOY",),
         "source_yoy_change_pct": ("Gross YoY Change %",),
         "new_policies_2026": ("New Policies 2026",),
@@ -811,6 +813,8 @@ def extract_insurers(df):
             "insurance_company": name,
             "premium_2025": premium_2025,
             "premium_2026": premium_2026,
+            "new_premium": parse_number(df.iat[ridx, columns["new_premium"]]),
+            "renewal_premium": parse_number(df.iat[ridx, columns["renewal_premium"]]),
             "yoy_change": premium_2026 - premium_2025 if premium_2026 is not None and premium_2025 is not None else None,
             "yoy_change_pct": safe_yoy(premium_2026, premium_2025),
             "source_yoy_change": parse_number(df.iat[ridx, columns["source_yoy_change"]]),
@@ -839,6 +843,22 @@ def extract_insurers(df):
 
 
 def extract_lob_totals(df):
+    field_aliases = {
+        "line_of_business": ("Month", "Line of Business"),
+        "premium_2025": ("2025",),
+        "target_2026": ("Target ( 2025 + 25%)", "Target"),
+        "premium_2026": ("2026",),
+        "source_target_achievement_pct": ("Target Achievement %",),
+        "source_yoy_change": ("2025 VS 2026 YOY",),
+        "new_premium": ("New Premiums 2026",),
+        "renewal_premium": ("Renewal Premiums 2026", "Renewal Premuims 2026"),
+        "new_policies_2026": ("New Policies 2026",),
+        "renewal_policies_2026": ("Renewal Policies 2026", "Renewal Policies"),
+        "endorsement_premium": ("Endorsement Premiums 2026",),
+        "motor_premium": ("Motor Premiums 2026",),
+        "non_motor_premium": ("Non-Motor Premiums 2026",),
+        "pending_finance": ("Pending Finance",),
+    }
     records = []
     total = None
     start = find_row(df, "Line of Business", col=2)
@@ -849,25 +869,40 @@ def extract_lob_totals(df):
     header_row = find_row(df, "Month", start=start, col=2)
     if header_row is None:
         header_row = start
+    headers = {
+        normalize_header(df.iat[header_row, cidx]): cidx
+        for cidx in range(df.shape[1])
+        if normalize_header(df.iat[header_row, cidx])
+    }
+    columns = {}
+    for key, aliases in field_aliases.items():
+        columns[key] = next(
+            (headers[normalize_header(alias)] for alias in aliases if normalize_header(alias) in headers),
+            None,
+        )
+        if columns[key] is None:
+            raise ValueError(f"Missing column '{aliases[0]}' in Line of Business table")
     for ridx in range(header_row + 1, len(df)):
-        lob = clean_name(df.iat[ridx, 2])
+        lob = clean_name(df.iat[ridx, columns["line_of_business"]])
         if not lob:
             if records:
                 break
             continue
         rec = {
             "line_of_business": lob,
-            "premium_2025": parse_number(df.iat[ridx, 3]),
-            "target_2026": parse_number(df.iat[ridx, 4]),
-            "premium_2026": parse_number(df.iat[ridx, 5]),
-            "source_target_achievement_pct": parse_percent(df.iat[ridx, 6]),
-            "source_yoy_change": parse_number(df.iat[ridx, 7]),
-            "new_premium": parse_number(df.iat[ridx, 8]),
-            "renewal_premium": parse_number(df.iat[ridx, 9]),
-            "endorsement_premium": parse_number(df.iat[ridx, 10]),
-            "motor_premium": parse_number(df.iat[ridx, 11]),
-            "non_motor_premium": parse_number(df.iat[ridx, 12]),
-            "pending_finance": parse_number(df.iat[ridx, 13]),
+            "premium_2025": parse_number(df.iat[ridx, columns["premium_2025"]]),
+            "target_2026": parse_number(df.iat[ridx, columns["target_2026"]]),
+            "premium_2026": parse_number(df.iat[ridx, columns["premium_2026"]]),
+            "source_target_achievement_pct": parse_percent(df.iat[ridx, columns["source_target_achievement_pct"]]),
+            "source_yoy_change": parse_number(df.iat[ridx, columns["source_yoy_change"]]),
+            "new_premium": parse_number(df.iat[ridx, columns["new_premium"]]),
+            "renewal_premium": parse_number(df.iat[ridx, columns["renewal_premium"]]),
+            "new_policies_2026": parse_number(df.iat[ridx, columns["new_policies_2026"]]),
+            "renewal_policies_2026": parse_number(df.iat[ridx, columns["renewal_policies_2026"]]),
+            "endorsement_premium": parse_number(df.iat[ridx, columns["endorsement_premium"]]),
+            "motor_premium": parse_number(df.iat[ridx, columns["motor_premium"]]),
+            "non_motor_premium": parse_number(df.iat[ridx, columns["non_motor_premium"]]),
+            "pending_finance": parse_number(df.iat[ridx, columns["pending_finance"]]),
         }
         rec["yoy_change"] = (
             rec["premium_2026"] - rec["premium_2025"]

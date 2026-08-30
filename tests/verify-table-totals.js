@@ -64,9 +64,14 @@ async function main() {
     assert.deepEqual(await page.locator("#monthlyTable thead th").allTextContents(), expectedAmountHeaders);
     assert.deepEqual(await page.locator("#monthlyCountTable thead th").allTextContents(), expectedCountHeaders);
     const insurerHeaders = await page.locator("#insurerTable thead th").allTextContents();
+    assert.ok(insurerHeaders.includes("New Premiums 2026"));
+    assert.ok(insurerHeaders.includes("Renewal Premiums 2026"));
     assert.ok(insurerHeaders.includes("New Policies 2026"));
     assert.ok(insurerHeaders.includes("Renewal Policies 2026"));
     assert.ok(insurerHeaders.includes("Other Policies 2026"));
+    const lobHeaders = await page.locator("#lobTable thead th").allTextContents();
+    assert.ok(lobHeaders.includes("New Policies 2026"));
+    assert.ok(lobHeaders.includes("Renewal Policies 2026"));
 
     for (const id of ["monthlyTable", "monthlyCountTable", "branchTable", "sellerTable", "insurerTable", "lobTable"]) {
       assert.equal(await page.locator(`#${id} tfoot tr`).count(), 1, `${id} needs one total row`);

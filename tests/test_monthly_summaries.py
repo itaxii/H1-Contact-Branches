@@ -164,8 +164,23 @@ def build_insurer_fixture():
         "Gross YoY Change %", "New Policies 2026", "Renewal Policies 2026",
         "Other Policies 2026",
     ]
-    rows[2][2:16] = ["Insurer A", 100, 200, 0, 0, 0, 0, 0, 0, 100, 1, 4, 3, 2]
-    rows[3][2:16] = ["Grand Total", 100, 200, 0, 0, 0, 0, 0, 0, 100, 1, 4, 3, 2]
+    rows[2][2:16] = ["Insurer A", 100, 200, 0, 0, 0, 70, 100, 30, 100, 1, 4, 3, 2]
+    rows[3][2:16] = ["Grand Total", 100, 200, 0, 0, 0, 70, 100, 30, 100, 1, 4, 3, 2]
+    return pd.DataFrame(rows)
+
+
+def build_lob_fixture():
+    rows = [[None] * 18 for _ in range(6)]
+    rows[0][2] = "Line of Business"
+    rows[1][2:16] = [
+        "Month", "2025", "Target ( 2025 + 25%)", "2026",
+        "Target Achievement %", "2025 VS 2026 YOY", "New Premiums 2026",
+        "Renewal Premuims 2026", "New Policies 2026", "Renewal Policies",
+        "Endorsement Premiums 2026", "Motor Premiums 2026",
+        "Non-Motor Premiums 2026", "Pending Finance",
+    ]
+    rows[2][2:16] = ["Motor", 100, 125, 110, 0.88, 10, 60, 40, 3, 2, 10, 90, 20, 5]
+    rows[3][2:16] = ["Grand Total", 100, 125, 110, 0.88, 10, 60, 40, 3, 2, 10, 90, 20, 5]
     return pd.DataFrame(rows)
 
 
@@ -271,10 +286,26 @@ class MonthlySummaryExtractionTests(unittest.TestCase):
     def test_insurer_policy_counts_are_mapped_by_header(self):
         rows, total = extract_insurers(build_insurer_fixture())
 
+        self.assertEqual(rows[0]["new_premium"], 70)
+        self.assertEqual(rows[0]["renewal_premium"], 100)
         self.assertEqual(rows[0]["new_policies_2026"], 4)
         self.assertEqual(rows[0]["renewal_policies_2026"], 3)
         self.assertEqual(rows[0]["other_policies_2026"], 2)
+        self.assertEqual(total["new_premium"], 70)
+        self.assertEqual(total["renewal_premium"], 100)
         self.assertEqual(total["other_policies_2026"], 2)
+
+    def test_lob_policy_counts_and_shifted_metrics_are_mapped_by_header(self):
+        rows, total = extract_lob_totals(build_lob_fixture())
+
+        self.assertEqual(rows[0]["new_policies_2026"], 3)
+        self.assertEqual(rows[0]["renewal_policies_2026"], 2)
+        self.assertEqual(rows[0]["endorsement_premium"], 10)
+        self.assertEqual(rows[0]["motor_premium"], 90)
+        self.assertEqual(rows[0]["non_motor_premium"], 20)
+        self.assertEqual(rows[0]["pending_finance"], 5)
+        self.assertEqual(total["new_policies_2026"], 3)
+        self.assertEqual(total["renewal_policies_2026"], 2)
 
     def test_status_summary_is_not_parsed_as_renewal_policy_data(self):
         self.assertEqual(extract_renewals(build_status_summary_fixture()), [])
@@ -528,9 +559,35 @@ class DashboardTableTotalTests(unittest.TestCase):
 
     def test_latest_workbook_policy_counts_are_serialized_and_reconciled(self):
         for insurer in self.data["insurers"]:
+            self.assertIn("new_premium", insurer)
+            self.assertIn("renewal_premium", insurer)
             self.assertIn("new_policies_2026", insurer)
             self.assertIn("renewal_policies_2026", insurer)
             self.assertIn("other_policies_2026", insurer)
+
+        insurer_total = self.data["table_totals"]["insurers"]
+        self.assertLessEqual(
+            abs(sum((row["new_premium"] or 0) for row in self.data["insurers"]) - insurer_total["new_premium"]),
+            1,
+        )
+        self.assertLessEqual(
+            abs(sum((row["renewal_premium"] or 0) for row in self.data["insurers"]) - insurer_total["renewal_premium"]),
+            1,
+        )
+
+        for lob in self.data["lines_of_business"]:
+            self.assertIn("new_policies_2026", lob)
+            self.assertIn("renewal_policies_2026", lob)
+
+        lob_total = self.data["table_totals"]["lines_of_business"]
+        self.assertEqual(
+            sum((row["new_policies_2026"] or 0) for row in self.data["lines_of_business"]),
+            lob_total["new_policies_2026"],
+        )
+        self.assertEqual(
+            sum((row["renewal_policies_2026"] or 0) for row in self.data["lines_of_business"]),
+            lob_total["renewal_policies_2026"],
+        )
 
         for seller in self.data["sellers"]:
             months = [row for row in self.data["seller_monthly"] if row["seller"] == seller["seller"]]

@@ -1659,9 +1659,9 @@
     "metric_id": "kpi.new-policies.yoy",
     "report_area": "kpi",
     "label": "New Policies YoY",
-    "previous_display": "-83.0%",
-    "corrected_display": "-83.2%",
-    "numerator": "-9131",
+    "previous_display": "-84.0%",
+    "corrected_display": "-84.3%",
+    "numerator": "-9257",
     "denominator": "10981"
   },
   {
