@@ -1,11 +1,11 @@
 {
-  "status": "warning",
+  "status": "pass",
   "checks": [
     {
       "name": "Monthly totals = overall total",
       "status": "pass",
-      "expected": 15255091.0,
-      "actual": 15255091.0,
+      "expected": 15255091.298,
+      "actual": 15255091.298,
       "difference": 0.0,
       "tolerance": 1,
       "severity": "warning",
@@ -14,8 +14,8 @@
     {
       "name": "Monthly amount rows = workbook grand total",
       "status": "pass",
-      "expected": 15255091.0,
-      "actual": 15255091.0,
+      "expected": 15255091.298,
+      "actual": 15255091.298,
       "difference": 0.0,
       "tolerance": 1,
       "severity": "warning",
@@ -34,9 +34,9 @@
     {
       "name": "Branch totals = overall total",
       "status": "pass",
-      "expected": 15255091.0,
-      "actual": 15255092.0,
-      "difference": 1.0,
+      "expected": 15255091.298,
+      "actual": 15255091.298,
+      "difference": 0.0,
       "tolerance": 1,
       "severity": "warning",
       "source": "workbook"
@@ -44,8 +44,8 @@
     {
       "name": "Line-of-business totals = overall total",
       "status": "pass",
-      "expected": 15255091.0,
-      "actual": 15255091.0,
+      "expected": 15255091.298,
+      "actual": 15255091.298,
       "difference": 0.0,
       "tolerance": 1,
       "severity": "warning",
@@ -53,10 +53,10 @@
     },
     {
       "name": "Insurer totals = overall total",
-      "status": "warning",
-      "expected": 15255091.0,
-      "actual": 15255093.0,
-      "difference": 2.0,
+      "status": "pass",
+      "expected": 15255091.298,
+      "actual": 15255091.298,
+      "difference": 0.0,
       "tolerance": 1,
       "severity": "warning",
       "source": "workbook"
@@ -64,8 +64,8 @@
     {
       "name": "Pending category totals = total pending",
       "status": "pass",
-      "expected": 398359.0,
-      "actual": 398359.0,
+      "expected": 398358.91000000003,
+      "actual": 398358.91000000003,
       "difference": 0.0,
       "tolerance": 1,
       "severity": "error",
@@ -74,8 +74,8 @@
     {
       "name": "Policy-type premium totals = approved gross premium",
       "status": "pass",
-      "expected": 15255091.0,
-      "actual": 15255091.0,
+      "expected": 15255091.298,
+      "actual": 15255091.298,
       "difference": 0.0,
       "tolerance": 1,
       "severity": "error",
@@ -94,8 +94,8 @@
     {
       "name": "Branches per day approved total",
       "status": "pass",
-      "expected": 563975.0,
-      "actual": 563975.0,
+      "expected": 563975.49,
+      "actual": 563975.49,
       "difference": 0.0,
       "tolerance": 1,
       "severity": "warning",
@@ -114,8 +114,8 @@
     {
       "name": "Branches per day pending not paid total",
       "status": "pass",
-      "expected": 129466.0,
-      "actual": 129466.0,
+      "expected": 129465.91,
+      "actual": 129465.91,
       "difference": 0.0,
       "tolerance": 1,
       "severity": "warning",
@@ -135,8 +135,8 @@
       "name": "Branch contribution shares total 100%",
       "status": "pass",
       "expected": 1,
-      "actual": 1.0000000655518868,
-      "difference": 6.555188680756885e-08,
+      "actual": 1.0,
+      "difference": 0.0,
       "tolerance": 0.0001,
       "severity": "error",
       "source": "report"
@@ -167,28 +167,6 @@
     "failures": []
   },
   "blocking_failures": [],
-  "warnings": [
-    {
-      "name": "Insurer totals = overall total",
-      "status": "warning",
-      "expected": 15255091.0,
-      "actual": 15255093.0,
-      "difference": 2.0,
-      "tolerance": 1,
-      "severity": "warning",
-      "source": "workbook"
-    }
-  ],
-  "issues": [
-    {
-      "name": "Insurer totals = overall total",
-      "status": "warning",
-      "expected": 15255091.0,
-      "actual": 15255093.0,
-      "difference": 2.0,
-      "tolerance": 1,
-      "severity": "warning",
-      "source": "workbook"
-    }
-  ]
+  "warnings": [],
+  "issues": []
 }
